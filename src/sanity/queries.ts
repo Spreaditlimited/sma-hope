@@ -3,7 +3,8 @@ export const latestUpdatesQuery = `*[_type == "post"] | order(publishedAt desc)[
   "slug": slug.current,
   excerpt,
   publishedAt,
-  category
+  category,
+  "image": featuredImage.asset->url
 }`;
 
 export const updatesQuery = `*[_type == "post"] | order(publishedAt desc){
@@ -12,6 +13,7 @@ export const updatesQuery = `*[_type == "post"] | order(publishedAt desc){
   excerpt,
   publishedAt,
   category,
+  "image": featuredImage.asset->url,
   body
 }`;
 
@@ -21,6 +23,7 @@ export const updateBySlugQuery = `*[_type == "post" && slug.current == $slug][0]
   excerpt,
   publishedAt,
   category,
+  "image": featuredImage.asset->url,
   body
 }`;
 

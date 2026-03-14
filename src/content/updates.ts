@@ -7,6 +7,7 @@ export const fallbackUpdates: UpdateCardData[] = [
     slug: "launching-sma-hope-foundation-nigeria",
     publishedAt: "2026-03-14",
     category: "Foundation",
+    image: "/home/home-why-foundation.png",
   },
   {
     title: "Why Public Understanding of SMA Matters",
@@ -14,6 +15,7 @@ export const fallbackUpdates: UpdateCardData[] = [
     slug: "why-public-understanding-of-sma-matters",
     publishedAt: "2026-03-10",
     category: "Awareness",
+    image: "/home/home-what-is-sma.png",
   },
   {
     title: "Book Launch: A Family Story in Full",
@@ -21,6 +23,7 @@ export const fallbackUpdates: UpdateCardData[] = [
     slug: "book-launch-a-family-story-in-full",
     publishedAt: "2026-03-08",
     category: "Book",
+    image: "/Book.PNG",
   },
 ];
 

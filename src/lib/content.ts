@@ -10,6 +10,7 @@ type Update = {
   excerpt: string;
   publishedAt: string;
   category: string;
+  image?: string;
   body?: string[];
 };
 

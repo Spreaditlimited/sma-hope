@@ -104,28 +104,21 @@ export default function BookPage() {
           </article>
 
           <div className="about-two-col">
-            <aside className="about-panel">
+            <aside className="about-panel book-showcase">
               <h2 className="section-heading-strong">Book Preview</h2>
-              <div className="book-mockup-wrap">
-                <div className="book-mockup-spine" aria-hidden="true" />
-                <article className="book-mockup-face" aria-label="Book mockup preview">
-                  <div className="book-mockup-cover">
-                    <Image
-                      src="/Book.PNG"
-                      alt="SMA Hope Foundation book cover"
-                      width={1400}
-                      height={874}
-                      className="book-mockup-cover-image"
-                    />
-                  </div>
-                  <div className="book-mockup-meta">
-                    <p className="kicker" style={{ margin: 0 }}>When Every Breath Matters</p>
-                    <p style={{ margin: "0.35rem 0 0", fontWeight: 700 }}>SMA Hope Foundation Nigeria</p>
-                    <p style={{ margin: "0.2rem 0 0", color: "var(--text-soft)", fontSize: "0.9rem" }}>
-                      Paperback / eBook / Hardcover
-                    </p>
-                  </div>
-                </article>
+              <div className="book-showcase-frame">
+                <Image
+                  src="/Book.PNG"
+                  alt="When Every Breath Matters book cover"
+                  width={1681}
+                  height={2448}
+                  className="book-showcase-image"
+                />
+              </div>
+              <div className="book-showcase-meta">
+                <p className="book-showcase-title">When Every Breath Matters</p>
+                <p className="book-showcase-subtitle">By Tochukwu and Ijeoma Nkwocha</p>
+                <p className="book-showcase-formats">Formats: Paperback | eBook | Hardcover</p>
               </div>
             </aside>
 
