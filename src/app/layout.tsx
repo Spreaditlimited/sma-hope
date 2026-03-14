@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: siteConfig.name,
   description: siteConfig.description,
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 };
 
 const orgSchema = {
