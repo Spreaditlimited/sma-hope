@@ -120,7 +120,6 @@ export default function DonatePage() {
             </article>
 
             <article className="about-panel">
-              <h2 className="section-heading-strong" style={{ marginTop: 0 }}>Choose how you wish to support</h2>
               <DonationOptions />
               <p style={{ fontSize: "0.9rem", color: "var(--text-soft)", marginBottom: 0 }}>
                 Secure payments powered by Paystack and Stripe.
