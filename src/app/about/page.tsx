@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/page-header";
+import { ContentPageBg } from "@/components/content-page-bg";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -9,13 +10,14 @@ export const metadata = buildMetadata({
 
 export default function AboutPage() {
   return (
-    <>
+    <ContentPageBg image="/home/home-who-we-are.png">
       <PageHeader
         title="About the Foundation"
         intro="A foundation shaped by lived experience, committed to awareness, dignity, and support"
+        backgroundImage="/home/home-who-we-are.png"
       />
 
-      <section className="section-tight">
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <article className="about-panel prose">
             <p>
@@ -120,6 +122,6 @@ export default function AboutPage() {
           </article>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import { ContentPageBg } from "@/components/content-page-bg";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -105,10 +106,14 @@ function renderPanel(section: { heading: string; paragraphs?: string[]; items?: 
 
 export default function WhatIsSmaPage() {
   return (
-    <>
-      <PageHeader title="What Is SMA?" intro="Understanding Spinal Muscular Atrophy in plain language" />
+    <ContentPageBg image="/home/home-what-is-sma.png">
+      <PageHeader
+        title="What Is SMA?"
+        intro="Understanding Spinal Muscular Atrophy in plain language"
+        backgroundImage="/home/home-what-is-sma.png"
+      />
 
-      <section className="section-tight">
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <article className="about-panel prose">
             <p>
@@ -161,6 +166,6 @@ export default function WhatIsSmaPage() {
           </div>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }

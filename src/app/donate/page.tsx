@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/page-header";
 import { DonationOptions } from "@/components/donation-options";
+import { ContentPageBg } from "@/components/content-page-bg";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -77,10 +78,14 @@ function renderPanel(section: { heading: string; paragraphs?: string[]; items?: 
 
 export default function DonatePage() {
   return (
-    <>
-      <PageHeader title="Donate" intro="Support the work of SMA Hope Foundation Nigeria" />
+    <ContentPageBg image="/home/home-trust-transparency.png">
+      <PageHeader
+        title="Donate"
+        intro="Support the work of SMA Hope Foundation Nigeria"
+        backgroundImage="/home/home-trust-transparency.png"
+      />
 
-      <section className="section-tight">
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <article className="about-panel prose">
             <p>
@@ -134,6 +139,6 @@ export default function DonatePage() {
           </article>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }

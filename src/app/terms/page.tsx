@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/metadata";
 import { PageHeader } from "@/components/page-header";
+import { ContentPageBg } from "@/components/content-page-bg";
 
 export const metadata = buildMetadata({
   title: "Terms",
@@ -9,9 +10,13 @@ export const metadata = buildMetadata({
 
 export default function TermsPage() {
   return (
-    <>
-      <PageHeader title="Terms" intro="Professional placeholder terms text for launch readiness" />
-      <section className="section-tight">
+    <ContentPageBg image="/home/home-our-story.png">
+      <PageHeader
+        title="Terms"
+        intro="Professional placeholder terms text for launch readiness"
+        backgroundImage="/home/home-our-story.png"
+      />
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <div className="about-two-col">
             <article className="about-panel prose">
@@ -35,6 +40,6 @@ export default function TermsPage() {
           </div>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }

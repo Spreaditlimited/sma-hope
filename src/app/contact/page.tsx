@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/page-header";
 import { ContactForm } from "@/components/contact-form";
+import { ContentPageBg } from "@/components/content-page-bg";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -10,10 +11,14 @@ export const metadata = buildMetadata({
 
 export default function ContactPage() {
   return (
-    <>
-      <PageHeader title="Contact Us" intro="Get in touch with SMA Hope Foundation Nigeria" />
+    <ContentPageBg image="/home/home-latest-updates.png">
+      <PageHeader
+        title="Contact Us"
+        intro="Get in touch with SMA Hope Foundation Nigeria"
+        backgroundImage="/home/home-latest-updates.png"
+      />
 
-      <section className="section-tight">
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <article className="about-panel prose">
             <p>Thank you for reaching out.</p>
@@ -108,6 +113,6 @@ export default function ContactPage() {
           </article>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import { ContentPageBg } from "@/components/content-page-bg";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -103,10 +104,14 @@ function renderPanel(section: { heading: string; paragraphs: string[] }) {
 
 export default function OurStoryPage() {
   return (
-    <>
-      <PageHeader title="Our Story" intro="The story behind SMA Hope Foundation Nigeria" />
+    <ContentPageBg image="/home/home-our-story.png">
+      <PageHeader
+        title="Our Story"
+        intro="The story behind SMA Hope Foundation Nigeria"
+        backgroundImage="/home/home-our-story.png"
+      />
 
-      <section className="section-tight">
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <article className="about-panel prose">
             <p>
@@ -164,6 +169,6 @@ export default function OurStoryPage() {
           </div>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }

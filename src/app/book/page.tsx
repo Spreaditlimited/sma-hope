@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
+import { ContentPageBg } from "@/components/content-page-bg";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -87,10 +88,14 @@ function renderPanel(section: { heading: string; paragraphs?: string[]; items?: 
 
 export default function BookPage() {
   return (
-    <>
-      <PageHeader title="The Book" intro="A book born from real experience, written to help more people understand SMA" />
+    <ContentPageBg image="/home/home-ways-to-help.png">
+      <PageHeader
+        title="The Book"
+        intro="A book born from real experience, written to help more people understand SMA"
+        backgroundImage="/home/home-ways-to-help.png"
+      />
 
-      <section className="section-tight">
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <article className="about-panel prose">
             <h2 className="section-heading-strong">A Book Rooted in Lived Reality</h2>
@@ -176,6 +181,6 @@ export default function BookPage() {
           </div>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }

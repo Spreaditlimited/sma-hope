@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import { ContentPageBg } from "@/components/content-page-bg";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -91,10 +92,14 @@ function renderPanel(section: { heading: string; paragraphs?: string[]; items?: 
 
 export default function SupportForFamiliesPage() {
   return (
-    <>
-      <PageHeader title="Support for Families" intro="For families living with the reality of SMA" />
+    <ContentPageBg image="/home/home-support-families.png">
+      <PageHeader
+        title="Support for Families"
+        intro="For families living with the reality of SMA"
+        backgroundImage="/home/home-support-families.png"
+      />
 
-      <section className="section-tight">
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <article className="about-panel prose">
             <p>
@@ -144,6 +149,6 @@ export default function SupportForFamiliesPage() {
           </div>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }

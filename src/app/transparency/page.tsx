@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/metadata";
 import { PageHeader } from "@/components/page-header";
+import { ContentPageBg } from "@/components/content-page-bg";
 
 export const metadata = buildMetadata({
   title: "Transparency",
@@ -9,9 +10,13 @@ export const metadata = buildMetadata({
 
 export default function TransparencyPage() {
   return (
-    <>
-      <PageHeader title="Transparency" intro="Built on seriousness, compassion, and accountability" />
-      <section className="section-tight">
+    <ContentPageBg image="/home/home-why-foundation.png">
+      <PageHeader
+        title="Transparency"
+        intro="Built on seriousness, compassion, and accountability"
+        backgroundImage="/home/home-why-foundation.png"
+      />
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <div className="about-two-col">
             <article className="about-panel prose">
@@ -35,6 +40,6 @@ export default function TransparencyPage() {
           </div>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }

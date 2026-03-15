@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/metadata";
 import { PageHeader } from "@/components/page-header";
+import { ContentPageBg } from "@/components/content-page-bg";
 
 export const metadata = buildMetadata({
   title: "Privacy Policy",
@@ -9,9 +10,13 @@ export const metadata = buildMetadata({
 
 export default function PrivacyPolicyPage() {
   return (
-    <>
-      <PageHeader title="Privacy Policy" intro="Professional placeholder policy text for launch readiness" />
-      <section className="section-tight">
+    <ContentPageBg image="/home/home-what-is-sma.png">
+      <PageHeader
+        title="Privacy Policy"
+        intro="Professional placeholder policy text for launch readiness"
+        backgroundImage="/home/home-what-is-sma.png"
+      />
+      <section className="section-tight content-page-section">
         <div className="container about-page-flow">
           <div className="about-two-col">
             <article className="about-panel prose">
@@ -44,6 +49,6 @@ export default function PrivacyPolicyPage() {
           </article>
         </div>
       </section>
-    </>
+    </ContentPageBg>
   );
 }
