@@ -28,9 +28,9 @@ export function Navbar() {
             <Image
               src="/SMA Hope Foundation logo.png"
               alt="SMA Hope Foundation logo"
-              width={210}
-              height={111}
-              style={{ width: "auto", height: "3.2rem" }}
+              width={240}
+              height={127}
+              style={{ width: "auto", height: "3.7rem" }}
               priority
             />
           </Link>

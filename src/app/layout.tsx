@@ -3,6 +3,7 @@ import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { CookieNotice } from "@/components/cookie-notice";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -48,6 +49,7 @@ export default function RootLayout({
         <Navbar />
         <main id="main-content">{children}</main>
         <Footer />
+        <CookieNotice />
       </body>
     </html>
   );

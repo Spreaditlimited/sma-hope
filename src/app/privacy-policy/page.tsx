@@ -33,6 +33,15 @@ export default function PrivacyPolicyPage() {
               <p>You may request updates, corrections, or deletion of your data by contacting hello@smahope.org.</p>
             </article>
           </div>
+          <article id="cookies" className="about-panel prose">
+            <h2 className="section-heading-strong">Cookies</h2>
+            <p>
+              We use essential cookies required for core website functionality. Where enabled, optional cookies may be used to improve performance and user experience.
+            </p>
+            <p>
+              You can accept or decline optional cookies through the cookie notice. Your preference is saved and can be updated by clearing cookies in your browser.
+            </p>
+          </article>
         </div>
       </section>
     </>

@@ -182,15 +182,14 @@ export default async function HomePage() {
             <article className="about-panel prose">
               <h2 className="section-heading-strong">A book shaped by truth, family, and hard-won understanding</h2>
               <div className="book-landscape-visual">
-                <div className="book-landscape-left">
-                  <Image
-                    src="/Book.PNG"
-                    alt="When Every Breath Matters book cover"
-                    width={1681}
-                    height={2448}
-                    className="book-landscape-cover"
-                  />
-                </div>
+                <div className="book-landscape-halo" aria-hidden="true" />
+                <Image
+                  src="/Book.PNG"
+                  alt="When Every Breath Matters book cover"
+                  width={1681}
+                  height={2448}
+                  className="book-landscape-cover"
+                />
               </div>
               <p>
                 We are also launching a book that explores Spinal Muscular Atrophy more deeply through the lens of real family experience. The aim is not only to tell a story, but to help people understand the condition, the burden families carry, and the kind of support and awareness that are still needed.
