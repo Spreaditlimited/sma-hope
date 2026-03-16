@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
-import { CTASection } from "@/components/cta-section";
 import { SectionDivider } from "@/components/section-divider";
 import { UpdateCard } from "@/components/update-card";
 import { getLatestUpdates } from "@/lib/content";
@@ -276,12 +275,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <CTASection
-        headline="Help us build understanding, strengthen support, and carry this mission forward."
-        body="Whether you are here to learn, to support, to seek help, or to understand what SMA really means for families, you are welcome here."
-        primary={{ label: "Donate", href: "/donate" }}
-        secondary={{ label: "Contact Us", href: "/contact" }}
-      />
     </>
   );
 }

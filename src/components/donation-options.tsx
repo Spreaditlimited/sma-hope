@@ -21,7 +21,7 @@ export function DonationOptions() {
   }
 
   return (
-    <div className="card donation-card">
+    <div className="donation-card">
       <h3 className="donation-title">Choose how you wish to support</h3>
       <p className="donation-intro">
         Select your location first. We will show the right currency, suggested amounts, and payment provider.
