@@ -19,9 +19,9 @@ export const fallbackUpdates: UpdateCardData[] = [
   },
   {
     title: "Book Launch: A Family Story in Full",
-    excerpt: "The official book launch and how the publication supports advocacy, education, and sustained public compassion.",
+    excerpt: "When Every Breath Matters is launching soon. This update shares what to expect, who the book is for, and why this release matters now.",
     slug: "book-launch-a-family-story-in-full",
-    publishedAt: "2026-03-08",
+    publishedAt: "2026-03-17",
     category: "Book",
     image: "/Book-v3.PNG",
   },
@@ -57,8 +57,14 @@ export const fallbackPosts = [
   {
     ...fallbackUpdates[2],
     body: [
-      "This is a placeholder update body. Replace with Sanity-managed content as publishing begins.",
-      "The platform is set up for long-form reflection and awareness content.",
+      "The book has not been released yet, but it is launching soon. We are sharing this early update because many people have asked when the book will be available, what it covers, and how it connects to the wider mission of SMA Hope Foundation Nigeria.",
+      "When Every Breath Matters was written from lived family reality, not from a distance. It was shaped by years of difficult medical decisions, emotional strain, practical care work, and the long responsibility of raising children affected by Spinal Muscular Atrophy. The book is grounded in medicine, but it is also deeply human. It explains SMA in clear language while showing what the diagnosis means inside real homes over time.",
+      "This upcoming launch matters because awareness around SMA is still too low in many communities. Families often carry heavy burdens while also trying to explain the condition to relatives, schools, churches, institutions, and the public. The book is intended to reduce that gap by offering a truthful, accessible, and compassionate account of what SMA is and what sustained family care can require.",
+      "Readers can expect practical clarity and personal depth. The chapters address diagnosis, genetics, the different forms of SMA, breathing and feeding realities, treatment and access barriers, financial pressure, migration decisions, faith under strain, and the hidden weight carried by siblings and caregivers. The goal is not emotional spectacle. The goal is understanding that can lead to better support, better conversations, and better responses.",
+      "For families directly affected by SMA, this book is written to help people feel seen and better equipped with language for what they are navigating. For healthcare professionals, church leaders, institutions, and policymakers, it offers context that is often missed when SMA is discussed only in technical terms. For supporters and donors, it clarifies why serious and sustained support is needed beyond one-time sympathy.",
+      "Because the launch is approaching, we are finalizing rollout details carefully. Availability updates, purchase channels, and launch communications will be published here on the Updates page and on the Book page as soon as release is confirmed. We are being deliberate so that the launch experience is clear, trustworthy, and accessible for readers in Nigeria and beyond.",
+      "If you want to support this launch now, there are practical steps you can take: share this update with people in your network, encourage informed conversation about SMA, and direct interested readers to the website so they can follow official release announcements. Early awareness will help the book reach families, professionals, and communities that can benefit from it most.",
+      "This book is part of a larger commitment, not a one-day campaign. It sits alongside the foundation's broader work in awareness, advocacy, family visibility, and compassionate public education. Thank you for walking with us as we prepare to release it. We will share the official launch notice very soon.",
     ],
   },
 ];

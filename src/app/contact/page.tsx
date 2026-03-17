@@ -19,7 +19,7 @@ export default function ContactPage() {
       />
 
       <section className="section-tight content-page-section">
-        <div className="container about-page-flow">
+        <div className="container about-page-flow single-content-layout">
           <article className="about-panel prose">
             <p>Thank you for reaching out.</p>
             <p>

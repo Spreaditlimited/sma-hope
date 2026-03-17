@@ -86,7 +86,7 @@ export default function DonatePage() {
       />
 
       <section className="section-tight content-page-section">
-        <div className="container about-page-flow">
+        <div className="container about-page-flow single-content-layout">
           <article className="about-panel prose">
             <p>
               SMA Hope Foundation Nigeria exists because the burden families carry is real, and because awareness, dignity, support, and informed public understanding do not grow on their own. They have to be built deliberately.

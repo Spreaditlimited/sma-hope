@@ -112,7 +112,7 @@ export default function OurStoryPage() {
       />
 
       <section className="section-tight content-page-section">
-        <div className="container about-page-flow">
+        <div className="container about-page-flow single-content-layout">
           <article className="about-panel prose">
             <p>
               SMA Hope Foundation Nigeria did not begin as an organisation first. It began as a family&apos;s long and painful education in what Spinal Muscular Atrophy really means.

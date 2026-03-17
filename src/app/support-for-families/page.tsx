@@ -72,9 +72,9 @@ const sections = [
   },
 ];
 
-function renderPanel(section: { heading: string; paragraphs?: string[]; items?: string[] }) {
+function renderSection(section: { heading: string; paragraphs?: string[]; items?: string[] }) {
   return (
-    <article className="about-panel prose" key={section.heading}>
+    <section key={section.heading}>
       <h2 className="section-heading-strong">{section.heading}</h2>
       {section.paragraphs?.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
@@ -86,7 +86,7 @@ function renderPanel(section: { heading: string; paragraphs?: string[]; items?: 
           ))}
         </ul>
       ) : null}
-    </article>
+    </section>
   );
 }
 
@@ -100,7 +100,7 @@ export default function SupportForFamiliesPage() {
       />
 
       <section className="section-tight content-page-section">
-        <div className="container about-page-flow">
+        <div className="container about-page-flow single-content-layout">
           <article className="about-panel prose">
             <p>
               If your child has been diagnosed with Spinal Muscular Atrophy, or if you are currently trying to understand symptoms, weakness, delayed milestones, feeding difficulties, breathing concerns, or a diagnosis you never expected, we want to begin by saying this clearly: you are not alone.
@@ -111,26 +111,8 @@ export default function SupportForFamiliesPage() {
             <p>
               At SMA Hope Foundation Nigeria, we understand that this burden is not only medical. It is emotional, practical, financial, relational, and deeply human.
             </p>
-          </article>
+            {sections.map((section) => renderSection(section))}
 
-          <div className="about-two-col">
-            {renderPanel(sections[0])}
-            {renderPanel(sections[1])}
-          </div>
-
-          <div className="about-two-col">
-            {renderPanel(sections[2])}
-            {renderPanel(sections[3])}
-          </div>
-
-          <div className="about-two-col">
-            {renderPanel(sections[4])}
-            {renderPanel(sections[5])}
-          </div>
-
-          {renderPanel(sections[6])}
-
-          <article className="about-panel prose">
             <p>Support for families begins with truth.</p>
             <p>
               It begins with recognising that SMA is not a small burden. It begins with seeing the child clearly, seeing the family clearly, and refusing to reduce either one to pity or silence.
@@ -138,15 +120,15 @@ export default function SupportForFamiliesPage() {
             <p>
               We hope SMA Hope Foundation Nigeria becomes a place where families affected by SMA find understanding, dignity, and a growing sense that they are not alone.
             </p>
+            <div className="section-actions page-end-actions" style={{ display: "flex", gap: "0.8rem", flexWrap: "wrap" }}>
+              <Link href="/contact" className="btn btn-primary">
+                Contact the Foundation
+              </Link>
+              <Link href="/what-is-sma" className="btn btn-secondary">
+                Learn About SMA
+              </Link>
+            </div>
           </article>
-          <div className="section-actions page-end-actions" style={{ display: "flex", gap: "0.8rem", flexWrap: "wrap" }}>
-            <Link href="/contact" className="btn btn-primary">
-              Contact the Foundation
-            </Link>
-            <Link href="/what-is-sma" className="btn btn-secondary">
-              Learn About SMA
-            </Link>
-          </div>
         </div>
       </section>
     </ContentPageBg>

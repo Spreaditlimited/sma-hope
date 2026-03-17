@@ -20,14 +20,28 @@ export default function BookPage() {
       />
 
       <section className="section-tight content-page-section">
-        <div className="container about-page-flow">
+        <div className="container about-page-flow single-content-layout">
           <article className="about-panel prose book-intro-card">
-            <h2 className="section-heading-strong">When Every Breath Matters</h2>
-            <p className="book-intro-subtitle">Understanding Spinal Muscular Atrophy Through Medicine, Family, Faith, and Survival</p>
-            <p className="book-intro-author">By Tochukwu and Ijeoma Nkwocha</p>
+            <div className="book-hero-grid">
+              <div className="book-hero-copy">
+                <p className="book-status-badge">Book Launching Soon</p>
+                <h2 className="section-heading-strong book-hero-title">When Every Breath Matters</h2>
+                <p className="book-intro-subtitle">Understanding Spinal Muscular Atrophy Through Medicine, Family, Faith, and Survival</p>
+                <p className="book-intro-author">By Tochukwu and Ijeoma Nkwocha</p>
+                <p className="book-intro-pull">Some books are written from a distance.</p>
+                <p className="book-intro-pull">This one was not.</p>
+                <p>
+                  When Every Breath Matters was born out of lived experience. It comes from the reality of raising children affected by Spinal Muscular Atrophy and carrying the weight this condition brings into a family&apos;s life. This is a
+                  book about SMA, but it is also a book about love, fear, medicine, survival, endurance, and the unseen work families do every day.
+                </p>
+                <div className="book-hero-meta">
+                  <p className="book-hero-meta-item">Status: Pre-launch release window</p>
+                  <p className="book-hero-meta-item">Focus: Medical clarity + lived family reality</p>
+                  <p className="book-hero-meta-item">Audience: Families, clinicians, communities, advocates</p>
+                </div>
+              </div>
 
-            <div className="book-intro-grid">
-              <div className="book-intro-media">
+              <aside className="book-hero-media" aria-label="Book cover preview">
                 <div className="book-showcase-frame">
                   <Image
                     src="/Book-v3.PNG"
@@ -37,29 +51,25 @@ export default function BookPage() {
                     className="book-showcase-image"
                   />
                 </div>
-              </div>
-              <div className="book-intro-copy">
-                <p className="book-intro-pull">Some books are written from a distance.</p>
-                <p className="book-intro-pull">This one was not.</p>
-                <p>
-                  When Every Breath Matters was born out of lived experience. It comes from the reality of raising children affected by Spinal Muscular Atrophy and carrying the weight this condition brings into a family&apos;s life. This is a
-                  book about SMA, but it is also a book about love, fear, medicine, survival, endurance, and the unseen work families do every day.
-                </p>
-                <p>
-                  For many people, SMA is a rare condition they know little about. For some families, it becomes the reality that changes everything. It changes how they think about breathing, feeding, sleep, treatment, hospital visits,
-                  finances, marriage, movement across countries, and the future itself.
-                </p>
-              </div>
+                <p className="book-hero-media-note">Cover preview</p>
+              </aside>
             </div>
 
-            <p>This book was written to help bridge that gap.</p>
-            <p>
-              It explains what SMA is in clear, plain language, but it also tells the deeper human story behind the diagnosis. It helps readers understand what happens when a serious medical condition moves from a hospital file into a home and
-              stays there.
-            </p>
-            <p>This is not a cold medical manual.</p>
-            <p>It is not a sentimental story without substance.</p>
-            <p>It is a serious, human, medically grounded, and deeply personal book written to help people understand what SMA really means.</p>
+            <div className="book-intro-copy">
+              <p>
+                For many people, SMA is a rare condition they know little about. For some families, it becomes the reality that changes everything. It changes how they think about breathing, feeding, sleep, treatment, hospital visits,
+                finances, marriage, movement across countries, and the future itself.
+              </p>
+              <p>This book was written to help bridge that gap.</p>
+              <p>
+                It explains what SMA is in clear, plain language, but it also tells the deeper human story behind the diagnosis. It helps readers understand what happens when a serious medical condition moves from a hospital file into a home and
+                stays there.
+              </p>
+              <p>This is not a cold medical manual.</p>
+              <p>It is not a sentimental story without substance.</p>
+              <p>It is a serious, human, medically grounded, and deeply personal book written to help people understand what SMA really means.</p>
+            </div>
+
           </article>
 
           <article className="about-panel prose">

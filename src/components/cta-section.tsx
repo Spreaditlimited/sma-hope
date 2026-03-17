@@ -2,6 +2,22 @@
 
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+
+const ctaBgByPath: Record<string, string> = {
+  "/": "/home/home-final-cta.png",
+  "/about": "/home/home-who-we-are.png",
+  "/what-is-sma": "/home/home-what-is-sma.png",
+  "/our-story": "/home/home-our-story.png",
+  "/support-for-families": "/home/home-support-families.png",
+  "/book": "/home/home-ways-to-help.png",
+  "/donate": "/home/home-ways-to-help.png",
+  "/contact": "/home/home-latest-updates.png",
+  "/updates": "/home/home-final-cta.png",
+  "/transparency": "/home/home-trust-transparency.png",
+  "/privacy-policy": "/home/home-what-is-sma.png",
+  "/terms": "/home/home-our-story.png",
+};
 
 export function CTASection({
   headline,
@@ -14,6 +30,8 @@ export function CTASection({
   primary: { label: string; href: string };
   secondary?: { label: string; href: string };
 }) {
+  const pathname = usePathname();
+  const ctaBackgroundImage = ctaBgByPath[pathname] || "/home/home-final-cta.png";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -68,8 +86,13 @@ export function CTASection({
   }
 
   return (
-    <section className="section">
-      <div className="container card cta-shell">
+    <section
+      className="section cta-section-bg"
+      style={{
+        backgroundImage: `linear-gradient(120deg, rgba(246, 251, 255, 0.78) 0%, rgba(246, 251, 255, 0.7) 45%, rgba(246, 251, 255, 0.76) 100%), url(${ctaBackgroundImage})`,
+      }}
+    >
+      <div className="container cta-shell">
         <div className="cta-main">
           <h2 className="cta-title">{headline}</h2>
           <p className="cta-body">{body}</p>

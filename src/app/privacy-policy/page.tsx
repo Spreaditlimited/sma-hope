@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
         backgroundImage="/home/home-what-is-sma.png"
       />
       <section className="section-tight content-page-section">
-        <div className="container about-page-flow">
+        <div className="container about-page-flow single-content-layout">
           <article className="about-panel prose">
             <p>
               <strong>Last updated:</strong> March 17, 2026

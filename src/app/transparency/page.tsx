@@ -17,7 +17,7 @@ export default function TransparencyPage() {
         backgroundImage="/home/home-why-foundation.png"
       />
       <section className="section-tight content-page-section">
-        <div className="container about-page-flow">
+        <div className="container about-page-flow single-content-layout">
           <div className="about-two-col">
             <article className="about-panel prose">
               <h2 className="section-heading-strong">Registered Foundation Status</h2>
