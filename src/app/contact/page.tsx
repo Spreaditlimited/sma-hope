@@ -36,12 +36,12 @@ export default function ContactPage() {
               <p>The easiest way to contact us is through the form on this page.</p>
               <p>When filling the form, choose the reason for your message so it reaches the right inbox.</p>
               <ul>
-                <li>General enquiry</li>
-                <li>Family support</li>
-                <li>Book enquiry</li>
-                <li>Partnership / collaboration</li>
-                <li>Donation enquiry</li>
-                <li>Media / speaking invitation</li>
+                <li>General Enquiries &amp; Guidance</li>
+                <li>Family Care &amp; Support</li>
+                <li>Book Enquiries &amp; Orders</li>
+                <li>Partnerships &amp; Strategic Collaboration</li>
+                <li>Giving, Sponsorship &amp; Philanthropy</li>
+                <li>Media &amp; Speaking Invitations</li>
               </ul>
             </article>
 
@@ -68,7 +68,7 @@ export default function ContactPage() {
             <article className="about-panel prose">
               <h2 className="section-heading-strong">For Donation Enquiries</h2>
               <p>
-                If your message relates to giving, donor questions, sponsorship, larger support conversations, or donation logistics, please select Donation enquiry in the form or email donate@smahope.org.
+                If your message relates to giving, donor questions, sponsorship, larger support conversations, or donation logistics, please select Giving, Sponsorship &amp; Philanthropy in the form or email donate@smahope.org.
               </p>
               <p>
                 As the foundation grows, we want our giving structure to remain clear, respectful, and trustworthy for both Nigerian and international supporters.

@@ -3,12 +3,12 @@
 import { useState } from "react";
 
 const purposes = [
-  "General enquiry",
-  "Family support",
-  "Book enquiry",
-  "Partnership / collaboration",
-  "Donation enquiry",
-  "Media / speaking invitation",
+  { value: "General enquiry", label: "General Enquiries & Guidance" },
+  { value: "Family support", label: "Family Care & Support" },
+  { value: "Book enquiry", label: "Book Enquiries & Orders" },
+  { value: "Partnership / collaboration", label: "Partnerships & Strategic Collaboration" },
+  { value: "Donation enquiry", label: "Giving, Sponsorship & Philanthropy" },
+  { value: "Media / speaking invitation", label: "Media & Speaking Invitations" },
 ] as const;
 
 export function ContactForm() {
@@ -71,14 +71,18 @@ export function ContactForm() {
         </div>
       </div>
       <div style={{ marginTop: "0.8rem" }}>
-        <label htmlFor="purpose">Purpose of enquiry</label>
-        <select id="purpose" name="purpose" required>
+        <label htmlFor="purpose">How can we best support your enquiry?</label>
+        <select id="purpose" name="purpose" required defaultValue="" className="contact-purpose-select">
+          <option value="" disabled>
+            Select an enquiry category
+          </option>
           {purposes.map((purpose) => (
-            <option value={purpose} key={purpose}>
-              {purpose}
+            <option value={purpose.value} key={purpose.value}>
+              {purpose.label}
             </option>
           ))}
         </select>
+        <p className="contact-purpose-hint">Select the category that best matches your request for priority routing.</p>
       </div>
       <div style={{ marginTop: "0.8rem" }}>
         <label htmlFor="subject">Subject</label>

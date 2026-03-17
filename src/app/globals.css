@@ -1308,6 +1308,44 @@ button:focus-visible {
   z-index: 999;
 }
 
+.contact-purpose-select {
+  border: 1px solid var(--line);
+  border-radius: 0.78rem;
+  background: #fff;
+  color: #13384f;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.6rem;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #1e4f6d 50%),
+    linear-gradient(135deg, #1e4f6d 50%, transparent 50%),
+    linear-gradient(180deg, #ffffff, #f8fbff);
+  background-position:
+    calc(100% - 1.15rem) calc(50% + 0.1rem),
+    calc(100% - 0.8rem) calc(50% + 0.1rem),
+    0 0;
+  background-size:
+    0.42rem 0.42rem,
+    0.42rem 0.42rem,
+    100% 100%;
+  background-repeat: no-repeat;
+}
+
+.contact-purpose-select:focus-visible {
+  outline: 3px solid #9ac3df;
+  outline-offset: 2px;
+  box-shadow: 0 10px 24px rgba(18, 60, 88, 0.14);
+}
+
+.contact-purpose-hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.83rem;
+  color: #567083;
+}
+
 .cookie-notice {
   position: fixed;
   right: 1rem;
