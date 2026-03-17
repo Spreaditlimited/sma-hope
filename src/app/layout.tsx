@@ -11,9 +11,12 @@ export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.png",
   },
 };
 
