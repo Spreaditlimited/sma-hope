@@ -966,6 +966,64 @@ a {
   background: #082536;
 }
 
+.cta-signup-btn:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.cta-signup-honeypot {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+.cta-signup-error {
+  margin: 0.1rem 0 0;
+  color: #ffd2d2;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.cta-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(8, 31, 45, 0.56);
+}
+
+.cta-modal {
+  width: min(100%, 28rem);
+  border-radius: 1rem;
+  padding: 1.2rem;
+  background: linear-gradient(170deg, #ffffff, #f6fbff);
+  border: 1px solid #d7e4ee;
+  box-shadow: 0 20px 44px rgba(10, 38, 55, 0.26);
+}
+
+.cta-modal-title {
+  margin: 0;
+  color: #12374f;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.cta-modal-btn {
+  margin-top: 1rem;
+  background: #0c4669;
+  border-color: #0c4669;
+  color: #fff;
+}
+
+.cta-modal-btn:hover,
+.cta-modal-btn:focus-visible {
+  background: #0a3955;
+}
+
 .cta-btn-primary {
   background: #ffffff;
   color: #12344b;

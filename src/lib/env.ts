@@ -9,6 +9,8 @@ export const env = {
   stripeDonationPriceId: process.env.STRIPE_DONATION_PRICE_ID || "",
   paystackSecretKey: process.env.PAYSTACK_SECRET_KEY || "",
   paystackPublicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "",
+  flodeskApiKey: process.env.FLODESK_API_KEY || "",
+  flodeskSegmentId: process.env.FLODESK_SEGMENT_ID || "",
 };
 
 export function hasSanityConfig() {
