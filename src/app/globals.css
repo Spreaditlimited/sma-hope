@@ -564,6 +564,52 @@ a {
   font-weight: 700;
 }
 
+.book-intro-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.book-intro-subtitle {
+  margin: 0.25rem 0 0 !important;
+  color: #1b3e57;
+  font-size: clamp(1.02rem, 1.8vw, 1.16rem);
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.book-intro-author {
+  margin: 0.4rem 0 0.95rem !important;
+  color: #355166;
+  font-weight: 700;
+}
+
+.book-intro-grid {
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  margin: 0.95rem 0 0.7rem;
+}
+
+.book-intro-media {
+  display: grid;
+  place-items: center;
+}
+
+.book-intro-media .book-showcase-frame {
+  width: min(100%, 315px);
+  margin: 0;
+}
+
+.book-intro-copy p {
+  margin: 0.72rem 0;
+}
+
+.book-intro-pull {
+  margin: 0.1rem 0 !important;
+  font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+  color: #123b57;
+  font-weight: 700;
+}
+
 
 .home-book-inline {
   border: 1px solid #d9e5ee;
@@ -621,15 +667,11 @@ a {
 .book-landscape-visual {
   position: relative;
   min-height: 340px;
-  border-radius: 0.85rem;
-  border: 1px solid var(--line);
-  overflow: hidden;
   margin: 0.85rem 0 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.35rem;
-  background: linear-gradient(145deg, #edf5fc 0%, #e5f0fa 100%);
+  padding: 0.6rem 0;
 }
 
 .book-landscape-halo {
@@ -1117,6 +1159,11 @@ a {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
+  }
+
+  .book-intro-grid {
+    grid-template-columns: 0.84fr 1.16fr;
+    gap: 1.35rem;
   }
 
   .latest-intro-grid {

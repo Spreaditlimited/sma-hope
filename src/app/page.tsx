@@ -183,7 +183,7 @@ export default async function HomePage() {
               <div className="book-landscape-visual">
                 <div className="book-landscape-halo" aria-hidden="true" />
                 <Image
-                  src="/Book.PNG"
+                  src="/Book-v3.PNG"
                   alt="When Every Breath Matters book cover"
                   width={1681}
                   height={2448}

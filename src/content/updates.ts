@@ -23,7 +23,7 @@ export const fallbackUpdates: UpdateCardData[] = [
     slug: "book-launch-a-family-story-in-full",
     publishedAt: "2026-03-08",
     category: "Book",
-    image: "/Book.PNG",
+    image: "/Book-v3.PNG",
   },
 ];
 
