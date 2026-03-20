@@ -22,6 +22,8 @@ const legalLinks = [
 ] as const;
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
@@ -67,6 +69,11 @@ export function Footer() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="container footer-bottom">
+        <p className="footer-meta footer-bottom-line">5 Olutosin Ajayi Street, Ajao Estate, Lagos, Nigeria.</p>
+        <p className="footer-meta footer-bottom-line">© {currentYear} Spinal Muscular Atrophy Hope Foundation. All rights reserved.</p>
       </div>
     </footer>
   );

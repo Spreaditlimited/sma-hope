@@ -1686,6 +1686,19 @@ hr.section-divider {
   color: #0f557f;
 }
 
+.footer-bottom {
+  border-top: 1px solid #d7e2ea;
+  padding: 0.95rem 0 1.25rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.footer-bottom-line {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #3e5f73;
+}
+
 @media (min-width: 900px) {
   .footer-grid {
     grid-template-columns: 1.2fr 1.8fr;
@@ -1695,5 +1708,11 @@ hr.section-divider {
 
   .footer-nav-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-bottom {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
   }
 }
