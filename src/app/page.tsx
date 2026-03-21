@@ -56,10 +56,12 @@ export default async function HomePage() {
               {/* Native Buttons Restored */}
               <div className="section-actions mt-2 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:gap-4">
                 <Link href="/what-is-sma" className="btn btn-primary w-full sm:w-auto text-center">
-                  Learn About SMA
+                  <span className="sm:hidden">About SMA</span>
+                  <span className="hidden sm:inline">Learn About SMA</span>
                 </Link>
                 <Link href="/donate" className="btn btn-secondary w-full sm:w-auto text-center">
-                  Support the Foundation
+                  <span className="sm:hidden">Support</span>
+                  <span className="hidden sm:inline">Support the Foundation</span>
                 </Link>
               </div>
             </div>
