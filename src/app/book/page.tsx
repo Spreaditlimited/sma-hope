@@ -23,7 +23,7 @@ export default function BookPage() {
         {/* HERO SECTION */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
           <div className="lg:col-span-7 space-y-6">
-            <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-800 bg-blue-100 rounded-full">
+            <span className="inline-block px-3 py-1 text-sm font-semibold text-[var(--primary)] bg-[#e7f2fb] border border-[#c9ddec] rounded-full">
               Launching Soon
             </span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
@@ -34,7 +34,7 @@ export default function BookPage() {
             </p>
             <p className="text-lg text-gray-500">By Tochukwu and Ijeoma Nkwocha</p>
 
-            <blockquote className="border-l-4 border-blue-600 pl-6 py-2 my-8 italic text-xl text-gray-800 bg-gray-50 rounded-r-lg">
+            <blockquote className="border-l-4 border-[var(--primary)] pl-6 py-2 my-8 italic text-xl text-gray-800 bg-gray-50 rounded-r-lg">
               <p>Some books are written from a distance.</p>
               <p className="font-semibold mt-2">This one was not.</p>
             </blockquote>
@@ -106,7 +106,7 @@ export default function BookPage() {
           <section className="prose prose-lg text-gray-700">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">What You&apos;ll Find Inside</h2>
             <p>Inside this book, we explore:</p>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 list-disc pl-6 marker:text-blue-500">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 list-disc pl-6 marker:text-[var(--primary)]">
               <li>What Spinal Muscular Atrophy really is</li>
               <li>Early signs many families miss</li>
               <li>Diagnosis and genetics in plain language</li>
@@ -141,7 +141,7 @@ export default function BookPage() {
           </section>
 
           {/* CALL TO ACTION BLOCK */}
-          <section className="bg-blue-50 rounded-2xl p-8 md:p-12 text-center mt-12 border border-blue-100 shadow-sm">
+          <section className="bg-[#edf5fb] rounded-2xl p-8 md:p-12 text-center mt-12 border border-[#d4e4ef] shadow-sm">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Support the Mission</h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
               Read the book. Share it with your community. Help us spread awareness and provide serious, compassionate support to families through the SMA Hope Foundation Nigeria.

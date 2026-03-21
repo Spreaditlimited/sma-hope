@@ -94,14 +94,14 @@ export function CTASection({
       }}
     >
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Main CTA Text Area */}
-          <div className="text-center lg:text-left space-y-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+          <div className="lg:col-span-5 text-center lg:text-left space-y-5">
+            <h2 className="text-3xl md:text-4xl lg:text-[2.8rem] font-extrabold text-gray-900 tracking-tight">
               {headline}
             </h2>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-[1.15rem] text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               {body}
             </p>
             
@@ -119,7 +119,7 @@ export function CTASection({
           </div>
 
           {/* Newsletter Form Card */}
-          <div className="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
+          <div className="lg:col-span-7 w-full max-w-lg mx-auto lg:mx-0 lg:ml-auto">
             <form 
               className="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white/50 shadow-xl" 
               onSubmit={handleSubmit} 

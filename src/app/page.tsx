@@ -37,14 +37,14 @@ export default async function HomePage() {
       {/* HERO SECTION */}
       <section className="relative bg-white pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {/* Hero Copy */}
-            <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
+            <div className="lg:col-span-6 space-y-7 text-center lg:text-left">
               <span className="inline-block px-4 py-1.5 text-sm font-bold text-[var(--primary)] bg-[#e7f2fb] rounded-full tracking-wide uppercase border border-[#c9ddec]">
                 SMA Hope Foundation Nigeria
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
                 Building Awareness and Support for Spinal Muscular Atrophy in Nigeria
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
@@ -63,7 +63,7 @@ export default async function HomePage() {
             </div>
 
             {/* Hero Media */}
-            <aside className="lg:col-span-5">
+            <aside className="lg:col-span-6">
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative">
                 <Image
                   src="/family.jpg"

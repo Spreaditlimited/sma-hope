@@ -78,7 +78,7 @@ export default function OurStoryPage() {
               <p>
                 We moved back briefly to Lagos, and then on to the United Kingdom, where our daughters could finally access the medication they needed. That treatment costs about £10,000 per month per child, which means roughly £20,000 every month for both Kamsi and Kachi.
               </p>
-              <p className="italic border-l-4 border-blue-500 pl-4 my-6 bg-gray-50 py-2 rounded-r-lg">
+              <p className="italic border-l-4 border-[var(--primary)] pl-4 my-6 bg-gray-50 py-2 rounded-r-lg">
                 Families facing SMA are dealing with systems, access, relocation, medical infrastructure, impossible decisions, and costs that would crush most people.
               </p>
             </div>
@@ -107,7 +107,7 @@ export default function OurStoryPage() {
             <div className="prose prose-lg text-gray-700">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">Then Came Kachi</h2>
               <p>As painful as one SMA diagnosis is, our family&apos;s burden did not stop there.</p>
-              <p className="text-xl font-bold text-blue-800 my-4">
+              <p className="text-xl font-bold text-[var(--primary)] my-4">
                 Kachi, Kamsi&apos;s younger sister, also has SMA.
               </p>
               <p>
@@ -135,20 +135,20 @@ export default function OurStoryPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">What This Journey Has Also Taught Us</h2>
               <p>This story is painful, but it has also formed us.</p>
               <ul className="space-y-3 list-none pl-0">
-                <li className="pl-4 border-l-2 border-blue-300">
+                <li className="pl-4 border-l-2 border-[#7faac6]">
                   It has taught us that children living with SMA must never be reduced to pity. They carry dignity, personality, intelligence, presence, and worth. They deserve to be seen properly.
                 </li>
-                <li className="pl-4 border-l-2 border-blue-300">
+                <li className="pl-4 border-l-2 border-[#7faac6]">
                   It has taught us that support must go beyond kind words. Families need understanding that is informed, practical, and sustained.
                 </li>
-                <li className="pl-4 border-l-2 border-blue-300">
+                <li className="pl-4 border-l-2 border-[#7faac6]">
                   It has taught us that hope must be serious. Not shallow. Not decorative. Not the kind of hope that denies pain. The kind that tells the truth about suffering and still keeps building.
                 </li>
               </ul>
             </div>
 
-            <div className="prose prose-lg text-gray-700 bg-blue-50 p-6 md:p-8 rounded-2xl border border-blue-100 shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-blue-200 pb-2">Why We Started SMA Hope Foundation Nigeria</h2>
+            <div className="prose prose-lg text-gray-700 bg-[#edf5fb] p-6 md:p-8 rounded-2xl border border-[#d4e4ef] shadow-sm">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-[#c3d8e8] pb-2">Why We Started SMA Hope Foundation Nigeria</h2>
               <p>
                 At some point, it became clear to us that this journey should not remain only our private pain.
               </p>
