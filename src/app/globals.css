@@ -25,6 +25,7 @@ body {
   padding: 0;
   background: radial-gradient(circle at 0% 0%, #edf4f8 0, var(--bg) 36%, #f4f3ef 100%);
   color: var(--text);
+  background-attachment: scroll;
 }
 
 body {
@@ -59,11 +60,17 @@ a {
 
 .site-header {
   border-bottom: 1px solid var(--line);
-  background: rgba(248, 248, 246, 0.96);
-  backdrop-filter: blur(10px);
+  background: rgba(248, 248, 246, 0.98);
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
 .nav-main-row {
@@ -211,7 +218,7 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   padding-bottom: 2.25rem;
 }
 
@@ -1037,7 +1044,7 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 .cta-main {
@@ -1573,6 +1580,69 @@ button:focus-visible {
   color: #567083;
 }
 
+.order-book-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.order-book-location-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+}
+
+.order-book-route-picker {
+  background: linear-gradient(180deg, #f8fcff 0%, #eef6fb 100%);
+  border: 1px solid #d4e3ee;
+  border-radius: 0.95rem;
+  padding: 0.3rem;
+}
+
+.order-book-route-option {
+  text-align: left;
+  min-height: 4.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.12rem;
+}
+
+.order-book-route-option.is-active {
+  border-color: #b8d4e7;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  box-shadow: 0 10px 22px rgba(12, 58, 87, 0.12);
+}
+
+.order-book-route-title {
+  font-size: 0.97rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #123d5d;
+}
+
+.order-book-route-subtitle {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: #4f697c;
+}
+
+.order-book-form {
+  margin-top: 0.65rem;
+}
+
+.order-book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.order-book-note {
+  margin: 0.55rem 0 0.25rem;
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+
 .cookie-notice {
   position: fixed;
   right: 1rem;
@@ -1714,5 +1784,13 @@ hr.section-divider {
     grid-template-columns: 1fr auto;
     align-items: center;
     gap: 1rem;
+  }
+
+  .order-book-location-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-book-route-option {
+    min-height: 4.35rem;
   }
 }

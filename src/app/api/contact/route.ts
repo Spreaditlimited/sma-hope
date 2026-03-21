@@ -18,6 +18,29 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function friendlyDeliveryError(error: unknown) {
+  const message = error instanceof Error ? error.message : "";
+  const code = typeof error === "object" && error !== null ? String((error as { code?: string }).code || "") : "";
+
+  if (code === "EAUTH" || /auth/i.test(message)) {
+    return "Email authentication failed. Please contact support if this continues.";
+  }
+
+  if (code === "ECONNECTION" || code === "ESOCKET" || /connection|timeout|network/i.test(message)) {
+    return "Email service is temporarily unavailable. Please try again shortly.";
+  }
+
+  if (/recipient|mailbox unavailable|no recipients defined/i.test(message)) {
+    return "Message recipient is currently unavailable. Please try again shortly.";
+  }
+
+  if (/SMTP mailbox not configured/i.test(message)) {
+    return "Contact email is not configured yet. Please try again later.";
+  }
+
+  return "Unable to send your message right now. Please try again shortly.";
+}
+
 export async function POST(request: Request) {
   const payload = (await request.json()) as ContactPayload;
 
@@ -54,11 +77,12 @@ export async function POST(request: Request) {
       to,
       subject: `[SMA Hope Contact] ${payload.subject}`,
       text,
+      replyTo: payload.email,
     });
 
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "Email delivery failed." }, { status: 500 });
+    return NextResponse.json({ error: friendlyDeliveryError(error) }, { status: 500 });
   }
 }

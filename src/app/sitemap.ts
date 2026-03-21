@@ -8,6 +8,7 @@ const routes = [
   "/our-story",
   "/support-for-families",
   "/book",
+  "/order-book",
   "/donate",
   "/contact",
   "/updates",

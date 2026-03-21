@@ -47,10 +47,8 @@ export default function ContactPage() {
 
             <article className="about-panel prose">
               <h2 className="section-heading-strong">Direct Email Contacts</h2>
-              <p>General enquiries and family support: hello@smahope.org</p>
-              <p>Book-related enquiries: book@smahope.org</p>
+              <p>General enquiries, family support, book enquiries, and donation conversations: help@smahope.org</p>
               <p>Partnerships, collaborations, media, and speaking invitations: partnerships@smahope.org</p>
-              <p>Donation-related enquiries and sponsorship conversations: donate@smahope.org</p>
             </article>
           </div>
 
@@ -68,7 +66,7 @@ export default function ContactPage() {
             <article className="about-panel prose">
               <h2 className="section-heading-strong">For Donation Enquiries</h2>
               <p>
-                If your message relates to giving, donor questions, sponsorship, larger support conversations, or donation logistics, please select Giving, Sponsorship &amp; Philanthropy in the form or email donate@smahope.org.
+                If your message relates to giving, donor questions, sponsorship, larger support conversations, or donation logistics, please select Giving, Sponsorship &amp; Philanthropy in the form or email help@smahope.org.
               </p>
               <p>
                 As the foundation grows, we want our giving structure to remain clear, respectful, and trustworthy for both Nigerian and international supporters.

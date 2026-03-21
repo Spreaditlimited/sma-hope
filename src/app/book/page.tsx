@@ -154,7 +154,9 @@ export default function BookPage() {
             <p>Share it with others.</p>
             <p>Help more people understand SMA with seriousness, compassion, and dignity.</p>
             <p>
-              <strong>Buy the Book</strong>
+              <Link href="/order-book" className="btn btn-primary">
+                Buy the Book
+              </Link>
             </p>
           </article>
 
@@ -171,9 +173,9 @@ export default function BookPage() {
           </article>
 
           <div className="section-actions page-end-actions" style={{ display: "flex", gap: "0.8rem", flexWrap: "wrap" }}>
-            <button className="btn btn-primary" type="button">
+            <Link href="/order-book" className="btn btn-primary">
               Buy the Book
-            </button>
+            </Link>
             <Link href="/donate" className="btn btn-secondary">
               Support the Foundation
             </Link>

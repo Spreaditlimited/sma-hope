@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const purposes = [
   { value: "General enquiry", label: "General Enquiries & Guidance" },
@@ -12,16 +12,44 @@ const purposes = [
 ] as const;
 
 export function ContactForm() {
-  const [status, setStatus] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [formStart] = useState(() => Date.now());
+  const [feedbackModal, setFeedbackModal] = useState<{
+    type: "success" | "error";
+    title: string;
+    message: string;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!feedbackModal) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setFeedbackModal(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [feedbackModal]);
+
+  function getFriendlyErrorMessage(raw?: string) {
+    if (!raw) return "We could not send your message right now. Please try again shortly.";
+    if (raw.toLowerCase().includes("submission blocked")) {
+      return "Your request could not be submitted yet. Please wait a moment and try again.";
+    }
+    if (raw.toLowerCase().includes("missing required")) {
+      return "Please complete all required fields and try again.";
+    }
+    if (raw.toLowerCase().includes("invalid email")) {
+      return "Please enter a valid email address and try again.";
+    }
+    return raw;
+  }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
-    setStatus("");
+    setFeedbackModal(null);
+    const form = event.currentTarget;
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
     const payload = {
       fullName: formData.get("fullName"),
       email: formData.get("email"),
@@ -34,19 +62,43 @@ export function ContactForm() {
       formStartedAt: formStart,
     };
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    setLoading(false);
+      const json = (await response.json().catch(() => null)) as { error?: string } | null;
 
-    if (response.ok) {
-      event.currentTarget.reset();
-      setStatus("Your message has been sent.");
-    } else {
-      setStatus("We could not send your message right now. Please try again shortly.");
+      if (response.ok) {
+        form.reset();
+        setFeedbackModal({
+          type: "success",
+          title: "Message sent",
+          message: "Thank you for reaching out. Your message has been sent successfully.",
+        });
+      } else {
+        setFeedbackModal({
+          type: "error",
+          title: "Unable to send message",
+          message: getFriendlyErrorMessage(json?.error),
+        });
+      }
+    } catch (error) {
+      const isOffline = typeof navigator !== "undefined" && navigator.onLine === false;
+      const errorMessage = error instanceof Error ? error.message : "";
+      setFeedbackModal({
+        type: "error",
+        title: "Unable to send message",
+        message: isOffline
+          ? "You appear to be offline. Please reconnect to the internet and try again."
+          : errorMessage.toLowerCase().includes("failed to fetch")
+            ? "We could not reach our contact service right now. Please refresh the page and try again in a moment."
+            : "Something went wrong while sending your message. Please try again shortly.",
+      });
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -96,7 +148,26 @@ export function ContactForm() {
       <button disabled={loading} type="submit" className="btn btn-primary" style={{ marginTop: "1rem" }}>
         {loading ? "Sending..." : "Send Message"}
       </button>
-      {status ? <p aria-live="polite">{status}</p> : null}
+
+      {feedbackModal ? (
+        <div className="cta-modal-backdrop" role="presentation" onClick={() => setFeedbackModal(null)}>
+          <div
+            className="cta-modal card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-modal-title"
+            onClick={(modalEvent) => modalEvent.stopPropagation()}
+          >
+            <h3 id="contact-modal-title" className="cta-modal-title">
+              {feedbackModal.title}
+            </h3>
+            <p style={{ margin: "0.65rem 0 0", color: "var(--text-soft)" }}>{feedbackModal.message}</p>
+            <button type="button" className="btn cta-modal-btn" onClick={() => setFeedbackModal(null)}>
+              Close
+            </button>
+          </div>
+        </div>
+      ) : null}
     </form>
   );
 }
