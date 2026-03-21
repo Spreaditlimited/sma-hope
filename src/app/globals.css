@@ -222,6 +222,36 @@ a {
   padding-bottom: 2.25rem;
 }
 
+.book-page-bg {
+  background: #f2f2ee;
+  background-image: none;
+}
+
+.book-page-bg .page-header.has-bg::before {
+  background: linear-gradient(120deg, rgba(7, 30, 45, 0.72) 0%, rgba(10, 36, 54, 0.66) 46%, rgba(8, 31, 47, 0.7) 100%);
+}
+
+.book-page-bg .page-header-content {
+  max-width: 58ch;
+}
+
+.book-page-bg .page-header.has-bg .kicker {
+  color: #d8ecfa;
+  text-shadow: 0 1px 8px rgba(4, 20, 30, 0.4);
+}
+
+.book-page-bg .page-header.has-bg h1 {
+  color: #f8fcff;
+  text-shadow: 0 3px 16px rgba(3, 18, 27, 0.5);
+}
+
+.book-page-bg .page-header.has-bg .lead {
+  color: #ebf4fb;
+  font-weight: 550;
+  line-height: 1.45;
+  text-shadow: 0 2px 10px rgba(3, 18, 27, 0.35);
+}
+
 .content-page-section {
   padding-bottom: 0;
 }
@@ -1123,15 +1153,16 @@ a {
 .cta-signup-btn {
   margin-top: 0.25rem;
   width: 100%;
-  background: #0b2f44;
-  border-color: rgba(255, 255, 255, 0.46);
+  background: var(--primary);
+  border-color: var(--primary);
   color: #fff;
   box-shadow: 0 8px 18px rgba(5, 25, 38, 0.3);
 }
 
 .cta-signup-btn:hover,
 .cta-signup-btn:focus-visible {
-  background: #082536;
+  background: var(--primary-strong);
+  border-color: var(--primary-strong);
 }
 
 .cta-signup-btn:disabled {
@@ -1204,21 +1235,21 @@ a {
 }
 
 .cta-btn-secondary {
-  border-color: rgba(217, 236, 250, 0.95);
-  color: #f3fbff;
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 18px rgba(7, 33, 50, 0.18);
+  border-color: #c7d9e6;
+  color: #12344b;
+  background: #f8fbff;
+  box-shadow: 0 8px 18px rgba(13, 52, 76, 0.14);
   min-width: 9rem;
 }
 
 .cta-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(217, 236, 250, 1);
+  background: #f1f8ff;
+  border-color: #b8cfdf;
 }
 
 .cta-btn-secondary:focus-visible {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(217, 236, 250, 1);
+  background: #f1f8ff;
+  border-color: #b8cfdf;
 }
 
 

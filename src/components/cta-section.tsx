@@ -87,67 +87,126 @@ export function CTASection({
 
   return (
     <section
-      className="section cta-section-bg"
+      className="relative w-full py-16 md:py-24 bg-cover bg-center bg-no-repeat overflow-hidden border-t border-blue-100"
       style={{
+        // Preserving your exact blue gradient overlay
         backgroundImage: `linear-gradient(120deg, rgba(246, 251, 255, 0.78) 0%, rgba(246, 251, 255, 0.7) 45%, rgba(246, 251, 255, 0.76) 100%), url(${ctaBackgroundImage})`,
       }}
     >
-      <div className="container cta-shell">
-        <div className="cta-main">
-          <h2 className="cta-title">{headline}</h2>
-          <p className="cta-body">{body}</p>
-          <div className="cta-actions">
-            <Link href={primary.href} className="btn cta-btn-primary">
-              {primary.label}
-            </Link>
-            {secondary ? (
-              <Link href={secondary.href} className="btn cta-btn-secondary">
-                {secondary.label}
+      <div className="container mx-auto px-4 max-w-6xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Main CTA Text Area */}
+          <div className="text-center lg:text-left space-y-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+              {headline}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              {body}
+            </p>
+            
+            {/* Action Buttons (Native classes strictly maintained) */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
+              <Link href={primary.href} className="btn cta-btn-primary">
+                {primary.label}
               </Link>
-            ) : null}
+              {secondary ? (
+                <Link href={secondary.href} className="btn cta-btn-secondary">
+                  {secondary.label}
+                </Link>
+              ) : null}
+            </div>
+          </div>
+
+          {/* Newsletter Form Card */}
+          <div className="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
+            <form 
+              className="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white/50 shadow-xl" 
+              onSubmit={handleSubmit} 
+              noValidate
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Be part of the mission</h3>
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Join our email list for updates, awareness resources, and ways to stand with families affected by SMA.
+              </p>
+              
+              {/* Honeypot field disguised from humans */}
+              <input
+                type="text"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] w-0 h-0 opacity-0"
+              />
+              
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-800 mb-1" htmlFor="cta-name">
+                    Name
+                  </label>
+                  <input 
+                    id="cta-name" 
+                    name="name" 
+                    type="text" 
+                    autoComplete="name" 
+                    required 
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-white/70 focus:bg-white" 
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-semibold text-gray-800 mb-1" htmlFor="cta-email">
+                    Email
+                  </label>
+                  <input 
+                    id="cta-email" 
+                    name="email" 
+                    type="email" 
+                    autoComplete="email" 
+                    required 
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-white/70 focus:bg-white" 
+                  />
+                </div>
+              </div>
+
+              {error ? (
+                <p className="text-red-600 text-sm mt-4 font-medium px-1">{error}</p>
+              ) : null}
+              
+              <div className="mt-6">
+                <button type="submit" className="btn cta-signup-btn w-full block text-center" disabled={isSubmitting}>
+                  {isSubmitting ? "Signing Up..." : "Sign Up"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-        <form className="cta-signup-form" onSubmit={handleSubmit} noValidate>
-          <h3 className="cta-signup-title">Be part of the mission</h3>
-          <p className="cta-signup-copy">
-            Join our email list for updates, awareness resources, and ways to stand with families affected by SMA.
-          </p>
-          <input
-            type="text"
-            name="company"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            className="cta-signup-honeypot"
-          />
-          <label className="cta-signup-label" htmlFor="cta-name">
-            Name
-          </label>
-          <input id="cta-name" name="name" type="text" autoComplete="name" required className="cta-signup-input" />
-          <label className="cta-signup-label" htmlFor="cta-email">
-            Email
-          </label>
-          <input id="cta-email" name="email" type="email" autoComplete="email" required className="cta-signup-input" />
-          {error ? <p className="cta-signup-error">{error}</p> : null}
-          <button type="submit" className="btn cta-signup-btn" disabled={isSubmitting}>
-            {isSubmitting ? "Signing Up..." : "Sign Up"}
-          </button>
-        </form>
       </div>
 
+      {/* Success Modal */}
       {showSuccessModal ? (
-        <div className="cta-modal-backdrop" role="presentation" onClick={() => setShowSuccessModal(false)}>
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/40 backdrop-blur-sm p-4 transition-opacity" 
+          role="presentation" 
+          onClick={() => setShowSuccessModal(false)}
+        >
           <div
-            className="cta-modal card"
+            className="bg-white p-8 md:p-10 rounded-3xl shadow-2xl max-w-sm w-full text-center border border-gray-100 transform transition-all scale-100 opacity-100"
             role="dialog"
             aria-modal="true"
             aria-labelledby="cta-modal-title"
             onClick={(event) => event.stopPropagation()}
           >
-            <h3 id="cta-modal-title" className="cta-modal-title">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 id="cta-modal-title" className="text-2xl font-bold text-gray-900 mb-8">
               Thank you for subscribing.
             </h3>
-            <button type="button" className="btn cta-modal-btn" onClick={() => setShowSuccessModal(false)}>
+            <button type="button" className="btn cta-modal-btn w-full" onClick={() => setShowSuccessModal(false)}>
               Close
             </button>
           </div>

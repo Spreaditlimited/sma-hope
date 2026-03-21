@@ -31,7 +31,11 @@ export async function generateMetadata({ params }: Props) {
   const post = await getUpdateBySlug(slug);
 
   if (!post) {
-    return buildMetadata({ title: "Update Not Found", description: "The requested update could not be found.", path: `/updates/${slug}` });
+    return buildMetadata({ 
+      title: "Update Not Found", 
+      description: "The requested update could not be found.", 
+      path: `/updates/${slug}` 
+    });
   }
 
   return buildMetadata({
@@ -48,44 +52,81 @@ export default async function UpdatePage({ params }: Props) {
   if (!post) notFound();
 
   const backgroundImage = getBackgroundFromSlug(post.slug);
+  // Get up to 4 other updates, excluding the current one
   const moreUpdates = allUpdates.filter((item) => item.slug !== post.slug).slice(0, 4);
 
   return (
     <ContentPageBg image={backgroundImage}>
-      <PageHeader title={post.title} intro={post.excerpt} backgroundImage={backgroundImage} />
+      <PageHeader 
+        title={post.title} 
+        intro={post.excerpt} 
+        backgroundImage={backgroundImage} 
+      />
 
-      <section className="section-tight content-page-section">
-        <div className="container updates-detail-layout">
-          <article className="about-panel prose updates-detail-article">
-            <p className="kicker" style={{ marginTop: 0 }}>{post.category}</p>
-            {Array.isArray(post.body)
-              ? post.body.map((paragraph: string) => <p key={paragraph}>{paragraph}</p>)
-              : <p>{post.body || "Content coming soon."}</p>}
+      <main className="container mx-auto px-4 py-12 md:py-20 max-w-6xl">
+        {/* Use a 12-column grid. 
+          Article takes 8 columns, Sidebar takes 4 columns on large screens. 
+        */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* MAIN ARTICLE CONTENT */}
+          <article className="lg:col-span-8 prose prose-lg md:prose-xl text-gray-700 max-w-none">
+            {post.category && (
+              <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-800 bg-blue-100 rounded-full mb-8">
+                {post.category}
+              </span>
+            )}
+
+            {Array.isArray(post.body) ? (
+              post.body.map((paragraph: string, index: number) => (
+                <p key={index}>{paragraph}</p>
+              ))
+            ) : (
+              <p>{post.body || "Content coming soon."}</p>
+            )}
           </article>
 
-          {moreUpdates.length ? (
-            <aside className="about-panel updates-more-panel" aria-label="More updates">
-              <h2 className="section-heading-strong" style={{ marginTop: 0 }}>More Updates</h2>
-              <div className="updates-more-list">
+          {/* SIDEBAR: MORE UPDATES */}
+          {moreUpdates.length > 0 && (
+            <aside 
+              className="lg:col-span-4 bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100 lg:sticky lg:top-8" 
+              aria-label="More updates"
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
+                More Updates
+              </h2>
+              
+              <div className="space-y-8">
                 {moreUpdates.map((item) => (
-                  <Link key={item.slug} href={`/updates/${item.slug}`} className="updates-more-item">
-                    <p className="updates-more-meta">
-                      {item.category} · {new Date(item.publishedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                  <Link key={item.slug} href={`/updates/${item.slug}`} className="block group">
+                    <p className="text-sm font-medium text-gray-500 mb-1">
+                      {item.category} &middot; {new Date(item.publishedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
                     </p>
-                    <h3 className="updates-more-title">{item.title}</h3>
-                    <p className="updates-more-excerpt">{item.excerpt}</p>
+                    {/* group-hover applies the blue color when any part of the card is hovered */}
+                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm line-clamp-2 mt-1">
+                      {item.excerpt}
+                    </p>
                   </Link>
                 ))}
               </div>
-              <div className="section-actions" style={{ marginTop: "0.9rem" }}>
-                <Link href="/updates" className="btn btn-secondary">
+
+              {/* ACTION BUTTON */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <Link 
+                  href="/updates" 
+                  className="block w-full text-center px-6 py-3 bg-white hover:bg-gray-50 text-blue-700 border border-blue-200 font-semibold rounded-lg shadow-sm transition-colors duration-200"
+                >
                   View All Updates
                 </Link>
               </div>
             </aside>
-          ) : null}
+          )}
+
         </div>
-      </section>
+      </main>
     </ContentPageBg>
   );
 }
