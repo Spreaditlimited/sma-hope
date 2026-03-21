@@ -35,35 +35,37 @@ export default async function HomePage() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="relative bg-white pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
+      <section className="relative bg-white pt-12 pb-14 sm:pt-14 sm:pb-16 lg:pt-24 lg:pb-32 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {/* Hero Copy */}
-            <div className="lg:col-span-6 space-y-7 text-center lg:text-left">
+            <div className="lg:col-span-6 space-y-6 text-left">
               <span className="inline-block px-4 py-1.5 text-sm font-bold text-[var(--primary)] bg-[#e7f2fb] rounded-full tracking-wide uppercase border border-[#c9ddec]">
                 SMA Hope Foundation Nigeria
               </span>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-                Building Awareness and Support for Spinal Muscular Atrophy in Nigeria
-              </h1>
-              <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                SMA Hope Foundation Nigeria is a registered foundation shaped by real family experience with Spinal Muscular Atrophy. We exist to raise awareness, share knowledge, support families, and help more people understand the weight this condition places on children and those who care for them.
-              </p>
+              <div>
+                <h1 className="text-[1.95rem] sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.14]">
+                  Building Awareness and Support for Spinal Muscular Atrophy in Nigeria
+                </h1>
+                <p className="mt-8 sm:mt-6 text-[1rem] sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl">
+                  SMA Hope Foundation Nigeria is a registered foundation shaped by real family experience with Spinal Muscular Atrophy. We exist to raise awareness, share knowledge, support families, and help more people understand the weight this condition places on children and those who care for them.
+                </p>
+              </div>
               
               {/* Native Buttons Restored */}
-              <div className="section-actions" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "inherit" }}>
-                <Link href="/what-is-sma" className="btn btn-primary">
+              <div className="section-actions mt-2 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:gap-4">
+                <Link href="/what-is-sma" className="btn btn-primary w-full sm:w-auto text-center">
                   Learn About SMA
                 </Link>
-                <Link href="/donate" className="btn btn-secondary">
+                <Link href="/donate" className="btn btn-secondary w-full sm:w-auto text-center">
                   Support the Foundation
                 </Link>
               </div>
             </div>
 
             {/* Hero Media */}
-            <aside className="lg:col-span-6">
+            <aside className="lg:col-span-6 -mt-1 sm:mt-0">
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative">
                 <Image
                   src="/family.jpg"
@@ -74,7 +76,7 @@ export default async function HomePage() {
                   priority
                 />
               </div>
-              <div className="mt-6 text-center lg:text-left px-2">
+              <div className="mt-4 sm:mt-5 text-left lg:text-left px-1 sm:px-2">
                 <p className="font-bold text-gray-900 uppercase tracking-wider text-sm mb-1">
                   Real Family Journey
                 </p>
@@ -95,7 +97,7 @@ export default async function HomePage() {
         <div className="space-y-20 md:space-y-32">
 
           {/* BLOCK 1: INTRO */}
-          <section className="max-w-4xl mx-auto prose prose-lg md:prose-xl text-gray-700 text-center md:text-left">
+          <section className="max-w-4xl mx-auto prose prose-lg md:prose-xl text-gray-700 text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               A foundation born from lived experience
             </h2>
