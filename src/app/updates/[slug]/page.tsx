@@ -72,7 +72,7 @@ export default async function UpdatePage({ params }: Props) {
           {/* MAIN ARTICLE CONTENT */}
           <article className="lg:col-span-8 prose prose-lg md:prose-xl text-gray-700 max-w-none">
             {post.category && (
-              <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-800 bg-blue-100 rounded-full mb-8">
+              <span className="inline-block px-3 py-1 text-sm font-semibold text-[var(--primary)] bg-[#e7f2fb] rounded-full mb-8">
                 {post.category}
               </span>
             )}
@@ -103,7 +103,7 @@ export default async function UpdatePage({ params }: Props) {
                       {item.category} &middot; {new Date(item.publishedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
                     </p>
                     {/* group-hover applies the blue color when any part of the card is hovered */}
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
+                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-[var(--primary)] transition-colors duration-200 line-clamp-2">
                       {item.title}
                     </h3>
                     <p className="text-gray-600 text-sm line-clamp-2 mt-1">
@@ -117,7 +117,7 @@ export default async function UpdatePage({ params }: Props) {
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <Link 
                   href="/updates" 
-                  className="block w-full text-center px-6 py-3 bg-white hover:bg-gray-50 text-blue-700 border border-blue-200 font-semibold rounded-lg shadow-sm transition-colors duration-200"
+                  className="block w-full text-center px-6 py-3 bg-white hover:bg-gray-50 text-[var(--primary)] border border-[#c3d8e8] font-semibold rounded-lg shadow-sm transition-colors duration-200"
                 >
                   View All Updates
                 </Link>

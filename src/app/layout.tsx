@@ -26,7 +26,7 @@ const orgSchema = {
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
-  email: "hello@smahope.org",
+  email: "help@smahope.org",
   areaServed: "Nigeria",
 };
 

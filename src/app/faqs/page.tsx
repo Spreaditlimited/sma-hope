@@ -54,7 +54,7 @@ export default async function FAQsPage() {
           </section>
 
           {/* MEDICAL DISCLAIMER - CONTEXTUAL EXPANSION */}
-          <section className="max-w-3xl mx-auto bg-blue-50 p-8 md:p-10 rounded-2xl border border-blue-100 shadow-sm text-center">
+          <section className="max-w-3xl mx-auto bg-[#edf5fb] p-8 md:p-10 rounded-2xl border border-[#d4e4ef] shadow-sm text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">A Note on Medical Information</h2>
             <p className="text-gray-700 text-lg">
               While we strive to provide clear and accurate information about Spinal Muscular Atrophy based on lived experience and established medical consensus, the content provided by SMA Hope Foundation Nigeria is for educational and awareness purposes only. 

@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
                 SMA Hope Foundation Nigeria is a nonprofit organization focused on raising awareness about Spinal Muscular Atrophy (SMA), supporting families, and mobilizing advocacy and charitable support.
               </p>
               <p>
-                If you have any privacy questions, contact us at <a href="mailto:hello@smahope.org" className="text-blue-600 hover:underline">hello@smahope.org</a>.
+                If you have any privacy questions, contact us at <a href="mailto:help@smahope.org" className="text-[var(--primary)] hover:underline">help@smahope.org</a>.
               </p>
             </div>
 
@@ -123,10 +123,10 @@ export default function PrivacyPolicyPage() {
           </section>
 
           {/* HIGHLIGHT: YOUR PRIVACY RIGHTS */}
-          <section className="max-w-4xl mx-auto bg-blue-50 p-8 md:p-10 rounded-2xl border border-blue-100 shadow-sm">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-blue-200 pb-2">Your Privacy Rights</h2>
+          <section className="max-w-4xl mx-auto bg-[#edf5fb] p-8 md:p-10 rounded-2xl border border-[#d4e4ef] shadow-sm">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-[#c3d8e8] pb-2">Your Privacy Rights</h2>
             <p className="text-gray-800 mb-4">Subject to applicable law, you may have the right to:</p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 list-disc pl-6 marker:text-blue-500 font-medium text-gray-800 mb-6">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 list-disc pl-6 marker:text-[var(--primary)] font-medium text-gray-800 mb-6">
               <li>Request access to the personal data we hold about you.</li>
               <li>Request correction or update of inaccurate or incomplete data.</li>
               <li>Request deletion of personal data in certain circumstances.</li>
@@ -135,8 +135,8 @@ export default function PrivacyPolicyPage() {
               <li>Request portability of data where applicable.</li>
               <li>Complain to a relevant data protection regulator.</li>
             </ul>
-            <p className="text-gray-800 font-medium bg-white p-4 rounded-lg inline-block border border-blue-200">
-              To exercise your rights, email <a href="mailto:hello@smahope.org" className="text-blue-700 hover:underline">hello@smahope.org</a>. We may request verification before fulfilling a request.
+            <p className="text-gray-800 font-medium bg-white p-4 rounded-lg inline-block border border-[#c3d8e8]">
+              To exercise your rights, email <a href="mailto:help@smahope.org" className="text-[var(--primary)] hover:underline">help@smahope.org</a>. We may request verification before fulfilling a request.
             </p>
           </section>
 
@@ -207,8 +207,8 @@ export default function PrivacyPolicyPage() {
               <p className="mb-2">If you have questions, requests, or complaints regarding this policy, contact:</p>
               <address className="not-italic font-medium text-gray-900">
                 SMA Hope Foundation Nigeria<br />
-                Email: <a href="mailto:hello@smahope.org" className="text-blue-600 hover:underline">hello@smahope.org</a><br />
-                Website: <a href="https://smahope.org" className="text-blue-600 hover:underline">https://smahope.org</a>
+                Email: <a href="mailto:help@smahope.org" className="text-[var(--primary)] hover:underline">help@smahope.org</a><br />
+                Website: <a href="https://smahope.org" className="text-[var(--primary)] hover:underline">https://smahope.org</a>
               </address>
             </div>
           </section>

@@ -75,7 +75,7 @@ export default function WhatIsSmaPage() {
               <p>
                 SMA does not affect every child in exactly the same way, but it can significantly shape a child&apos;s daily life. Children may:
               </p>
-              <ul className="list-disc pl-6 space-y-2 marker:text-blue-500 text-gray-800">
+              <ul className="list-disc pl-6 space-y-2 marker:text-[var(--primary)] text-gray-800">
                 <li>have weak muscle tone</li>
                 <li>struggle to meet physical milestones</li>
                 <li>need help sitting, moving, swallowing, or breathing</li>
@@ -95,7 +95,7 @@ export default function WhatIsSmaPage() {
               <p>
                 It can affect work, finances, rest, mental strength, marriage, family rhythm, and long-term planning. It can be deeply exhausting, even in a loving and determined home.
               </p>
-              <p className="italic border-l-4 border-blue-500 pl-4 my-6 bg-gray-50 py-2 rounded-r-lg">
+              <p className="italic border-l-4 border-[var(--primary)] pl-4 my-6 bg-gray-50 py-2 rounded-r-lg">
                 That is one reason public understanding matters. Families should not be left to carry such a heavy burden while the world around them remains largely unaware of what SMA really means.
               </p>
             </div>
@@ -150,22 +150,22 @@ export default function WhatIsSmaPage() {
               </p>
             </div>
 
-            <div className="lg:col-span-7 bg-blue-50 p-8 rounded-2xl border border-blue-100 shadow-sm">
+            <div className="lg:col-span-7 bg-[#edf5fb] p-8 rounded-2xl border border-[#d4e4ef] shadow-sm">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Common Misunderstandings About SMA</h2>
               <ul className="space-y-4 list-none pl-0">
-                <li className="pl-4 border-l-2 border-blue-300">
+                <li className="pl-4 border-l-2 border-[#9ec2dd]">
                   <strong className="text-gray-900">SMA is not caused by poor parenting.</strong> It is a genetic condition.
                 </li>
-                <li className="pl-4 border-l-2 border-blue-300">
+                <li className="pl-4 border-l-2 border-[#9ec2dd]">
                   <strong className="text-gray-900">SMA is not simply delayed development.</strong> It is a serious neuromuscular condition that needs proper medical attention.
                 </li>
-                <li className="pl-4 border-l-2 border-blue-300">
+                <li className="pl-4 border-l-2 border-[#9ec2dd]">
                   <strong className="text-gray-900">SMA is not only about movement.</strong> It can also affect breathing, feeding, posture, and many areas of daily care.
                 </li>
-                <li className="pl-4 border-l-2 border-blue-300">
+                <li className="pl-4 border-l-2 border-[#9ec2dd]">
                   <strong className="text-gray-900">A child with SMA is not defined only by weakness.</strong> That child still has dignity, personality, presence, and worth.
                 </li>
-                <li className="pl-4 border-l-2 border-blue-300">
+                <li className="pl-4 border-l-2 border-[#9ec2dd]">
                   <strong className="text-gray-900">Families living with SMA do not only need pity.</strong> They need understanding, informed support, and compassionate action.
                 </li>
               </ul>

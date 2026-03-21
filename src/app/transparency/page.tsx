@@ -48,8 +48,8 @@ export default function TransparencyPage() {
               </p>
             </div>
 
-            <div className="prose prose-lg text-gray-700 bg-blue-50 p-6 md:p-8 rounded-2xl border border-blue-100 shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-blue-200 pb-2">Commitment to Stewardship</h2>
+            <div className="prose prose-lg text-gray-700 bg-[#edf5fb] p-6 md:p-8 rounded-2xl border border-[#d4e4ef] shadow-sm">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-[#c3d8e8] pb-2">Commitment to Stewardship</h2>
               <p className="font-medium text-gray-900">
                 We are committed to carrying this work with care, honesty, and responsible stewardship.
               </p>

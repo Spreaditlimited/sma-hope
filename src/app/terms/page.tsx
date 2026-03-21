@@ -61,8 +61,8 @@ export default function TermsPage() {
           </section>
 
           {/* HIGHLIGHT: MEDICAL DISCLAIMER */}
-          <section className="max-w-4xl mx-auto bg-blue-50 p-8 md:p-10 rounded-2xl border border-blue-100 shadow-sm">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-blue-200 pb-2">Medical and Educational Disclaimer</h2>
+          <section className="max-w-4xl mx-auto bg-[#edf5fb] p-8 md:p-10 rounded-2xl border border-[#d4e4ef] shadow-sm">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-[#c3d8e8] pb-2">Medical and Educational Disclaimer</h2>
             <p className="text-lg text-gray-800 font-medium">
               Content on this website is for awareness and general educational purposes only and is not medical advice, diagnosis, or treatment. Always seek guidance from qualified healthcare professionals regarding medical concerns.
             </p>
@@ -85,7 +85,7 @@ export default function TermsPage() {
             <div className="prose prose-lg text-gray-700">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">Donation Receipts and Refunds</h2>
               <p>
-                Donation acknowledgments are issued after successful processing. If you believe a donation was made in error, contact <a href="mailto:hello@smahope.org" className="text-blue-600 hover:underline">hello@smahope.org</a> promptly with transaction details.
+                Donation acknowledgments are issued after successful processing. If you believe a donation was made in error, contact <a href="mailto:help@smahope.org" className="text-[var(--primary)] hover:underline">help@smahope.org</a> promptly with transaction details.
               </p>
               <p>
                 We review refund requests case-by-case, subject to legal obligations, payment processor rules, and whether funds have already been allocated or disbursed for charitable use.
@@ -201,8 +201,8 @@ export default function TermsPage() {
               <p className="mb-2">For questions regarding these Terms, contact:</p>
               <address className="not-italic font-medium text-gray-900">
                 SMA Hope Foundation Nigeria<br />
-                Email: <a href="mailto:hello@smahope.org" className="text-blue-600 hover:underline">hello@smahope.org</a><br />
-                Website: <a href="https://smahope.org" className="text-blue-600 hover:underline">https://smahope.org</a>
+                Email: <a href="mailto:help@smahope.org" className="text-[var(--primary)] hover:underline">help@smahope.org</a><br />
+                Website: <a href="https://smahope.org" className="text-[var(--primary)] hover:underline">https://smahope.org</a>
               </address>
             </div>
           </section>

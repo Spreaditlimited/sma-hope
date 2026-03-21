@@ -142,10 +142,12 @@ export default function BookPage() {
 
           {/* CALL TO ACTION BLOCK */}
           <section className="bg-[#edf5fb] rounded-2xl p-8 md:p-12 text-center mt-12 border border-[#d4e4ef] shadow-sm">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Support the Mission</h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900">Support the Mission</h2>
+            <div className="h-4" aria-hidden="true" />
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               Read the book. Share it with your community. Help us spread awareness and provide serious, compassionate support to families through the SMA Hope Foundation Nigeria.
             </p>
+            <div className="h-8" aria-hidden="true" />
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <Link 
                 href="/order-book" 

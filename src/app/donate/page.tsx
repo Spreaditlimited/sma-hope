@@ -48,10 +48,10 @@ export default function DonatePage() {
               </p>
             </div>
 
-            <div className="prose prose-lg text-gray-700 bg-blue-50 p-6 md:p-8 rounded-2xl border border-blue-100 shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-blue-200 pb-2">What Your Support Helps Make Possible</h2>
+            <div className="prose prose-lg text-gray-700 bg-[#edf5fb] p-6 md:p-8 rounded-2xl border border-[#d4e4ef] shadow-sm">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-[#c3d8e8] pb-2">What Your Support Helps Make Possible</h2>
               <p>Your support helps us continue building a serious and compassionate public platform for:</p>
-              <ul className="list-disc pl-6 space-y-2 marker:text-blue-500 font-medium text-gray-800">
+              <ul className="list-disc pl-6 space-y-2 marker:text-[var(--primary)] font-medium text-gray-800">
                 <li>SMA awareness in plain language</li>
                 <li>family-centred education and support-building</li>
                 <li>advocacy shaped by lived experience</li>

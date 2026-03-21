@@ -44,7 +44,7 @@ export default function AboutPage() {
             <p>
               For many people, SMA is still unfamiliar. For many families, it becomes part of everyday life in ways that are exhausting, costly, and deeply emotional. A child&apos;s breathing, feeding, strength, movement, and stability may all require close attention. Parents may be forced to learn complex care realities very quickly. Even where love is abundant, the burden can still be overwhelming.
             </p>
-            <p className="italic border-l-4 border-blue-500 pl-4 my-6 bg-gray-50 py-2 rounded-r-lg">
+            <p className="italic border-l-4 border-[var(--primary)] pl-4 my-6 bg-gray-50 py-2 rounded-r-lg">
               This foundation exists because families should not have to carry that weight in silence, and because awareness must grow if support is ever going to deepen.
             </p>
           </section>
@@ -100,9 +100,9 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <div className="md:col-span-5 bg-blue-50 p-8 rounded-2xl border border-blue-100 shadow-sm">
+            <div className="md:col-span-5 bg-[#edf5fb] p-8 rounded-2xl border border-[#d4e4ef] shadow-sm">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">What We Focus On</h2>
-              <ul className="list-disc pl-6 space-y-3 marker:text-blue-600 font-semibold text-gray-800 text-lg">
+              <ul className="list-disc pl-6 space-y-3 marker:text-[var(--primary)] font-semibold text-gray-800 text-lg">
                 <li>Awareness</li>
                 <li>Education</li>
                 <li>Family Support</li>

@@ -40,7 +40,7 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">How to Reach Us</h2>
               <p>The easiest way to contact us is through the form on this page.</p>
               <p>When filling the form, choose the reason for your message so it reaches the right inbox.</p>
-              <ul className="list-disc pl-6 space-y-2 marker:text-blue-500 font-medium text-gray-800">
+              <ul className="list-disc pl-6 space-y-2 marker:text-[var(--primary)] font-medium text-gray-800">
                 <li>General Enquiries &amp; Guidance</li>
                 <li>Family Care &amp; Support</li>
                 <li>Book Enquiries &amp; Orders</li>
@@ -50,16 +50,16 @@ export default function ContactPage() {
               </ul>
             </div>
 
-            <div className="prose prose-lg text-gray-700 bg-blue-50 p-6 md:p-8 rounded-2xl border border-blue-100 shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-blue-200 pb-2">Direct Email Contacts</h2>
+            <div className="prose prose-lg text-gray-700 bg-[#edf5fb] p-6 md:p-8 rounded-2xl border border-[#d4e4ef] shadow-sm">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-[#c3d8e8] pb-2">Direct Email Contacts</h2>
               <div className="space-y-6">
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">General enquiries, family support, book enquiries, and donations:</p>
-                  <a href="mailto:help@smahope.org" className="text-blue-700 font-bold hover:underline">help@smahope.org</a>
+                  <a href="mailto:help@smahope.org" className="text-[var(--primary)] font-bold hover:underline">help@smahope.org</a>
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">Partnerships, collaborations, media, and speaking invitations:</p>
-                  <a href="mailto:partnerships@smahope.org" className="text-blue-700 font-bold hover:underline">partnerships@smahope.org</a>
+                  <a href="mailto:partnerships@smahope.org" className="text-[var(--primary)] font-bold hover:underline">partnerships@smahope.org</a>
                 </div>
               </div>
             </div>
@@ -119,7 +119,8 @@ export default function ContactPage() {
 
           {/* FORM SECTION */}
           <section className="max-w-3xl mx-auto bg-white p-6 md:p-10 rounded-2xl border border-gray-200 shadow-md">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Send a Message</h2>
+            <h2 className="text-3xl font-bold text-gray-900 text-center">Send a Message</h2>
+            <div className="h-6 md:h-8" aria-hidden="true" />
             
             {/* External Form Component - Styling determined internally */}
             <ContactForm />

@@ -12,7 +12,7 @@ export const fallbackFaqs = [
   {
     category: "For Families",
     question: "Can families reach out directly?",
-    answer: "Yes. Families can use the contact form and choose Family support, or email hello@smahope.org.",
+    answer: "Yes. Families can use the contact form and choose Family support, or email help@smahope.org.",
   },
   {
     category: "Donations",
@@ -22,7 +22,7 @@ export const fallbackFaqs = [
   {
     category: "The Book",
     question: "Can institutions request bulk orders?",
-    answer: "Yes. Use the contact form with Partnership or Book enquiry, or email book@smahope.org.",
+    answer: "Yes. Use the contact form with Partnership or Book enquiry, or email help@smahope.org.",
   },
   {
     category: "Partnerships / Contact",

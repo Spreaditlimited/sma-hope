@@ -162,8 +162,8 @@ export default async function HomePage() {
               </div>
             </article>
 
-            <article className="prose prose-lg text-gray-700 bg-blue-50 p-6 md:p-8 rounded-3xl border border-blue-100 shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-blue-200 pb-2">For families carrying this burden</h2>
+            <article className="prose prose-lg text-gray-700 bg-[#edf5fb] p-6 md:p-8 rounded-3xl border border-[#d4e4ef] shadow-sm">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b border-[#c3d8e8] pb-2">For families carrying this burden</h2>
               <SectionArt src="/home/home-support-families.png" alt="Abstract visual for support for families section" />
               <p>
                 If your child has been diagnosed with SMA, or if your family is trying to make sense of symptoms, fear, medical appointments, and difficult decisions, this space is for you too.
@@ -216,16 +216,16 @@ export default async function HomePage() {
                 Some people will want to support by giving. Others will want to learn more, buy the book, share awareness, or partner with the foundation in a deeper way. All of these matter.
               </p>
               <ul className="space-y-4 list-none pl-0 mt-6">
-                <li className="pl-4 border-l-2 border-blue-400">
+                <li className="pl-4 border-l-2 border-[#7fb0d3]">
                   <strong className="text-gray-900">Support the Foundation:</strong> Your support can help strengthen awareness, education, advocacy, and the foundation&apos;s work over time.
                 </li>
-                <li className="pl-4 border-l-2 border-blue-400">
+                <li className="pl-4 border-l-2 border-[#7fb0d3]">
                   <strong className="text-gray-900">Buy the Book:</strong> The book is one of the ways this mission will reach more people and deepen understanding.
                 </li>
-                <li className="pl-4 border-l-2 border-blue-400">
+                <li className="pl-4 border-l-2 border-[#7fb0d3]">
                   <strong className="text-gray-900">Share Awareness:</strong> Sometimes help begins with helping others understand what SMA is and why affected families need support.
                 </li>
-                <li className="pl-4 border-l-2 border-blue-400">
+                <li className="pl-4 border-l-2 border-[#7fb0d3]">
                   <strong className="text-gray-900">Get Involved:</strong> There may be opportunities to partner, volunteer, collaborate, or support the foundation in practical ways.
                 </li>
               </ul>

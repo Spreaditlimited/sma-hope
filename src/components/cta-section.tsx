@@ -87,7 +87,7 @@ export function CTASection({
 
   return (
     <section
-      className="relative w-full py-16 md:py-24 bg-cover bg-center bg-no-repeat overflow-hidden border-t border-blue-100"
+      className="relative w-full py-16 md:py-24 bg-cover bg-center bg-no-repeat overflow-hidden border-t border-[#d4e4ef]"
       style={{
         // Preserving your exact blue gradient overlay
         backgroundImage: `linear-gradient(120deg, rgba(246, 251, 255, 0.78) 0%, rgba(246, 251, 255, 0.7) 45%, rgba(246, 251, 255, 0.76) 100%), url(${ctaBackgroundImage})`,
@@ -151,7 +151,7 @@ export function CTASection({
                     type="text" 
                     autoComplete="name" 
                     required 
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-white/70 focus:bg-white" 
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] outline-none transition-all bg-white/70 focus:bg-white" 
                   />
                 </div>
                 
@@ -165,7 +165,7 @@ export function CTASection({
                     type="email" 
                     autoComplete="email" 
                     required 
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-white/70 focus:bg-white" 
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] outline-none transition-all bg-white/70 focus:bg-white" 
                   />
                 </div>
               </div>
@@ -198,8 +198,8 @@ export function CTASection({
             aria-labelledby="cta-modal-title"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-16 h-16 bg-[#e7f2fb] rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
               </svg>
             </div>
