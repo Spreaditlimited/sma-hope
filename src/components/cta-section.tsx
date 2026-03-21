@@ -97,16 +97,16 @@ export function CTASection({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Main CTA Text Area */}
-          <div className="lg:col-span-5 text-center lg:text-left space-y-5">
+          <div className="lg:col-span-5 text-left space-y-5">
             <h2 className="text-3xl md:text-4xl lg:text-[2.8rem] font-extrabold text-gray-900 tracking-tight">
               {headline}
             </h2>
-            <p className="text-lg md:text-[1.15rem] text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-[1.15rem] text-gray-700 leading-relaxed max-w-2xl mx-0">
               {body}
             </p>
             
             {/* Action Buttons (Native classes strictly maintained) */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
+            <div className="flex flex-wrap justify-start gap-4 mt-8">
               <Link href={primary.href} className="btn cta-btn-primary">
                 {primary.label}
               </Link>

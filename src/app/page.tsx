@@ -48,7 +48,8 @@ export default async function HomePage() {
                 <h1 className="text-[1.95rem] sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.14]">
                   Building Awareness and Support for Spinal Muscular Atrophy in Nigeria
                 </h1>
-                <p className="mt-8 sm:mt-6 text-[1rem] sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl">
+                <div className="h-5 sm:h-3" aria-hidden="true" />
+                <p className="mt-0 sm:mt-6 text-[1rem] sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl">
                   SMA Hope Foundation Nigeria is a registered foundation shaped by real family experience with Spinal Muscular Atrophy. We exist to raise awareness, share knowledge, support families, and help more people understand the weight this condition places on children and those who care for them.
                 </p>
               </div>
@@ -183,9 +184,9 @@ export default async function HomePage() {
           {/* BLOCK 4: BOOK & WAYS TO HELP */}
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* The Book - Takes up 5 columns on large screens */}
-            <article className="lg:col-span-5 prose prose-lg text-gray-700 text-center md:text-left">
+            <article className="lg:col-span-5 prose prose-lg text-gray-700 text-left">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">A book shaped by truth, family, and hard-won understanding</h2>
-              <div className="relative w-full max-w-sm mx-auto md:mx-0 rounded-xl overflow-hidden shadow-2xl border border-gray-200 mb-8 transition-transform hover:-translate-y-2 duration-300">
+              <div className="relative w-full max-w-sm mx-0 rounded-xl overflow-hidden shadow-2xl border border-gray-200 mb-8 transition-transform hover:-translate-y-2 duration-300">
                 <Image
                   src="/Book-v3.PNG"
                   alt="When Every Breath Matters book cover"
@@ -200,7 +201,7 @@ export default async function HomePage() {
               <p className="italic text-gray-600">
                 The aim is not only to tell a story, but to help people understand the condition, the burden families carry, and the kind of support and awareness that are still needed.
               </p>
-              <div className="mt-6 flex justify-center md:justify-start">
+              <div className="mt-6 flex justify-start">
                 <Link href="/book" className="btn btn-primary">
                   Explore the Book
                 </Link>
@@ -232,7 +233,7 @@ export default async function HomePage() {
           </section>
 
           {/* BLOCK 5: TRUST & TRANSPARENCY */}
-          <section className="max-w-4xl mx-auto prose prose-lg text-gray-700 text-center">
+          <section className="max-w-4xl mx-auto prose prose-lg text-gray-700 text-left">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Built on seriousness, compassion, and accountability</h2>
             <SectionArt src="/home/home-trust-transparency.png" alt="Abstract visual for trust and transparency section" />
             <p>
@@ -244,7 +245,7 @@ export default async function HomePage() {
             <p>
               That is why we are committed to building this foundation on clear purpose, responsible stewardship, and a sincere desire to be useful to the people this mission is meant to serve.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex justify-start">
               <Link href="/transparency" className="btn btn-secondary">
                 Our Commitment to Transparency
               </Link>
@@ -276,7 +277,7 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-left">
             <Link href="/updates" className="btn btn-secondary">
               Read All Updates
             </Link>
