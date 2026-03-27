@@ -79,6 +79,7 @@ Scaffold endpoints are implemented at:
 
 - `src/app/api/payments/stripe/route.ts`
 - `src/app/api/payments/paystack/route.ts`
+- `src/app/api/payments/paystack/webhook/route.ts`
 - `src/app/api/payments/book/stripe/route.ts`
 - `src/app/api/payments/book/paystack/route.ts`
 

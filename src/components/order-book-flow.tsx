@@ -52,7 +52,9 @@ export function OrderBookFlow({ amazonUrl }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const json = (await response.json().catch(() => null)) as { message?: string; error?: string } | null;
+      const json = (await response.json().catch(() => null)) as
+        | { message?: string; error?: string; authorizationUrl?: string }
+        | null;
       if (!response.ok) {
         setFeedbackModal({
           type: "error",
@@ -62,14 +64,16 @@ export function OrderBookFlow({ amazonUrl }: Props) {
         return;
       }
 
-      setFeedbackModal({
-        type: "success",
-        title: "Checkout Initialized",
-        message:
-          json?.message ||
-          "Your book order checkout has been initialized. You will be guided to complete payment securely.",
-      });
-      form.reset();
+      if (!json?.authorizationUrl) {
+        setFeedbackModal({
+          type: "error",
+          title: "Unable to continue",
+          message: "Checkout was initialized, but no payment link was returned. Please try again.",
+        });
+        return;
+      }
+
+      window.location.assign(json.authorizationUrl);
     } catch {
       setFeedbackModal({
         type: "error",

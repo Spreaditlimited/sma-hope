@@ -17,7 +17,7 @@ export const fallbackFaqs = [
   {
     category: "Donations",
     question: "Can I donate from outside Nigeria?",
-    answer: "Yes. International donations are supported through Stripe while local donations are supported through Paystack.",
+    answer: "Yes. Donations from Nigeria and outside Nigeria are supported through Paystack.",
   },
   {
     category: "The Book",

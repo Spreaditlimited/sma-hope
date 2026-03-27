@@ -73,7 +73,7 @@ export default function TermsPage() {
             <div className="prose prose-lg text-gray-700">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">Donations and Payments</h2>
               <p>
-                We facilitate donations and, where available, purchases through third-party payment providers, including Stripe and Paystack. By making a payment, you authorize the transaction through the selected provider under that provider&apos;s terms.
+                We facilitate donations and, where available, purchases through third-party payment providers, including Paystack. By making a payment, you authorize the transaction through the selected provider under that provider&apos;s terms.
               </p>
               <ul className="list-disc pl-6 space-y-2 marker:text-gray-400">
                 <li>All payments are subject to payment provider authorization and anti-fraud checks.</li>

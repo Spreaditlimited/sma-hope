@@ -70,7 +70,7 @@ export default function DonatePage() {
                   <strong className="text-gray-900">Give from Nigeria:</strong> supporters in Nigeria will be able to give securely through Paystack.
                 </li>
                 <li className="pl-4 border-l-2 border-gray-300">
-                  <strong className="text-gray-900">Give internationally:</strong> supporters outside Nigeria, including the diaspora, will be able to give securely through Stripe.
+                  <strong className="text-gray-900">Give internationally:</strong> supporters outside Nigeria, including the diaspora, can give securely in USD through Paystack.
                 </li>
               </ul>
               <p className="mt-4 italic text-gray-600">
@@ -107,10 +107,6 @@ export default function DonatePage() {
             <div className="lg:col-span-7 bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-md">
               {/* External Donation Component handles its own styling */}
               <DonationOptions />
-              
-              <p className="text-sm text-gray-500 text-center mt-6">
-                Secure payments powered by Paystack and Stripe.
-              </p>
             </div>
           </section>
 
