@@ -28,6 +28,7 @@ export const env = {
   paystackBookSuccessUrl: process.env.PAYSTACK_BOOK_SUCCESS_URL || "/order-book?status=success",
   paystackBookCancelUrl: process.env.PAYSTACK_BOOK_CANCEL_URL || "/order-book?status=cancelled",
   paystackBookUnitPriceNgn: Number(process.env.PAYSTACK_BOOK_UNIT_PRICE_NGN || 15000),
+  paystackBookVatNgn: Number(process.env.PAYSTACK_BOOK_VAT_NGN || 1125),
   paystackBookDeliveryLagosNgn: Number(process.env.PAYSTACK_BOOK_DELIVERY_LAGOS_NGN || 0),
   paystackBookDeliveryOutsideLagosNgn: Number(process.env.PAYSTACK_BOOK_DELIVERY_OUTSIDE_LAGOS_NGN || 3000),
   fezBaseUrl: process.env.FEZ_BASE_URL || "",

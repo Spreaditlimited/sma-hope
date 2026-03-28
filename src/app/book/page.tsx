@@ -24,7 +24,7 @@ export default function BookPage() {
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
           <div className="lg:col-span-7 space-y-6">
             <span className="inline-block px-3 py-1 text-sm font-semibold text-[var(--primary)] bg-[#e7f2fb] border border-[#c9ddec] rounded-full">
-              Launching Soon
+              Pre-order now
             </span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
               When Every Breath Matters
@@ -47,6 +47,7 @@ export default function BookPage() {
 
             <div className="bg-gray-50 p-6 rounded-xl space-y-2 text-sm text-gray-700 border border-gray-100 mt-8">
               <p><strong>Status:</strong> Pre-launch release window</p>
+              <p><strong>Release date:</strong> July 31, 2026 (Kamsi&apos;s 8th Birthday)</p>
               <p><strong>Focus:</strong> Medical clarity + lived family reality</p>
               <p><strong>Audience:</strong> Families, clinicians, communities, advocates</p>
             </div>

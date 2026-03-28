@@ -5,20 +5,24 @@ import { OrderBookFlow } from "@/components/order-book-flow";
 import { Suspense } from "react";
 
 export const metadata = buildMetadata({
-  title: "Order the Book",
-  description: "Order When Every Breath Matters in Nigeria or buy on Amazon for international delivery.",
+  title: "Pre-Order the Book",
+  description: "Pre-order When Every Breath Matters in Nigeria. Amazon access for international readers is coming soon.",
   path: "/order-book",
 });
 
 export default function OrderBookPage() {
   // Graceful fallback if the environment variable isn't set
   const amazonBookUrl = process.env.NEXT_PUBLIC_BOOK_AMAZON_URL || "";
+  const bookUnitPriceNgn = Number(process.env.PAYSTACK_BOOK_UNIT_PRICE_NGN || 15000);
+  const bookVatPerUnitNgn = Number(process.env.PAYSTACK_BOOK_VAT_NGN || 1125);
+  const deliveryLagosNgn = Number(process.env.PAYSTACK_BOOK_DELIVERY_LAGOS_NGN || 0);
+  const deliveryOutsideLagosNgn = Number(process.env.PAYSTACK_BOOK_DELIVERY_OUTSIDE_LAGOS_NGN || 3000);
 
   return (
     <ContentPageBg image="/home/home-ways-to-help.png">
       <PageHeader
-        title="Order the Book"
-        intro="Choose your location to buy on Amazon internationally or place a Nigeria hard-copy order"
+        title="Pre-Order the Book"
+        intro="Place your Nigeria pre-order now. International Amazon ordering will be available soon."
         backgroundImage="/home/home-ways-to-help.png"
       />
 
@@ -34,6 +38,9 @@ export default function OrderBookPage() {
             <p className="font-medium text-gray-900 mt-4">
               Every copy read and shared helps bring much-needed awareness to Spinal Muscular Atrophy.
             </p>
+            <div className="mt-4 inline-flex max-w-3xl rounded-full border border-[#c9ddec] bg-[#e7f2fb] px-5 py-2 text-sm font-semibold text-[#0f557f]">
+              Pre-order is now open. The book will be released on July 31, 2026, Kamsi&apos;s 8th birthday. Be among the first to receive this medically grounded, deeply emotional book on Spinal Muscular Atrophy,
+            </div>
           </section>
 
           <hr className="border-gray-200 max-w-3xl mx-auto" />
@@ -45,7 +52,15 @@ export default function OrderBookPage() {
               Internal layout, steps, and button styling remain untouched
             */}
             <Suspense fallback={<p className="text-sm text-gray-600">Loading order flow...</p>}>
-              <OrderBookFlow amazonUrl={amazonBookUrl} />
+              <OrderBookFlow
+                amazonUrl={amazonBookUrl}
+                pricing={{
+                  unitPriceNgn: bookUnitPriceNgn,
+                  vatPerUnitNgn: bookVatPerUnitNgn,
+                  deliveryLagosNgn,
+                  deliveryOutsideLagosNgn,
+                }}
+              />
             </Suspense>
             
           </section>

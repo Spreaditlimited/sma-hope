@@ -63,8 +63,9 @@ export async function POST(request: Request) {
   }
 
   const unitPrice = env.paystackBookUnitPriceNgn;
+  const vatPerUnit = env.paystackBookVatNgn;
   const deliveryFee = deliveryArea === "lagos" ? env.paystackBookDeliveryLagosNgn : env.paystackBookDeliveryOutsideLagosNgn;
-  const totalNgn = unitPrice * quantity + deliveryFee;
+  const totalNgn = (unitPrice + vatPerUnit) * quantity + deliveryFee;
   const amountMinor = Math.round(totalNgn * 100);
   const callbackUrl = toAbsoluteUrl(source === "account" ? "/account/orders?status=success" : env.paystackBookSuccessUrl);
   const cancelActionUrl = toAbsoluteUrl(source === "account" ? "/account/orders?status=cancelled" : env.paystackBookCancelUrl);
@@ -91,6 +92,7 @@ export async function POST(request: Request) {
         deliveryArea,
         deliveryFeeNgn: deliveryFee,
         unitPriceNgn: unitPrice,
+        vatPerUnitNgn: vatPerUnit,
         totalNgn,
         note,
         source,

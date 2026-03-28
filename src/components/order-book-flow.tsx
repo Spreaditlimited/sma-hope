@@ -8,11 +8,24 @@ type BuyerLocation = "nigeria" | "international";
 
 type Props = {
   amazonUrl?: string;
+  pricing?: {
+    unitPriceNgn: number;
+    vatPerUnitNgn: number;
+    deliveryLagosNgn: number;
+    deliveryOutsideLagosNgn: number;
+  };
 };
 
-export function OrderBookFlow({ amazonUrl }: Props) {
+export function OrderBookFlow({ amazonUrl, pricing }: Props) {
+  const BOOK_PRICE_NGN = Number(pricing?.unitPriceNgn || 15000);
+  const BOOK_VAT_NGN = Number(pricing?.vatPerUnitNgn || 1125);
+  const DELIVERY_LAGOS_NGN = Number(pricing?.deliveryLagosNgn || 0);
+  const DELIVERY_OUTSIDE_LAGOS_NGN = Number(pricing?.deliveryOutsideLagosNgn || 3000);
+
   const searchParams = useSearchParams();
   const [location, setLocation] = useState<BuyerLocation>("nigeria");
+  const [quantity, setQuantity] = useState(1);
+  const [deliveryArea, setDeliveryArea] = useState<"" | "lagos" | "outside_lagos">("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedbackModal, setFeedbackModal] = useState<{
     type: "success" | "error";
@@ -88,6 +101,19 @@ export function OrderBookFlow({ amazonUrl }: Props) {
   }
 
   const hasAmazonUrl = Boolean(amazonUrl && amazonUrl.trim());
+  const unitTotal = BOOK_PRICE_NGN + BOOK_VAT_NGN;
+  const booksTotal = unitTotal * quantity;
+  const deliveryFee =
+    deliveryArea === "outside_lagos"
+      ? DELIVERY_OUTSIDE_LAGOS_NGN
+      : deliveryArea === "lagos"
+        ? DELIVERY_LAGOS_NGN
+        : 0;
+  const grandTotal = booksTotal + deliveryFee;
+
+  function formatNgn(value: number) {
+    return `N${value.toLocaleString()}`;
+  }
 
   useEffect(() => {
     const status = searchParams.get("status");
@@ -148,7 +174,7 @@ export function OrderBookFlow({ amazonUrl }: Props) {
       <section className="about-panel prose">
         <h2 className="section-heading-strong">Choose Your Purchase Route</h2>
         <p>
-          International readers can purchase on Amazon. Nigerian buyers can place a hard-copy order for dispatch from our Lagos office.
+          Nigerian buyers can place a hard-copy pre-order now. International Amazon purchase will be enabled soon.
         </p>
         <div className="order-book-location-grid donation-interval-picker order-book-route-picker" role="radiogroup" aria-label="Buyer location">
           <button
@@ -165,11 +191,12 @@ export function OrderBookFlow({ amazonUrl }: Props) {
             type="button"
             role="radio"
             aria-checked={location === "international"}
-            className={`donation-interval-option order-book-route-option ${location === "international" ? "is-active" : ""}`}
-            onClick={() => setLocation("international")}
+            aria-disabled="true"
+            disabled
+            className="donation-interval-option order-book-route-option opacity-60 cursor-not-allowed"
           >
             <span className="order-book-route-title">Outside Nigeria</span>
-            <span className="order-book-route-subtitle">Buy securely on Amazon</span>
+            <span className="order-book-route-subtitle">Coming soon on Amazon</span>
           </button>
         </div>
       </section>
@@ -207,10 +234,7 @@ export function OrderBookFlow({ amazonUrl }: Props) {
         <section className="about-panel prose">
           <h2 className="section-heading-strong">Nigeria Hard-Copy Order</h2>
           <p>
-            Hard copies are dispatched from our Lagos office. General delivery timeline is <strong>2 to 5 business days</strong>. Fulfillment will be handled with <strong>Fez Delivery</strong>.
-          </p>
-          <p className="order-book-note">
-            <strong>Price:</strong> N15,000
+            Pre-ordered books will be dispatched from our Lagos office once the book is released on July 31, 2026.
           </p>
           <form className="order-book-form" onSubmit={handleNigeriaCheckout}>
             <div className="grid-2">
@@ -228,7 +252,15 @@ export function OrderBookFlow({ amazonUrl }: Props) {
               </div>
               <div>
                 <label htmlFor="order-quantity">Quantity</label>
-                <input id="order-quantity" name="quantity" type="number" min={1} defaultValue={1} required />
+                <input
+                  id="order-quantity"
+                  name="quantity"
+                  type="number"
+                  min={1}
+                  value={quantity}
+                  onChange={(event) => setQuantity(Math.max(1, Number(event.target.value) || 1))}
+                  required
+                />
               </div>
               <div>
                 <label htmlFor="order-city">City</label>
@@ -248,7 +280,14 @@ export function OrderBookFlow({ amazonUrl }: Props) {
             <div className="grid-2" style={{ marginTop: "0.8rem" }}>
               <div>
                 <label htmlFor="order-deliveryArea">Delivery zone</label>
-                <select id="order-deliveryArea" name="deliveryArea" required defaultValue="" className="contact-purpose-select">
+                <select
+                  id="order-deliveryArea"
+                  name="deliveryArea"
+                  required
+                  value={deliveryArea}
+                  onChange={(event) => setDeliveryArea(event.target.value as "" | "lagos" | "outside_lagos")}
+                  className="contact-purpose-select"
+                >
                   <option value="" disabled>
                     Select delivery zone
                   </option>
@@ -259,6 +298,16 @@ export function OrderBookFlow({ amazonUrl }: Props) {
               <div>
                 <label htmlFor="order-note">Order note (optional)</label>
                 <input id="order-note" name="note" />
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-[#d4e4ef] bg-[#edf5fb] p-4" style={{ marginTop: "1rem" }}>
+              <h3 style={{ margin: 0, color: "#13384f", fontSize: "0.95rem", fontWeight: 700 }}>Price breakdown</h3>
+              <div style={{ marginTop: "0.55rem", display: "grid", gap: "0.35rem", color: "#21465d", fontSize: "0.95rem" }}>
+                <p style={{ margin: 0 }}><strong>Book Price:</strong> {formatNgn(BOOK_PRICE_NGN)} x {quantity}</p>
+                <p style={{ margin: 0 }}><strong>VAT:</strong> {formatNgn(BOOK_VAT_NGN)} x {quantity}</p>
+                <p style={{ margin: 0 }}><strong>Delivery:</strong> {deliveryArea === "outside_lagos" ? formatNgn(DELIVERY_OUTSIDE_LAGOS_NGN) : "N0"}</p>
+                <p style={{ margin: "0.2rem 0 0", fontWeight: 800, color: "#0f557f" }}><strong>Total:</strong> {formatNgn(grandTotal)}</p>
               </div>
             </div>
 
