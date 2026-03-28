@@ -11,6 +11,7 @@ type BookOrderPayload = {
   address?: string;
   deliveryArea?: "lagos" | "outside_lagos";
   note?: string;
+  source?: "public" | "account";
 };
 
 function isValidEmail(value: string) {
@@ -45,6 +46,7 @@ export async function POST(request: Request) {
   const state = String(payload.state || "").trim();
   const address = String(payload.address || "").trim();
   const note = String(payload.note || "").trim();
+  const source = payload.source === "account" ? "account" : "public";
   const quantity = Number(payload.quantity || 0);
   const deliveryArea = payload.deliveryArea === "outside_lagos" ? "outside_lagos" : payload.deliveryArea === "lagos" ? "lagos" : "";
 
@@ -64,8 +66,8 @@ export async function POST(request: Request) {
   const deliveryFee = deliveryArea === "lagos" ? env.paystackBookDeliveryLagosNgn : env.paystackBookDeliveryOutsideLagosNgn;
   const totalNgn = unitPrice * quantity + deliveryFee;
   const amountMinor = Math.round(totalNgn * 100);
-  const callbackUrl = toAbsoluteUrl(env.paystackBookSuccessUrl);
-  const cancelActionUrl = toAbsoluteUrl(env.paystackBookCancelUrl);
+  const callbackUrl = toAbsoluteUrl(source === "account" ? "/account/orders?status=success" : env.paystackBookSuccessUrl);
+  const cancelActionUrl = toAbsoluteUrl(source === "account" ? "/account/orders?status=cancelled" : env.paystackBookCancelUrl);
 
   const response = await fetch("https://api.paystack.co/transaction/initialize", {
     method: "POST",
@@ -91,6 +93,7 @@ export async function POST(request: Request) {
         unitPriceNgn: unitPrice,
         totalNgn,
         note,
+        source,
         cancelActionUrl,
       },
     }),

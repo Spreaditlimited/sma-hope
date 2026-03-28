@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 type BuyerLocation = "nigeria" | "international";
 
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export function OrderBookFlow({ amazonUrl }: Props) {
+  const searchParams = useSearchParams();
   const [location, setLocation] = useState<BuyerLocation>("nigeria");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedbackModal, setFeedbackModal] = useState<{
@@ -86,6 +88,60 @@ export function OrderBookFlow({ amazonUrl }: Props) {
   }
 
   const hasAmazonUrl = Boolean(amazonUrl && amazonUrl.trim());
+
+  useEffect(() => {
+    const status = searchParams.get("status");
+    const reference = searchParams.get("reference") || searchParams.get("trxref");
+    if (status !== "success" || !reference) return;
+
+    let cancelled = false;
+    async function completePayment() {
+      const response = await fetch("/api/payments/paystack/complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reference }),
+      });
+
+      const json = (await response.json().catch(() => null)) as
+        | { ok?: boolean; error?: string; result?: { accountCreated?: boolean; fullName?: string } }
+        | null;
+      if (cancelled) return;
+
+      if (!response.ok || !json?.ok) {
+        setFeedbackModal({
+          type: "success",
+          title: "Thank you",
+          message: "Your payment was received and is being confirmed. We will notify you shortly.",
+        });
+        return;
+      }
+
+      const payerName = String(json.result?.fullName || "").trim();
+      setFeedbackModal({
+        type: "success",
+        title: payerName ? `Thank you ${payerName}` : "Thank you",
+        message: "We are creating your account. You will be redirected shortly.",
+      });
+      const redirectUrl = json.result?.accountCreated ? "/account/login?setup=1" : "/account/login";
+      window.setTimeout(() => {
+        if (!cancelled) window.location.assign(redirectUrl);
+      }, 2200);
+    }
+
+    completePayment().catch(() => {
+      if (!cancelled) {
+        setFeedbackModal({
+          type: "success",
+          title: "Thank you",
+          message: "Your payment was received and is being confirmed. We will notify you shortly.",
+        });
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [searchParams]);
 
   return (
     <div className="order-book-shell">

@@ -19,6 +19,7 @@ const resourceLinks = [
 const legalLinks = [
   ["Privacy Policy", "/privacy-policy"],
   ["Terms", "/terms"],
+  ["Sign In", "/account/login"],
 ] as const;
 
 export function Footer() {

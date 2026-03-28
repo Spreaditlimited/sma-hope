@@ -80,10 +80,62 @@ Scaffold endpoints are implemented at:
 - `src/app/api/payments/stripe/route.ts`
 - `src/app/api/payments/paystack/route.ts`
 - `src/app/api/payments/paystack/webhook/route.ts`
+- `src/app/api/payments/paystack/complete/route.ts`
 - `src/app/api/payments/book/stripe/route.ts`
 - `src/app/api/payments/book/paystack/route.ts`
 
 These are designed for easy credential swap-in and production checkout wiring.
+
+## FEZ Delivery Fulfillment
+
+- FEZ client: `src/lib/fez/client.ts`
+- FEZ webhook endpoint: `src/app/api/fez/webhook/route.ts`
+- FEZ sync endpoint: `src/app/api/fez/sync/route.ts`
+- Book order payment persistence automatically attempts FEZ shipment creation in `src/lib/payments/processing.ts` after successful Paystack verification.
+
+Recommended setup:
+
+1. Configure FEZ env vars in `.env.local` (`FEZ_BASE_URL`, `FEZ_USER_ID`, `FEZ_PASSWORD`, `FEZ_ORG_SECRET_KEY`).
+2. Register webhook URL in FEZ dashboard/API to:
+   - `https://<your-domain>/api/fez/webhook?token=<FEZ_WEBHOOK_TOKEN>`
+3. For fallback polling, call:
+   - `POST /api/fez/sync` with `Authorization: Bearer <FEZ_SYNC_SECRET>`
+4. Generate app-side FEZ secrets:
+
+```bash
+node -e "console.log('FEZ_WEBHOOK_TOKEN=' + require('crypto').randomBytes(32).toString('hex'))"
+node -e "console.log('FEZ_SYNC_SECRET=' + require('crypto').randomBytes(32).toString('hex'))"
+```
+
+## Donor Accounts and Dashboard
+
+- Account routes:
+  - `/account`
+  - `/account/login`
+  - `/account/reset-password`
+- Supabase schema file: `supabase/schema.sql`
+- Apply schema in Supabase SQL editor before using donor dashboard and webhook persistence.
+
+## Admin Panel
+
+- Admin routes:
+  - `/admin`
+  - `/admin/donations`
+  - `/admin/book-orders`
+  - `/admin/donors`
+  - `/admin/settings`
+- Role table: `public.admin_users` (created in `supabase/schema.sql`)
+- Roles: `admin`, `ops`
+- Admin and donor login both use Supabase auth at `/account/login`.
+
+Bootstrap first admin:
+
+```sql
+insert into public.admin_users (email, role, active)
+values ('smahopefoundation@gmail.com', 'admin', true)
+on conflict (email)
+do update set role = excluded.role, active = excluded.active;
+```
 
 ## SEO
 

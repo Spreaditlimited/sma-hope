@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { CookieNotice } from "@/components/cookie-notice";
-import { CTASection } from "@/components/cta-section";
+import { SiteShell } from "@/components/site-shell";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -50,16 +47,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
-        <Navbar />
-        <main id="main-content">{children}</main>
-        <CTASection
-          headline="Help us build understanding, strengthen support, and carry this mission forward."
-          body="Whether you are here to learn, to support, to seek help, or to understand what SMA really means for families, you are welcome here."
-          primary={{ label: "Donate", href: "/donate" }}
-          secondary={{ label: "Contact Us", href: "/contact" }}
-        />
-        <Footer />
-        <CookieNotice />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

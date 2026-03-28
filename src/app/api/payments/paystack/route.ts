@@ -8,6 +8,7 @@ type DonationPayload = {
   interval?: "one_time" | "monthly";
   amount?: number;
   currency?: "NGN" | "USD";
+  source?: "public" | "account";
 };
 
 function isValidEmail(value: string) {
@@ -32,10 +33,16 @@ function parsePlanMap(raw: string): Map<number, string> {
     .filter(Boolean);
 
   for (const pair of pairs) {
-    const [amountRaw, codeRaw] = pair.split(":");
-    const amount = Number((amountRaw || "").trim());
-    const code = String(codeRaw || "").trim();
-    if (Number.isFinite(amount) && amount > 0 && code) {
+    const separatorIndex = pair.indexOf(":");
+    if (separatorIndex <= 0) continue;
+
+    const amountRaw = pair.slice(0, separatorIndex).trim();
+    const codeRaw = pair.slice(separatorIndex + 1).trim();
+    const amount = Number(amountRaw);
+    const code = String(codeRaw);
+    const looksLikePlanCode = /^PLN_[A-Za-z0-9]+$/.test(code);
+
+    if (Number.isFinite(amount) && amount > 0 && looksLikePlanCode) {
       map.set(amount, code);
     }
   }
@@ -48,9 +55,6 @@ function monthlyPlanCodeFor(currency: "NGN" | "USD", amount: number) {
   const exactPlan = planMap.get(amount);
   if (exactPlan) {
     return { code: exactPlan, supportedAmounts: [...planMap.keys()].sort((a, b) => a - b) };
-  }
-  if (env.paystackDonationMonthlyPlanCode) {
-    return { code: env.paystackDonationMonthlyPlanCode, supportedAmounts: [...planMap.keys()].sort((a, b) => a - b) };
   }
   return { code: "", supportedAmounts: [...planMap.keys()].sort((a, b) => a - b) };
 }
@@ -76,6 +80,7 @@ export async function POST(request: Request) {
   const location = payload.location === "international" ? "international" : "nigeria";
   const interval = payload.interval === "monthly" ? "monthly" : "one_time";
   const currency = payload.currency === "USD" ? "USD" : "NGN";
+  const source = payload.source === "account" ? "account" : "public";
   const amount = Number(payload.amount || 0);
   const minAmount = currency === "USD" ? env.paystackDonationUsdMin : env.paystackDonationNgnMin;
 
@@ -114,15 +119,15 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        error: `Monthly donations are not configured for ${amount} ${currency}.${supportedText}`,
+        error: `Monthly donations are not configured for ${amount} ${currency}.${supportedText} Check PAYSTACK_DONATION_MONTHLY_PLAN_CODES_${currency}.`,
       },
       { status: 400 },
     );
   }
 
   const amountMinor = Math.round(amount * 100);
-  const callbackUrl = toAbsoluteUrl(env.paystackDonationSuccessUrl);
-  const cancelActionUrl = toAbsoluteUrl(env.paystackDonationCancelUrl);
+  const callbackUrl = toAbsoluteUrl(source === "account" ? "/account/donations?status=success" : env.paystackDonationSuccessUrl);
+  const cancelActionUrl = toAbsoluteUrl(source === "account" ? "/account/donations?status=cancelled" : env.paystackDonationCancelUrl);
   const initializePayload: Record<string, unknown> = {
     email,
     amount: amountMinor,
@@ -135,6 +140,7 @@ export async function POST(request: Request) {
       interval,
       requestedAmount: amount,
       requestedCurrency: currency,
+      source,
       cancelActionUrl,
     },
   };
@@ -165,10 +171,21 @@ export async function POST(request: Request) {
     | null;
 
   if (!response.ok || !json?.status || !json?.data?.authorization_url) {
+    const message = String(json?.message || "");
+    if (interval === "monthly" && monthlyPlan?.code && /plan not found/i.test(message)) {
+      const keyMode = env.paystackSecretKey.startsWith("sk_live_") ? "live" : env.paystackSecretKey.startsWith("sk_test_") ? "test" : "unknown";
+      return NextResponse.json(
+        {
+          ok: false,
+          error: `Paystack returned 'plan not found' for ${monthlyPlan.code}. Confirm this plan exists in your ${keyMode} Paystack account and matches ${amount} ${currency}.`,
+        },
+        { status: 502 },
+      );
+    }
     return NextResponse.json(
       {
         ok: false,
-        error: json?.message || "Unable to initialize Paystack donation checkout.",
+        error: message || "Unable to initialize Paystack donation checkout.",
       },
       { status: 502 },
     );

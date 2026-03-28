@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 const nigeriaSuggested = [5000, 10000, 25000, 50000];
 const intlSuggested = [20, 50, 100, 500];
@@ -8,6 +9,7 @@ type Location = "nigeria" | "international";
 const internationalDonationsEnabled = process.env.NEXT_PUBLIC_ENABLE_INTERNATIONAL_DONATIONS === "true";
 
 export function DonationOptions() {
+  const searchParams = useSearchParams();
   const [location, setLocation] = useState<Location>("nigeria");
   const [amount, setAmount] = useState<number>(nigeriaSuggested[1]);
   const [interval, setInterval] = useState<"one_time" | "monthly">("one_time");
@@ -15,6 +17,11 @@ export function DonationOptions() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [paymentNotice, setPaymentNotice] = useState("");
+  const [feedbackModal, setFeedbackModal] = useState<{
+    title: string;
+    message: string;
+  } | null>(null);
   const isNigeria = location === "nigeria";
   const suggested = isNigeria ? nigeriaSuggested : intlSuggested;
   const currency: "NGN" | "USD" = isNigeria ? "NGN" : "USD";
@@ -71,6 +78,54 @@ export function DonationOptions() {
       setIsSubmitting(false);
     }
   }
+
+  useEffect(() => {
+    const status = searchParams.get("status");
+    const reference = searchParams.get("reference") || searchParams.get("trxref");
+    if (status !== "success" || !reference) return;
+
+    let cancelled = false;
+
+    async function completePayment() {
+      const response = await fetch("/api/payments/paystack/complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reference }),
+      });
+
+      const json = (await response.json().catch(() => null)) as
+        | { ok?: boolean; error?: string; result?: { recurring?: boolean; accountCreated?: boolean; fullName?: string } }
+        | null;
+
+      if (cancelled) return;
+
+      if (!response.ok || !json?.ok) {
+        setPaymentNotice("Thank you. Your payment was received and is being confirmed.");
+        return;
+      }
+
+      const payerName = String(json.result?.fullName || "").trim();
+      setFeedbackModal({
+        title: payerName ? `Thank you ${payerName}` : json.result?.recurring ? "Recurring donation activated" : "Thank you",
+        message: "We are creating your donor account. You will be redirected shortly.",
+      });
+
+      const redirectUrl = json.result?.accountCreated ? "/account/login?setup=1" : "/account/login";
+      window.setTimeout(() => {
+        if (!cancelled) window.location.assign(redirectUrl);
+      }, 2200);
+    }
+
+    completePayment().catch(() => {
+      if (!cancelled) {
+        setPaymentNotice("Thank you. Your payment was received and is being confirmed.");
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [searchParams]);
 
   return (
     <div className="donation-card">
@@ -206,12 +261,33 @@ export function DonationOptions() {
         </button>
       </div>
 
+      {paymentNotice ? <p className="donation-footnote" style={{ color: "#0c4669" }}>{paymentNotice}</p> : null}
       {errorMessage ? <p className="donation-footnote" style={{ color: "#9b1c1c" }}>{errorMessage}</p> : null}
 
       <div style={{ textAlign: "center" }}>
         <p className="donation-footnote">Payments in Nigeria are processed in NGN through Paystack.</p>
         <p className="donation-footnote">Secure payments powered by Paystack.</p>
       </div>
+
+      {feedbackModal ? (
+        <div className="cta-modal-backdrop" role="presentation" onClick={() => setFeedbackModal(null)}>
+          <div
+            className="cta-modal card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="donation-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <h3 id="donation-modal-title" className="cta-modal-title">
+              {feedbackModal.title}
+            </h3>
+            <p style={{ margin: "0.65rem 0 0", color: "var(--text-soft)" }}>{feedbackModal.message}</p>
+            <button type="button" className="btn cta-modal-btn" onClick={() => setFeedbackModal(null)}>
+              Close
+            </button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { PageHeader } from "@/components/page-header";
 import { ContentPageBg } from "@/components/content-page-bg";
 import { OrderBookFlow } from "@/components/order-book-flow";
+import { Suspense } from "react";
 
 export const metadata = buildMetadata({
   title: "Order the Book",
@@ -43,7 +44,9 @@ export default function OrderBookPage() {
             {/* External OrderBookFlow Component 
               Internal layout, steps, and button styling remain untouched
             */}
-            <OrderBookFlow amazonUrl={amazonBookUrl} />
+            <Suspense fallback={<p className="text-sm text-gray-600">Loading order flow...</p>}>
+              <OrderBookFlow amazonUrl={amazonBookUrl} />
+            </Suspense>
             
           </section>
 

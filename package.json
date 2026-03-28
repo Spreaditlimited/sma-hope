@@ -11,6 +11,7 @@
     "generate:home-images": "node scripts/generate_home_images.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.100.1",
     "next": "16.1.6",
     "nodemailer": "^8.0.3",
     "react": "19.2.3",

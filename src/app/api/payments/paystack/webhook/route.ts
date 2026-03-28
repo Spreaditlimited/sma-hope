@@ -2,6 +2,8 @@ import { createHmac, timingSafeEqual } from "crypto";
 import { NextResponse } from "next/server";
 import { sendTransactionalEmail } from "@/lib/email";
 import { env } from "@/lib/env";
+import { recordPaymentEvent, storePaymentFromVerifiedTransaction } from "@/lib/payments/processing";
+import { getSupabaseAdminClient } from "@/lib/supabase/admin";
 
 type PaystackWebhookPayload = {
   event?: string;
@@ -73,19 +75,81 @@ export async function POST(request: Request) {
       : {};
 
   try {
+    const id = String(data.id || data.reference || data.subscription_code || "");
+    const eventKey = `${event}:${id}`;
+    const recorded = await recordPaymentEvent(eventKey, event, payload as Record<string, unknown>);
+    if (!recorded.created) {
+      return NextResponse.json({ ok: true, duplicate: true });
+    }
+
     if (event === "subscription.create") {
+      const code = String(data.subscription_code || "");
+      if (code) {
+        await getSupabaseAdminClient()
+          .from("subscriptions")
+          .update({
+            status: "active",
+            next_payment_date: String(data.next_payment_date || "") || null,
+          })
+          .eq("subscription_code", code);
+      }
       await notifyOps(event, data);
     }
 
     if (event === "subscription.disable" || event === "subscription.not_renew") {
+      const code = String(data.subscription_code || "");
+      if (code) {
+        await getSupabaseAdminClient()
+          .from("subscriptions")
+          .update({
+            status: event === "subscription.disable" ? "disabled" : "not_renewing",
+            cancelled_at: new Date().toISOString(),
+          })
+          .eq("subscription_code", code);
+      }
       await notifyOps(event, data);
     }
 
     if (event === "invoice.payment_failed") {
+      const code = String(data.subscription_code || "");
+      if (code) {
+        await getSupabaseAdminClient()
+          .from("subscriptions")
+          .update({
+            status: "payment_failed",
+          })
+          .eq("subscription_code", code);
+      }
       await notifyOps(event, data);
     }
 
     if (event === "charge.success" && String(metadata.kind || "") === "donation") {
+      await storePaymentFromVerifiedTransaction(data as unknown as {
+        status?: string;
+        reference?: string;
+        amount?: number;
+        currency?: string;
+        paid_at?: string;
+        plan?: { plan_code?: string } | null;
+        subscription?: { subscription_code?: string; status?: string; next_payment_date?: string } | null;
+        customer?: { email?: string; customer_code?: string } | null;
+        metadata?: Record<string, unknown> | null;
+      });
+      await notifyOps(event, data);
+    }
+
+    if (event === "charge.success" && String(metadata.kind || "") === "book_order") {
+      await storePaymentFromVerifiedTransaction(data as unknown as {
+        status?: string;
+        reference?: string;
+        amount?: number;
+        currency?: string;
+        paid_at?: string;
+        plan?: { plan_code?: string } | null;
+        subscription?: { subscription_code?: string; status?: string; next_payment_date?: string } | null;
+        customer?: { email?: string; customer_code?: string } | null;
+        metadata?: Record<string, unknown> | null;
+      });
       await notifyOps(event, data);
     }
   } catch (error) {

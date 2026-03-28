@@ -136,9 +136,9 @@ a {
 }
 
 .nav-toggle {
-  border: 1px solid var(--line);
-  border-radius: 0.7rem;
-  background: #fff;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   width: 2.6rem;
   height: 2.6rem;
   display: inline-flex;
@@ -147,6 +147,7 @@ a {
   justify-content: center;
   gap: 0.24rem;
   cursor: pointer;
+  padding: 0;
 }
 
 .nav-toggle span {
@@ -624,7 +625,7 @@ a {
 }
 
 .donation-footnote {
-  margin: 0.2rem 0 0;
+  margin: 0.05rem 0 0;
   color: var(--text-soft);
   font-size: 0.78rem;
 }
@@ -1824,4 +1825,55 @@ hr.section-divider {
   .order-book-route-option {
     min-height: 4.35rem;
   }
+}
+
+/* Hide table scroller scrollbar UI while preserving horizontal scroll. */
+.overflow-x-auto {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+.overflow-y-auto {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.dashboard-hero-title {
+  color: #ffffff !important;
+  text-shadow: 0 10px 30px rgba(2, 12, 20, 0.62), 0 2px 10px rgba(2, 12, 20, 0.4);
+  letter-spacing: -0.03em;
+}
+
+@keyframes adminPageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-page-enter {
+  animation: adminPageEnter 180ms ease-out;
 }

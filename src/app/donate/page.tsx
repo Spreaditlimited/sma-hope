@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/page-header";
 import { DonationOptions } from "@/components/donation-options";
 import { ContentPageBg } from "@/components/content-page-bg";
 import { buildMetadata } from "@/lib/metadata";
+import { Suspense } from "react";
 
 export const metadata = buildMetadata({
   title: "Donate",
@@ -104,16 +105,16 @@ export default function DonatePage() {
               </ul>
             </div>
 
-            <div className="lg:col-span-7 bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-md">
+            <div className="lg:col-span-7 bg-white pt-6 px-6 pb-0 md:pt-8 md:px-8 md:pb-0 rounded-2xl border border-gray-200 shadow-md">
               {/* External Donation Component handles its own styling */}
-              <DonationOptions />
+              <Suspense fallback={<p className="text-sm text-gray-600">Loading donation options...</p>}>
+                <DonationOptions />
+              </Suspense>
             </div>
           </section>
 
-          <hr className="border-gray-200 max-w-3xl mx-auto" />
-
           {/* CONCLUSION SECTION */}
-          <section className="prose prose-lg md:prose-xl text-gray-700 max-w-3xl mx-auto text-center">
+          <section className="prose prose-lg md:prose-xl text-gray-700 max-w-3xl mx-auto text-center !mt-3 md:!mt-4">
             <p className="font-medium text-gray-900">
               To support SMA Hope Foundation Nigeria is to support a mission rooted in truth, dignity, awareness, and lived experience.
             </p>
