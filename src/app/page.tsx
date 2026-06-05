@@ -68,7 +68,7 @@ export default async function HomePage() {
             </div>
 
             {/* Hero Media */}
-            <aside className="lg:col-span-6 -mt-1 sm:mt-0">
+            <aside className="hidden md:block lg:col-span-6 -mt-1 sm:mt-0">
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative">
                 <Image
                   src="/family.jpg"

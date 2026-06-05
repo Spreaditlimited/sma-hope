@@ -8,10 +8,10 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, intro, backgroundImage }: PageHeaderProps) {
   return (
-    <header className="relative flex items-center justify-center overflow-hidden bg-slate-950 px-4 py-20 text-center md:bg-transparent md:py-32">
+    <header className="relative flex items-center justify-center py-24 md:py-32 px-4 text-center overflow-hidden">
       {/* Background Image & Overlay */}
       {backgroundImage && (
-        <div className="absolute inset-0 -z-10 hidden md:block">
+        <div className="absolute inset-0 -z-10">
           <Image
             src={backgroundImage}
             alt={`${title} background`}
