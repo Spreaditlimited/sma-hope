@@ -29,6 +29,26 @@ export type FezTrackingUpdate = {
 
 let cachedAuth: FezAuthResult | null = null;
 
+function serializeForLog(value: unknown) {
+  if (value == null) return "null";
+  if (typeof value === "string") return value;
+  try {
+    return JSON.stringify(value);
+  } catch {
+    return String(value);
+  }
+}
+
+function messageFromPayload(payload: unknown) {
+  const root = asRecord(payload);
+  const data = asRecord(root?.data);
+  return (
+    firstString(root, ["message", "description", "error", "errorMessage"]) ||
+    firstString(data, ["message", "description", "error", "errorMessage"]) ||
+    serializeForLog(payload)
+  );
+}
+
 function trimSlashes(value: string) {
   return value.replace(/^\/+|\/+$/g, "");
 }
@@ -102,8 +122,10 @@ function normalizeStatus(rawStatus: string) {
 function parseTrackingFromPayload(payload: unknown): FezTrackingUpdate {
   const root = asRecord(payload) || {};
   const data = asRecord(root.data) || root;
+  const orderNos = asRecord(root.orderNos) || asRecord(data.orderNos);
 
   const trackingId =
+    firstString(orderNos, Object.keys(orderNos || {})) ||
     firstString(data, ["orderNo", "order_no", "orderNumber", "tracking_id", "trackingId", "id", "waybill"]) ||
     firstString(root, ["orderNo", "order_no", "orderNumber", "tracking_id", "trackingId", "id", "waybill"]);
   const rawStatus =
@@ -137,20 +159,41 @@ async function authenticateFez() {
     return cachedAuth.token;
   }
 
-  const response = await fetch(composeUrl(env.fezAuthPath), {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user_id: env.fezUserId,
-      password: env.fezPassword,
-    }),
-  });
+  const authUrl = composeUrl(env.fezAuthPath);
+  const authBody = {
+    user_id: env.fezUserId,
+    password: env.fezPassword,
+  };
+
+  let response: Response;
+  try {
+    response = await fetch(authUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(authBody),
+    });
+  } catch (error) {
+    console.error("[FEZ] Auth request failed before response.", {
+      url: authUrl,
+      userIdPresent: Boolean(env.fezUserId),
+      passwordPresent: Boolean(env.fezPassword),
+      error: error instanceof Error ? error.message : String(error),
+    });
+    throw new Error("Unable to authenticate FEZ API.");
+  }
 
   const payload = (await response.json().catch(() => null)) as unknown;
   const parsed = parseAuthToken(payload);
   if (!response.ok || !parsed.token) {
+    console.error("[FEZ] Auth failed.", {
+      url: authUrl,
+      status: response.status,
+      statusText: response.statusText,
+      parsedTokenPresent: Boolean(parsed.token),
+      responsePayload: serializeForLog(payload),
+    });
     throw new Error("Unable to authenticate FEZ API.");
   }
 
@@ -162,6 +205,7 @@ async function callFez(path: string, init: RequestInit = {}) {
   const token = await authenticateFez();
   const headers = new Headers(init.headers || {});
   headers.set("secret-key", env.fezOrgSecretKey);
+  headers.set("secret_key", env.fezOrgSecretKey);
   headers.set("Authorization", `Bearer ${token}`);
   if (init.body && !headers.has("Content-Type")) {
     headers.set("Content-Type", "application/json");
@@ -176,38 +220,44 @@ async function callFez(path: string, init: RequestInit = {}) {
 }
 
 export async function createFezShipment(input: FezOrderInput): Promise<FezTrackingUpdate> {
-  const payload = {
-    delivery_type: "local",
-    order_reference: input.reference,
-    orderReference: input.reference,
-    package_description: "When Every Breath Matters",
-    package_quantity: input.quantity,
-    declared_value: input.declaredValueNgn,
-    declaredValue: input.declaredValueNgn,
-    customer_name: input.customerName,
-    customer_email: input.customerEmail,
-    customer_phone: input.customerPhone,
-    recipient_name: input.customerName,
-    recipient_email: input.customerEmail,
-    recipient_phone: input.customerPhone,
-    drop_off_address: input.address,
-    drop_off_city: input.city,
-    drop_off_state: input.state,
-    note: input.note || "",
-    pickup_state: "lagos",
-  };
+  const payload = [
+    {
+      recipientAddress: input.address,
+      recipientState: input.state,
+      recipientName: input.customerName,
+      recipientPhone: input.customerPhone,
+      recipientEmail: input.customerEmail,
+      uniqueID: input.reference,
+      BatchID: input.reference,
+      itemDescription: `When Every Breath Matters x ${input.quantity}`,
+      additionalDetails: input.note || "",
+      valueOfItem: String(input.declaredValueNgn),
+      weight: Math.max(1, input.quantity),
+      pickUpState: "Lagos",
+    },
+  ];
 
   const { response, payload: responsePayload } = await callFez(env.fezCreateOrderPath, {
     method: "POST",
     body: JSON.stringify(payload),
   });
   if (!response.ok) {
-    throw new Error("Failed to create FEZ shipment.");
+    console.error("[FEZ] Shipment creation failed.", {
+      path: env.fezCreateOrderPath,
+      status: response.status,
+      statusText: response.statusText,
+      responsePayload: serializeForLog(responsePayload),
+    });
+    throw new Error(`Failed to create FEZ shipment: ${messageFromPayload(responsePayload)}`);
   }
 
   const tracking = parseTrackingFromPayload(responsePayload);
   if (!tracking.trackingId) {
-    throw new Error("FEZ shipment response did not include an order/tracking id.");
+    console.error("[FEZ] Shipment response missing tracking id.", {
+      path: env.fezCreateOrderPath,
+      responsePayload: serializeForLog(responsePayload),
+    });
+    throw new Error(`FEZ shipment response did not include an order/tracking id: ${messageFromPayload(responsePayload)}`);
   }
   return tracking;
 }

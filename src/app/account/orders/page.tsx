@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AccountWorkspaceShell } from "@/components/account/workspace-shell";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useAccountSession } from "@/lib/supabase/use-account-session";
@@ -30,39 +30,34 @@ export default function OrdersPage() {
   const [actionError, setActionError] = useState("");
   const [actionNotice, setActionNotice] = useState("");
 
-  useEffect(() => {
-    if (loading) return;
-    let cancelled = false;
+  const loadOrderData = useCallback(async () => {
+    const supabase = getSupabaseBrowserClient();
+    const result = await supabase
+      .from("book_orders")
+      .select("id, status, total_ngn, quantity, fez_tracking_url, fez_status, created_at")
+      .order("created_at", { ascending: false })
+      .limit(100);
 
-    async function loadRows() {
-      const supabase = getSupabaseBrowserClient();
-      const result = await supabase
-        .from("book_orders")
-        .select("id, status, total_ngn, quantity, fez_tracking_url, fez_status, created_at")
-        .order("created_at", { ascending: false })
-        .limit(100);
-
-      if (!cancelled && !result.error) {
-        setRows((result.data || []) as BookOrderRow[]);
-      }
-
-      const profileResult = await supabase
-        .from("donor_accounts")
-        .select("full_name")
-        .eq("email", email)
-        .maybeSingle();
-
-      if (!cancelled && !profileResult.error) {
-        const name = String((profileResult.data as { full_name?: string } | null)?.full_name || "");
-        setFullName(name);
-      }
+    if (!result.error) {
+      setRows((result.data || []) as BookOrderRow[]);
     }
 
-    loadRows().catch(() => null);
-    return () => {
-      cancelled = true;
-    };
-  }, [loading, email]);
+    const profileResult = await supabase
+      .from("donor_accounts")
+      .select("full_name")
+      .eq("email", email)
+      .maybeSingle();
+
+    if (!profileResult.error) {
+      const name = String((profileResult.data as { full_name?: string } | null)?.full_name || "");
+      setFullName(name);
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (loading) return;
+    loadOrderData().catch(() => null);
+  }, [loading, loadOrderData]);
 
   async function handleOrderBook() {
     setActionError("");
@@ -128,6 +123,7 @@ export default function OrdersPage() {
       }
 
       setActionNotice("Thank you. Your order payment was successful.");
+      await loadOrderData();
       window.history.replaceState({}, "", "/account/orders");
     }
 
@@ -140,7 +136,7 @@ export default function OrdersPage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [loadOrderData]);
 
   useEffect(() => {
     if (!actionError && !actionNotice) return;

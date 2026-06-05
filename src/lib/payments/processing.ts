@@ -1,7 +1,10 @@
 import { randomBytes } from "crypto";
+import { sendBookShipmentCreatedEmail } from "@/lib/book-orders/email";
+import { sendDonationThankYouEmail } from "@/lib/donations/email";
 import { env } from "@/lib/env";
 import { sendTransactionalEmail } from "@/lib/email";
 import { createFezShipment, isFezConfigured } from "@/lib/fez/client";
+import { runNotificationOnce } from "@/lib/notification-events";
 import { getSupabaseAdminClient } from "@/lib/supabase/admin";
 
 type TransactionData = {
@@ -227,6 +230,31 @@ export async function storePaymentFromVerifiedTransaction(tx: TransactionData) {
       if (subscriptionError) throw new Error(subscriptionError.message);
     }
 
+    try {
+      await runNotificationOnce(
+        `notification:donation_thank_you:${reference}`,
+        "notification.donation_thank_you",
+        { reference, email, amountMajor, currency, interval, subscriptionCode },
+        () =>
+          sendDonationThankYouEmail({
+            to: email,
+            fullName,
+            amountMajor,
+            currency,
+            interval,
+            reference,
+            paidAt,
+            subscriptionCode,
+          }),
+      );
+    } catch (error) {
+      console.error("[Email] Donation thank-you email failed.", {
+        reference,
+        email,
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+
     return {
       kind: "donation" as const,
       accountCreated,
@@ -283,7 +311,33 @@ export async function storePaymentFromVerifiedTransaction(tx: TransactionData) {
             fez_status: shipment.status || "pending",
           })
           .eq("id", String(orderRow.id));
-      } catch {
+
+        try {
+          await runNotificationOnce(
+            `notification:book_shipment_created:${shipment.trackingId}`,
+            "notification.book_shipment_created",
+            { reference, email, trackingId: shipment.trackingId },
+            () =>
+              sendBookShipmentCreatedEmail({
+                to: email,
+                trackingId: shipment.trackingId,
+                trackingUrl: shipment.trackingUrl || null,
+              }),
+          );
+        } catch (error) {
+          console.error("[Email] Book shipment-created email failed.", {
+            reference,
+            email,
+            trackingId: shipment.trackingId,
+            error: error instanceof Error ? error.message : String(error),
+          });
+        }
+      } catch (error) {
+        console.error("[FEZ] Automatic shipment creation failed for paid book order.", {
+          orderId: String(orderRow.id),
+          reference,
+          error: error instanceof Error ? error.message : String(error),
+        });
         await admin
           .from("book_orders")
           .update({

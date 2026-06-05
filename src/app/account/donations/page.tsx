@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AccountWorkspaceShell } from "@/components/account/workspace-shell";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useAccountSession } from "@/lib/supabase/use-account-session";
@@ -34,48 +34,43 @@ export default function DonationsPage() {
   const [actionNotice, setActionNotice] = useState("");
   const [disablingId, setDisablingId] = useState("");
 
-  useEffect(() => {
-    if (loading) return;
-    let cancelled = false;
+  const loadDonationData = useCallback(async () => {
+    const supabase = getSupabaseBrowserClient();
+    const result = await supabase
+      .from("donations")
+      .select("id, amount_major, currency, donation_interval, status, created_at")
+      .order("created_at", { ascending: false })
+      .limit(100);
 
-    async function loadRows() {
-      const supabase = getSupabaseBrowserClient();
-      const result = await supabase
-        .from("donations")
-        .select("id, amount_major, currency, donation_interval, status, created_at")
-        .order("created_at", { ascending: false })
-        .limit(100);
-
-      if (!cancelled && !result.error) {
-        setRows((result.data || []) as DonationRow[]);
-      }
-
-      const subscriptionsResult = await supabase
-        .from("subscriptions")
-        .select("id, subscription_code, status, next_payment_date")
-        .order("created_at", { ascending: false })
-        .limit(50);
-      if (!cancelled && !subscriptionsResult.error) {
-        setSubscriptions((subscriptionsResult.data || []) as SubscriptionRow[]);
-      }
-
-      const profileResult = await supabase
-        .from("donor_accounts")
-        .select("full_name")
-        .eq("email", email)
-        .maybeSingle();
-
-      if (!cancelled && !profileResult.error) {
-        const name = String((profileResult.data as { full_name?: string } | null)?.full_name || "");
-        setFullName(name);
-      }
+    if (!result.error) {
+      setRows((result.data || []) as DonationRow[]);
     }
 
-    loadRows().catch(() => null);
-    return () => {
-      cancelled = true;
-    };
-  }, [loading, email]);
+    const subscriptionsResult = await supabase
+      .from("subscriptions")
+      .select("id, subscription_code, status, next_payment_date")
+      .order("created_at", { ascending: false })
+      .limit(50);
+    if (!subscriptionsResult.error) {
+      setSubscriptions((subscriptionsResult.data || []) as SubscriptionRow[]);
+    }
+
+    const profileResult = await supabase
+      .from("donor_accounts")
+      .select("full_name")
+      .eq("email", email)
+      .maybeSingle();
+
+    if (!profileResult.error) {
+      const name = String((profileResult.data as { full_name?: string } | null)?.full_name || "");
+      setFullName(name);
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (loading) return;
+    loadDonationData().catch(() => null);
+  }, [loading, loadDonationData]);
 
   async function handleDonate() {
     setActionError("");
@@ -170,6 +165,8 @@ export default function DonationsPage() {
       }
 
       setActionNotice(json.result?.recurring ? "Thank you. Your recurring donation is active." : "Thank you. Your donation was successful.");
+      await loadDonationData();
+      window.history.replaceState({}, "", "/account/donations");
     }
 
     completePayment().catch(() => {
@@ -178,7 +175,7 @@ export default function DonationsPage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [loadDonationData]);
 
   if (loading) {
     return (

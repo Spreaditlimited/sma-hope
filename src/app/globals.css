@@ -12,7 +12,7 @@
   --accent-gold: #d88a00;
   --accent-green: #5a8c2b;
   --accent-rose: #931a63;
-  --max-width: min(1120px, 92vw);
+  --max-width: min(1280px, 94vw);
 }
 
 * {
@@ -56,6 +56,28 @@ a {
 .container {
   width: var(--max-width);
   margin-inline: auto;
+}
+
+.content-page-bg main.container {
+  max-width: min(1280px, 94vw) !important;
+}
+
+.content-page-bg .max-w-5xl,
+.content-page-bg .max-w-6xl {
+  max-width: min(1280px, 100%) !important;
+}
+
+.content-page-bg .max-w-4xl {
+  max-width: min(1120px, 100%) !important;
+}
+
+.content-page-bg .max-w-3xl {
+  max-width: min(920px, 100%) !important;
+}
+
+.content-page-bg .grid.max-w-4xl,
+.content-page-bg .grid.max-w-5xl {
+  max-width: min(1220px, 100%) !important;
 }
 
 .site-header {

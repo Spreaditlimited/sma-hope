@@ -31,6 +31,8 @@ export default function AdminBookOrdersPage() {
   const [query, setQuery] = useState("");
   const [rows, setRows] = useState<OrderRow[]>([]);
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+  const [retryingOrderId, setRetryingOrderId] = useState("");
 
   useEffect(() => {
     if (loading) return;
@@ -46,6 +48,43 @@ export default function AdminBookOrdersPage() {
       cancelled = true;
     };
   }, [loading, range, query]);
+
+  async function handleRetryFez(row: OrderRow) {
+    setError("");
+    setMessage("");
+    setRetryingOrderId(row.id);
+
+    try {
+      const result = await adminFetch<{
+        ok: boolean;
+        orderId: string;
+        fez_tracking_id: string | null;
+        fez_tracking_url: string | null;
+        fez_status: string | null;
+      }>("/api/admin/book-orders/retry-fez", {
+        method: "POST",
+        body: JSON.stringify({ orderId: row.id }),
+      });
+
+      setRows((current) =>
+        current.map((item) =>
+          item.id === row.id
+            ? {
+                ...item,
+                fez_tracking_id: result.fez_tracking_id,
+                fez_tracking_url: result.fez_tracking_url,
+                fez_status: result.fez_status,
+              }
+            : item,
+        ),
+      );
+      setMessage("FEZ order created successfully.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to retry FEZ order creation.");
+    } finally {
+      setRetryingOrderId("");
+    }
+  }
 
   if (loading) {
     return (
@@ -129,6 +168,16 @@ export default function AdminBookOrdersPage() {
           </div>
         )}
 
+        {message && (
+          <div className="rounded-2xl bg-emerald-50 p-4 border border-emerald-100 flex items-start gap-3">
+            <svg className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <div className="flex-1">
+              <h3 className="text-sm font-medium text-emerald-800">FEZ retry completed</h3>
+              <p className="mt-1 text-sm text-emerald-700">{message}</p>
+            </div>
+          </div>
+        )}
+
         {/* Data Table */}
         <div className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-900/5">
           <div className="overflow-x-auto">
@@ -141,12 +190,14 @@ export default function AdminBookOrdersPage() {
                   <th scope="col" className="px-6 py-4">Delivery Status</th>
                   <th scope="col" className="px-6 py-4">Fez Tracking</th>
                   <th scope="col" className="px-6 py-4">Payment Ref</th>
+                  <th scope="col" className="px-6 py-4">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {rows.map((row) => {
                   const isPaid = row.status.toLowerCase() === 'success' || row.status.toLowerCase() === 'paid';
                   const isPendingDelivery = !row.fez_status || row.fez_status.toLowerCase() === 'pending';
+                  const canRetryFez = isPaid && !row.fez_tracking_id;
 
                   return (
                     <tr key={row.id} className="hover:bg-gray-50/50 transition-colors group">
@@ -243,6 +294,22 @@ export default function AdminBookOrdersPage() {
                           {row.paystack_reference}
                         </span>
                       </td>
+
+                      {/* Actions */}
+                      <td className="px-6 py-5 align-top whitespace-nowrap">
+                        {canRetryFez ? (
+                          <button
+                            type="button"
+                            className="inline-flex items-center justify-center rounded-lg bg-[#0f557f] px-3 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#0c4669] disabled:cursor-not-allowed disabled:opacity-60"
+                            onClick={() => handleRetryFez(row)}
+                            disabled={retryingOrderId === row.id}
+                          >
+                            {retryingOrderId === row.id ? "Retrying..." : "Retry FEZ"}
+                          </button>
+                        ) : (
+                          <span className="text-xs text-gray-400">—</span>
+                        )}
+                      </td>
                     </tr>
                   );
                 })}
@@ -250,7 +317,7 @@ export default function AdminBookOrdersPage() {
                 {/* Empty State */}
                 {!rows.length && (
                   <tr>
-                    <td colSpan={6} className="px-6 py-20 text-center">
+                    <td colSpan={7} className="px-6 py-20 text-center">
                       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-50 mb-4 ring-1 ring-gray-100">
                         <svg className="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
                       </div>
