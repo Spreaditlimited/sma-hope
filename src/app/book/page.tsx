@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 import { ContentPageBg } from "@/components/content-page-bg";
+import { BookPreorderSignup } from "@/components/book-preorder-signup";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -24,7 +25,7 @@ export default function BookPage() {
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
           <div className="lg:col-span-7 space-y-6">
             <span className="inline-block px-3 py-1 text-sm font-semibold text-[var(--primary)] bg-[#e7f2fb] border border-[#c9ddec] rounded-full">
-              Pre-order now
+              Pre-order opens soon
             </span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
               When Every Breath Matters
@@ -150,12 +151,11 @@ export default function BookPage() {
             </p>
             <div className="h-8" aria-hidden="true" />
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Link 
-                href="/order-book" 
-                className="btn btn-primary w-full sm:w-auto"
-              >
-                Buy the Book
-              </Link>
+              <BookPreorderSignup
+                disabledButtonLabel="Buy the Book"
+                disabledButtonClassName="btn btn-primary w-full sm:w-auto"
+                disabledButtonFullWidth
+              />
               <Link 
                 href="/donate" 
                 className="btn btn-secondary w-full sm:w-auto"

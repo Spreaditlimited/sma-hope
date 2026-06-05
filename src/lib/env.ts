@@ -41,8 +41,8 @@ export const env = {
   fezPublicTrackingUrlTemplate: process.env.FEZ_PUBLIC_TRACKING_URL_TEMPLATE || "",
   fezWebhookToken: process.env.FEZ_WEBHOOK_TOKEN || "",
   fezSyncSecret: process.env.FEZ_SYNC_SECRET || "",
-  flodeskApiKey: process.env.FLODESK_API_KEY || "",
-  flodeskSegmentId: process.env.FLODESK_SEGMENT_ID || "",
+  brevoApiKey: process.env.BREVO_API_KEY || "",
+  brevoListId: process.env.BREVO_LIST_ID || process.env.BREVO_LISt_ID || "",
 };
 
 export function hasSanityConfig() {

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { upsertFlodeskSubscriber } from "@/lib/flodesk";
+import { upsertBrevoSubscriber } from "@/lib/brevo";
 
 type NewsletterPayload = {
   name?: string;
@@ -39,18 +39,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
   }
 
-  const segmentId = process.env.FLODESK_SEGMENT_ID?.trim() || "69b98abb2fc82aecc49f7094";
+  const listId = Number((process.env.BREVO_LIST_ID || process.env.BREVO_LISt_ID || "").trim());
   const { firstName, lastName } = splitName(payload.name);
 
-  const flodeskResult = await upsertFlodeskSubscriber({
+  const brevoResult = await upsertBrevoSubscriber({
     email,
     firstName,
     lastName,
-    segmentId,
+    listId,
   });
 
-  if (!flodeskResult.ok) {
-    console.error("Flodesk subscribe failed:", flodeskResult.error);
+  if (!brevoResult.ok) {
+    console.error("Brevo subscribe failed:", brevoResult.error);
     return NextResponse.json({ error: "Unable to subscribe right now. Please try again shortly." }, { status: 502 });
   }
 

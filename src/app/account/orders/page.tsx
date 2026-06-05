@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AccountWorkspaceShell } from "@/components/account/workspace-shell";
+import { BookPreorderSignup } from "@/components/book-preorder-signup";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useAccountSession } from "@/lib/supabase/use-account-session";
 
@@ -26,7 +27,6 @@ export default function OrdersPage() {
   const [address, setAddress] = useState("");
   const [deliveryArea, setDeliveryArea] = useState<"lagos" | "outside_lagos">("lagos");
   const [note, setNote] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [actionError, setActionError] = useState("");
   const [actionNotice, setActionNotice] = useState("");
 
@@ -56,49 +56,11 @@ export default function OrdersPage() {
 
   useEffect(() => {
     if (loading) return;
-    loadOrderData().catch(() => null);
+    const timeout = window.setTimeout(() => {
+      loadOrderData().catch(() => null);
+    }, 0);
+    return () => window.clearTimeout(timeout);
   }, [loading, loadOrderData]);
-
-  async function handleOrderBook() {
-    setActionError("");
-    setActionNotice("");
-    if (!fullName || !phone || !city || !stateValue || !address) {
-      setActionError("Please complete all required fields before continuing.");
-      return;
-    }
-
-    try {
-      setIsSubmitting(true);
-      const response = await fetch("/api/payments/book/paystack", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName,
-          email,
-          source: "account",
-          phone,
-          quantity,
-          city,
-          state: stateValue,
-          address,
-          deliveryArea,
-          note,
-        }),
-      });
-
-      const json = (await response.json().catch(() => null)) as
-        | { ok?: boolean; error?: string; authorizationUrl?: string }
-        | null;
-      if (!response.ok || !json?.ok || !json.authorizationUrl) {
-        setActionError(json?.error || "Unable to start checkout for this order.");
-        return;
-      }
-
-      window.location.assign(json.authorizationUrl);
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -211,7 +173,9 @@ export default function OrdersPage() {
           <div className="flex items-end justify-between gap-4">
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Order more copies</h2>
-              <p className="mt-1 text-sm text-gray-500">Place a new Nigeria hard-copy order from your account.</p>
+              <p className="mt-1 text-sm text-gray-500">
+                Pre-order opens soon. Join the email list and we will notify you when ordering is available.
+              </p>
             </div>
           </div>
 
@@ -242,9 +206,10 @@ export default function OrdersPage() {
           />
 
           <div className="mt-3">
-            <button type="button" className="btn btn-primary" onClick={handleOrderBook} disabled={isSubmitting}>
-              {isSubmitting ? "Starting..." : "Continue with Paystack"}
-            </button>
+            <BookPreorderSignup
+              disabledButtonLabel="Continue with Paystack"
+              disabledButtonClassName="btn cursor-not-allowed border border-gray-300 bg-gray-200 text-gray-500 shadow-none hover:bg-gray-200"
+            />
           </div>
         </section>
 
