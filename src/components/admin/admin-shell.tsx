@@ -35,8 +35,12 @@ export function AdminShell({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    setCollapsed(window.localStorage.getItem("admin_sidebar_collapsed") === "1");
-    setSidebarReady(true);
+    const frame = window.requestAnimationFrame(() => {
+      setCollapsed(window.localStorage.getItem("admin_sidebar_collapsed") === "1");
+      setSidebarReady(true);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {

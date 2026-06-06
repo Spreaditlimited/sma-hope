@@ -29,7 +29,7 @@ body {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.65;
 }
 
@@ -38,7 +38,7 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-family: "Manrope", "Inter", sans-serif;
+  font-family: var(--font-manrope), var(--font-inter), sans-serif;
   letter-spacing: -0.02em;
   line-height: 1.2;
   font-weight: 800;
@@ -112,7 +112,7 @@ a {
 }
 
 .brand-text {
-  font-family: "Manrope", "Inter", sans-serif;
+  font-family: var(--font-manrope), var(--font-inter), sans-serif;
   font-weight: 700;
   font-size: 1.03rem;
 }
@@ -180,6 +180,10 @@ a {
 }
 
 @media (max-width: 640px) {
+  .brand-link {
+    margin-left: 0.35rem;
+  }
+
   .brand-link img {
     height: 3.2rem !important;
   }
@@ -689,7 +693,7 @@ a {
 
 .book-showcase-title {
   margin: 0;
-  font-family: "Manrope", "Inter", sans-serif;
+  font-family: var(--font-manrope), var(--font-inter), sans-serif;
   font-size: 1.08rem;
   font-weight: 800;
   color: #123b57;

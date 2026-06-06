@@ -64,7 +64,11 @@ export function useAdminSession(): AdminSession {
     let cancelled = false;
     const cached = getCachedAdminSession();
     if (cached) {
-      setState({ loading: false, email: cached.email, role: cached.role });
+      window.queueMicrotask(() => {
+        if (!cancelled) {
+          setState({ loading: false, email: cached.email, role: cached.role });
+        }
+      });
     }
 
     async function load() {
