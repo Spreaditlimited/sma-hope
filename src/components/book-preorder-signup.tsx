@@ -93,7 +93,7 @@ export function BookPreorderSignup({
 
       {isOpen ? (
         <div
-          className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto bg-slate-950/45 px-4 pb-6 pt-28 backdrop-blur-sm sm:items-center sm:py-8"
+          className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto bg-slate-950/45 px-4 pb-6 pt-32 backdrop-blur-sm sm:items-center sm:py-8"
           role="presentation"
           onClick={() => setIsOpen(false)}
         >
@@ -111,7 +111,7 @@ export function BookPreorderSignup({
               </h2>
             </div>
 
-            <form className="space-y-4 px-6 py-6" onSubmit={handleSubmit} noValidate>
+            <form className="space-y-4 px-6 py-5" onSubmit={handleSubmit} noValidate>
               <p className="text-sm leading-6 text-slate-600">
                 Leave your name and email address. We will let you know when pre-order opens for
                 <span className="font-semibold text-slate-900"> When Every Breath Matters</span>.
@@ -127,30 +127,28 @@ export function BookPreorderSignup({
               />
 
               <div>
-                <label htmlFor="book-preorder-name" className="block text-sm font-semibold text-slate-800">
-                  Name
-                </label>
                 <input
                   id="book-preorder-name"
                   name="name"
                   type="text"
                   required
                   autoComplete="name"
-                  className="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition focus:border-[#0f557f] focus:ring-2 focus:ring-[#0f557f]/20"
+                  aria-label="Name"
+                  placeholder="Name"
+                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-[#0f557f] focus:ring-2 focus:ring-[#0f557f]/20"
                 />
               </div>
 
               <div>
-                <label htmlFor="book-preorder-email" className="block text-sm font-semibold text-slate-800">
-                  Email address
-                </label>
                 <input
                   id="book-preorder-email"
                   name="email"
                   type="email"
                   required
                   autoComplete="email"
-                  className="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition focus:border-[#0f557f] focus:ring-2 focus:ring-[#0f557f]/20"
+                  aria-label="Email address"
+                  placeholder="Email address"
+                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-[#0f557f] focus:ring-2 focus:ring-[#0f557f]/20"
                 />
               </div>
 
