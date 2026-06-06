@@ -97,16 +97,16 @@ export function CTASection({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           
           {/* Main CTA Text Area */}
-          <div className="lg:col-span-6 lg:max-w-xl lg:justify-self-end text-left space-y-5">
+          <div className="lg:col-span-6 lg:max-w-xl lg:justify-self-end text-center lg:text-left space-y-5">
             <h2 className="text-3xl md:text-4xl lg:text-[2.8rem] font-extrabold text-gray-900 tracking-tight">
               {headline}
             </h2>
-            <p className="text-lg md:text-[1.15rem] text-gray-700 leading-relaxed max-w-xl">
+            <p className="text-lg md:text-[1.15rem] text-gray-700 leading-relaxed max-w-xl mx-auto lg:mx-0">
               {body}
             </p>
             
             {/* Action Buttons (Native classes strictly maintained) */}
-            <div className="flex flex-wrap justify-start gap-4 mt-8">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
               <Link href={primary.href} className="btn cta-btn-primary">
                 {primary.label}
               </Link>
@@ -121,7 +121,7 @@ export function CTASection({
           {/* Newsletter Form Card */}
           <div className="lg:col-span-6 w-full max-w-xl mx-auto">
             <form 
-              className="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white/50 shadow-xl" 
+              className="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white/50 shadow-xl text-center lg:text-left" 
               onSubmit={handleSubmit} 
               noValidate
             >
@@ -142,7 +142,7 @@ export function CTASection({
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-1" htmlFor="cta-name">
+                  <label className="block text-left text-sm font-semibold text-gray-800 mb-1" htmlFor="cta-name">
                     Name
                   </label>
                   <input 
@@ -156,7 +156,7 @@ export function CTASection({
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-1" htmlFor="cta-email">
+                  <label className="block text-left text-sm font-semibold text-gray-800 mb-1" htmlFor="cta-email">
                     Email
                   </label>
                   <input 
