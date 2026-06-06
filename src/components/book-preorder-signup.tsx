@@ -93,7 +93,7 @@ export function BookPreorderSignup({
 
       {isOpen ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/45 px-4 py-8 backdrop-blur-sm"
+          className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto bg-slate-950/45 px-4 pb-6 pt-28 backdrop-blur-sm sm:items-center sm:py-8"
           role="presentation"
           onClick={() => setIsOpen(false)}
         >
