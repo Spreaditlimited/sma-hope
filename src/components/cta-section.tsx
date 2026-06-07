@@ -100,14 +100,14 @@ export function CTASection({
               style={{ backgroundImage: `url(${ctaBackgroundImage})` }}
             />
             
-            <div className="relative z-10 max-w-2xl mx-auto text-center">
+            <div className="relative z-10 w-full max-w-[44rem] mx-auto text-center">
               <div className="w-10 h-1 bg-[var(--accent-gold)] rounded-full mb-6 mx-auto"></div>
               
-              <h2 className="text-3xl md:text-4xl lg:text-[2.35rem] xl:text-[2.6rem] font-extrabold text-[#102637] tracking-tight mb-5 text-balance leading-[1.12]">
+              <h2 className="text-3xl md:text-4xl lg:text-[2.25rem] xl:text-[2.45rem] font-extrabold text-[#102637] tracking-tight mb-5 leading-[1.12]">
                 {headline}
               </h2>
               
-              <p className="text-base md:text-lg text-[#42586a] leading-relaxed mb-8 max-w-xl mx-auto text-balance">
+              <p className="text-base md:text-lg text-[#42586a] leading-relaxed mb-8 max-w-[40rem] mx-auto">
                 {body}
               </p>
               

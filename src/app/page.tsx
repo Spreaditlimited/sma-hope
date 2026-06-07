@@ -41,7 +41,7 @@ function HeroSection() {
             </div>
 
             {/* Refined Actions */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="hidden lg:flex flex-col sm:flex-row gap-4 pt-4">
               <Link href="/what-is-sma" className="btn btn-primary px-8 py-3.5 text-[0.95rem] shadow-[0_12px_30px_rgba(15,85,127,0.22)] hover:-translate-y-0.5 transition-transform text-center">
                 Learn About SMA
               </Link>
@@ -52,7 +52,7 @@ function HeroSection() {
           </div>
 
           {/* Right: Editorial Media Treatment */}
-          <div className="lg:col-span-6 relative mt-8 lg:mt-0">
+          <div className="lg:col-span-6 relative mt-0 lg:mt-0">
             {/* Soft decorative backdrop angle */}
             <div className="absolute -inset-4 bg-gradient-to-tr from-[var(--primary)] to-[var(--primary-strong)] rounded-[2rem] transform rotate-3 opacity-[0.06]"></div>
             
@@ -84,6 +84,15 @@ function HeroSection() {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="lg:hidden flex flex-col sm:flex-row gap-4 pt-2">
+            <Link href="/what-is-sma" className="btn btn-primary px-8 py-3.5 text-[0.95rem] shadow-[0_12px_30px_rgba(15,85,127,0.22)] hover:-translate-y-0.5 transition-transform text-center">
+              Learn About SMA
+            </Link>
+            <Link href="/donate" className="btn btn-secondary bg-white px-8 py-3.5 text-[0.95rem] border-[#d9e1e6] shadow-[0_4px_14px_rgba(0,0,0,0.03)] hover:border-[var(--primary)] hover:bg-[#f8fcfd] hover:-translate-y-0.5 transition-all text-center">
+              Support the Foundation
+            </Link>
           </div>
         </div>
       </div>
