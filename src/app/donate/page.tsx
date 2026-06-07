@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { DonationOptions } from "@/components/donation-options";
 import { ContentPageBg } from "@/components/content-page-bg";
@@ -96,7 +97,11 @@ export default function DonatePage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">There Are Other Ways to Support</h2>
               <p>Not everyone will support in the same way, and that is fine. Below are ways you can support:</p>
               <ul className="list-disc pl-6 space-y-2 marker:text-gray-400">
-                <li>buying the book</li>
+                <li>
+                  <Link href="/book" className="font-semibold text-[var(--primary-strong)] underline decoration-2 underline-offset-4 hover:text-[var(--primary)]">
+                    buying the book
+                  </Link>
+                </li>
                 <li>sharing awareness content</li>
                 <li>telling others about SMA Hope Foundation Nigeria</li>
                 <li>partnering with the foundation</li>

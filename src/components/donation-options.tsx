@@ -12,6 +12,7 @@ export function DonationOptions() {
   const searchParams = useSearchParams();
   const [location, setLocation] = useState<Location>("nigeria");
   const [amount, setAmount] = useState<number>(nigeriaSuggested[1]);
+  const [customAmount, setCustomAmount] = useState("");
   const [interval, setInterval] = useState<"one_time" | "monthly">("one_time");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,10 +36,11 @@ export function DonationOptions() {
     }
     setLocation(next);
     setAmount(next === "nigeria" ? nigeriaSuggested[1] : intlSuggested[1]);
+    setCustomAmount("");
     setErrorMessage("");
   }
 
-    async function handleCheckout() {
+  async function handleCheckout() {
     setErrorMessage("");
     if (!fullName.trim()) {
       setErrorMessage("Full name is required.");
@@ -217,11 +219,14 @@ export function DonationOptions() {
               key={value}
               type="button"
               className={`py-3 rounded-xl font-bold text-lg transition-all border ${
-                amount === value
+                !customAmount && amount === value
                   ? "bg-[#eaf4fb] border-[var(--primary)] text-[var(--primary-strong)] ring-1 ring-[var(--primary)]"
                   : "bg-white border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50 shadow-sm"
               }`}
-              onClick={() => setAmount(value)}
+              onClick={() => {
+                setAmount(value);
+                setCustomAmount("");
+              }}
             >
               {symbol}{value.toLocaleString()}
             </button>
@@ -239,9 +244,10 @@ export function DonationOptions() {
             pattern="[0-9]*"
             className={`${inputClass} !pl-14`}
             placeholder="Other amount"
-            value={suggested.includes(amount) ? "" : amount || ""}
+            value={customAmount}
             onChange={(event) => {
               const digitsOnly = event.target.value.replace(/[^\d]/g, "");
+              setCustomAmount(digitsOnly);
               setAmount(Number(digitsOnly || 0));
             }}
           />

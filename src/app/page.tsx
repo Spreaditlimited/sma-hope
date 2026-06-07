@@ -300,7 +300,13 @@ export default async function HomePage() {
                     </div>
 
                     <h3 className="font-bold text-[#102637] text-xl mb-3">
-                      {item.title}
+                      {item.title === "Support the Foundation" || item.title === "Buy the Book" ? (
+                        <Link href={item.title === "Support the Foundation" ? "/donate" : "/book"} className="text-[var(--primary-strong)] underline decoration-2 underline-offset-4 hover:text-[var(--primary)]">
+                          {item.title}
+                        </Link>
+                      ) : (
+                        item.title
+                      )}
                     </h3>
                     <p className="text-[#42586a] text-sm md:text-base leading-relaxed">
                       {item.desc}
