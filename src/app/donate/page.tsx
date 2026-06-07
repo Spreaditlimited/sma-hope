@@ -19,7 +19,7 @@ export default function DonatePage() {
         backgroundImage="/home/home-trust-transparency.png"
       />
 
-      <main className="container mx-auto px-4 py-12 md:py-20 max-w-5xl">
+      <main className="container mx-auto px-4 py-12 md:py-20 max-w-6xl">
         <div className="space-y-16 md:space-y-24">
           
           {/* INTRO SECTION */}
@@ -91,9 +91,8 @@ export default function DonatePage() {
             </div>
           </section>
 
-          {/* ROW 3: DONATION WIDGET & OTHER WAYS TO SUPPORT */}
-          <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-5xl mx-auto items-start">
-            <div className="lg:col-span-5 prose prose-lg text-gray-700">
+          {/* ROW 3: OTHER WAYS TO SUPPORT */}
+          <section className="max-w-4xl mx-auto prose prose-lg text-gray-700">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">There Are Other Ways to Support</h2>
               <p>Not everyone will support in the same way, and that is fine. Below are ways you can support:</p>
               <ul className="list-disc pl-6 space-y-2 marker:text-gray-400">
@@ -103,10 +102,11 @@ export default function DonatePage() {
                 <li>partnering with the foundation</li>
                 <li>helping more people understand what SMA really means for families</li>
               </ul>
-            </div>
+          </section>
 
-            <div className="lg:col-span-7 bg-white pt-6 px-6 pb-0 md:pt-8 md:px-8 md:pb-0 rounded-2xl border border-gray-200 shadow-md">
-              {/* External Donation Component handles its own styling */}
+          {/* DONATION FORM */}
+          <section className="max-w-4xl mx-auto">
+            <div className="bg-white p-6 md:p-10 rounded-[2rem] border border-gray-200 shadow-[0_20px_60px_rgba(16,37,55,0.06)]">
               <Suspense fallback={<p className="text-sm text-gray-600">Loading donation options...</p>}>
                 <DonationOptions />
               </Suspense>

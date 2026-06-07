@@ -22,28 +22,34 @@ export function DonationOptions() {
     title: string;
     message: string;
   } | null>(null);
+
   const isNigeria = location === "nigeria";
   const suggested = isNigeria ? nigeriaSuggested : intlSuggested;
   const currency: "NGN" | "USD" = isNigeria ? "NGN" : "USD";
   const symbol = isNigeria ? "₦" : "$";
 
   function handleLocationChange(next: Location) {
-    setLocation(next);
-    setAmount(next === "nigeria" ? nigeriaSuggested[1] : intlSuggested[1]);
-  }
-
-  async function handleCheckout() {
-    setErrorMessage("");
-    if (!internationalDonationsEnabled && location === "international") {
+    if (!internationalDonationsEnabled && next === "international") {
       setErrorMessage("International donations in USD are coming soon. Please check back shortly.");
       return;
     }
+    setLocation(next);
+    setAmount(next === "nigeria" ? nigeriaSuggested[1] : intlSuggested[1]);
+    setErrorMessage("");
+  }
+
+    async function handleCheckout() {
+    setErrorMessage("");
+    if (!fullName.trim()) {
+      setErrorMessage("Full name is required.");
+      return;
+    }
     if (!email.trim()) {
-      setErrorMessage("Email address is required.");
+      setErrorMessage("Email address is required for your receipt.");
       return;
     }
     if (!amount || amount <= 0) {
-      setErrorMessage("Enter a valid donation amount.");
+      setErrorMessage("Please enter a valid donation amount.");
       return;
     }
 
@@ -106,7 +112,7 @@ export function DonationOptions() {
 
       const payerName = String(json.result?.fullName || "").trim();
       setFeedbackModal({
-        title: payerName ? `Thank you ${payerName}` : json.result?.recurring ? "Recurring donation activated" : "Thank you",
+        title: payerName ? `Thank you, ${payerName}` : json.result?.recurring ? "Recurring donation activated" : "Thank you",
         message: "We are creating your donor account. You will be redirected shortly.",
       });
 
@@ -127,167 +133,210 @@ export function DonationOptions() {
     };
   }, [searchParams]);
 
+  // Premium Input Styling
+  const inputClass = "w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent outline-none transition-all shadow-sm font-medium";
+
   return (
-    <div className="donation-card">
-      <h3 className="donation-title">Choose how you wish to support</h3>
-      <p className="donation-intro">
-        Select your location first. We will show the right currency, suggested amounts, and payment provider.
-      </p>
-
-      <section className="donation-group">
-        <p className="donation-label">Location</p>
-        <div className="donation-location-grid">
-          <button
-            type="button"
-            className={`btn btn-secondary donation-chip ${isNigeria ? "is-active" : ""}`}
-            onClick={() => handleLocationChange("nigeria")}
-          >
-            I am in Nigeria
-          </button>
-          <button
-            type="button"
-            className={`btn btn-secondary donation-chip ${!isNigeria ? "is-active" : ""}`}
-            onClick={() => {
-              if (!internationalDonationsEnabled) {
-                setErrorMessage("International donations in USD are coming soon. Please check back shortly.");
-                return;
-              }
-              handleLocationChange("international");
-            }}
-            disabled={!internationalDonationsEnabled}
-          >
-            I am outside Nigeria {!internationalDonationsEnabled ? "(Coming soon)" : ""}
-          </button>
-        </div>
-      </section>
-
-      <section className="donation-group">
-        <p className="donation-provider">
-          Available provider: <strong>Paystack</strong>
+    <div className="w-full pb-8 flex flex-col space-y-8">
+      
+      {/* Header */}
+      <div>
+        <h2 className="text-2xl font-extrabold text-gray-900 mb-2">
+          Make a Donation
+        </h2>
+        <p className="text-gray-600 text-sm">
+          Select your location to see the correct currency and options.
         </p>
-        <p className="donation-currency-note">Suggested amounts in {currency}</p>
+      </div>
 
-        <div className="donation-amount-grid">
+      {/* Row 1: Segmented Controls (Location & Interval) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Location */}
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-gray-800">
+            Location
+          </label>
+          <div className="flex p-1 bg-gray-100 rounded-xl">
+            <button
+              type="button"
+              className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${
+                isNigeria ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
+              }`}
+              onClick={() => handleLocationChange("nigeria")}
+            >
+              Nigeria
+            </button>
+            <button
+              type="button"
+              className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${
+                !isNigeria ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
+              } ${!internationalDonationsEnabled ? "opacity-50 cursor-not-allowed" : ""}`}
+              onClick={() => handleLocationChange("international")}
+            >
+              Intl {!internationalDonationsEnabled ? "(Soon)" : ""}
+            </button>
+          </div>
+        </div>
+
+        {/* Interval */}
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-gray-800">
+            Donation Type
+          </label>
+          <div className="flex p-1 bg-gray-100 rounded-xl">
+            <button
+              type="button"
+              className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${
+                interval === "one_time" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
+              }`}
+              onClick={() => setInterval("one_time")}
+            >
+              One-time
+            </button>
+            <button
+              type="button"
+              className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${
+                interval === "monthly" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
+              }`}
+              onClick={() => setInterval("monthly")}
+            >
+              Monthly
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Row 2: Amount Grid */}
+      <div className="space-y-3">
+        <label className="block text-sm font-semibold text-gray-800">
+          Select Amount ({currency})
+        </label>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {suggested.map((value) => (
             <button
               key={value}
               type="button"
-              className={`btn btn-secondary donation-chip ${amount === value ? "is-active" : ""}`}
+              className={`py-3 rounded-xl font-bold text-lg transition-all border ${
+                amount === value
+                  ? "bg-[#eaf4fb] border-[var(--primary)] text-[var(--primary-strong)] ring-1 ring-[var(--primary)]"
+                  : "bg-white border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50 shadow-sm"
+              }`}
               onClick={() => setAmount(value)}
             >
-              {symbol}
-              {value.toLocaleString()}
+              {symbol}{value.toLocaleString()}
             </button>
           ))}
         </div>
-      </section>
-
-      <section className="donation-group">
-        <label htmlFor="amount" className="donation-label">
-          Custom amount ({currency})
-        </label>
-        <input
-          id="amount"
-          type="text"
-          inputMode="numeric"
-          pattern="[0-9]*"
-          value={String(amount)}
-          onChange={(event) => {
-            const digitsOnly = event.target.value.replace(/[^\d]/g, "");
-            setAmount(Number(digitsOnly || 0));
-          }}
-        />
-      </section>
-
-      <section className="donation-group">
-        <label htmlFor="donation-name" className="donation-label">
-          Full name (optional)
-        </label>
-        <input
-          id="donation-name"
-          type="text"
-          value={fullName}
-          onChange={(event) => setFullName(event.target.value)}
-          autoComplete="name"
-        />
-      </section>
-
-      <section className="donation-group">
-        <label htmlFor="donation-email" className="donation-label">
-          Email address
-        </label>
-        <input
-          id="donation-email"
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          required
-          autoComplete="email"
-        />
-      </section>
-
-      <section className="donation-group">
-        <p className="donation-label">Donation type</p>
-        <div className="donation-interval-picker" role="radiogroup" aria-label="Donation type">
-          <button
-            type="button"
-            role="radio"
-            aria-checked={interval === "one_time"}
-            className={`donation-interval-option ${interval === "one_time" ? "is-active" : ""}`}
-            onClick={() => setInterval("one_time")}
-          >
-            One-time support
-          </button>
-          <button
-            type="button"
-            role="radio"
-            aria-checked={interval === "monthly"}
-            className={`donation-interval-option ${interval === "monthly" ? "is-active" : ""}`}
-            onClick={() => setInterval("monthly")}
-          >
-            Recurring monthly support
-          </button>
+        
+        {/* Custom Amount */}
+        <div className="relative mt-2">
+          <span className="absolute left-4 top-1/2 flex w-6 -translate-y-1/2 items-center justify-center text-gray-500 font-bold text-lg pointer-events-none">
+            {symbol}
+          </span>
+          <input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            className={`${inputClass} !pl-14`}
+            placeholder="Other amount"
+            value={suggested.includes(amount) ? "" : amount || ""}
+            onChange={(event) => {
+              const digitsOnly = event.target.value.replace(/[^\d]/g, "");
+              setAmount(Number(digitsOnly || 0));
+            }}
+          />
         </div>
-      </section>
+      </div>
 
-      <div className="donation-actions">
+      {/* Row 3: Personal Details */}
+      <div className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <label htmlFor="donation-name" className="block text-sm font-semibold text-gray-800">
+              Name <span className="text-[var(--accent-rose)]">*</span>
+            </label>
+            <input
+              id="donation-name"
+              type="text"
+              className={inputClass}
+              value={fullName}
+              onChange={(event) => setFullName(event.target.value)}
+              required
+              autoComplete="name"
+            />
+          </div>
+          <div className="space-y-1">
+            <label htmlFor="donation-email" className="block text-sm font-semibold text-gray-800">
+              Email <span className="text-[var(--accent-rose)]">*</span>
+            </label>
+            <input
+              id="donation-email"
+              type="email"
+              className={inputClass}
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              required
+              autoComplete="email"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Notices */}
+      {(paymentNotice || errorMessage) && (
+        <div className={`p-4 rounded-xl text-sm font-medium border ${
+          errorMessage ? "bg-red-50 border-red-200 text-red-700" : "bg-[#eaf4fb] border-[#dce8f2] text-[#0c4669]"
+        }`}>
+          {errorMessage || paymentNotice}
+        </div>
+      )}
+
+      {/* Submit Section */}
+      <div className="pt-2">
         <button
           type="button"
-          className="btn btn-primary donation-submit"
+          className="w-full py-4 rounded-xl btn-primary text-white font-bold text-lg shadow-[0_8px_20px_rgba(15,85,127,0.2)] hover:-translate-y-0.5 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           onClick={handleCheckout}
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Starting Checkout..." : "Continue with Paystack"}
+          {isSubmitting ? "Starting Checkout..." : `Donate ${symbol}${(amount || 0).toLocaleString()}`}
         </button>
+        
+        <div className="mt-4 flex items-center justify-center gap-2 text-gray-500 text-xs font-medium">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          Secure payments processed by Paystack
+        </div>
       </div>
 
-      {paymentNotice ? <p className="donation-footnote" style={{ color: "#0c4669" }}>{paymentNotice}</p> : null}
-      {errorMessage ? <p className="donation-footnote" style={{ color: "#9b1c1c" }}>{errorMessage}</p> : null}
-
-      <div style={{ textAlign: "center" }}>
-        <p className="donation-footnote">Payments in Nigeria are processed in NGN through Paystack.</p>
-        <p className="donation-footnote">Secure payments powered by Paystack.</p>
-      </div>
-
-      {feedbackModal ? (
-        <div className="cta-modal-backdrop" role="presentation" onClick={() => setFeedbackModal(null)}>
+      {/* Success Modal */}
+      {feedbackModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/40 backdrop-blur-sm p-4 transition-opacity" role="presentation" onClick={() => setFeedbackModal(null)}>
           <div
-            className="cta-modal card"
+            className="bg-white p-8 md:p-10 rounded-3xl shadow-2xl max-w-sm w-full text-center border border-gray-100 transform transition-all scale-100 opacity-100"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="donation-modal-title"
+            aria-labelledby="modal-title"
             onClick={(event) => event.stopPropagation()}
           >
-            <h3 id="donation-modal-title" className="cta-modal-title">
+            <div className="w-16 h-16 bg-[#eaf4fb] rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 id="modal-title" className="text-2xl font-extrabold text-gray-900 mb-2">
               {feedbackModal.title}
             </h3>
-            <p style={{ margin: "0.65rem 0 0", color: "var(--text-soft)" }}>{feedbackModal.message}</p>
-            <button type="button" className="btn cta-modal-btn" onClick={() => setFeedbackModal(null)}>
+            <p className="text-gray-600 text-sm mb-8 leading-relaxed">
+              {feedbackModal.message}
+            </p>
+            <button type="button" className="btn btn-primary w-full py-3" onClick={() => setFeedbackModal(null)}>
               Close
             </button>
           </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }
