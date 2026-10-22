@@ -1,11 +1,11 @@
-import { randomBytes } from "crypto";
+
 import { sendBookShipmentCreatedEmail } from "@/lib/book-orders/email";
 import { sendDonationThankYouEmail } from "@/lib/donations/email";
 import { env } from "@/lib/env";
-import { sendTransactionalEmail } from "@/lib/email";
+import { ensureIdentity, sendSetupLink } from "@/lib/auth/provision";
 import { createFezShipment, isFezConfigured } from "@/lib/fez/client";
 import { runNotificationOnce } from "@/lib/notification-events";
-import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getDatabase } from "@/lib/database/store";
 
 type TransactionData = {
   id?: number;
@@ -24,111 +24,18 @@ function toMajorAmount(amountMinor: number) {
   return Math.round(amountMinor) / 100;
 }
 
-function generateTemporaryPassword() {
-  return `SMA-${randomBytes(8).toString("hex")}!`;
-}
-
-async function lookupAuthUserIdByEmail(email: string) {
-  const admin = getSupabaseAdminClient();
-  const { data, error } = await admin.auth.admin.listUsers({ page: 1, perPage: 1000 });
-  if (error) throw new Error(error.message);
-  const match = data.users.find((user) => user.email?.toLowerCase() === email.toLowerCase());
-  return match?.id || "";
-}
-
 async function findDonorAccountByEmail(email: string) {
-  const admin = getSupabaseAdminClient();
-  const { data, error } = await admin
-    .from("donor_accounts")
-    .select("id")
-    .eq("email", email.trim().toLowerCase())
-    .maybeSingle();
-  if (error) throw new Error(error.message);
-  return data?.id ? String(data.id) : "";
+  const result = await getDatabase().from("donor_accounts").select("id").eq("email",email.trim().toLowerCase()).maybeSingle();
+  if (result.error) throw new Error(result.error.message);
+  return String(result.data?.id || "");
 }
-
-export async function ensureDonorAccount(input: { email: string; fullName?: string }) {
+export async function ensureDonorAccount(input: {email:string;fullName?:string}) {
   const email = input.email.trim().toLowerCase();
-  const fullName = (input.fullName || "").trim();
-  const admin = getSupabaseAdminClient();
-
-  const { data: existing } = await admin
-    .from("donor_accounts")
-    .select("id, email, auth_user_id")
-    .eq("email", email)
-    .maybeSingle();
-
-  if (existing?.id) {
-    return { donorAccountId: String(existing.id), created: false, tempPassword: "" };
-  }
-
-  let authUserId = await lookupAuthUserIdByEmail(email);
-  let tempPassword = "";
-  let createdAuthUser = false;
-
-  if (!authUserId) {
-    tempPassword = generateTemporaryPassword();
-    const created = await admin.auth.admin.createUser({
-      email,
-      password: tempPassword,
-      email_confirm: true,
-      user_metadata: { full_name: fullName || undefined },
-    });
-
-    if (created.error) {
-      throw new Error(created.error.message);
-    }
-
-    authUserId = created.data.user.id;
-    createdAuthUser = true;
-  }
-
-  const { data: account, error: accountError } = await admin
-    .from("donor_accounts")
-    .upsert(
-      {
-        email,
-        full_name: fullName || null,
-        auth_user_id: authUserId || null,
-      },
-      { onConflict: "email" },
-    )
-    .select("id")
-    .single();
-
-  if (accountError) {
-    throw new Error(accountError.message);
-  }
-
-  if (createdAuthUser && tempPassword) {
-    const recovery = await admin.auth.admin.generateLink({
-      type: "recovery",
-      email,
-      options: {
-        redirectTo: `${env.siteUrl.replace(/\/$/, "")}/account/reset-password`,
-      },
-    });
-
-    const resetLink = recovery.data?.properties?.action_link || `${env.siteUrl.replace(/\/$/, "")}/account/reset-password`;
-
-    await sendTransactionalEmail({
-      to: email,
-      subject: "Your SMA Hope donor account is ready",
-      text: [
-        `Hello${fullName ? ` ${fullName}` : ""},`,
-        "",
-        "Thank you for your payment. We have created your donor account.",
-        `Temporary password: ${tempPassword}`,
-        "",
-        "Please sign in and reset your password immediately.",
-        `Password reset link: ${resetLink}`,
-        "",
-        `Login page: ${env.siteUrl.replace(/\/$/, "")}/account/login`,
-      ].join("\n"),
-    });
-  }
-
-  return { donorAccountId: String(account.id), created: createdAuthUser, tempPassword };
+  const identity = await ensureIdentity(email,input.fullName || "");
+  const result = await getDatabase().from("donor_accounts").upsert({email,auth_user_id:identity.id,...(input.fullName ? {full_name:input.fullName} : {})},{onConflict:"email"}).select("id").single();
+  if (result.error) throw new Error(result.error.message);
+  await runNotificationOnce(`notification:account_setup:${identity.id}`,"notification.account_setup",{},async()=>{await sendSetupLink(email);});
+  return {donorAccountId:String(result.data.id),created:identity.created};
 }
 
 export async function verifyPaystackTransaction(reference: string) {
@@ -172,7 +79,8 @@ export async function storePaymentFromVerifiedTransaction(tx: TransactionData) {
     throw new Error(`Transaction is not successful (status: ${status || "unknown"}).`);
   }
 
-  const admin = getSupabaseAdminClient();
+  if (!["donation","book_order"].includes(kind) || !Number.isFinite(amountMajor) || amountMajor <= 0 || !["NGN","USD"].includes(currency)) throw new Error("Unsupported payment details.");
+  const admin = getDatabase();
   let donorAccountId = "";
   let accountCreated = false;
 
@@ -364,7 +272,7 @@ export async function storePaymentFromVerifiedTransaction(tx: TransactionData) {
 }
 
 export async function recordPaymentEvent(eventKey: string, eventType: string, payload: Record<string, unknown>) {
-  const admin = getSupabaseAdminClient();
+  const admin = getDatabase();
   const { error } = await admin.from("payment_events").insert({
     event_key: eventKey,
     event_type: eventType,

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+umask 077
+backup_dir=/var/backups/smahope
+install -d -m 700 "$backup_dir"
+exec 9>/run/lock/smahope-backup.lock
+flock -n 9 || exit 0
+stamp=$(date -u +%Y%m%dT%H%M%SZ)
+partial="$backup_dir/smahope-$stamp.sql.gz.enc.partial"
+final="${partial%.partial}"
+trap 'rm -f -- "$partial"' EXIT
+mysqldump --defaults-file=/etc/mysql/debian.cnf --single-transaction --quick --skip-lock-tables --no-tablespaces --set-gtid-purged=OFF --hex-blob --routines --events --triggers smahope |
+  gzip -c |
+  openssl enc -aes-256-cbc -salt -pbkdf2 -iter 200000 -pass file:/etc/smahope-backup/encryption-key -out "$partial"
+test -s "$partial"
+mv -- "$partial" "$final"
+sha256sum "$final" > "$final.sha256"
+touch "$backup_dir/last-success"
+# Only this job's completed files are eligible for retention cleanup.
+find "$backup_dir" -maxdepth 1 -type f -name 'smahope-*.sql.gz.enc*' -mmin +43200 -delete
+printf 'SMA Hope encrypted backup completed: %s\n' "$stamp"

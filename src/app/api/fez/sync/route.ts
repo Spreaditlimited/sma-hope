@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { env } from "@/lib/env";
 import { getFezShipmentTracking, isFezConfigured } from "@/lib/fez/client";
-import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getDatabase } from "@/lib/database/store";
 
 type SyncRow = {
   id: string;
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "FEZ is not configured." }, { status: 503 });
   }
 
-  const admin = getSupabaseAdminClient();
+  const admin = getDatabase();
   const { data, error } = await admin
     .from("book_orders")
     .select("id, fez_tracking_id")

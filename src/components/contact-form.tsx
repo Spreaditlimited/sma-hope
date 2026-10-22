@@ -107,19 +107,19 @@ export function ContactForm() {
       <div className="grid-2">
         <div>
           <label htmlFor="fullName">Full name</label>
-          <input id="fullName" name="fullName" required />
+          <input id="fullName" name="fullName" autoComplete="name" required />
         </div>
         <div>
           <label htmlFor="email">Email address</label>
-          <input id="email" name="email" type="email" required />
+          <input id="email" name="email" autoComplete="email" type="email" required />
         </div>
         <div>
           <label htmlFor="phone">Phone number (optional)</label>
-          <input id="phone" name="phone" />
+          <input id="phone" name="phone" type="tel" autoComplete="tel" />
         </div>
         <div>
           <label htmlFor="organisation">Organisation name (optional)</label>
-          <input id="organisation" name="organisation" />
+          <input id="organisation" name="organisation" autoComplete="organization" />
         </div>
       </div>
       <div style={{ marginTop: "0.8rem" }}>
@@ -149,25 +149,8 @@ export function ContactForm() {
         {loading ? "Sending..." : "Send Message"}
       </button>
 
-      {feedbackModal ? (
-        <div className="cta-modal-backdrop" role="presentation" onClick={() => setFeedbackModal(null)}>
-          <div
-            className="cta-modal card"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="contact-modal-title"
-            onClick={(modalEvent) => modalEvent.stopPropagation()}
-          >
-            <h3 id="contact-modal-title" className="cta-modal-title">
-              {feedbackModal.title}
-            </h3>
-            <p style={{ margin: "0.65rem 0 0", color: "var(--text-soft)" }}>{feedbackModal.message}</p>
-            <button type="button" className="btn cta-modal-btn" onClick={() => setFeedbackModal(null)}>
-              Close
-            </button>
-          </div>
-        </div>
-      ) : null}
+      {feedbackModal && <div className={feedbackModal.type === "error" ? "form-error" : "auth-note"} role={feedbackModal.type === "error" ? "alert" : "status"}><strong>{feedbackModal.title}</strong><p>{feedbackModal.message}</p></div>}
+
     </form>
   );
 }

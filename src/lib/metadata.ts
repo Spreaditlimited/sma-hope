@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import { siteConfig, type MetadataConfig } from "@/lib/site";
 
-export function buildMetadata({ title, description, path = "" }: MetadataConfig): Metadata {
+export function buildMetadata({
+  title,
+  description,
+  path = "",
+  type = "website",
+  publishedTime,
+  modifiedTime,
+}: MetadataConfig): Metadata {
   const fullTitle = `${title} | ${siteConfig.shortName}`;
   const url = `${siteConfig.url}${path}`;
 
@@ -15,7 +22,8 @@ export function buildMetadata({ title, description, path = "" }: MetadataConfig)
       siteName: siteConfig.name,
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
       locale: "en_NG",
-      type: "website",
+      type,
+      ...(type === "article" ? { publishedTime, modifiedTime } : {}),
     },
     twitter: {
       card: "summary_large_image",

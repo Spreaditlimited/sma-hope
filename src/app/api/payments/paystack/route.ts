@@ -20,7 +20,10 @@ function toAbsoluteUrl(pathOrUrl: string) {
   return `${env.siteUrl.replace(/\/$/, "")}${pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`}`;
 }
 
-function isCurrencyAllowedForLocation(location: "nigeria" | "international", currency: "NGN" | "USD") {
+function isCurrencyAllowedForLocation(
+  location: "nigeria" | "international",
+  currency: "NGN" | "USD",
+) {
   if (location === "nigeria") return currency === "NGN";
   return currency === "USD";
 }
@@ -50,7 +53,10 @@ function parsePlanMap(raw: string): Map<number, string> {
 }
 
 function monthlyPlanCodeFor(currency: "NGN" | "USD", amount: number) {
-  const raw = currency === "NGN" ? env.paystackDonationMonthlyPlanCodesNgn : env.paystackDonationMonthlyPlanCodesUsd;
+  const raw =
+    currency === "NGN"
+      ? env.paystackDonationMonthlyPlanCodesNgn
+      : env.paystackDonationMonthlyPlanCodesUsd;
   const planMap = parsePlanMap(raw);
   const exactPlan = planMap.get(amount);
   if (exactPlan) {
@@ -64,7 +70,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        error: "Paystack is not configured yet. Add PAYSTACK_SECRET_KEY.",
+        error: "Online donations are temporarily unavailable. Please contact the foundation.",
       },
       { status: 503 },
     );
@@ -76,7 +82,9 @@ export async function POST(request: Request) {
   }
 
   const fullName = String(payload.fullName || "").trim();
-  const email = String(payload.email || "").trim().toLowerCase();
+  const email = String(payload.email || "")
+    .trim()
+    .toLowerCase();
   const location = payload.location === "international" ? "international" : "nigeria";
   const interval = payload.interval === "monthly" ? "monthly" : "one_time";
   const currency = payload.currency === "USD" ? "USD" : "NGN";
@@ -85,11 +93,17 @@ export async function POST(request: Request) {
   const minAmount = currency === "USD" ? env.paystackDonationUsdMin : env.paystackDonationNgnMin;
 
   if (!email || !isValidEmail(email)) {
-    return NextResponse.json({ ok: false, error: "A valid email address is required." }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "A valid email address is required." },
+      { status: 400 },
+    );
   }
 
   if (!Number.isFinite(amount) || amount <= 0) {
-    return NextResponse.json({ ok: false, error: "Donation amount must be greater than zero." }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "Donation amount must be greater than zero." },
+      { status: 400 },
+    );
   }
 
   if (amount < minAmount) {
@@ -115,19 +129,25 @@ export async function POST(request: Request) {
   const monthlyPlan = interval === "monthly" ? monthlyPlanCodeFor(currency, amount) : null;
   if (interval === "monthly" && !monthlyPlan?.code) {
     const amounts = monthlyPlan?.supportedAmounts || [];
-    const supportedText = amounts.length ? ` Supported amounts: ${amounts.join(", ")} ${currency}.` : "";
+    const supportedText = amounts.length
+      ? ` Supported amounts: ${amounts.join(", ")} ${currency}.`
+      : "";
     return NextResponse.json(
       {
         ok: false,
-        error: `Monthly donations are not configured for ${amount} ${currency}.${supportedText} Check PAYSTACK_DONATION_MONTHLY_PLAN_CODES_${currency}.`,
+        error: `Monthly donations are not configured for ${amount} ${currency}.${supportedText} Please choose a supported amount or a one-time donation.`,
       },
       { status: 400 },
     );
   }
 
   const amountMinor = Math.round(amount * 100);
-  const callbackUrl = toAbsoluteUrl(source === "account" ? "/account/donations?status=success" : env.paystackDonationSuccessUrl);
-  const cancelActionUrl = toAbsoluteUrl(source === "account" ? "/account/donations?status=cancelled" : env.paystackDonationCancelUrl);
+  const callbackUrl = toAbsoluteUrl(
+    source === "account" ? "/account/donations?status=success" : env.paystackDonationSuccessUrl,
+  );
+  const cancelActionUrl = toAbsoluteUrl(
+    source === "account" ? "/account/donations?status=cancelled" : env.paystackDonationCancelUrl,
+  );
   const initializePayload: Record<string, unknown> = {
     email,
     amount: amountMinor,
@@ -158,22 +178,24 @@ export async function POST(request: Request) {
     body: JSON.stringify(initializePayload),
   });
 
-  const json = (await response.json().catch(() => null)) as
-    | {
-        status?: boolean;
-        message?: string;
-        data?: {
-          authorization_url?: string;
-          access_code?: string;
-          reference?: string;
-        };
-      }
-    | null;
+  const json = (await response.json().catch(() => null)) as {
+    status?: boolean;
+    message?: string;
+    data?: {
+      authorization_url?: string;
+      access_code?: string;
+      reference?: string;
+    };
+  } | null;
 
   if (!response.ok || !json?.status || !json?.data?.authorization_url) {
     const message = String(json?.message || "");
     if (interval === "monthly" && monthlyPlan?.code && /plan not found/i.test(message)) {
-      const keyMode = env.paystackSecretKey.startsWith("sk_live_") ? "live" : env.paystackSecretKey.startsWith("sk_test_") ? "test" : "unknown";
+      const keyMode = env.paystackSecretKey.startsWith("sk_live_")
+        ? "live"
+        : env.paystackSecretKey.startsWith("sk_test_")
+          ? "test"
+          : "unknown";
       return NextResponse.json(
         {
           ok: false,

@@ -1,10 +1,1 @@
-import { NextResponse } from "next/server";
-
-export async function POST() {
-  return NextResponse.json({
-    ok: true,
-    type: "book",
-    provider: "stripe",
-    message: "Book checkout endpoint scaffold is ready.",
-  });
-}
+export async function POST() {return Response.json({ok:false,error:"This payment method is not available."},{status:503});}

@@ -7,12 +7,15 @@ async function fetchFromSanity<T>(query: string, params?: QueryParams): Promise<
 
   if (params) {
     for (const [key, value] of Object.entries(params)) {
-      searchParams.set(`$${key}`, String(value));
+      searchParams.set(`$${key}`, JSON.stringify(value));
     }
   }
 
   const url = `https://${env.sanityProjectId}.api.sanity.io/v${env.sanityApiVersion}/data/query/${env.sanityDataset}?${searchParams.toString()}`;
-  const response = await fetch(url, { next: { revalidate: 120 } });
+  const response = await fetch(url, {
+    next: { revalidate: 120 },
+    signal: AbortSignal.timeout(8000),
+  });
 
   if (!response.ok) {
     throw new Error("Sanity query failed");

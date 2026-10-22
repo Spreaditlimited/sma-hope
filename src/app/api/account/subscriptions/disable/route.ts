@@ -1,16 +1,12 @@
+import { requireAccount } from "@/lib/auth/server";
 import { NextResponse } from "next/server";
 import { env } from "@/lib/env";
-import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getDatabase } from "@/lib/database/store";
 
 type Payload = {
   subscriptionCode?: string;
 };
 
-function bearerTokenFromHeader(value: string) {
-  const [scheme, token] = value.split(" ");
-  if (scheme?.toLowerCase() !== "bearer" || !token) return "";
-  return token.trim();
-}
 
 export async function POST(request: Request) {
   if (!env.paystackSecretKey) {
@@ -23,20 +19,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "subscriptionCode is required." }, { status: 400 });
   }
 
-  const token = bearerTokenFromHeader(request.headers.get("authorization") || "");
-  if (!token) {
-    return NextResponse.json({ ok: false, error: "Missing authorization token." }, { status: 401 });
-  }
-
-  const admin = getSupabaseAdminClient();
-  const {
-    data: { user },
-    error: userError,
-  } = await admin.auth.getUser(token);
-
-  if (userError || !user) {
-    return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
-  }
+  let user;
+  try { user = await requireAccount(request); }
+  catch {return NextResponse.json({ok:false,error:"Unauthorized."},{status:401});}
+  const admin = getDatabase();
 
   const donorLookup = await admin
     .from("donor_accounts")

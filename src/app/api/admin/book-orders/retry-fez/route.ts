@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { bearerTokenFromRequest, requireAdminUser } from "@/lib/admin/server";
+import { requireAdminUser } from "@/lib/admin/server";
 import { sendBookShipmentCreatedEmail } from "@/lib/book-orders/email";
 import { createFezShipment, isFezConfigured } from "@/lib/fez/client";
 import { runNotificationOnce } from "@/lib/notification-events";
-import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getDatabase } from "@/lib/database/store";
 
 type Payload = {
   orderId?: string;
@@ -25,11 +25,9 @@ type BookOrderRetryRow = {
 };
 
 export async function POST(request: Request) {
-  const token = bearerTokenFromRequest(request);
-  if (!token) return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
 
   try {
-    await requireAdminUser(token, ["admin", "ops"]);
+    await requireAdminUser(request, ["admin", "ops"]);
 
     if (!isFezConfigured()) {
       return NextResponse.json({ ok: false, error: "FEZ credentials are missing." }, { status: 503 });
@@ -41,7 +39,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: "orderId is required." }, { status: 400 });
     }
 
-    const admin = getSupabaseAdminClient();
+    const admin = getDatabase();
     const { data, error } = await admin
       .from("book_orders")
       .select("id, email, total_ngn, quantity, phone, address, city, state, note, paystack_reference, fez_tracking_id, metadata")

@@ -24,6 +24,7 @@ function toAbsoluteUrl(pathOrUrl: string) {
 }
 
 export async function POST(request: Request) {
+  if (process.env.BOOK_SALES_OPEN !== "true") return NextResponse.json({ok:false,error:"The book is not yet available. Please join the interest list."},{status:409});
   if (!env.paystackSecretKey) {
     return NextResponse.json(
       {

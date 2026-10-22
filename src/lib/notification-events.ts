@@ -1,4 +1,4 @@
-import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getDatabase } from "@/lib/database/store";
 
 export async function runNotificationOnce(
   eventKey: string,
@@ -6,7 +6,7 @@ export async function runNotificationOnce(
   payload: Record<string, unknown>,
   send: () => Promise<{ skipped?: boolean } | void>,
 ) {
-  const admin = getSupabaseAdminClient();
+  const admin = getDatabase();
   const { error } = await admin.from("payment_events").insert({
     event_key: eventKey,
     event_type: eventType,

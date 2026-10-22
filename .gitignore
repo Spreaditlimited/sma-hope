@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Public database CA only; never private keys
+!certificates/mysql-ca.pem
+/.local/
+/public/email-design-preview.html
+
+!.env.example

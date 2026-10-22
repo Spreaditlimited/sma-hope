@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { env } from "@/lib/env";
 import { parseFezWebhookTracking } from "@/lib/fez/client";
-import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getDatabase } from "@/lib/database/store";
 
 function isAuthorized(request: Request) {
   if (!env.fezWebhookToken) return true;
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Missing FEZ order/tracking id in webhook payload." }, { status: 400 });
   }
 
-  const admin = getSupabaseAdminClient();
+  const admin = getDatabase();
   const updatePayload: Record<string, unknown> = {};
   if (tracking.status) updatePayload.fez_status = tracking.status;
   if (tracking.trackingUrl) updatePayload.fez_tracking_url = tracking.trackingUrl;

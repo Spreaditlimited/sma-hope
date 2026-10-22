@@ -1,152 +1,73 @@
-# SMA Hope Foundation Nigeria Website
+# SMA Hope Foundation
 
-Official website codebase for `smahope.org`, built with Next.js App Router, TypeScript, and Tailwind CSS.
+Nigeria-focused SMA information, foundation news, supporter accounts, and administration. Next.js 16, React 19, TypeScript, Tailwind, MySQL, and Better Auth. The website runs on Vercel; its dedicated `smahope` database runs on the owner’s Hostinger VPS alongside the separately isolated Effikos and UnsaidBox databases.
 
-## Stack
+## Development
 
-- Next.js (App Router)
-- TypeScript
-- Tailwind CSS
-- Sanity-ready content integration
-- Vercel-ready deployment
-- Stripe/Paystack payment scaffolding
-
-## Routes
-
-- `/`
-- `/about`
-- `/what-is-sma`
-- `/our-story`
-- `/support-for-families`
-- `/book`
-- `/donate`
-- `/contact`
-- `/updates`
-- `/updates/[slug]`
-- `/transparency`
-- `/faqs`
-- `/privacy-policy`
-- `/terms`
-
-## Local Setup
-
-1. Install dependencies:
-
-```bash
+```sh
 npm install
+npm run dev -- --port 3002
 ```
 
-2. Create env file:
+Private configuration belongs in `.env.local`. See `.env.example`; never commit credentials or `.local/`. The database connection verifies TLS against `certificates/mysql-ca.pem`. `smahope_app` can only read and modify data in `smahope.*`; schema changes use the separately authorised infrastructure workflow. Connection pools are bounded and shared across development reloads. The public CA certificate is traced into Vercel functions.
 
-```bash
-cp .env.example .env.local
+## Accounts and administration
+
+- Supporter login: `/account/login`; workspace: `/account`.
+- Separate administrator login: `/admin/login`; workspace: `/admin`.
+- Recovery: `/account/reset-password` and `/admin/reset-password`.
+- Better Auth uses separate identity, credential, session, and recovery tables and cookie names for administrators and supporters. No public administrator registration exists. Passwords use Better Auth’s password implementation. Login and recovery requests are rate limited in MySQL.
+- Every protected API verifies a server-side session. Supporter record ownership comes from that session, never a client-supplied email or ID. Mutating account/admin APIs validate the request origin. Admin roles are checked on the server; only `admin` can publish or invite administrators.
+- Payment-created accounts receive a password setup link, never a temporary password in email. Imported Supabase users must choose a new password via recovery. Existing Supabase sessions/password hashes were not copied.
+- Dashboard totals keep currencies separate and exclude unsuccessful donations. Supporter history covers the latest 100 records; administrator reporting paginates the selected period.
+
+## Content and SEO
+
+`/blog` contains eight initial guides for Nigerian families, with search, four topic pages, sources, related articles, and printable checklists. `/admin/content` provides a structured editor: drafts, live preview, publishing/unpublishing, source validation, stable URLs, revision conflict checks, and audit records. Published guides are stored in MySQL. Code-based initial guides are an initial fallback only when no database override exists. Configured database failures do not silently republish an unpublished article.
+
+Clinical guides remain visibly **clinical review pending**. A qualified clinician must perform an actual review before the site claims medical review. Practical content and clinical advice remain distinct.
+
+Existing foundation news URLs at `/updates/[slug]` remain available, using the existing Sanity content integration and local fallback. Public metadata, canonical URLs, sitemap, social previews, and Article/Organization structured data use `https://www.smahope.org`. Admin, account, and checkout routes are noindex; drafts do not enter the sitemap.
+
+The book is unreleased. `/book` keeps the interest signup; `/order-book` redirects to it. Book checkout is closed unless `BOOK_SALES_OPEN=true` is deliberately configured. Existing order and delivery history is retained.
+
+## Integrations
+
+- Contact and password recovery: Hostinger SMTP through `src/lib/email.ts`. All transactional mail uses the approved cream/sage/navy template in `src/lib/email-template.ts`, a 140px logo, an explicit dark-mode logo variant, inline light styles, table layout, accessible text links, and a plain-text alternative. Dark-mode rendering depends on the receiving mail client.
+- Newsletter and book interest: Brevo, with inline status and a validated list ID.
+- Donations: Paystack initialization, signature-checked webhooks, and verified transaction completion.
+- Existing book fulfilment: FEZ. The migration never creates shipments.
+- Stripe routes return an explicit unavailable response; no fake checkout-success scaffold is exposed.
+
+Existing payment webhook URLs remain unchanged. No live charge, marketing subscription, recovery email, or delivery should be created as a smoke test. For a provider checkout rehearsal, use a separately configured provider test environment.
+
+## Database migration and recovery
+
+`database/001-initial.sql` defines the dedicated MySQL schema; `002-integrity.sql` adds ownership foreign keys and history indexes. `supabase/schema.sql` is retained only as the historical source schema.
+
+The 22 October 2026 migration preserved 2 supporter profiles, 9 donations, 3 book orders, 13 payment events, and 1 admin record, plus 3 personal identities. Every imported field was compared before committing. Supabase was left intact as a recovery copy. Supabase connection variables were removed from Vercel and local runtime configuration; recovery-only settings are held privately in `.local/supabase-recovery.env`. Private encrypted source backups and the migration report are under `.local/`.
+
+Daily encrypted MySQL backups run at 02:45 UTC (with up to five minutes of jitter), retain 30 days, and are restricted to this database. A restore into a temporary schema and normalized re-export comparison passed. An encrypted recovery copy and key are saved privately off the VPS. This is an initial off-server recovery copy, not continuous off-server replication. Keep the key in an owner-controlled password manager. See `operations/backup/README.md`.
+
+Do not rerun the initial migration over a populated database. Before cutting over, compare source records again for payments received since the export. Do not roll back to Supabase after new MySQL writes without reconciling those records.
+
+## Verification
+
+```sh
+npm run lint
+npx tsc --noEmit
+npm test
+npm run build
+npm run verify:site
+node tests/integration/access.mjs
 ```
 
-3. Run development server:
+The route checker verifies 28 public pages, metadata, canonical URLs, one H1/main landmark, structured data, sitemap coverage, private noindex directives, 404s, social imagery, and unauthenticated API denial. Integration tests use temporary records and clean them up: supporter ownership, separate admin/user sessions, logout isolation, role restrictions, origin checks, draft isolation, publishing, sitemap inclusion, and conflicting edits.
 
-```bash
-npm run dev
-```
+SMTP authentication and read-only Paystack/Brevo connectivity are checked separately. These checks do not prove inbox delivery or complete a financial transaction. Runtime dependencies were updated to resolve reported advisories; the remaining `braces` advisory is in the development-only ESLint dependency chain with no compatible upstream fix reported.
 
-4. Open `http://localhost:3000`
+## Appearance
 
-## Content Management
+Public pages, authentication and both workspaces share Light / Dark / System appearance settings, following the Unsaidbox pattern. Light is the default; System follows device changes. The preference is stored locally under `smahope:appearance:v1`, synchronises between tabs, and is applied by a static script before hydration. Storage failure leaves the control usable for the current visit.
 
-Sanity schema files are in `src/sanity/schemas`.
-Default Sanity connection is set to project `80lf2wvv` and dataset `production` (overridable via env vars).
-
-Current schema coverage:
-
-- site settings
-- blog updates posts
-- FAQ items
-- book settings
-- donation settings
-- footer settings
-
-If Sanity env vars are missing, the site automatically falls back to local content in `src/content`.
-
-## Contact Form
-
-- API route: `src/app/api/contact/route.ts`
-- Purpose routing is mapped in `src/lib/contact-routing.ts`
-- Anti-spam implemented using honeypot field and minimum submit-time check
-- Email delivery uses Resend API via `src/lib/email.ts`
-
-## Payments
-
-Scaffold endpoints are implemented at:
-
-- `src/app/api/payments/stripe/route.ts`
-- `src/app/api/payments/paystack/route.ts`
-- `src/app/api/payments/paystack/webhook/route.ts`
-- `src/app/api/payments/paystack/complete/route.ts`
-- `src/app/api/payments/book/stripe/route.ts`
-- `src/app/api/payments/book/paystack/route.ts`
-
-These are designed for easy credential swap-in and production checkout wiring.
-
-## FEZ Delivery Fulfillment
-
-- FEZ client: `src/lib/fez/client.ts`
-- FEZ webhook endpoint: `src/app/api/fez/webhook/route.ts`
-- FEZ sync endpoint: `src/app/api/fez/sync/route.ts`
-- Book order payment persistence automatically attempts FEZ shipment creation in `src/lib/payments/processing.ts` after successful Paystack verification.
-
-Recommended setup:
-
-1. Configure FEZ env vars in `.env.local` (`FEZ_BASE_URL`, `FEZ_USER_ID`, `FEZ_PASSWORD`, `FEZ_ORG_SECRET_KEY`).
-2. Register webhook URL in FEZ dashboard/API to:
-   - `https://<your-domain>/api/fez/webhook?token=<FEZ_WEBHOOK_TOKEN>`
-3. For fallback polling, call:
-   - `POST /api/fez/sync` with `Authorization: Bearer <FEZ_SYNC_SECRET>`
-4. Generate app-side FEZ secrets:
-
-```bash
-node -e "console.log('FEZ_WEBHOOK_TOKEN=' + require('crypto').randomBytes(32).toString('hex'))"
-node -e "console.log('FEZ_SYNC_SECRET=' + require('crypto').randomBytes(32).toString('hex'))"
-```
-
-## Donor Accounts and Dashboard
-
-- Account routes:
-  - `/account`
-  - `/account/login`
-  - `/account/reset-password`
-- Supabase schema file: `supabase/schema.sql`
-- Apply schema in Supabase SQL editor before using donor dashboard and webhook persistence.
-
-## Admin Panel
-
-- Admin routes:
-  - `/admin`
-  - `/admin/donations`
-  - `/admin/book-orders`
-  - `/admin/donors`
-  - `/admin/settings`
-- Role table: `public.admin_users` (created in `supabase/schema.sql`)
-- Roles: `admin`, `ops`
-- Admin and donor login both use Supabase auth at `/account/login`.
-
-Bootstrap first admin:
-
-```sql
-insert into public.admin_users (email, role, active)
-values ('smahopefoundation@gmail.com', 'admin', true)
-on conflict (email)
-do update set role = excluded.role, active = excluded.active;
-```
-
-## SEO
-
-- Per-page metadata via `src/lib/metadata.ts`
-- Open Graph + Twitter tags
-- Organization schema markup in `layout.tsx`
-- `sitemap.ts` and `robots.ts`
-
-## Accessibility and Performance Notes
-
-- Semantic page structure
-- Keyboard-focus styles and skip link
-- Reduced client-side JS by default
-- Optimized image usage via `next/image`
+`src/lib/theme.ts` owns preference validation and initialisation, `src/components/theme-provider.tsx` owns browser synchronisation and the accessible picker, and `src/app/theme.css` owns semantic dark tokens. Component styles preserve their light values with `light-dark()` pairs. Use the shared surface, text, line, link and status tokens when adding UI. The shared `BrandLogo` selects the approved transparent dark variant without recolouring photographs. Print uses the light palette. Preference boot behaviour and core text contrast are covered by `tests/theme.test.mjs`.

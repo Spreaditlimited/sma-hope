@@ -1,42 +1,11 @@
 "use client";
-
-import { FormEvent, useEffect, useState } from "react";
-
-type Props = {
-  buttonLabel?: string;
-  buttonClassName?: string;
-  disabledButtonLabel?: string;
-  disabledButtonClassName?: string;
-  disabledButtonFullWidth?: boolean;
-};
-
-export function BookPreorderSignup({
-  buttonLabel = "Join our email list",
-  buttonClassName = "font-semibold text-[#0f557f] underline decoration-[#0f557f]/35 underline-offset-4 hover:text-[#13384f]",
-  disabledButtonLabel,
-  disabledButtonClassName = "btn w-full sm:w-auto cursor-not-allowed border border-gray-300 bg-gray-200 text-gray-500 shadow-none hover:bg-gray-200",
-  disabledButtonFullWidth = false,
-}: Props) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
-  const [formStartedAt, setFormStartedAt] = useState(() => Date.now());
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [isOpen]);
-
+import { type FormEvent, useRef, useState, useId } from "react";
+type Props = { inline?:boolean;buttonLabel?:string;buttonClassName?:string;disabledButtonLabel?:string;disabledButtonClassName?:string;disabledButtonFullWidth?:boolean };
+export function BookPreorderSignup({inline=false,buttonLabel="Join the interest list",buttonClassName="btn btn-primary",disabledButtonLabel}:Props) {
+  const dialog=useRef<HTMLDialogElement>(null);
+  const id=useId();
+  const [isSubmitting,setIsSubmitting]=useState(false),[error,setError]=useState<string|null>(null),[success,setSuccess]=useState(false);
+  const [formStartedAt,setFormStartedAt]=useState(()=>Date.now());
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
@@ -75,106 +44,18 @@ export function BookPreorderSignup({
     }
   }
 
-  return (
-    <>
-      {disabledButtonLabel ? (
-        <button
-          type="button"
-          className={`${disabledButtonClassName} ${disabledButtonFullWidth ? "w-full" : ""}`}
-          onClick={() => setIsOpen(true)}
-        >
-          {disabledButtonLabel}
-        </button>
-      ) : (
-        <button type="button" className={buttonClassName} onClick={() => setIsOpen(true)}>
-          {buttonLabel}
-        </button>
-      )}
-
-      {isOpen ? (
-        <div
-          className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto bg-slate-950/45 px-4 pb-6 pt-32 backdrop-blur-sm sm:items-center sm:py-8"
-          role="presentation"
-          onClick={() => setIsOpen(false)}
-        >
-          <div
-            className="w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="book-preorder-modal-title"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="bg-[#0f557f] px-6 py-5 text-white">
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-sky-100">Book updates</p>
-              <h2 id="book-preorder-modal-title" className="mt-2 text-2xl font-bold tracking-tight !text-white">
-                Get notified when pre-order opens
-              </h2>
-            </div>
-
-            <form className="space-y-4 px-6 py-5" onSubmit={handleSubmit} noValidate>
-              <p className="text-sm leading-6 text-slate-600">
-                Leave your name and email address. We will let you know when pre-order opens for
-                <span className="font-semibold text-slate-900"> When Every Breath Matters</span>.
-              </p>
-
-              <input
-                type="text"
-                name="company"
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-                className="absolute left-[-9999px] h-0 w-0 opacity-0"
-              />
-
-              <div>
-                <input
-                  id="book-preorder-name"
-                  name="name"
-                  type="text"
-                  required
-                  autoComplete="name"
-                  aria-label="Name"
-                  placeholder="Name"
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-[#0f557f] focus:ring-2 focus:ring-[#0f557f]/20"
-                />
-              </div>
-
-              <div>
-                <input
-                  id="book-preorder-email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  aria-label="Email address"
-                  placeholder="Email address"
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-[#0f557f] focus:ring-2 focus:ring-[#0f557f]/20"
-                />
-              </div>
-
-              {error ? <p className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700">{error}</p> : null}
-              {success ? (
-                <p className="rounded-lg bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700">
-                  Thank you. We will notify you when pre-order opens.
-                </p>
-              ) : null}
-
-              <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
-                <button
-                  type="button"
-                  className="rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Close
-                </button>
-                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-                  {isSubmitting ? "Joining..." : "Notify Me"}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      ) : null}
-    </>
-  );
+  const form=<form className="interest-form" onSubmit={handleSubmit}>
+    <p>Leave your details for news about <em>When Every Breath Matters</em>. The book is not yet released.</p>
+    <label htmlFor={`${id}-name`}>Your name<input id={`${id}-name`} name="name" autoComplete="name" required /></label>
+    <label htmlFor={`${id}-email`}>Email address<input id={`${id}-email`} name="email" type="email" autoComplete="email" required /></label>
+    <input name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{display:"none"}} />
+    {error&&<p className="form-error" role="alert">{error}</p>}
+    {success&&<p role="status" className="auth-note">Thank you. You’re on the interest list. We’ll share news when pre-orders open.</p>}
+    <button className="btn btn-primary" disabled={isSubmitting||success}>{isSubmitting?"Joining…":success?"You’re on the list":"Keep me updated"}</button>
+    <small>By joining, you agree to receive book updates. You can unsubscribe at any time.</small>
+  </form>;
+  if(inline)return form;
+  return <><button type="button" className={buttonClassName} onClick={()=>{setFormStartedAt(Date.now());dialog.current?.showModal();}}>{disabledButtonLabel||buttonLabel}</button>
+    <dialog ref={dialog} className="interest-dialog" aria-labelledby={`${id}-title`}><div className="content-toolbar"><h2 id={`${id}-title`}>Book updates</h2><button type="button" className="text-link" onClick={()=>dialog.current?.close()} aria-label="Close book updates">Close ×</button></div>{form}</dialog>
+  </>;
 }

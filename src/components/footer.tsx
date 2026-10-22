@@ -1,80 +1,67 @@
+import { BrandLogo } from "@/components/brand-logo";
 import Link from "next/link";
-
-const foundationLinks = [
-  ["About", "/about"],
-  ["Our Story", "/our-story"],
-  ["Support for Families", "/support-for-families"],
-  ["The Book", "/book"],
-  ["Donate", "/donate"],
-  ["Contact", "/contact"],
-] as const;
-
-const resourceLinks = [
-  ["What Is SMA?", "/what-is-sma"],
-  ["Updates", "/updates"],
-  ["Transparency", "/transparency"],
-  ["FAQs", "/faqs"],
-] as const;
-
-const legalLinks = [
-  ["Privacy Policy", "/privacy-policy"],
-  ["Terms", "/terms"],
-  ["Sign In", "/account/login"],
-] as const;
-
+const groups = [
+  {
+    name: "The foundation",
+    links: [
+      ["About us", "/about"],
+      ["Our family story", "/our-story"],
+      ["The book", "/book"],
+      ["News & updates", "/updates"],
+      ["Transparency", "/transparency"],
+    ],
+  },
+  {
+    name: "Find understanding",
+    links: [
+      ["What is SMA?", "/what-is-sma"],
+      ["Knowledge hub", "/blog"],
+      ["Support for families", "/support-for-families"],
+      ["Common questions", "/faqs"],
+      ["Our editorial approach", "/editorial-policy"],
+    ],
+  },
+  {
+    name: "Be part of it",
+    links: [
+      ["Make a donation", "/donate"],
+      ["Contact us", "/contact"],
+      ["My account", "/account"],
+      ["Privacy policy", "/privacy-policy"],
+      ["Terms of use", "/terms"],
+    ],
+  },
+];
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="site-footer">
-      <div className="container footer-grid">
-        <div className="footer-brand-block">
-          <p className="footer-brand">SMA Hope Foundation Nigeria</p>
-          <p className="footer-copy">
-            A registered Nigerian foundation advancing SMA awareness, family support, advocacy, and dignified public understanding.
+    <footer className="site-footer hope-footer">
+      <div className="container hope-footer-grid">
+        <div className="footer-intro">
+          <BrandLogo />
+          <p>
+            A Nigerian foundation advancing understanding, dignity, and support for families
+            affected by spinal muscular atrophy.
           </p>
-          <p className="footer-meta">Registered in Nigeria</p>
+          <span>Rooted in experience. Growing in hope.</span>
         </div>
-
-        <div className="footer-nav-grid">
-          <div>
-            <p className="footer-heading">Foundation</p>
-            <div className="footer-links">
-              {foundationLinks.map(([label, href]) => (
-                <Link key={href} href={href} className="footer-link">
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="footer-heading">Resources</p>
-            <div className="footer-links">
-              {resourceLinks.map(([label, href]) => (
-                <Link key={href} href={href} className="footer-link">
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="footer-heading">Legal</p>
-            <div className="footer-links">
-              {legalLinks.map(([label, href]) => (
-                <Link key={href} href={href} className="footer-link">
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
+        {groups.map((g) => (
+          <nav aria-label={g.name} key={g.name}>
+            <h2>{g.name}</h2>
+            {g.links.map(([l, h]) => (
+              <Link key={h} href={h}>
+                {l}
+              </Link>
+            ))}
+          </nav>
+        ))}
       </div>
-
-      <div className="container footer-bottom">
-        <p className="footer-meta footer-bottom-line">5 Olutosin Ajayi Street, Ajao Estate, Lagos, Nigeria.</p>
-        <p className="footer-meta footer-bottom-line">© {currentYear} Spinal Muscular Atrophy Hope Foundation. All rights reserved.</p>
+      <div className="container hope-footer-bottom">
+        <p>© {new Date().getFullYear()} Spinal Muscular Atrophy Hope Foundation.</p>
+        <p>5 Olutosin Ajayi Street, Ajao Estate, Lagos, Nigeria.</p>
+      </div>
+      <div className="container footer-care-note">
+        Educational information supports, and does not replace, advice from your own healthcare
+        team.
       </div>
     </footer>
   );

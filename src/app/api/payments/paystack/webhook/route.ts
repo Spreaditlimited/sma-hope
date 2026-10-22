@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { sendTransactionalEmail } from "@/lib/email";
 import { env } from "@/lib/env";
 import { recordPaymentEvent, storePaymentFromVerifiedTransaction } from "@/lib/payments/processing";
-import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getDatabase } from "@/lib/database/store";
 
 type PaystackWebhookPayload = {
   event?: string;
@@ -74,10 +74,12 @@ export async function POST(request: Request) {
       ? (data.metadata as Record<string, unknown>)
       : {};
 
+  const id = String(data.id || data.reference || data.subscription_code || "");
+  const eventKey = `${event}:${id}`;
+  let claimed = false;
   try {
-    const id = String(data.id || data.reference || data.subscription_code || "");
-    const eventKey = `${event}:${id}`;
     const recorded = await recordPaymentEvent(eventKey, event, payload as Record<string, unknown>);
+    claimed = recorded.created;
     if (!recorded.created) {
       return NextResponse.json({ ok: true, duplicate: true });
     }
@@ -85,7 +87,7 @@ export async function POST(request: Request) {
     if (event === "subscription.create") {
       const code = String(data.subscription_code || "");
       if (code) {
-        await getSupabaseAdminClient()
+        await getDatabase()
           .from("subscriptions")
           .update({
             status: "active",
@@ -99,7 +101,7 @@ export async function POST(request: Request) {
     if (event === "subscription.disable" || event === "subscription.not_renew") {
       const code = String(data.subscription_code || "");
       if (code) {
-        await getSupabaseAdminClient()
+        await getDatabase()
           .from("subscriptions")
           .update({
             status: event === "subscription.disable" ? "disabled" : "not_renewing",
@@ -113,7 +115,7 @@ export async function POST(request: Request) {
     if (event === "invoice.payment_failed") {
       const code = String(data.subscription_code || "");
       if (code) {
-        await getSupabaseAdminClient()
+        await getDatabase()
           .from("subscriptions")
           .update({
             status: "payment_failed",
@@ -153,7 +155,8 @@ export async function POST(request: Request) {
       await notifyOps(event, data);
     }
   } catch (error) {
-    console.error("Paystack webhook handling error:", error);
+    if (claimed) await getDatabase().from("payment_events").delete().eq("event_key",eventKey);
+    console.error("Paystack webhook processing failed",{type:error instanceof Error ? error.name : "unknown"});
     return NextResponse.json({ ok: false, error: "Webhook processing failed." }, { status: 500 });
   }
 

@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server";
-import { bearerTokenFromRequest, requireAdminUser } from "@/lib/admin/server";
+import { requireAdminUser } from "@/lib/admin/server";
 
 export async function GET(request: Request) {
-  const token = bearerTokenFromRequest(request);
-  if (!token) return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
   try {
-    const auth = await requireAdminUser(token, ["admin", "ops"]);
+    const auth = await requireAdminUser(request, ["admin", "ops"]);
     return NextResponse.json({ ok: true, email: auth.email, role: auth.role });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unauthorized";

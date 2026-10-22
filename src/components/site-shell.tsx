@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { ThemePicker } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CookieNotice } from "@/components/cookie-notice";
@@ -11,7 +12,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const isWorkspaceRoute = pathname.startsWith("/account") || pathname.startsWith("/admin");
 
   if (isWorkspaceRoute) {
-    return <main id="main-content">{children}</main>;
+    return <div id="main-content">{(pathname.endsWith("/login") || pathname.includes("reset-password")) && <div className="auth-appearance"><ThemePicker /></div>}{children}</div>;
   }
 
   return (
@@ -19,9 +20,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main id="main-content">{children}</main>
       <CTASection
-        headline="Help us build understanding, strengthen support, and carry this mission forward."
-        body="Whether you are here to learn, to support, to seek help, or to understand what SMA really means for families, you are welcome here."
-        primary={{ label: "Donate", href: "/donate" }}
+        headline="Together, we can make room for more hope."
+        body="Learn, share, give, or lend your voice. Help us build a more informed and supportive world for families living with SMA."
+        primary={{ label: "Give hope", href: "/donate" }}
         secondary={{ label: "Contact Us", href: "/contact" }}
       />
       <Footer />

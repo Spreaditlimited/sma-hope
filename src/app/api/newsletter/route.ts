@@ -23,7 +23,8 @@ function splitName(name?: string) {
 }
 
 export async function POST(request: Request) {
-  const payload = (await request.json()) as NewsletterPayload;
+  const payload = (await request.json().catch(() => null)) as NewsletterPayload | null;
+  if (!payload || typeof payload !== "object" || (payload.name !== undefined && typeof payload.name !== "string") || typeof payload.email !== "string") return NextResponse.json({error:"Please enter your name and email."},{status:400});
 
   if (payload.company) {
     return NextResponse.json({ ok: true }, { status: 200 });

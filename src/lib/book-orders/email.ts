@@ -12,6 +12,7 @@ export async function sendBookShipmentCreatedEmail(input: {
   await sendTransactionalEmail({
     to: input.to,
     subject: "Your SMA Hope book order is ready for delivery",
+    design: { eyebrow: "Your book order · Delivery update", action: { label: "View my order", url: `${siteUrl}/account/orders` } },
     text: [
       "Your book shipment has been created with FEZ Delivery.",
       "",

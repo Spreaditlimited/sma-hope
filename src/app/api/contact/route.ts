@@ -42,7 +42,9 @@ function friendlyDeliveryError(error: unknown) {
 }
 
 export async function POST(request: Request) {
-  const payload = (await request.json()) as ContactPayload;
+  const payload = (await request.json().catch(() => null)) as ContactPayload | null;
+  if (!payload || typeof payload !== "object" || ["fullName","email","subject","message","purpose"].some(key => typeof payload[key as keyof ContactPayload] !== "string")) return NextResponse.json({error:"Please complete the required fields."},{status:400});
+  if (String(payload.message).length > 15000 || String(payload.subject).length > 200 || String(payload.email).length > 254) return NextResponse.json({error:"Your message is too long."},{status:400});
 
   if (payload.company) {
     return NextResponse.json({ ok: true }, { status: 200 });
@@ -73,13 +75,14 @@ export async function POST(request: Request) {
   ].join("\n");
 
   try {
-    await sendTransactionalEmail({
+    const delivery = await sendTransactionalEmail({
       to,
       subject: `[SMA Hope Contact] ${payload.subject}`,
       text,
       replyTo: payload.email,
     });
 
+    if (delivery.skipped) throw new Error("SMTP mailbox not configured");
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error(error);

@@ -1,19 +1,17 @@
 import { NextResponse } from "next/server";
-import { bearerTokenFromRequest, requireAdminUser, startDateForRange } from "@/lib/admin/server";
-import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { requireAdminUser, startDateForRange } from "@/lib/admin/server";
+import { getDatabase } from "@/lib/database/store";
 
 export async function GET(request: Request) {
-  const token = bearerTokenFromRequest(request);
-  if (!token) return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
 
   try {
-    await requireAdminUser(token, ["admin", "ops"]);
+    await requireAdminUser(request, ["admin", "ops"]);
     const url = new URL(request.url);
     const range = url.searchParams.get("range") || "month";
     const q = String(url.searchParams.get("q") || "").trim().toLowerCase();
     const since = startDateForRange(range).toISOString();
 
-    const admin = getSupabaseAdminClient();
+    const admin = getDatabase();
     const result = await admin
       .from("book_orders")
       .select("id, email, status, total_ngn, quantity, phone, address, city, state, delivery_area, note, paystack_reference, fez_tracking_id, fez_status, fez_tracking_url, created_at")

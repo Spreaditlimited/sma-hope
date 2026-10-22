@@ -1,3 +1,4 @@
+import type { ArticleBody } from "@/components/rich-body";
 import { fallbackFaqs } from "@/content/faqs";
 import { fallbackPosts, fallbackUpdates } from "@/content/updates";
 import { hasSanityConfig } from "@/lib/env";
@@ -11,7 +12,7 @@ type Update = {
   publishedAt: string;
   category: string;
   image?: string;
-  body?: string[];
+  body?: ArticleBody;
 };
 
 type FaqItem = {
@@ -34,7 +35,9 @@ export async function getAllUpdates(): Promise<Update[]> {
   if (!hasSanityConfig()) return fallbackPosts;
   try {
     const posts = await sanityClient.fetch<Update[]>(updatesQuery);
-    return posts?.length ? posts : fallbackPosts;
+    return posts?.length
+      ? [...new Map([...fallbackPosts, ...posts].map((post) => [post.slug, post])).values()]
+      : fallbackPosts;
   } catch {
     return fallbackPosts;
   }

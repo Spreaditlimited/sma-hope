@@ -33,6 +33,7 @@ export async function sendDonationThankYouEmail(input: {
   await sendTransactionalEmail({
     to: input.to,
     subject: recurring ? "Thank you for your recurring SMA Hope donation" : "Thank you for your SMA Hope donation",
+    design: { heading: "Your generosity brings hope.", eyebrow: "Your donation · Payment received", action: { label: "View my donations", url: `${siteUrl}/account/donations` } },
     text: [
       `Hello${input.fullName ? ` ${input.fullName}` : ""},`,
       "",
