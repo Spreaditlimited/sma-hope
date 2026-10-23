@@ -3186,3 +3186,18 @@ textarea:focus-visible {
 .interest-form small { font-size:14px; color:var(--text-soft); }
 .interest-dialog { width:min(520px,calc(100% - 36px)); margin:auto; border:1px solid var(--line); padding:28px; border-radius:12px; max-height:85dvh; overflow:auto; }
 .interest-dialog::backdrop { background:rgb(16 38 55 / 60%); }
+
+.story-portraits { max-width: 896px; margin-inline: auto; }
+.story-portraits-heading { text-align: center; margin-bottom: 32px; }
+.story-portraits-heading .eyebrow { justify-content: center; }
+.story-portraits-heading h2 { margin: 12px 0; font-size: clamp(30px, 4vw, 44px); color: var(--text); }
+.story-portraits-heading > p { font-size: 19px; color: var(--text-soft); }
+.story-portraits-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.story-portraits figure { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.story-portraits img { display: block; width: 100%; height: auto; }
+.story-portraits figcaption { padding: 22px 24px; }
+.story-portraits h3 { margin: 0 0 6px; font-size: 28px; color: var(--text); }
+.story-portraits figcaption p { margin: 0; font-size: 17px; color: var(--text-soft); }
+@media (max-width: 639px) {
+  .story-portraits-grid { grid-template-columns: 1fr; gap: 24px; }
+}

@@ -1,11 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 import { ContentPageBg } from "@/components/content-page-bg";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
   title: "Our Story",
-  description: "The story behind SMA Hope Foundation Nigeria.",
+  description: "Meet Kamsi and Kachi, the sisters whose journey with spinal muscular atrophy inspired SMA Hope Foundation Nigeria and its support for families affected by SMA.",
   path: "/our-story",
 });
 
@@ -36,7 +37,35 @@ export default function OurStoryPage() {
             </p>
           </section>
 
-          <hr className="border-gray-200 max-w-3xl mx-auto" />
+          <section className="story-portraits" aria-labelledby="meet-our-daughters">
+            <div className="story-portraits-heading">
+              <span className="eyebrow">The heart of our story</span>
+              <h2 id="meet-our-daughters">Meet Kamsi and Kachi</h2>
+              <p>Our daughters. Our reason for beginning.</p>
+            </div>
+            <div className="story-portraits-grid">
+              <figure>
+                <Image
+                  src="/story/kamsi.jpg"
+                  alt="Kamsi with a festive fruit decoration on a plate"
+                  width={1500}
+                  height={2000}
+                  sizes="(max-width: 639px) calc(100vw - 48px), (max-width: 1023px) 44vw, 432px"
+                />
+                <figcaption><h3>Kamsi</h3><p>Our first daughter</p></figcaption>
+              </figure>
+              <figure>
+                <Image
+                  src="/story/kachi.jpg"
+                  alt="Kachi smiling at a table with a festive fruit decoration"
+                  width={1500}
+                  height={2000}
+                  sizes="(max-width: 639px) calc(100vw - 48px), (max-width: 1023px) 44vw, 432px"
+                />
+                <figcaption><h3>Kachi</h3><p>Kamsi&apos;s younger sister</p></figcaption>
+              </figure>
+            </div>
+          </section>
 
           {/* ROW 1: THE BEGINNING & THE BURDEN */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto items-start">
