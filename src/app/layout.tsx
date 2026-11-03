@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { DM_Sans, Manrope } from "next/font/google";
 import "./globals.css";
 import "./redesign.css";
 import "./theme.css";
@@ -40,15 +40,13 @@ const orgSchema = {
   },
 };
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
 });
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
   variable: "--font-manrope",
 });
 
@@ -58,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning className={`${inter.variable} ${manrope.variable}`}>
+    <html lang="en" data-theme="light" suppressHydrationWarning className={`${dmSans.variable} ${manrope.variable}`}>
       <head><script dangerouslySetInnerHTML={{ __html: themeInitScript }} /><meta name="theme-color" content="#fbfaf7" /></head>
       <body>
         <a href="#main-content" className="skip-link">
