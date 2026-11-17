@@ -16,12 +16,12 @@ export const book = {
   amazonUrl: "https://www.amazon.com/dp/B0GX2WHPXH",
   cover: "/books/when-every-breath-matters-cover.jpg",
   description: "Two Nigerian parents share their family’s story of spinal muscular atrophy (SMA), alongside clear explanations of diagnosis, genetics, treatment access, supportive care, faith and daily caregiving.",
-  // All three KDP submissions confirmed on 17 November 2026. Set URLs only
-  // after each actual Amazon detail page has been verified as live.
+  // All three Amazon detail pages verified live against their edition and
+  // ISBN on 17 November 2026.
   editions: [
     { name: "Kindle", format: "EBook", amazonUrl: "https://www.amazon.com/dp/B0GX2WHPXH" },
-    { name: "Paperback", format: "Paperback", isbn: "9798143499485", pages: 271, amazonUrl: null },
-    { name: "Hardcover", format: "Hardcover", isbn: "9798143500198", pages: 271, amazonUrl: null },
+    { name: "Paperback", format: "Paperback", isbn: "9798143499485", pages: 271, amazonUrl: "https://www.amazon.com/dp/B0HRZLNGZZ" },
+    { name: "Hardcover", format: "Hardcover", isbn: "9798143500198", pages: 271, amazonUrl: "https://www.amazon.com/dp/B0HRZGVKM4" },
   ] satisfies BookEdition[],
 };
 
