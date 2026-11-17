@@ -17,7 +17,7 @@
     "better-auth": "^1.7.7",
     "kysely": "0.29.7",
     "mysql2": "^3.24.6",
-    "next": "^16.4.2",
+    "next": "16.4.5",
     "nodemailer": "^10.2.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -29,7 +29,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "^16.4.2",
+    "eslint-config-next": "16.4.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

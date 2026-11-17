@@ -559,7 +559,7 @@ textarea:focus-visible {
   width: 220px;
   height: auto;
   box-shadow: 13px 16px 24px #263b3b24;
-  transform: rotate(-4deg);
+  transform: none;
 }
 .book-feature p:not(.eyebrow) {
   font-size: 17px;
@@ -3045,7 +3045,97 @@ textarea:focus-visible {
   width: 310px;
   height: auto;
   box-shadow: 18px 20px 30px #3c4b3424;
-  transform: rotate(-3deg);
+  transform: none;
+}
+.book-edition-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 32px 0 20px;
+}
+.book-edition { padding: 28px; }
+.edition-mockup {
+  height: 330px;
+  display: grid;
+  place-items: center;
+  margin: -4px -8px 28px;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at 50% 85%, #d8d3c655, transparent 65%), #f3f0e8;
+}
+.edition-mockup-object { position: relative; width: 164px; isolation: isolate; }
+.edition-mockup-cover { position: relative; z-index: 1; }
+.edition-mockup-cover img { display: block; width: 100%; height: auto; }
+.edition-mockup--kindle .edition-mockup-object {
+  width: 186px;
+  padding: 15px 12px 30px;
+  background: linear-gradient(110deg, #363a38, #171b19 70%);
+  border: 2px solid #424743;
+  border-radius: 13px;
+  box-shadow: 5px 9px 0 #111613, 12px 18px 20px #26302630;
+}
+.edition-mockup--kindle .edition-mockup-cover { border: 1px solid #070c09; }
+.edition-mockup-device-mark {
+  position: absolute;
+  bottom: 7px;
+  left: 0;
+  right: 0;
+  color: #b3b8b4;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+}
+.edition-mockup--paperback .edition-mockup-object {
+  box-shadow: 12px 15px 18px #26302630;
+  border-left: 3px solid #d6c9aa;
+}
+.edition-mockup--paperback .edition-mockup-object::after,
+.edition-mockup--hardcover .edition-mockup-object::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 100%;
+  width: 10px;
+  background: repeating-linear-gradient(to right, #e4dfcf 0 1px, #faf5e7 1px 3px);
+  border: 1px solid #d0c4a8;
+}
+.edition-mockup--paperback .edition-mockup-cover::after,
+.edition-mockup--hardcover .edition-mockup-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #6c654c20, transparent 7%, #ffffff15 10%, transparent 15%);
+  pointer-events: none;
+}
+.edition-mockup--hardcover .edition-mockup-object {
+  width: 174px;
+  padding: 4px 3px 4px 5px;
+  border-radius: 2px;
+  background: #d5c6a4;
+  border-left: 5px solid #c4b38c;
+  box-shadow: 17px 17px 20px #26302635;
+}
+.edition-mockup--hardcover .edition-mockup-object::after {
+  top: 7px;
+  bottom: 7px;
+  width: 15px;
+  border-right: 4px solid #c4b38c;
+  box-shadow: 0 -4px #d5c6a4, 0 4px #d5c6a4;
+}
+.book-edition h3 { margin: 0 0 16px; font-size: 25px; }
+.book-edition p { color: var(--text-soft); }
+.book-edition-isbn { font-size: 14px; overflow-wrap: anywhere; }
+.book-edition-status { font-size: 14px; font-weight: 650; margin-top: 22px; }
+.book-questions { max-width: 900px; }
+.book-questions details { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.book-questions summary { font-size: 18px; font-weight: 650; cursor: pointer; }
+.book-questions summary:focus-visible { outline: 2px solid var(--text); outline-offset: 6px; }
+.book-questions details p { color: var(--text-soft); margin: 18px 0 0; }
+@media (max-width: 650px) {
+  .book-edition-grid { grid-template-columns: 1fr; }
+  .book-edition { padding: 24px; }
 }
 .book-topics {
   background: light-dark(#edf0e6, var(--surface-muted));

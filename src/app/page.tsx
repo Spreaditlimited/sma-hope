@@ -185,10 +185,10 @@ export default async function Home() {
         <div className="container book-feature">
           <div className="book-feature-art">
             <Image
-              src="/Book-v3.PNG"
+              src="/books/when-every-breath-matters-cover.jpg"
               alt="When Every Breath Matters book cover"
-              width={280}
-              height={370}
+              width={1600}
+              height={2473}
               sizes="280px"
             />
           </div>

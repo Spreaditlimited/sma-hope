@@ -1,7 +1,7 @@
 "use client";
 import { type FormEvent, useRef, useState, useId } from "react";
 type Props = { inline?:boolean;buttonLabel?:string;buttonClassName?:string;disabledButtonLabel?:string;disabledButtonClassName?:string;disabledButtonFullWidth?:boolean };
-export function BookPreorderSignup({inline=false,buttonLabel="Join the interest list",buttonClassName="btn btn-primary",disabledButtonLabel}:Props) {
+export function BookPreorderSignup({inline=false,buttonLabel="Get book updates",buttonClassName="btn btn-primary",disabledButtonLabel}:Props) {
   const dialog=useRef<HTMLDialogElement>(null);
   const id=useId();
   const [isSubmitting,setIsSubmitting]=useState(false),[error,setError]=useState<string|null>(null),[success,setSuccess]=useState(false);
@@ -45,12 +45,12 @@ export function BookPreorderSignup({inline=false,buttonLabel="Join the interest 
   }
 
   const form=<form className="interest-form" onSubmit={handleSubmit}>
-    <p>Leave your details for news about <em>When Every Breath Matters</em>. The book is not yet released.</p>
+    <p>Receive news and updates about <em>When Every Breath Matters</em> and the family behind the book.</p>
     <label htmlFor={`${id}-name`}>Your name<input id={`${id}-name`} name="name" autoComplete="name" required /></label>
     <label htmlFor={`${id}-email`}>Email address<input id={`${id}-email`} name="email" type="email" autoComplete="email" required /></label>
     <input name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{display:"none"}} />
     {error&&<p className="form-error" role="alert">{error}</p>}
-    {success&&<p role="status" className="auth-note">Thank you. You’re on the interest list. We’ll share news when pre-orders open.</p>}
+    {success&&<p role="status" className="auth-note">Thank you. You’re on the list for book news and updates.</p>}
     <button className="btn btn-primary" disabled={isSubmitting||success}>{isSubmitting?"Joining…":success?"You’re on the list":"Keep me updated"}</button>
     <small>By joining, you agree to receive book updates. You can unsubscribe at any time.</small>
   </form>;

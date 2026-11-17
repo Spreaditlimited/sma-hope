@@ -29,7 +29,7 @@ Clinical guides remain visibly **clinical review pending**. A qualified clinicia
 
 Existing foundation news URLs at `/updates/[slug]` remain available, using the existing Sanity content integration and local fallback. Public metadata, canonical URLs, sitemap, social previews, and Article/Organization structured data use `https://www.smahope.org`. Admin, account, and checkout routes are noindex; drafts do not enter the sitemap.
 
-The book is unreleased. `/book` keeps the interest signup; `/order-book` redirects to it. Book checkout is closed unless `BOOK_SALES_OPEN=true` is deliberately configured. Existing order and delivery history is retained.
+The Kindle, paperback and hardcover editions of **When Every Breath Matters** were submitted to Amazon KDP on 17 November 2026. The Kindle listing is live at `https://www.amazon.com/dp/B0GX2WHPXH`. `/book` is the canonical book page, with the approved cream cover, format-specific mockups, both authors, synopsis, edition ISBNs, Book/FAQ structured data and a dedicated social image. `src/lib/book.ts` owns edition metadata; add each actual print product URL only after verifying that edition is live. Print cards currently link to the verified Amazon listing to check available formats. Do not invent ASINs, product links, reviews, publication dates or availability. `/order-book` redirects to the editions section. The book signup section has been removed. Local book checkout stays closed; this launch is Amazon only. Existing order and delivery history is retained.
 
 ## Integrations
 

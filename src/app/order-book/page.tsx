@@ -1,2 +1,2 @@
 import { redirect } from "next/navigation";
-export default function Page() {redirect("/book#book-interest");}
+export default function Page() {redirect("/book#editions");}

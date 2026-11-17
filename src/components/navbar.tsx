@@ -10,6 +10,7 @@ const links = [
   ["For families", "/support-for-families"],
   ["Knowledge hub", "/blog"],
   ["Our story", "/our-story"],
+  ["The book", "/book"],
   ["About us", "/about"],
 ];
 export function Navbar() {
