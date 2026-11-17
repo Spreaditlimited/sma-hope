@@ -4,6 +4,7 @@ import Image from "next/image";
 import { headers } from "next/headers";
 import { amazonEditionUrl, amazonMarketplaces, resolveAmazonMarket } from "@/lib/amazon-marketplaces";
 import { BookEditionMockup } from "@/components/book-edition-mockup";
+import { BookMarketplaceSelector } from "@/components/book-marketplace-selector";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 import { book, bookFaqs, bookStructuredData } from "@/lib/book";
@@ -33,11 +34,19 @@ export default async function Book({ searchParams }: { searchParams: Promise<{ m
           <div>
             <p className="eyebrow">A family’s story of living with SMA</p>
             <h1>When Every<br /><em>Breath Matters</em></h1>
+            <div className="book-hero-mobile-cover">
+              <Image src={book.cover} alt={`${book.title} by ${book.authors.join(" and ")}`} width={1600} height={2473} sizes="200px" />
+            </div>
             <p className="book-subtitle">{book.subtitle}</p>
             <p className="book-authors">By {book.authors.join(" and ")}</p>
             <p className="book-deck">What does spinal muscular atrophy really mean inside a family? For us, it means listening differently to a cough, learning to protect a child’s breathing, and crossing borders in search of care for our two daughters.</p>
-            <a href={kindleUrl} className="btn btn-primary" rel="noopener noreferrer">Read on {store.name} Kindle →</a>
-            <p className="book-availability">A story of family, faith and survival. <a href="#editions">Explore the editions →</a></p>
+            <div id="book-purchase">
+              <div className="book-hero-actions">
+                <BookMarketplaceSelector key={`hero-${market}`} market={market} placement="hero" />
+                <a href={kindleUrl} className="btn btn-primary book-hero-buy" aria-label={`Buy Now: Kindle on ${store.name}`} rel="noopener noreferrer">Buy Now</a>
+              </div>
+              <div className="book-purchase-note"><span>Kindle edition on {store.name}</span><a href="#editions">Explore all editions →</a></div>
+            </div>
           </div>
           <div className="book-landing-cover">
             <Image src={book.cover} alt={`${book.title}, by ${book.authors.join(" and ")}: cream cover with green lettering and intertwined green and copper threads`} width={1600} height={2473} sizes="(max-width: 650px) 70vw, 350px" preload />
@@ -66,21 +75,16 @@ export default async function Book({ searchParams }: { searchParams: Promise<{ m
       <section className="container hope-section book-editions" id="editions" aria-labelledby="editions-title">
         <p className="eyebrow">Choose how you read</p><h2 className="display-heading" id="editions-title">Three editions.<br /><em>One family’s story.</em></h2>
         <p>Read digitally or make room for the story on your bookshelf. Choose Kindle, paperback or hardcover, and visit Amazon for current availability in your country.</p>
-        <form action="/book#editions" method="get" className="book-marketplace-selector">
-          <label htmlFor="amazon-market">Your Amazon store</label>
-          <select id="amazon-market" name="market" defaultValue={market}>
-            {Object.entries(amazonMarketplaces).map(([code, marketplace]) => <option key={code} value={code}>{marketplace.country} — {marketplace.name}</option>)}
-          </select>
-          <button type="submit" className="btn btn-secondary">Update store</button>
-          <p>Showing links for {store.country}. Choose another store if you prefer.</p>
-        </form>
+        <BookMarketplaceSelector key={market} market={market} />
         <div className="book-edition-grid">
           {book.editions.map((edition) => <article className="card book-edition" key={edition.format}>
             <BookEditionMockup format={edition.format} />
             <h3>{edition.name}</h3>
             <p>{edition.format === "EBook" ? "A reflowable digital edition for Kindle devices and the Kindle app." : `${edition.pages} pages, in a ${edition.name.toLowerCase()} edition.`}</p>
             {"isbn" in edition ? <p className="book-edition-isbn">ISBN: {edition.isbn}</p> : null}
-            <a href={amazonEditionUrl(edition.asin, market)} className="btn btn-primary" rel="noopener noreferrer">View {edition.name} on {store.name} →</a>
+            <div className="book-edition-action">
+              <a href={amazonEditionUrl(edition.asin, market)} className="btn btn-primary" aria-label={`Buy Now: ${edition.name} on ${store.name}`} rel="noopener noreferrer">Buy Now</a>
+            </div>
           </article>)}
         </div>
         <p className="book-availability">Buy securely through Amazon. Prices, format availability and delivery options vary by marketplace.</p>
