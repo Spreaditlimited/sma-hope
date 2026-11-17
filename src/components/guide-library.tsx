@@ -2,15 +2,18 @@
 import { useState } from "react";
 import { GuideCard } from "@/components/guide-card";
 import { Icon } from "@/components/icon";
-import type { Guide } from "@/content/guides";
-export function GuideLibrary({ guides }: { guides: Guide[] }) {
+import type { GuidePreview } from "@/lib/guide-preview";
+export function GuideLibrary({ guides }: { guides: GuidePreview[] }) {
   const [query, setQuery] = useState("");
+  const [audience, setAudience] = useState("All readers");
+  const audiences = ["All readers", ...new Set(guides.map(g => g.audience || "Nigeria"))];
   const [category, setCategory] = useState("All guides");
   const categories = ["All guides", ...new Set(guides.map((g) => g.category))];
   const filtered = guides.filter(
     (g) =>
       (category === "All guides" || g.category === category) &&
-      `${g.title} ${g.excerpt} ${g.category} ${g.sections.map((s) => s.title).join(" ")}`
+      (audience === "All readers" || (g.audience || "Nigeria") === audience) &&
+      `${g.title} ${g.excerpt} ${g.category} ${g.headings.join(" ")}`
         .toLowerCase()
         .includes(query.trim().toLowerCase()),
   );
@@ -24,7 +27,7 @@ export function GuideLibrary({ guides }: { guides: Guide[] }) {
             </button>
           ))}
         </div>
-        <label className="library-search">
+        <div className="library-controls"><label className="library-search">
           <Icon name="search" />
           <span className="sr-only">Search guides</span>
           <input
@@ -34,6 +37,7 @@ export function GuideLibrary({ guides }: { guides: Guide[] }) {
             onChange={(e) => setQuery(e.target.value)}
           />
         </label>
+        <label className="library-region"><span>Location</span><select aria-label="Guides for your location" value={audience} onChange={event => setAudience(event.target.value)}>{audiences.map(country => <option key={country}>{country}</option>)}</select></label></div>
       </div>
       <p className="results-count" role="status">
         {filtered.length} {filtered.length === 1 ? "guide" : "guides"}
@@ -54,6 +58,7 @@ export function GuideLibrary({ guides }: { guides: Guide[] }) {
             onClick={() => {
               setQuery("");
               setCategory("All guides");
+              setAudience("All readers");
             }}
           >
             Clear filters

@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CookieNotice } from "@/components/cookie-notice";
 import { CTASection } from "@/components/cta-section";
+import { SupportLauncher } from "@/components/support-launcher";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -27,6 +28,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       />
       <Footer />
       <CookieNotice />
+      <SupportLauncher key={pathname} />
     </>
   );
 }

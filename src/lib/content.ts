@@ -1,5 +1,6 @@
 import type { ArticleBody } from "@/components/rich-body";
-import { fallbackFaqs } from "@/content/faqs";
+import { fallbackFaqs, type FaqItem } from "@/content/faqs";
+import { mergeFaqItems } from "@/lib/faqs";
 import { fallbackPosts, fallbackUpdates } from "@/content/updates";
 import { hasSanityConfig } from "@/lib/env";
 import { sanityClient } from "@/sanity/client";
@@ -13,12 +14,6 @@ type Update = {
   category: string;
   image?: string;
   body?: ArticleBody;
-};
-
-type FaqItem = {
-  category: string;
-  question: string;
-  answer: string;
 };
 
 export async function getLatestUpdates(): Promise<Update[]> {
@@ -56,8 +51,8 @@ export async function getUpdateBySlug(slug: string): Promise<Update | null> {
 export async function getFaqItems(): Promise<FaqItem[]> {
   if (!hasSanityConfig()) return fallbackFaqs;
   try {
-    const faqs = await sanityClient.fetch<FaqItem[]>(faqQuery);
-    return faqs?.length ? faqs : fallbackFaqs;
+    const faqs = await sanityClient.fetch<{category:string;question:string;answer:string}[]>(faqQuery);
+    return mergeFaqItems(faqs || []);
   } catch {
     return fallbackFaqs;
   }

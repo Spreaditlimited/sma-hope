@@ -1,24 +1,15 @@
 import Link from "next/link";
 import { Icon, type IconName } from "@/components/icon";
 import type { Guide } from "@/content/guides";
-export function readingMinutes(guide: Guide) {
-  return Math.max(
-    3,
-    Math.ceil(
-      guide.sections
-        .map((s) => s.paragraphs.join(" "))
-        .join(" ")
-        .split(/\s+/).length / 180,
-    ),
-  );
-}
+import { guideReadingMinutes, type GuidePreview } from "@/lib/guide-preview";
+export const readingMinutes = guideReadingMinutes;
 const icons: Record<string, IconName> = {
   "Understanding SMA": "book",
   "Diagnosis & care": "shield",
   "Living with SMA": "people",
   "Family & community": "heart",
 };
-export function GuideCard({ guide }: { guide: Guide }) {
+export function GuideCard({ guide }: { guide: Guide | GuidePreview }) {
   return (
     <article className="guide-card">
       <Link
@@ -42,8 +33,8 @@ export function GuideCard({ guide }: { guide: Guide }) {
       </Link>
       <div className="guide-card-copy">
         <div className="article-meta">
-          <span>{guide.category}</span>
-          <span>{readingMinutes(guide)} min read</span>
+          <span>{guide.audience || "Nigeria"} · {guide.category}</span>
+          <span>{"minutes" in guide ? guide.minutes : readingMinutes(guide)} min read</span>
         </div>
         <h3>
           <Link href={`/blog/${guide.slug}`}>{guide.title}</Link>

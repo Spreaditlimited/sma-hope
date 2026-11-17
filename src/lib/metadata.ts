@@ -6,6 +6,7 @@ export function buildMetadata({
   description,
   path = "",
   type = "website",
+  language = "en-NG",
   publishedTime,
   modifiedTime,
 }: MetadataConfig): Metadata {
@@ -21,7 +22,7 @@ export function buildMetadata({
       url,
       siteName: siteConfig.name,
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
-      locale: "en_NG",
+      locale: language === "en" ? "en_NG" : language.replace("-", "_"),
       type,
       ...(type === "article" ? { publishedTime, modifiedTime } : {}),
     },

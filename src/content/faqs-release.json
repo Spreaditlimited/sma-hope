@@ -1,0 +1,779 @@
+[
+  {
+    "id": "what-is-sma",
+    "category": "understanding-sma",
+    "question": "What is SMA in simple terms?",
+    "answer": "Spinal muscular atrophy (SMA) is a genetic condition that affects the nerve cells controlling muscles, causing muscle weakness. It can affect movement and, for some people, breathing or swallowing. Its impact varies between individuals. SMA can affect babies, children and adults; a diagnosis should lead to an individual assessment and care plan.",
+    "links": [
+      {
+        "label": "Understand spinal muscular atrophy",
+        "href": "/what-is-sma"
+      },
+      {
+        "label": "A starting guide for Nigerian families",
+        "href": "/blog/understanding-sma-nigeria"
+      }
+    ],
+    "source": {
+      "title": "NHS: spinal muscular atrophy",
+      "url": "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/"
+    },
+    "keywords": [
+      "meaning",
+      "definition",
+      "SMA disease"
+    ]
+  },
+  {
+    "id": "sma-symptoms",
+    "category": "understanding-sma",
+    "question": "What are the signs and symptoms of SMA?",
+    "answer": "Possible concerns include unusual weakness, floppy limbs, difficulty with head control or movement, loss of a previous ability, and feeding or breathing problems. Symptoms may begin in infancy or later life. These signs can have several causes, so they need a medical assessment rather than diagnosis from a checklist. Describe what changed and when; seek emergency care for severe breathing difficulty, choking or sudden serious illness.",
+    "links": [
+      {
+        "label": "Prepare for a clinical assessment",
+        "href": "/blog/after-sma-diagnosis"
+      }
+    ],
+    "source": {
+      "title": "NHS: spinal muscular atrophy",
+      "url": "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/"
+    },
+    "keywords": [
+      "baby",
+      "infant",
+      "early signs",
+      "floppy"
+    ]
+  },
+  {
+    "id": "sma-types",
+    "category": "understanding-sma",
+    "question": "What is the difference between SMA types 1, 2, 3 and 4?",
+    "answer": "The traditional types describe when symptoms began and the motor abilities reached: type 1 begins in early infancy, type 2 later in infancy, type 3 in childhood or adolescence, and type 4 in adulthood. The boundaries overlap, and treatment can change development. A type label does not give a complete forecast or determine every care need. Ask the specialist what the person’s current findings mean.",
+    "links": [
+      {
+        "label": "Read the condition overview",
+        "href": "/what-is-sma"
+      }
+    ],
+    "source": {
+      "title": "MedlinePlus Genetics: SMA",
+      "url": "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/"
+    },
+    "keywords": [
+      "type one",
+      "type two",
+      "type three",
+      "adult onset"
+    ]
+  },
+  {
+    "id": "sma-inheritance",
+    "category": "understanding-sma",
+    "question": "Is SMA inherited, and can healthy parents have a child with SMA?",
+    "answer": "The common SMN1-related form usually follows an autosomal recessive pattern. Parents can be healthy carriers without knowing it. In the usual situation where both parents are carriers, each pregnancy has a one-in-four chance of an affected child, independently of earlier pregnancies. The family’s actual reports need professional interpretation, including any test limitations or less common genetic circumstances.",
+    "links": [
+      {
+        "label": "Understand genetic testing and family results",
+        "href": "/blog/sma-genetic-testing"
+      }
+    ],
+    "source": {
+      "title": "MedlinePlus Genetics: SMA",
+      "url": "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/"
+    },
+    "keywords": [
+      "cause",
+      "parents",
+      "25%",
+      "gene"
+    ]
+  },
+  {
+    "id": "sma-contagious",
+    "category": "understanding-sma",
+    "question": "Is SMA contagious or caused by something a parent did?",
+    "answer": "No. SMN1-related SMA is a genetic condition, not an infection passed through contact, food or shared classrooms. It is not caused by a parent failing to exercise or encourage a child. A genetics professional can explain the family’s findings without blame. Relatives can help by listening and supporting practical care rather than searching for someone to hold responsible.",
+    "links": [
+      {
+        "label": "Supporting a family with SMA",
+        "href": "/blog/supporting-an-sma-family"
+      }
+    ],
+    "source": {
+      "title": "NHS Genomics Education: SMA",
+      "url": "https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/spinal-muscular-atrophy/"
+    },
+    "keywords": [
+      "catch",
+      "infection",
+      "blame"
+    ]
+  },
+  {
+    "id": "sma-intelligence",
+    "category": "understanding-sma",
+    "question": "Does SMA affect intelligence or the ability to learn?",
+    "answer": "SMA does not itself cause intellectual disability. A person’s physical support needs should not be used to assume what they understand, can learn or want to do. Schools and supporters should separate a learning goal from the physical method used to complete it. Give the person time to communicate and include their preferences in decisions about participation.",
+    "links": [
+      {
+        "label": "School participation and inclusion",
+        "href": "/blog/school-and-sma"
+      }
+    ],
+    "source": {
+      "title": "NHS: spinal muscular atrophy",
+      "url": "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/"
+    },
+    "keywords": [
+      "cognition",
+      "learning",
+      "education"
+    ]
+  },
+  {
+    "id": "sma-cure-treatment",
+    "category": "understanding-sma",
+    "question": "Is there a cure for SMA, and are there treatments?",
+    "answer": "There is currently no cure, but disease-modifying medicines and coordinated supportive care can change outcomes and help address individual needs. Treatments differ in mechanism, administration, monitoring and eligibility. A medicine approved abroad is not automatically available or funded in Nigeria. Discuss the exact treatment and current local pathway with a specialist, alongside breathing, nutrition, rehabilitation and daily participation.",
+    "links": [
+      {
+        "label": "Treatment and access questions from Nigeria",
+        "href": "/blog/sma-treatment-access-nigeria"
+      }
+    ],
+    "source": {
+      "title": "GeneReviews: SMN1-related SMA",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK1352/"
+    },
+    "keywords": [
+      "medicine",
+      "gene therapy",
+      "Spinraza",
+      "risdiplam",
+      "Zolgensma"
+    ]
+  },
+  {
+    "id": "sma-life-expectancy",
+    "category": "understanding-sma",
+    "question": "What is the life expectancy of someone with SMA?",
+    "answer": "There is no single lifespan that applies to everyone with SMA. The type, current health, treatment history and respiratory and nutritional care all matter. Older untreated statistics should not be presented as a countdown for a person receiving care today. Ask the treating specialist which evidence relates to the individual, what remains uncertain and which needs require action now.",
+    "links": [
+      {
+        "label": "Discuss diagnosis and care priorities",
+        "href": "/blog/after-sma-diagnosis"
+      }
+    ],
+    "source": {
+      "title": "GeneReviews: SMN1-related SMA",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK1352/"
+    },
+    "keywords": [
+      "survival",
+      "prognosis",
+      "outlook"
+    ]
+  },
+  {
+    "id": "diagnosing-sma",
+    "category": "genetics-and-testing",
+    "question": "How is SMA diagnosed? Is an ordinary blood test enough?",
+    "answer": "A clinician assesses the symptoms and arranges appropriate investigations. A specifically requested genetic analysis is central to confirming the common SMN1-related form. A routine blood count is not the same test. Ask what analysis was ordered, which laboratory performs it and who explains the result. Keep the full report, including its method and limitations, even when further investigation is needed.",
+    "links": [
+      {
+        "label": "SMA genetic testing in Nigeria",
+        "href": "/blog/sma-genetic-testing"
+      }
+    ],
+    "source": {
+      "title": "Cure SMA: testing and diagnosis",
+      "url": "https://www.curesma.org/testing-diagnosis/"
+    },
+    "keywords": [
+      "diagnosis",
+      "SMN1",
+      "blood count"
+    ]
+  },
+  {
+    "id": "carrier-vs-diagnostic",
+    "category": "genetics-and-testing",
+    "question": "What is the difference between an SMA carrier test and a diagnostic test?",
+    "answer": "A diagnostic test investigates whether genetic findings explain a person’s suspected SMA. A carrier test looks at the possibility of passing a relevant genetic change to a child, often in someone without symptoms. The purpose determines which analysis and interpretation are appropriate. A parent’s carrier screen does not replace assessment of a child who has symptoms.",
+    "links": [
+      {
+        "label": "Compare diagnostic and carrier testing",
+        "href": "/blog/sma-genetic-testing"
+      }
+    ],
+    "source": {
+      "title": "Cure SMA: testing and diagnosis",
+      "url": "https://www.curesma.org/testing-diagnosis/"
+    },
+    "keywords": [
+      "screen",
+      "screening",
+      "carrier meaning"
+    ]
+  },
+  {
+    "id": "negative-carrier-test",
+    "category": "genetics-and-testing",
+    "question": "Can a negative SMA carrier test miss a carrier?",
+    "answer": "Yes. A screen can reduce risk without detecting every carrier arrangement or variant. Some people have two SMN1 copies on one chromosome and none on the other—the 2+0 or silent-carrier configuration. Counting total copies alone may not distinguish this from one copy on each chromosome. Ask a genetics professional to interpret the complete report alongside the family history.",
+    "links": [
+      {
+        "label": "Understand silent carriers and test limitations",
+        "href": "/blog/sma-genetic-testing"
+      }
+    ],
+    "source": {
+      "title": "ARUP Laboratories: SMA copy-number testing",
+      "url": "https://arupconsult.com/ati/spinal-muscular-atrophy"
+    },
+    "keywords": [
+      "false negative",
+      "2+0",
+      "two copies",
+      "silent carrier"
+    ]
+  },
+  {
+    "id": "african-ancestry-testing",
+    "category": "genetics-and-testing",
+    "question": "Do SMA carrier-test limitations matter for people of African descent?",
+    "answer": "They can. Carrier detection and residual-risk estimates depend on the method and the populations studied. African ancestry is diverse, so a figure from one study group should not be treated as the exact risk for every Nigerian family. This does not mean all testing is unreliable. Ask what the actual assay detects, whether additional markers were examined and how the family’s findings affect interpretation.",
+    "links": [
+      {
+        "label": "Questions to ask about your report",
+        "href": "/blog/sma-genetic-testing"
+      }
+    ],
+    "source": {
+      "title": "ARUP Laboratories: SMA copy-number testing",
+      "url": "https://arupconsult.com/ati/spinal-muscular-atrophy"
+    },
+    "keywords": [
+      "African",
+      "Nigeria",
+      "ancestry",
+      "residual risk"
+    ]
+  },
+  {
+    "id": "carrier-pregnancy",
+    "category": "genetics-and-testing",
+    "question": "What should I do if I receive an SMA carrier result during pregnancy?",
+    "answer": "Contact your maternity or genetics team and give the current stage of pregnancy. A carrier result in one parent is not, by itself, a diagnosis in the baby. Ask about partner testing, the meaning of the combined results and the distinction between screening and diagnostic options. Bring complete reports and ask which decisions are time-sensitive. Counselling should support informed choices in your circumstances.",
+    "links": [
+      {
+        "label": "Prepare questions about testing",
+        "href": "/blog/sma-genetic-testing"
+      }
+    ],
+    "source": {
+      "title": "ACOG: SMA carrier screening",
+      "url": "https://www.acog.org/womens-health/faqs/carrier-screening-for-spinal-muscular-atrophy"
+    },
+    "keywords": [
+      "pregnant",
+      "prenatal",
+      "partner"
+    ]
+  },
+  {
+    "id": "testing-cost-nigeria",
+    "category": "genetics-and-testing",
+    "question": "Where can I arrange SMA testing in Nigeria, and how much does it cost?",
+    "answer": "Start with a clinician who can specify the clinical question and appropriate test. Ask the service for the performing laboratory, exact analysis, collection and shipping arrangements, full quote and result-review route. Prices differ by scope; a broad panel or prenatal screen is not automatically the right diagnostic test for a child. Our testing and costs guides explain published enquiry routes and a dated price example, without treating them as a national SMA tariff.",
+    "links": [
+      {
+        "label": "Nigerian testing routes and laboratory questions",
+        "href": "/blog/sma-genetic-testing"
+      },
+      {
+        "label": "Care costs and a dated testing-price example",
+        "href": "/blog/planning-sma-care-costs"
+      }
+    ],
+    "keywords": [
+      "laboratory",
+      "price",
+      "cost",
+      "Germany",
+      "CENTOGENE"
+    ]
+  },
+  {
+    "id": "after-diagnosis",
+    "category": "care-and-access",
+    "question": "What should a family do first after an SMA diagnosis?",
+    "answer": "Ask the treating clinician which needs require attention first, who coordinates care and what happens next. Keep the complete genetic report, relevant discharge summaries and a short question list. Confirm the next action, responsible person and follow-up route before leaving. Discuss travel, cost or home constraints while the plan is being made, so the recommendations are practical for your household.",
+    "links": [
+      {
+        "label": "Appointment checklist after diagnosis",
+        "href": "/blog/after-sma-diagnosis"
+      }
+    ],
+    "keywords": [
+      "newly diagnosed",
+      "first steps"
+    ]
+  },
+  {
+    "id": "finding-care-nigeria",
+    "category": "care-and-access",
+    "question": "Which hospital or specialist should we contact for SMA care in Nigeria?",
+    "answer": "Begin with a qualified clinician and an appropriate referral. Verify the receiving department, age group, clinic day, records and booking process before travelling. A hospital’s neurology listing or a teaching-hospital directory does not establish a dedicated SMA service or a particular treatment. Our care-team guide explains public enquiry routes and how to record what an institution has actually confirmed.",
+    "links": [
+      {
+        "label": "Finding and coordinating an SMA care team",
+        "href": "/blog/sma-care-team-nigeria"
+      }
+    ],
+    "keywords": [
+      "Lagos",
+      "Enugu",
+      "Abuja",
+      "neurology",
+      "referral"
+    ]
+  },
+  {
+    "id": "treatment-nigeria",
+    "category": "care-and-access",
+    "question": "Are all SMA medicines available in Nigeria?",
+    "answer": "Do not assume that an overseas approval means Nigerian registration, stock, clinical access or funding. Ask the treating specialist and named institution about the exact product, assessment, administration and monitoring pathway. If a programme is advertised, verify it through the institution’s official contact. Keep clinical acceptance, funding approval and a financial quotation separate; each confirms something different.",
+    "links": [
+      {
+        "label": "Verify treatment and access claims",
+        "href": "/blog/sma-treatment-access-nigeria"
+      }
+    ],
+    "keywords": [
+      "availability",
+      "funding",
+      "access",
+      "drug"
+    ]
+  },
+  {
+    "id": "supportive-care",
+    "category": "care-and-access",
+    "question": "What is supportive care, and does it matter alongside medicine?",
+    "answer": "Supportive care addresses the person’s current needs, which may include breathing, nutrition and swallowing, rehabilitation, equipment, comfort and psychological support. A medicine does not automatically remove these needs. Ask how the different teams coordinate and what the illness plan should be. Equipment needs appropriate assessment, training, supplies and maintenance; another person’s settings or routine are not instructions for your family.",
+    "links": [
+      {
+        "label": "Plan the care team",
+        "href": "/blog/sma-care-team-nigeria"
+      }
+    ],
+    "source": {
+      "title": "SMA Europe: standards of care",
+      "url": "https://www.sma-europe.eu/care-standards-for-sma"
+    },
+    "keywords": [
+      "breathing",
+      "feeding",
+      "physiotherapy",
+      "equipment"
+    ]
+  },
+  {
+    "id": "overseas-treatment",
+    "category": "care-and-access",
+    "question": "What should we check before travelling abroad for SMA treatment?",
+    "answer": "Obtain clinical acceptance from the receiving team and an itemised quote before making major commitments. Clarify whether the visit is for assessment or treatment, expected stay, exclusions, cancellation terms and follow-up on return. Discuss fitness to travel and transport needs with the treating team. A visa, medicine price or another family’s experience is not confirmation of your own treatment pathway.",
+    "links": [
+      {
+        "label": "Planning overseas treatment enquiries",
+        "href": "/blog/sma-treatment-access-nigeria"
+      }
+    ],
+    "keywords": [
+      "Dubai",
+      "travel",
+      "international treatment"
+    ]
+  },
+  {
+    "id": "international-care",
+    "category": "care-and-access",
+    "question": "Where can readers in the UK, Canada, USA or elsewhere in Africa find guidance?",
+    "answer": "Use the guide for the relevant country or region. The UK article separates the UK nations; the Canadian guide explains provincial coverage questions; the US guide covers insurance and authorisation; the Africa guide addresses cross-border referrals and testing. These pages help prepare local enquiries, while the responsible clinical and funding services confirm the individual arrangements.",
+    "links": [
+      {
+        "label": "United Kingdom",
+        "href": "/blog/sma-treatment-support-uk"
+      },
+      {
+        "label": "Canada",
+        "href": "/blog/sma-treatment-support-canada"
+      },
+      {
+        "label": "United States",
+        "href": "/blog/sma-treatment-support-usa"
+      },
+      {
+        "label": "Across Africa",
+        "href": "/blog/sma-testing-care-africa"
+      }
+    ],
+    "keywords": [
+      "NHS",
+      "Ontario",
+      "insurance",
+      "Africa"
+    ]
+  },
+  {
+    "id": "urgent-care",
+    "category": "care-and-access",
+    "question": "Can I use the Support button for a medical emergency?",
+    "answer": "No. Severe breathing difficulty, choking, blue or grey colouring or sudden serious illness needs emergency medical care. Do not wait for a WhatsApp message, contact-form response, routine appointment or genetic result. The Support button is for practical foundation enquiries and conversations; it is not an emergency, diagnostic or prescribing service.",
+    "links": [
+      {
+        "label": "Contact the foundation for a non-urgent enquiry",
+        "href": "/contact"
+      }
+    ],
+    "keywords": [
+      "emergency",
+      "urgent",
+      "WhatsApp"
+    ]
+  },
+  {
+    "id": "school",
+    "category": "everyday-life",
+    "question": "Can a child with SMA go to school?",
+    "answer": "School participation should be planned around the child’s needs, goals and clinical advice. Consider access across the whole day, trained support, learning arrangements, privacy, absences and an emergency plan. A short attendance arrangement can still be meaningful when it includes valued activities and friendships. Agree responsibilities and review dates with the school, and include the child’s preferences.",
+    "links": [
+      {
+        "label": "School inclusion and a practical meeting checklist",
+        "href": "/blog/school-and-sma"
+      }
+    ],
+    "keywords": [
+      "education",
+      "classroom",
+      "attendance",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "adult-sma",
+    "category": "everyday-life",
+    "question": "Do adults live with SMA too?",
+    "answer": "Yes. Adults may have a childhood-onset diagnosis or symptoms that began later. The appropriate assessment and support depend on their individual history and current needs. Work, mobility, fatigue, equipment and relationships all deserve attention. A new symptom should not automatically be attributed to an existing diagnosis, and the adult’s own priorities should guide care and practical support.",
+    "links": [
+      {
+        "label": "Explore the condition overview",
+        "href": "/what-is-sma"
+      },
+      {
+        "label": "Browse practical guides",
+        "href": "/blog"
+      }
+    ],
+    "source": {
+      "title": "NHS: spinal muscular atrophy",
+      "url": "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/"
+    },
+    "keywords": [
+      "adult",
+      "work",
+      "mobility",
+      "fatigue"
+    ]
+  },
+  {
+    "id": "help-a-family",
+    "category": "everyday-life",
+    "question": "How can I support an SMA family without taking over?",
+    "answer": "Offer a specific task with a clear time and an easy way to decline: a meal, a journey or help with siblings. Respect routines, privacy and the family’s answer. Medical tasks need appropriate training and agreement. Reliable help and ordinary friendship can be more useful than repeated requests for an update or advice the family has not asked for.",
+    "links": [
+      {
+        "label": "Practical ways to support a family",
+        "href": "/blog/supporting-an-sma-family"
+      }
+    ],
+    "keywords": [
+      "caregiver",
+      "church",
+      "friends",
+      "relatives"
+    ]
+  },
+  {
+    "id": "family-contact",
+    "category": "everyday-life",
+    "question": "Can families reach out directly?",
+    "answer": "Yes. Use the Support button for a WhatsApp conversation, the contact form for a family enquiry, or email help@smahope.org. Explain the practical question and what kind of help you are seeking. You do not need to send a full medical history to begin. The foundation can help organise questions and information, while clinical assessment and treatment remain with qualified professionals.",
+    "links": [
+      {
+        "label": "Family support resources",
+        "href": "/support-for-families"
+      },
+      {
+        "label": "Contact SMA Hope",
+        "href": "/contact"
+      }
+    ],
+    "keywords": [
+      "chat",
+      "email",
+      "help"
+    ]
+  },
+  {
+    "id": "financial-help",
+    "category": "everyday-life",
+    "question": "Can SMA Hope guarantee treatment, a grant or help paying medical bills?",
+    "answer": "No particular treatment, referral, grant or financial contribution is guaranteed by contacting the foundation. Our current role includes education, awareness, practical resources and family enquiries. If asking about a specific need, describe it clearly and use confirmed provider quotes where relevant. A donation to the foundation and a family’s treatment application are separate matters.",
+    "links": [
+      {
+        "label": "Understand the foundation’s work",
+        "href": "/about"
+      },
+      {
+        "label": "Plan care costs",
+        "href": "/blog/planning-sma-care-costs"
+      }
+    ],
+    "keywords": [
+      "money",
+      "grant",
+      "funding",
+      "financial support"
+    ]
+  },
+  {
+    "id": "book-story",
+    "category": "the-book",
+    "question": "What is When Every Breath Matters about, and who wrote it?",
+    "answer": "When Every Breath Matters is by Tochukwu Nkwocha and Ijeoma Nkwocha. It shares their Nigerian family’s experience of spinal muscular atrophy through medicine, family life, faith and survival. It offers a personal view of care, access and the responsibilities around a diagnosis. The memoir is lived experience and educational context; individual medical decisions still belong in a conversation with your care team.",
+    "links": [
+      {
+        "label": "Discover the book",
+        "href": "/book"
+      },
+      {
+        "label": "Read about the memoir",
+        "href": "/blog/when-every-breath-matters-sma-memoir"
+      }
+    ],
+    "keywords": [
+      "authors",
+      "memoir",
+      "story"
+    ]
+  },
+  {
+    "id": "book-editions",
+    "category": "the-book",
+    "question": "Is the book available in Kindle, paperback and hardcover?",
+    "answer": "Yes. When Every Breath Matters is available on Amazon in all three editions. Choose the format that suits how you read, then check local pricing, delivery and availability on the relevant Amazon listing. The book page brings the editions together and lets readers select their store. A Kindle device is not the only reading option; Amazon also provides Kindle apps.",
+    "links": [
+      {
+        "label": "Choose a book edition",
+        "href": "/book#editions"
+      }
+    ],
+    "keywords": [
+      "ebook",
+      "e-book",
+      "hard cover",
+      "formats"
+    ]
+  },
+  {
+    "id": "amazon-store",
+    "category": "the-book",
+    "question": "How do I buy the book from Amazon UK, Canada or the USA?",
+    "answer": "Open the book page and select your Amazon store. The Buy Now links then point to the matching UK, Canadian or US marketplace for the selected edition. Check the store, format and delivery address at checkout, because prices and shipping options can differ. Use the official book page when sharing a recommendation so readers can choose the right marketplace.",
+    "links": [
+      {
+        "label": "Amazon UK editions",
+        "href": "/book?market=GB#editions"
+      },
+      {
+        "label": "Amazon Canada editions",
+        "href": "/book?market=CA#editions"
+      },
+      {
+        "label": "Amazon US editions",
+        "href": "/book?market=US#editions"
+      }
+    ],
+    "keywords": [
+      "buy",
+      "United Kingdom",
+      "Canada",
+      "United States"
+    ]
+  },
+  {
+    "id": "book-nigeria",
+    "category": "the-book",
+    "question": "Can readers in Nigeria ask the foundation to arrange a copy?",
+    "answer": "Yes. Contact us about the edition and delivery location, or use the Nigerian book enquiry on the book page. We will confirm availability, the total price and delivery arrangements before payment. Do not assume an overseas Amazon price is the final delivered Nigerian price. A book purchase is separate from a donation and should have its own clear order terms.",
+    "links": [
+      {
+        "label": "Ask about copies for Nigeria",
+        "href": "/book#nigeria"
+      }
+    ],
+    "keywords": [
+      "shipping",
+      "delivery",
+      "Nigeria price",
+      "order"
+    ]
+  },
+  {
+    "id": "bulk-book",
+    "category": "the-book",
+    "question": "Can institutions request bulk orders?",
+    "answer": "Yes. Contact the foundation with the number of copies, preferred edition, delivery country and any event date. We can discuss the actual availability and quotation before an order is agreed. Reading groups can also use the discussion guide. Please do not assume a bulk discount, delivery date or event participation until it has been confirmed.",
+    "links": [
+      {
+        "label": "Make a book or institution enquiry",
+        "href": "/contact"
+      },
+      {
+        "label": "Reading-group discussion guide",
+        "href": "/blog/sma-book-club-discussion-guide"
+      }
+    ],
+    "keywords": [
+      "book club",
+      "school",
+      "church",
+      "bulk copies"
+    ]
+  },
+  {
+    "id": "registered-foundation",
+    "category": "the-foundation",
+    "question": "Is SMA Hope Foundation Nigeria a registered organisation?",
+    "answer": "Yes. SMA Hope Foundation Nigeria is registered in Nigeria. The foundation grew from our family’s experience and works to advance understanding, dignity and support for families affected by SMA. Registration does not make the foundation a hospital or guarantee a particular service or grant. Our about and transparency pages explain the organisation’s role and approach to accountability.",
+    "links": [
+      {
+        "label": "About the foundation",
+        "href": "/about"
+      },
+      {
+        "label": "Transparency and accountability",
+        "href": "/transparency"
+      }
+    ]
+  },
+  {
+    "id": "giving-from-abroad",
+    "category": "the-foundation",
+    "question": "Can I donate from outside Nigeria?",
+    "answer": "Visit the donation page to see the payment and currency options currently enabled. If the option you need is unavailable, contact the foundation before sending funds through another route. Card acceptance, currencies and recurring-payment options can depend on the provider and account setup, so an overseas donor should not assume every method is supported. Use the website’s official checkout and keep the payment reference.",
+    "links": [
+      {
+        "label": "See current donation options",
+        "href": "/donate"
+      },
+      {
+        "label": "Ask a giving question",
+        "href": "/contact"
+      }
+    ],
+    "keywords": [
+      "international donation",
+      "Paystack",
+      "USD",
+      "naira"
+    ]
+  },
+  {
+    "id": "donation-purpose",
+    "category": "the-foundation",
+    "question": "What does a donation support?",
+    "answer": "Donations support the foundation’s mission in SMA awareness, family-centred education, practical resources and advocacy. They are not a payment for medical treatment or a guarantee that a named family will receive funding. For a proposed restricted gift or larger collaboration, contact us before payment so the purpose and terms can be discussed clearly.",
+    "links": [
+      {
+        "label": "Support the foundation",
+        "href": "/donate"
+      },
+      {
+        "label": "Our transparency approach",
+        "href": "/transparency"
+      }
+    ],
+    "keywords": [
+      "funds",
+      "giving",
+      "charity"
+    ]
+  },
+  {
+    "id": "donation-record",
+    "category": "the-foundation",
+    "question": "What should I do if I need help with a donation receipt or payment?",
+    "answer": "Keep the payment reference, date, amount, currency and email address used at checkout. Check your email and account where available, then contact the foundation if the confirmation or record needs attention. Do not send card details, passwords or a full bank statement in an initial message. A payment reference and a concise explanation are a better starting point.",
+    "links": [
+      {
+        "label": "View your account",
+        "href": "/account"
+      },
+      {
+        "label": "Contact us about a donation",
+        "href": "/contact"
+      }
+    ],
+    "keywords": [
+      "receipt",
+      "payment failed",
+      "confirmation"
+    ]
+  },
+  {
+    "id": "partnership-contact",
+    "category": "the-foundation",
+    "question": "How do I discuss collaboration or media invitations?",
+    "answer": "Use the contact form and select the relevant partnership or media subject, or email partnerships@smahope.org. Explain the organisation, proposed work, audience, timeframe and what you are asking the foundation to contribute. Testing and clinical-service proposals need clear professional responsibilities, logistics and fees before anything is announced to families. An initial enquiry is not a confirmed partnership.",
+    "links": [
+      {
+        "label": "Partnership and media enquiries",
+        "href": "/contact"
+      }
+    ],
+    "keywords": [
+      "laboratory",
+      "testing centre",
+      "CENTOGENE",
+      "speaking",
+      "media"
+    ]
+  },
+  {
+    "id": "privacy-and-stories",
+    "category": "the-foundation",
+    "question": "Can I share a family’s story, photograph or medical report to raise awareness?",
+    "answer": "Ask for informed permission first, including what will be shared, where and for what purpose. Protect children’s dignity and avoid publishing reports, addresses or intimate care details to make an appeal more persuasive. A family can welcome practical help without making its medical life public. Use a general guide or the official book page when personal details are unnecessary.",
+    "links": [
+      {
+        "label": "Our editorial approach",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "Privacy policy",
+        "href": "/privacy-policy"
+      }
+    ],
+    "keywords": [
+      "consent",
+      "photos",
+      "fundraising",
+      "privacy"
+    ]
+  }
+]

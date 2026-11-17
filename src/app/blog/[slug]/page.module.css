@@ -1,0 +1,101 @@
+.links { padding-left: 22px; }
+.links li { margin: 10px 0; }
+.tableWrap { overflow-x: auto; margin: 24px 0; border: 1px solid var(--line); border-radius: 10px; }
+.tableWrap:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+.tableWrap table { min-width: 520px; width: 100%; border-collapse: collapse; font-size: 14px; }
+.tableWrap th, .tableWrap td { padding: 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.tableWrap th { background: var(--surface-muted); }
+.faqs details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+.faqs summary { cursor: pointer; font-weight: 650; padding-right: 16px; }
+.faqs summary:focus-visible { outline: 3px solid var(--primary); outline-offset: 6px; }
+.faqs details p { margin-top: 14px; }
+@media print { .faqs details { content-visibility: visible; } .faqs details::details-content { display: block; } .tableWrap { overflow: visible; } .tableWrap table { min-width: 0; } }
+
+.page :global(.article-header) { max-width: 1120px; padding: 56px 0 40px; }
+.page :global(.article-header > .text-link) { margin-bottom: 38px; font-size: 14px; }
+.page :global(.article-header .eyebrow) { margin-bottom: 20px; line-height: 1.6; }
+.page :global(.article-header h1) { max-width: 27ch; font-size: clamp(36px,4.2vw,58px); line-height: 1.15; text-wrap: balance; }
+.page :global(.article-deck) { margin: 26px 0 30px; font-size: 20px; line-height: 1.75; max-width: 65ch; }
+.page :global(.article-byline) { gap: 14px; line-height: 1.5; flex-wrap: wrap; }
+.page :global(.author-mark) { flex-shrink: 0; width: 42px; height: 42px; }
+.page :global(.review-label) { font-size: 12px; padding: 6px 11px; border-color: var(--line); color: var(--text-soft); }
+.page :global(.article-layout) { max-width: 1120px; grid-template-columns: 240px minmax(0,700px); gap: 80px; padding: 52px 0 88px; }
+.page :global(.article-toc) { top: 110px; max-height: calc(100dvh - 140px); overflow-y: auto; padding-right: 16px; scrollbar-width: thin; }
+.page :global(.article-toc .eyebrow) { margin-bottom: 22px; }
+.page :global(.article-toc nav) { gap: 0; border-left: 1px solid var(--line); }
+.page :global(.article-toc nav a) { font-size: 13px; line-height: 1.65; padding: 9px 0 9px 18px; }
+.page :global(.toc-support) { margin-top: 28px; padding: 22px; gap: 12px; }
+.page :global(.toc-support strong) { font-size: 14px; line-height: 1.5; }
+.page :global(.toc-support span) { font-size: 13px; line-height: 1.7; }
+.page :global(.guide-body) { font-size: 18px; line-height: 1.9; color: var(--text); }
+.page :global(.guide-body > p) { margin: 0 0 24px; }
+.page :global(.guide-body > p:first-of-type) { font-size: 20px; line-height: 1.85; }
+.page :global(.guide-body section) { margin-top: 56px; scroll-margin-top: 110px; }
+.page :global(.guide-body h2) { font-size: 29px; line-height: 1.3; margin-bottom: 22px; text-wrap: pretty; color: var(--text); }
+.page :global(.guide-body section p) { margin-bottom: 22px; }
+.page :global(.guide-body li) { margin: 12px 0; padding-left: 4px; }
+.page :global(.guide-body a:not(.btn)) { text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.page :global(.takeaways) { margin-top: 34px; padding: 28px 32px; border: 0; border-left: 3px solid var(--primary); border-radius: 0 8px 8px 0; }
+.page :global(.takeaways li) { font-size: 16px; margin: 14px 0; padding: 0; line-height: 1.8; }
+.page :global(.medical-note) { font-size: 14px; line-height: 1.85; margin: 24px 0 0; color: var(--text-soft); }
+.page :global(.guide-body .source-link) { font-size: 13px; line-height: 1.8; margin-top: 24px; color: var(--text-soft); }
+.page :global(.print-checklist) { padding: 30px 32px; border-radius: 8px; }
+.page :global(.print-checklist li) { font-size: 16px; line-height: 1.8; }
+.page :global(.article-endnote) { padding-top: 32px; font-size: 14px; line-height: 1.9; color: var(--text-soft); }
+.page :global(.article-endnote h2) { font-size: 23px; }
+.page :global(.article-endnote li) { margin: 12px 0; overflow-wrap: anywhere; }
+.page :global(.related-guides) { border-top: 1px solid var(--line); padding-top: 48px; padding-bottom: 80px; }
+.tableWrap { margin: 30px 0; }
+.tableWrap th, .tableWrap td { padding: 18px; line-height: 1.75; }
+.tableWrap th { font-weight: 650; }
+.faqs details { padding: 23px 0; }
+.faqs summary { line-height: 1.7; font-size: 17px; }
+.faqs details p { font-size: 17px; line-height: 1.9; margin: 18px 0 4px; }
+.mobileContents { display: none; }
+@media(max-width:1100px) {
+  .page :global(.article-header) { max-width: 760px; }
+  .page :global(.article-layout) { max-width: 760px; grid-template-columns: minmax(0,1fr); gap: 0; }
+  .page :global(.article-toc) { display: none; }
+  .mobileContents { display: block; border: 1px solid var(--line); border-radius: 6px; margin-bottom: 32px; padding: 18px 22px; background: var(--surface-muted); }
+  .mobileContents summary { cursor: pointer; font-size: 15px; font-weight: 650; }
+  .mobileContents nav { display: grid; gap: 15px; margin-top: 22px; }
+  .mobileContents nav a { font-size: 15px; line-height: 1.65; }
+}
+@media(max-width:650px) {
+  .page :global(.article-header) { padding: 32px 0 30px; }
+  .page :global(.article-header > .text-link) { margin-bottom: 28px; }
+  .page :global(.article-header h1) { font-size: 34px; line-height: 1.2; }
+  .page :global(.article-header .eyebrow) { font-size: 11px; margin-bottom: 16px; letter-spacing: .08em; }
+  .page :global(.article-deck) { font-size: 18px; line-height: 1.8; margin: 22px 0 26px; }
+  .page :global(.article-byline) { font-size: 12px; gap: 12px; }
+  .page :global(.article-byline p) { font-size: 12px; line-height: 1.7; }
+  .page :global(.author-mark) { width: 34px; height: 34px; font-size: 12px; }
+  .page :global(.review-label) { margin: 4px 0 0 46px; }
+  .page :global(.article-layout) { padding: 30px 0 56px; }
+  .page :global(.guide-body) { font-size: 17px; line-height: 1.9; }
+  .page :global(.guide-body > p:first-of-type) { font-size: 18px; }
+  .page :global(.guide-body section) { margin-top: 42px; }
+  .page :global(.guide-body h2) { font-size: 25px; line-height: 1.35; margin-bottom: 20px; }
+  .page :global(.takeaways) { padding: 22px; margin-top: 28px; }
+  .page :global(.takeaways li) { font-size: 15px; }
+  .page :global(.medical-note) { font-size: 13px; }
+  .page :global(.print-checklist) { padding: 24px; }
+  .page :global(.related-guides .guide-grid) { grid-template-columns: 1fr; gap: 28px; }
+  .tableWrap th, .tableWrap td { padding: 14px; }
+  .faqs summary, .faqs details p { font-size: 16px; }
+}
+@media print {
+  .mobileContents { display: none; }
+  .page :global(.article-header) { padding: 0 0 20px; }
+  .page :global(.article-layout) { display: block; padding-top: 20px; }
+  .page :global(.article-toc) { display: none; }
+  .page :global(.guide-body section) { margin-top: 24px; }
+}
+
+@media(max-width:650px) {
+ .page :global(.container) { width: calc(100% - 40px); }
+ .page :global(.article-byline) { display: grid; grid-template-columns: 34px minmax(0,1fr); }
+ .page :global(.review-label) { grid-column: 2; margin: 2px 0 0; justify-self: start; }
+}
+.mobileContents summary:focus-visible { outline: 3px solid var(--primary); outline-offset: 5px; }
+@media(prefers-reduced-motion:reduce) { .page :global(.guide-card) { transition: none; transform: none; } }

@@ -15,6 +15,7 @@ export type MetadataConfig = {
   description: string;
   path?: string;
   type?: "website" | "article";
+  language?: string;
   publishedTime?: string;
   modifiedTime?: string;
 };

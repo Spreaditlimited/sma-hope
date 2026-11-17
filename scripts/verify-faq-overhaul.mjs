@@ -1,0 +1,31 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+const base=(process.env.PREVIEW_URL || "http://127.0.0.1:3014").replace(/\/$/,"");
+const faqs=JSON.parse(fs.readFileSync(new URL("../src/content/faqs-release.json",import.meta.url)));
+const response=await fetch(base+"/faqs");
+assert.equal(response.status,200);
+const html=await response.text();
+assert.equal((html.match(/<h1(?:\s|>)/g)||[]).length,1);
+assert.ok(html.includes('rel="canonical" href="https://www.smahope.org/faqs"'));
+assert.ok(!/<meta name="robots" content="[^"]*noindex/.test(html));
+const graphs=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match=>JSON.parse(match[1]));
+const nodes=graphs.flatMap(graph=>graph['@graph'] || [graph]);
+const schema=nodes.find(node=>node['@type']==="FAQPage");
+assert.ok(schema);
+assert.equal(schema.mainEntity.length,faqs.length);
+assert.ok(nodes.some(node=>node['@type']==="BreadcrumbList"));
+const escape=text=>text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#x27;');
+for(const faq of faqs) {
+ assert.ok(html.includes(`id="${faq.id}"`),faq.id);
+ assert.ok(html.includes(escape(faq.question)),`${faq.id}: server-rendered question`);
+ assert.ok(html.includes(escape(faq.answer)),`${faq.id}: server-rendered answer`);
+ const entry=schema.mainEntity.find(item=>item.name===faq.question);
+ assert.equal(entry?.acceptedAnswer.text,faq.answer,`${faq.id}: matching structured answer`);
+ for(const link of faq.links||[])assert.ok(html.includes(escape(link.href)),`${faq.id}: guide link`);
+}
+assert.equal((html.match(/<details(?:\s|>)/g)||[]).length,faqs.length);
+assert.ok(html.includes('id="faq-search"'));
+assert.doesNotMatch(html,/clinical review pending|not yet been reviewed by a clinician|no clinician review is claimed/i);
+const groups=['understanding-sma','genetics-and-testing','care-and-access','everyday-life','the-book','the-foundation'];
+for(const id of groups)assert.ok(html.includes(`id="${id}"`));
+console.log(JSON.stringify({base,status:response.status,questions:faqs.length,categories:groups.length,allAnswersServerRendered:true,canonical:"https://www.smahope.org/faqs",structuredAnswersMatch:true,searchPresent:true},null,2));

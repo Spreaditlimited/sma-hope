@@ -1903,3 +1903,8 @@ body::-webkit-scrollbar {
 .admin-page-enter {
   animation: adminPageEnter 180ms ease-out;
 }
+
+.library-region { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 24px 0; color: var(--text); font-size: 14px; font-weight: 600; }
+.library-region select { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 36px 12px 14px; min-height: 48px; max-width: 100%; }
+.library-region select:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+@media(max-width:650px) { .library-region { align-items: stretch; flex-direction: column; } }

@@ -7,7 +7,6 @@ import { useState } from "react";
 import { Icon } from "@/components/icon";
 const links = [
   ["Understand SMA", "/what-is-sma"],
-  ["For families", "/support-for-families"],
   ["Knowledge hub", "/blog"],
   ["Our story", "/our-story"],
   ["The book", "/book"],

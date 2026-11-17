@@ -27,12 +27,6 @@ export default function EditorialPolicy() {
           service listing is not evidence of availability in Nigeria. Provider details, costs, and
           access programmes require direct, dated confirmation.
         </p>
-        <h2>Medical review is a real step</h2>
-        <p>
-          Clinical guides display “Clinical review pending” until a qualified clinician has actually
-          reviewed them. We do not invent reviewer names or credentials. A reviewed version should
-          identify the reviewer, professional role, review date, and the scope of review.
-        </p>
         <h2>Stories belong to people</h2>
         <p>
           Lived experience adds context; it does not establish what will happen to another person.
@@ -46,6 +40,9 @@ export default function EditorialPolicy() {
           <Link href="/contact">contact the foundation</Link> with the page address, the issue, and
           a supporting source where possible.
         </p>
+        <h2>Books, testing enquiries and commercial interests</h2>
+        <p>The foundation promotes its own book, When Every Breath Matters. Book invitations are identified in the guides and are separate from clinical evidence. Buying a book is not a condition of receiving educational information or asking a support question.</p>
+        <p>Testing partnerships are being explored. No partnership, subsidised price or diagnostic service is announced unless it has been confirmed. Any future commercial testing arrangement should identify the laboratory, explain charges and the foundation’s role, and preserve appropriate clinical advice and patient choice.</p>
         <h2>Clear boundaries</h2>
         <p>
           We do not promise treatment, funding, a referral, or a particular health outcome.

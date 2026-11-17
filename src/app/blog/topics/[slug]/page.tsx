@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "../../page.module.css";
 import { notFound } from "next/navigation";
 import { topics } from "@/lib/topics";
 import { getGuides } from "@/lib/articles";
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: Props) {
   const t = topics.find((t) => t.slug === slug);
   return t
     ? buildMetadata({
-        title: `${t.name}: SMA guides for Nigeria`,
+        title: `${t.name}: spinal muscular atrophy guides`,
         description: t.description,
         path: `/blog/topics/${slug}`,
       })
@@ -26,12 +27,13 @@ export default async function Topic({ params }: Props) {
   const t = topics.find((t) => t.slug === slug);
   if (!t) notFound();
   return (
-    <>
+    <div className={styles.page}>
       <PageHeader title={t.name} intro={t.description} />
       <section className="container hope-section">
         <Link href="/blog" className="text-link" style={{ marginBottom: 30 }}>
           ← All knowledge hub topics
         </Link>
+        <h2 className={styles.sectionTitle}>Explore the guides.</h2>
         <div className="guide-grid">
           {guides
             .filter((g) => g.category === t.name)
@@ -40,6 +42,6 @@ export default async function Topic({ params }: Props) {
             ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }

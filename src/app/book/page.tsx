@@ -7,6 +7,7 @@ import { BookEditionMockup } from "@/components/book-edition-mockup";
 import { BookMarketplaceSelector } from "@/components/book-marketplace-selector";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
+import { supportWhatsAppUrl } from "@/lib/support";
 import { book, bookFaqs, bookStructuredData } from "@/lib/book";
 
 const baseMetadata = buildMetadata({
@@ -88,6 +89,14 @@ export default async function Book({ searchParams }: { searchParams: Promise<{ m
           </article>)}
         </div>
         <p className="book-availability">Buy securely through Amazon. Prices, format availability and delivery options vary by marketplace.</p>
+      </section>
+      <section className="container hope-section mission-layout" id="nigeria">
+        <div><p className="eyebrow">For readers in Nigeria</p><h2 className="display-heading">A printed copy.<br /><em>A clear delivery plan.</em></h2></div>
+        <div className="mission-copy"><p>Would you like a paperback or hardcover delivered in Nigeria? Contact SMA Hope to enquire about copies sourced through Amazon and onward delivery.</p><p>We will confirm the edition, current availability, total price and delivery arrangements before you pay.</p><a className="btn btn-primary" href={supportWhatsAppUrl} target="_blank" rel="noopener noreferrer">Ask about delivery in Nigeria ↗</a></div>
+      </section>
+      <section className="container hope-section mission-layout">
+        <div><p className="eyebrow">Read together</p><h2 className="display-heading">Bring the story<br /><em>into conversation.</em></h2></div>
+        <div className="mission-copy"><p>Explore the book’s themes of family, caregiving, dignity, faith and access with a reading group, community or professional audience.</p><Link href="/blog/sma-book-club-discussion-guide" className="text-link">Use the book club discussion guide →</Link><p><Link href="/blog/when-every-breath-matters-sma-memoir">Read more about the memoir and who it is for →</Link></p></div>
       </section>
       <section className="container hope-section mission-layout" id="authors">
         <div><p className="eyebrow">About the authors</p><h2 className="display-heading">Tochukwu &amp;<br /><em>Ijeoma Nkwocha</em></h2></div>

@@ -9,7 +9,7 @@ export const topics = [
     slug: "diagnosis-and-care",
     name: "Diagnosis & care",
     description:
-      "Prepare for appointments, understand testing questions, and explore care and treatment access from Nigeria.",
+      "Prepare for appointments, understand testing questions, and explore care and treatment access in Nigeria and other countries.",
   },
   {
     slug: "living-with-sma",

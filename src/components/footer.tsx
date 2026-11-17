@@ -17,7 +17,7 @@ const groups = [
       ["What is SMA?", "/what-is-sma"],
       ["Knowledge hub", "/blog"],
       ["Support for families", "/support-for-families"],
-      ["Common questions", "/faqs"],
+      ["FAQs", "/faqs"],
       ["Our editorial approach", "/editorial-policy"],
     ],
   },

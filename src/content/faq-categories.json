@@ -1,0 +1,32 @@
+[
+  {
+    "id": "understanding-sma",
+    "title": "Understanding SMA",
+    "intro": "The condition, symptoms, inheritance and the questions that often come first."
+  },
+  {
+    "id": "genetics-and-testing",
+    "title": "Genetics & testing",
+    "intro": "Diagnosis, carrier results, pregnancy questions and arranging the right test."
+  },
+  {
+    "id": "care-and-access",
+    "title": "Care & access",
+    "intro": "First steps after diagnosis, treatment enquiries and local services."
+  },
+  {
+    "id": "everyday-life",
+    "title": "Everyday life & support",
+    "intro": "School, adulthood and practical help for the whole household."
+  },
+  {
+    "id": "the-book",
+    "title": "When Every Breath Matters",
+    "intro": "The story, editions, Amazon stores and book enquiries."
+  },
+  {
+    "id": "the-foundation",
+    "title": "The foundation & giving",
+    "intro": "Our role, donations, partnerships and getting in touch."
+  }
+]

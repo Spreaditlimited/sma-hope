@@ -3,104 +3,40 @@ import { PageHeader } from "@/components/page-header";
 import { GuideCard } from "@/components/guide-card";
 import { getGuides } from "@/lib/articles";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 export const metadata = buildMetadata({
-  title: "What is SMA? Understanding spinal muscular atrophy",
-  description:
-    "Understand spinal muscular atrophy in plain language and find practical guides on diagnosis, genetic testing, and care for Nigerian families.",
+  title: "What is spinal muscular atrophy (SMA)? Symptoms, types and care",
+  description: "Understand SMA symptoms, types, inheritance, diagnosis and treatment, with practical next steps for Nigerian families and links to country-specific guides.",
   path: "/what-is-sma",
 });
+const questions = [
+  { question: "What does SMA stand for?", answer: "Here, SMA means spinal muscular atrophy, a group of genetic conditions affecting the nerve cells that control muscles." },
+  { question: "Is SMA contagious?", answer: "No. SMA is a genetic condition; it is not caught through contact with a person who has it." },
+  { question: "Does SMA affect intelligence?", answer: "SMA does not itself cause an intellectual disability. A person’s movement or communication needs should not be mistaken for their ability to understand and learn." },
+  { question: "Can a blood test diagnose SMA?", answer: "A specifically requested genetic test can help confirm the diagnosis. A routine blood count is not the same test. The clinician interprets the result alongside the person’s assessment." },
+  { question: "Is an SMA type a fixed prediction of life expectancy?", answer: "No. Type labels describe traditional patterns, but treatment and individual circumstances affect the outlook. Discuss the person’s situation with the treating team rather than relying on a fixed number from a web page." },
+  { question: "Where can families in Nigeria start?", answer: "Ask a qualified clinician about assessment and an appropriate referral. Keep the complete test report and confirm the receiving clinic’s service before travelling. SMA Hope can help organise practical questions." },
+];
 export default async function SmaPage() {
   const guides = await getGuides();
-  return (
-    <>
-      <PageHeader
-        title="Understanding spinal muscular atrophy."
-        intro="A clear starting point for a condition that can bring many questions."
-      />
-      <div className="container hope-section">
-        <div className="mission-layout">
-          <div>
-            <p className="eyebrow">Start with understanding</p>
-            <h2 className="display-heading">
-              A diagnosis is part
-              <br />
-              of a person’s story.
-              <br />
-              <em>It isn’t the whole story.</em>
-            </h2>
-          </div>
-          <div className="mission-copy">
-            <p>
-              Spinal muscular atrophy, or SMA, is a genetic condition that causes muscle weakness.
-              It can affect children and adults, and its effects vary from person to person.
-            </p>
-            <p>
-              Movement, breathing, and swallowing can be affected. An individual assessment is
-              needed to understand the person’s needs and plan care.{" "}
-              <a href="https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/">
-                Read the NHS overview of SMA.
-              </a>
-            </p>
-            <p>
-              Our Nigeria-focused guides help you prepare questions, organise appointments, and
-              think through the practical realities around care.
-            </p>
-            <Link href="/blog/understanding-sma-nigeria" className="btn btn-primary">
-              Read the starting guide →
-            </Link>
-          </div>
-        </div>
-        <div className="topic-paths">
-          <h2>Follow the questions that matter to you.</h2>
-          {[
-            [
-              "Understanding the diagnosis",
-              "What does SMA mean, and what should we ask next?",
-              "understanding-sma-nigeria",
-            ],
-            [
-              "Genetic testing",
-              "How do diagnostic and carrier tests differ?",
-              "sma-genetic-testing",
-            ],
-            [
-              "Treatment and access",
-              "What should we verify when exploring options from Nigeria?",
-              "sma-treatment-access-nigeria",
-            ],
-            [
-              "Coordinating care",
-              "How can we organise referrals and appointments?",
-              "sma-care-team-nigeria",
-            ],
-          ].map(([t, d, s]) => (
-            <Link href={`/blog/${s}`} key={s}>
-              <div>
-                <h3>{t}</h3>
-                <p>{d}</p>
-              </div>
-              <span aria-hidden="true">→</span>
-            </Link>
-          ))}
-        </div>
-        <div className="section-heading-row">
-          <div>
-            <p className="eyebrow">Beyond the diagnosis</p>
-            <h2 className="display-heading">Make everyday life part of the conversation.</h2>
-          </div>
-        </div>
-        <div className="guide-grid">
-          {guides
-            .filter((g) =>
-              ["planning-sma-care-costs", "school-and-sma", "supporting-an-sma-family"].includes(
-                g.slug,
-              ),
-            )
-            .map((g) => (
-              <GuideCard guide={g} key={g.slug} />
-            ))}
-        </div>
-      </div>
-    </>
-  );
+  const selected = ["understanding-sma-nigeria", "sma-genetic-testing", "sma-treatment-access-nigeria", "sma-care-team-nigeria", "sma-treatment-support-uk", "sma-treatment-support-canada", "sma-treatment-support-usa", "sma-testing-care-africa"];
+  return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "WebPage", name: "What is spinal muscular atrophy (SMA)?", url: `${siteConfig.url}/what-is-sma`, inLanguage: "en", about: { "@type": "MedicalCondition", name: "Spinal muscular atrophy" } }).replace(/</g, "\\u003c") }} />
+    <PageHeader title="What is spinal muscular atrophy (SMA)?" intro="Symptoms, types, diagnosis and care—then the practical questions that follow." />
+    <article className="container policy-content prose">
+      <p>Spinal muscular atrophy (SMA) is a genetic condition in which loss of motor nerve cells leads to muscle weakness. It can affect movement and, for some people, breathing and swallowing. The person’s needs vary; a diagnosis does not describe their personality, interests or potential.</p>
+      <p className="medical-note">Sources checked 17 November 2026.  This overview supports a conversation with a qualified clinician; it does not diagnose symptoms or prescribe treatment. Severe breathing difficulty, choking or sudden serious illness needs emergency medical care.</p>
+      <nav aria-label="SMA overview sections"><ul>{[["symptoms", "Symptoms"], ["types", "Types"], ["inheritance", "Inheritance"], ["diagnosis", "Diagnosis"], ["treatment", "Treatment and care"], ["nigeria", "Next steps in Nigeria"], ["questions", "Common questions"]].map(([id, title]) => <li key={id}><a href={`#${id}`}>{title}</a></li>)}</ul></nav>
+      <section id="symptoms"><h2>What are the symptoms of SMA?</h2><p>Possible signs include muscle weakness, difficulty with movement and problems with breathing or swallowing. Concerns may be noticed in infancy or later in life. These signs are not specific to SMA: a clinical assessment is needed to determine their cause.</p><p>If you are concerned about development or a change in strength, arrange an assessment and describe what you have noticed and when it began. Do not wait to assemble a perfect record before seeking help.</p><p>Source: <a href="https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/">NHS SMA overview ↗</a></p></section>
+      <section id="types"><h2>What do SMA types 1, 2, 3 and 4 mean?</h2><p>Traditional type labels group common SMA patterns by the age symptoms begin and motor abilities such as sitting and walking. They help describe a clinical history, but are not a complete account of someone’s current function or future.</p><ul><li><strong>Type 1:</strong> symptoms begin in early infancy.</li><li><strong>Type 2:</strong> symptoms begin later in infancy or early childhood.</li><li><strong>Type 3:</strong> symptoms begin in childhood or adolescence, after walking has been achieved.</li><li><strong>Type 4:</strong> an adult-onset pattern.</li></ul><p>There are also rarer forms. Treatment has changed the outlook for many people, so historical descriptions should not be used as an individual forecast. Ask the specialist how the label relates to the person’s actual assessment.</p><p>Source: <a href="https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/">MedlinePlus Genetics: SMA ↗</a></p></section>
+      <section id="inheritance"><h2>How is SMA inherited?</h2><p>The common SMN1-related form usually follows an autosomal recessive inheritance pattern. When both parents are carriers, each pregnancy has a 25% chance of an affected child, a 50% chance of a carrier child and a 25% chance of a child who is neither affected nor a carrier of those changes. A genetics professional should explain the family’s actual results; rarer forms can differ.</p><p>A negative carrier screen does not remove every possible risk. The method and family context matter. Our testing guide explains the questions to ask about diagnostic tests, carrier screening and silent-carrier configurations.</p><p>Source: <a href="https://www.ncbi.nlm.nih.gov/books/NBK1352/">GeneReviews: SMA ↗</a></p><Link href="/blog/sma-genetic-testing">SMA diagnostic and carrier testing: what to ask →</Link></section>
+      <section id="diagnosis"><h2>How is SMA diagnosed?</h2><p>A clinician assesses the concern and arranges the appropriate investigations. A specifically requested genetic test is central to confirming the common form of SMA. Keep the complete laboratory report and ask what it confirms, what the test could miss and who will explain the result.</p><p>For a Nigerian family, the practical question is not only which test exists but how it will be ordered, collected, processed and reviewed. Ask for the performing laboratory’s name, the exact analysis and a written quote. A routine screening package should not be assumed to answer a specific SMA question.</p><Link href="/blog/after-sma-diagnosis">Prepare for the next appointment after diagnosis →</Link></section>
+      <section id="treatment"><h2>How is SMA treated?</h2><p>Care can include disease-modifying medicines and support for the person’s individual needs. A specialist should explain treatment options, monitoring and suitability. Respiratory, nutritional, rehabilitation and other support belong in the same coordinated plan.</p><p>Regulatory approvals and access arrangements vary by country and product. A medicine mentioned in a US announcement does not establish availability in Nigeria or NHS or Canadian funding. Our treatment guides link current sources and separate those questions.</p><p>Source: <a href="https://www.sma-europe.eu/care-standards-for-sma">SMA Europe: multidisciplinary care ↗</a></p><Link href="/blog/sma-treatment-access-nigeria">Explore SMA treatment and access questions →</Link></section>
+      <section id="nigeria"><h2>What should a family in Nigeria do next?</h2><p>Begin with an assessment and an appropriate clinical referral. Confirm the receiving service through official contacts before a long journey. Keep a folder with reports, referral letters and the three questions you most need answered.</p><p>Ask who coordinates the plan and who reviews the next result. Explain travel, cost or home constraints while the plan is being discussed. SMA Hope’s role is to support understanding and practical questions; a support chat is not an emergency or diagnostic service.</p><p><Link href="/blog/understanding-sma-nigeria">Start with the practical Nigerian family guide →</Link></p><p><Link href="/blog/sma-care-team-nigeria">Organise an SMA referral and care team →</Link></p></section>
+      <aside className="article-endnote"><h2>The family story behind these questions</h2><p>When Every Breath Matters by Tochukwu Nkwocha and Ijeoma Nkwocha brings medicine, parenting, faith and access into a personal account of life with SMA. It gives readers context for the responsibilities that continue between appointments.</p><Link href="/book" className="btn btn-primary">Discover the book and choose an edition</Link></aside>
+      <section id="questions"><h2>Frequently asked questions about SMA</h2>{questions.map(f => <details key={f.question}><summary>{f.question}</summary><p>{f.answer}</p></details>)}</section>
+      <p><Link href="/editorial-policy">How we source and review information</Link> · <Link href="/contact">Suggest a correction</Link></p>
+    </article>
+    <section className="container hope-section"><p className="eyebrow">Go further</p><h2 className="display-heading">Guides for your next question.</h2><div className="guide-grid">{selected.map(slug => guides.find(g => g.slug === slug)).filter((g): g is NonNullable<typeof g> => Boolean(g)).map(guide => <GuideCard key={guide.slug} guide={guide} />)}</div></section>
+  </>;
 }

@@ -1,0 +1,34 @@
+{
+  "after-sma-diagnosis": {
+    "revision": 1,
+    "digest": "42cc8a27b6717914626e8c576d36edb052817508fa5182ff97e85d3c320a93a3"
+  },
+  "planning-sma-care-costs": {
+    "revision": 1,
+    "digest": "83491250eec44e311184af3f1aafe71dcf5a3f542afd921c4cebf2d967e61d1f"
+  },
+  "school-and-sma": {
+    "revision": 1,
+    "digest": "d4009d15ea6a01a56b64c4ddc03eb5afb993cd3681924d6bd17036a1d097c6f1"
+  },
+  "sma-care-team-nigeria": {
+    "revision": 1,
+    "digest": "8575f9be15502bbd205b1d72400eb3215880a01a99f8edd8c174c96a31e80971"
+  },
+  "sma-genetic-testing": {
+    "revision": 1,
+    "digest": "d07cbf79888d77cbb76bfba76ae22b122bee66252d2aab094f174d4090a2e9e1"
+  },
+  "sma-treatment-access-nigeria": {
+    "revision": 1,
+    "digest": "32c49d774502f422d31ded641877751e9d49fece4ea00734dfcc91829cebe83e"
+  },
+  "supporting-an-sma-family": {
+    "revision": 1,
+    "digest": "9f079c0abf67a630ff5526cd238f679fb7b525777682f291638b67cc2a04c2ba"
+  },
+  "understanding-sma-nigeria": {
+    "revision": 1,
+    "digest": "6e278a85cb69fdbde3f839f5fd60d014b8fe479e639770c16e3bbaccb160bc09"
+  }
+}

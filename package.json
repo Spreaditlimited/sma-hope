@@ -10,7 +10,8 @@
     "lint": "eslint",
     "generate:home-images": "node scripts/generate_home_images.mjs",
     "test": "node --test tests/*.test.mjs",
-    "verify:site": "node scripts/verify-redesign.mjs"
+    "verify:site": "node scripts/verify-redesign.mjs",
+    "verify:content": "node scripts/verify-content-release.mjs"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.4.1",

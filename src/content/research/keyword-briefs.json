@@ -1,0 +1,991 @@
+[
+  {
+    "slug": "understanding-sma-nigeria",
+    "audience": "Nigeria",
+    "primaryIntent": "Spinal muscular atrophy (SMA) in Nigeria: a family’s starting guide",
+    "keywords": [
+      {
+        "keyword": "spinal muscular atrophy",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          }
+        }
+      },
+      {
+        "keyword": "sma disease",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          }
+        }
+      },
+      {
+        "keyword": "sma type 1",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK1352/",
+      "https://ndr.health.gov.ng/teaching-hospitals/",
+      "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "after-sma-diagnosis",
+    "audience": "Nigeria",
+    "primaryIntent": "After an SMA diagnosis: an appointment checklist for families",
+    "keywords": [
+      {
+        "keyword": "sma diagnosis",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://www.sma-europe.eu/care-standards-for-sma"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "planning-sma-care-costs",
+    "audience": "Nigeria",
+    "primaryIntent": "SMA care costs in Nigeria: a practical family budget",
+    "keywords": [
+      {
+        "keyword": "sma treatment cost",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      },
+      {
+        "keyword": "sma genetic testing cost",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "0",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://direct.syndicate.bio/hereditary-conditions-test/"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "sma-genetic-testing",
+    "audience": "Nigeria",
+    "primaryIntent": "SMA genetic testing in Nigeria: diagnosis and carrier tests",
+    "keywords": [
+      {
+        "keyword": "sma genetic testing",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      },
+      {
+        "keyword": "sma carrier testing",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      },
+      {
+        "keyword": "sma silent carrier",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "0",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://www.ncbi.nlm.nih.gov/books/NBK1352/",
+      "https://direct.syndicate.bio/hereditary-conditions-test/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9498682/",
+      "https://www.centogene.com/diagnostics/how-to-order-ship/",
+      "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/",
+      "https://www.curesma.org/testing-diagnosis/"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "sma-treatment-access-nigeria",
+    "audience": "Nigeria",
+    "primaryIntent": "SMA treatment and access from Nigeria: what to verify",
+    "keywords": [
+      {
+        "keyword": "sma treatment",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      },
+      {
+        "keyword": "spinal muscular atrophy treatment",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/",
+      "https://www.sma-europe.eu/care-standards-for-sma",
+      "https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/itvisma",
+      "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761463Orig1s000lbl.pdf"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "school-and-sma",
+    "audience": "Nigeria",
+    "primaryIntent": "School support for children with SMA: an inclusion checklist",
+    "keywords": [
+      {
+        "keyword": "sma school support",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "supporting-an-sma-family",
+    "audience": "Nigeria",
+    "primaryIntent": "How to support a family living with spinal muscular atrophy",
+    "keywords": [
+      {
+        "keyword": "sma family support",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "sma-care-team-nigeria",
+    "audience": "Nigeria",
+    "primaryIntent": "Finding an SMA care team in Nigeria: referrals and appointments",
+    "keywords": [
+      {
+        "keyword": "sma diagnosis",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      },
+      {
+        "keyword": "sma treatment",
+        "markets": {
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://ndr.health.gov.ng/teaching-hospitals/",
+      "https://memfys.net/services/neurology/",
+      "https://www.sma-europe.eu/care-standards-for-sma",
+      "https://www.curesma.org/care-series-booklets/"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "sma-treatment-support-uk",
+    "audience": "United Kingdom",
+    "primaryIntent": "SMA in the UK: specialist care, treatment access and family support",
+    "keywords": [
+      {
+        "keyword": "spinal muscular atrophy",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50000",
+            "advertiserCompetition": "Low"
+          }
+        }
+      },
+      {
+        "keyword": "sma treatment",
+        "markets": {
+          "UK": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://smauk.org.uk/support-information/about-sma/regional-neuromuscular-centres-rnmc/",
+      "https://www.nice.org.uk/guidance/ta1162",
+      "https://smauk.org.uk/treatments-research/uk-access-to-treatment/drug-treatments-for-children-who-have-5q-sma-scotland/",
+      "https://smauk.org.uk/support-information/support-for-you/",
+      "https://www.gov.uk/children-with-special-educational-needs/special-educational-needs-support"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "sma-treatment-support-canada",
+    "audience": "Canada",
+    "primaryIntent": "SMA in Canada: treatment coverage, specialist care and family support",
+    "keywords": [
+      {
+        "keyword": "spinal muscular atrophy",
+        "markets": {
+          "Canada": {
+            "exportEstimate": "50000",
+            "advertiserCompetition": "Low"
+          }
+        }
+      },
+      {
+        "keyword": "sma treatment",
+        "markets": {
+          "Canada": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://curesma.ca/resources-spinal-muscular-atrophy-canada/",
+      "https://curesma.ca/treatments/",
+      "https://www.ontario.ca/page/applying-exceptional-access-program",
+      "https://www2.gov.bc.ca/gov/content/health/practitioner-professional-resources/pharmacare/programs/special-authority"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "sma-treatment-support-usa",
+    "audience": "United States",
+    "primaryIntent": "SMA in the USA: treatment options, insurance and family support",
+    "keywords": [
+      {
+        "keyword": "spinal muscular atrophy",
+        "markets": {
+          "USA": {
+            "exportEstimate": "500000",
+            "advertiserCompetition": "Low"
+          }
+        }
+      },
+      {
+        "keyword": "sma genetic testing",
+        "markets": {
+          "USA": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          }
+        }
+      },
+      {
+        "keyword": "sma treatment",
+        "markets": {
+          "USA": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://www.curesma.org/community-support/",
+      "https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/itvisma",
+      "https://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026",
+      "https://www.curesma.org/care-series-booklets/",
+      "https://www.healthcare.gov/appeal-insurance-company-decision/internal-appeals/"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "sma-testing-care-africa",
+    "audience": "Africa",
+    "primaryIntent": "SMA testing and care in Africa: planning referrals across borders",
+    "keywords": [
+      {
+        "keyword": "sma genetic testing",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      },
+      {
+        "keyword": "sma carrier testing",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          },
+          "USA": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [
+      "https://www.curesma.org/cure-sma-international-resources/",
+      "https://www.centogene.com/diagnostics/how-to-order-ship/"
+    ],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "when-every-breath-matters-sma-memoir",
+    "audience": "International",
+    "primaryIntent": "When Every Breath Matters: a family memoir about spinal muscular atrophy",
+    "keywords": [
+      {
+        "keyword": "spinal muscular atrophy book",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      },
+      {
+        "keyword": "disability memoir",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "High"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "sma-book-club-discussion-guide",
+    "audience": "International",
+    "primaryIntent": "When Every Breath Matters: a book club discussion guide",
+    "keywords": [
+      {
+        "keyword": "spinal muscular atrophy book",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      },
+      {
+        "keyword": "when every breath matters",
+        "markets": {
+          "UK": {
+            "exportEstimate": "",
+            "advertiserCompetition": "Unknown"
+          },
+          "Canada": {
+            "exportEstimate": "",
+            "advertiserCompetition": "Unknown"
+          },
+          "USA": {
+            "exportEstimate": "",
+            "advertiserCompetition": "Unknown"
+          },
+          "Nigeria": {
+            "exportEstimate": "",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Same-seed country-specific Google Keyword Planner export, English/Google, Nov 2025–Oct 2026; country-qualified public search results and linked local primary resources. Unreported query volumes are not treated as zero. Africa has no continent-wide volume estimate in this work.",
+    "sourceUrls": [],
+    "checkedAt": "2026-11-17",
+    "publication": "Prepared locally; no deployment or false clinician attribution."
+  },
+  {
+    "slug": "sma-type-1",
+    "audience": "International",
+    "primaryIntent": "SMA type 1: symptoms, diagnosis, treatment and daily care",
+    "keywords": [
+      {
+        "keyword": "sma type 1",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50000",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "50000",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/",
+      "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/",
+      "https://www.curesma.org/testing-diagnosis/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK1352/",
+      "https://www.curesma.org/handling-medical-issues/",
+      "https://www.curesma.org/nutrition/",
+      "https://www.sma-europe.eu/care-standards-for-sma"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-11-23T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "early-signs-sma-babies-children",
+    "audience": "International",
+    "primaryIntent": "Early signs of SMA in babies and children: what parents should know",
+    "keywords": [
+      {
+        "keyword": "spinal muscular atrophy symptoms",
+        "markets": {
+          "UK": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/",
+      "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/",
+      "https://www.curesma.org/handling-medical-issues/",
+      "https://www.curesma.org/testing-diagnosis/",
+      "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/03/carrier-screening-for-genetic-conditions"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-11-26T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "sma-type-2",
+    "audience": "International",
+    "primaryIntent": "SMA type 2: understanding care, movement and everyday life",
+    "keywords": [
+      {
+        "keyword": "sma type 2",
+        "markets": {
+          "UK": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/",
+      "https://www.curesma.org/testing-diagnosis/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK1352/",
+      "https://smauk.org.uk/support-information/recently-diagnosed-with-sma/recent-diagnosis-sma-type-2/",
+      "https://www.curesma.org/nutrition/",
+      "https://www.sma-europe.eu/care-standards-for-sma",
+      "https://www.curesma.org/care-series-booklets/"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-11-30T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "sma-life-expectancy",
+    "audience": "International",
+    "primaryIntent": "SMA life expectancy: understanding the outlook today",
+    "keywords": [
+      {
+        "keyword": "sma life expectancy",
+        "markets": {
+          "UK": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://www.ncbi.nlm.nih.gov/books/NBK1352/",
+      "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/",
+      "https://pubmed.ncbi.nlm.nih.gov/37409780/",
+      "https://www.nature.com/articles/s41591-022-01866-4",
+      "https://pubmed.ncbi.nlm.nih.gov/40802943/",
+      "https://www.sma-europe.eu/care-standards-for-sma"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-12-03T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "sma-carrier-meaning",
+    "audience": "International",
+    "primaryIntent": "What does being an SMA carrier mean? Understanding your result",
+    "keywords": [
+      {
+        "keyword": "sma carrier",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://www.acog.org/womens-health/faqs/carrier-screening-for-spinal-muscular-atrophy",
+      "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/",
+      "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/03/carrier-screening-for-genetic-conditions",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9498682/",
+      "https://www.curesma.org/testing-diagnosis/"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-12-07T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "sma-type-3",
+    "audience": "International",
+    "primaryIntent": "SMA type 3: diagnosis, mobility, treatment and support",
+    "keywords": [
+      {
+        "keyword": "sma type 3",
+        "markets": {
+          "UK": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/",
+      "https://www.genomicseducation.hee.nhs.uk/genotes/in-the-clinic/presentation-clinical-suspicion-of-spinal-muscular-atrophy-in-an-adolescent-or-adult/",
+      "https://www.curesma.org/testing-diagnosis/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK1352/",
+      "https://smauk.org.uk/support-information/recently-diagnosed-with-sma/recent-diagnosis-sma-type-3/",
+      "https://www.sma-europe.eu/care-standards-for-sma"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-12-10T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "sma-in-adults",
+    "audience": "International",
+    "primaryIntent": "SMA in adults: symptoms, diagnosis and living well",
+    "keywords": [
+      {
+        "keyword": "sma in adults",
+        "markets": {
+          "UK": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://www.genomicseducation.hee.nhs.uk/genotes/in-the-clinic/presentation-clinical-suspicion-of-spinal-muscular-atrophy-in-an-adolescent-or-adult/",
+      "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/",
+      "https://www.curesma.org/testing-diagnosis/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK1352/",
+      "https://www.sma-europe.eu/care-standards-for-sma",
+      "https://www.curesma.org/care-series-booklets/"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-12-14T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "spinraza-nusinersen-guide",
+    "audience": "International",
+    "primaryIntent": "Spinraza explained: nusinersen treatment, appointments and access",
+    "keywords": [
+      {
+        "keyword": "spinraza",
+        "markets": {
+          "UK": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/209531s016lbl.pdf",
+      "https://pubmed.ncbi.nlm.nih.gov/37409780/",
+      "https://www.nice.org.uk/guidance/ta1162",
+      "https://www.sma-europe.eu/care-standards-for-sma"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-12-17T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "sma-carrier-pregnancy",
+    "audience": "International",
+    "primaryIntent": "SMA carrier results during pregnancy: clear next steps",
+    "keywords": [
+      {
+        "keyword": "sma carrier in pregnancy",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/03/carrier-screening-for-genetic-conditions",
+      "https://www.acog.org/womens-health/faqs/carrier-screening-for-spinal-muscular-atrophy",
+      "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/",
+      "https://www.nhs.uk/tests-and-treatments/chorionic-villus-sampling-cvs/why-its-done/",
+      "https://www.rcog.org.uk/gtg8"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-12-21T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "sma-silent-carriers-african-ancestry",
+    "audience": "International",
+    "primaryIntent": "SMA silent carriers and African ancestry: understanding test limitations",
+    "keywords": [
+      {
+        "keyword": "sma silent carrier",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "0",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9498682/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK1352/",
+      "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/03/carrier-screening-for-genetic-conditions"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-12-24T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "how-sma-is-inherited",
+    "audience": "International",
+    "primaryIntent": "How is SMA inherited? A clear guide for families",
+    "keywords": [
+      {
+        "keyword": "sma inheritance",
+        "markets": {
+          "UK": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "Canada": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Low"
+          },
+          "USA": {
+            "exportEstimate": "500",
+            "advertiserCompetition": "Low"
+          },
+          "Nigeria": {
+            "exportEstimate": "50",
+            "advertiserCompetition": "Unknown"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/",
+      "https://www.acog.org/womens-health/faqs/carrier-screening-for-spinal-muscular-atrophy",
+      "https://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9498682/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK1352/",
+      "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/03/carrier-screening-for-genetic-conditions"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-12-28T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "sma-newborn-screening-england",
+    "audience": "United Kingdom",
+    "primaryIntent": "SMA newborn screening in England: what parents need to know",
+    "keywords": [
+      {
+        "keyword": "sma newborn screening England",
+        "markets": {},
+        "note": "Country-specific editorial target supported by the current official rollout; exact query volume was not reported in the saved exports."
+      },
+      {
+        "keyword": "sma in newborns",
+        "markets": {
+          "UK": {
+            "exportEstimate": "5000",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "evidence": "Country-specific Google Keyword Planner exports, English/Google, Nov 2025–Oct 2026. Export values represent broad ranges, not exact search counts. Exact country-specific newborn-screening volume is unreported; the England article answers a documented current programme question.",
+    "sourceUrls": [
+      "https://www.gov.uk/government/publications/spinal-muscular-atrophy-sma-information-for-parents/information-for-parents-spinal-muscular-atrophy-suspected-following-newborn-blood-spot-screening",
+      "https://www.gov.uk/government/publications/introduction-of-spinal-muscular-atrophy-sma-screening-in-england-frequently-asked-questions-faqs/introduction-of-spinal-muscular-atrophy-sma-screening-in-england-frequently-asked-questions-faqs",
+      "https://www.curesma.org/testing-diagnosis/",
+      "https://pubmed.ncbi.nlm.nih.gov/37409780/"
+    ],
+    "checkedAt": "2026-11-17",
+    "scheduledFor": "2026-12-31T09:00:00.000Z",
+    "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  }
+]
