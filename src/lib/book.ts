@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site";
 export type BookEdition = {
   name: string;
   format: "EBook" | "Paperback" | "Hardcover";
+  asin: string;
   isbn?: string;
   pages?: number;
   amazonUrl: string | null;
@@ -19,9 +20,9 @@ export const book = {
   // All three Amazon detail pages verified live against their edition and
   // ISBN on 17 November 2026.
   editions: [
-    { name: "Kindle", format: "EBook", amazonUrl: "https://www.amazon.com/dp/B0GX2WHPXH" },
-    { name: "Paperback", format: "Paperback", isbn: "9798143499485", pages: 271, amazonUrl: "https://www.amazon.com/dp/B0HRZLNGZZ" },
-    { name: "Hardcover", format: "Hardcover", isbn: "9798143500198", pages: 271, amazonUrl: "https://www.amazon.com/dp/B0HRZGVKM4" },
+    { name: "Kindle", format: "EBook", asin: "B0GX2WHPXH", amazonUrl: "https://www.amazon.com/dp/B0GX2WHPXH" },
+    { name: "Paperback", format: "Paperback", asin: "B0HRZLNGZZ", isbn: "9798143499485", pages: 271, amazonUrl: "https://www.amazon.com/dp/B0HRZLNGZZ" },
+    { name: "Hardcover", format: "Hardcover", asin: "B0HRZGVKM4", isbn: "9798143500198", pages: 271, amazonUrl: "https://www.amazon.com/dp/B0HRZGVKM4" },
   ] satisfies BookEdition[],
 };
 

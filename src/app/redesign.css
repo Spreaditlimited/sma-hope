@@ -3054,6 +3054,25 @@ textarea:focus-visible {
   margin: 32px 0 20px;
 }
 .book-edition { padding: 28px; }
+.book-marketplace-selector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.book-marketplace-selector label { font-weight: 650; }
+.book-marketplace-selector select {
+  max-width: 100%;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+.book-marketplace-selector select:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.book-marketplace-selector p { flex-basis: 100%; margin: 0; color: var(--text-soft); font-size: 14px; }
 .edition-mockup {
   height: 330px;
   display: grid;

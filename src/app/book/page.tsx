@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { headers } from "next/headers";
+import { amazonEditionUrl, amazonMarketplaces, resolveAmazonMarket } from "@/lib/amazon-marketplaces";
 import { BookEditionMockup } from "@/components/book-edition-mockup";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
@@ -18,7 +20,11 @@ export const metadata: Metadata = {
   twitter: { ...baseMetadata.twitter, images: [`${siteConfig.url}/book/opengraph-image`] },
 };
 
-export default function Book() {
+export default async function Book({ searchParams }: { searchParams: Promise<{ market?: string | string[] }> }) {
+  const [requestHeaders, query] = await Promise.all([headers(), searchParams]);
+  const market = resolveAmazonMarket(requestHeaders.get("x-vercel-ip-country"), typeof query.market === "string" ? query.market : undefined);
+  const store = amazonMarketplaces[market];
+  const kindleUrl = amazonEditionUrl(book.editions[0].asin, market);
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookStructuredData()).replace(/</g, "\\u003c") }} />
@@ -30,7 +36,7 @@ export default function Book() {
             <p className="book-subtitle">{book.subtitle}</p>
             <p className="book-authors">By {book.authors.join(" and ")}</p>
             <p className="book-deck">What does spinal muscular atrophy really mean inside a family? For us, it means listening differently to a cough, learning to protect a child’s breathing, and crossing borders in search of care for our two daughters.</p>
-            <a href={book.amazonUrl} className="btn btn-primary" rel="noopener noreferrer">Read on Amazon Kindle →</a>
+            <a href={kindleUrl} className="btn btn-primary" rel="noopener noreferrer">Read on {store.name} Kindle →</a>
             <p className="book-availability">A story of family, faith and survival. <a href="#editions">Explore the editions →</a></p>
           </div>
           <div className="book-landing-cover">
@@ -60,13 +66,21 @@ export default function Book() {
       <section className="container hope-section book-editions" id="editions" aria-labelledby="editions-title">
         <p className="eyebrow">Choose how you read</p><h2 className="display-heading" id="editions-title">Three editions.<br /><em>One family’s story.</em></h2>
         <p>Read digitally or make room for the story on your bookshelf. Choose Kindle, paperback or hardcover, and visit Amazon for current availability in your country.</p>
+        <form action="/book#editions" method="get" className="book-marketplace-selector">
+          <label htmlFor="amazon-market">Your Amazon store</label>
+          <select id="amazon-market" name="market" defaultValue={market}>
+            {Object.entries(amazonMarketplaces).map(([code, marketplace]) => <option key={code} value={code}>{marketplace.country} — {marketplace.name}</option>)}
+          </select>
+          <button type="submit" className="btn btn-secondary">Update store</button>
+          <p>Showing links for {store.country}. Choose another store if you prefer.</p>
+        </form>
         <div className="book-edition-grid">
           {book.editions.map((edition) => <article className="card book-edition" key={edition.format}>
             <BookEditionMockup format={edition.format} />
             <h3>{edition.name}</h3>
             <p>{edition.format === "EBook" ? "A reflowable digital edition for Kindle devices and the Kindle app." : `${edition.pages} pages, in a ${edition.name.toLowerCase()} edition.`}</p>
             {"isbn" in edition ? <p className="book-edition-isbn">ISBN: {edition.isbn}</p> : null}
-            <a href={edition.amazonUrl ?? book.amazonUrl} className="btn btn-primary" rel="noopener noreferrer">{edition.amazonUrl ? `View ${edition.name} on Amazon →` : "See editions on Amazon →"}</a>
+            <a href={amazonEditionUrl(edition.asin, market)} className="btn btn-primary" rel="noopener noreferrer">View {edition.name} on {store.name} →</a>
           </article>)}
         </div>
         <p className="book-availability">Buy securely through Amazon. Prices, format availability and delivery options vary by marketplace.</p>
