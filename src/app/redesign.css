@@ -3418,3 +3418,10 @@ textarea:focus-visible {
 @media (max-width: 639px) {
   .story-portraits-grid { grid-template-columns: 1fr; gap: 24px; }
 }
+
+/* Article-specific illustrations: full compositions, stable geometry and direct Cloudinary delivery. */
+.guide-art.guide-art--image { height: auto; aspect-ratio: 16 / 9; display: block; padding: 0; flex-shrink: 0; background: #f6f2e9; }
+.guide-art.guide-art--image::after { display: none; }
+.guide-image { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: #f6f2e9; }
+.article-feature { margin: 34px 0 0; overflow: hidden; border: 1px solid var(--line); border-radius: 6px; }
+@media (max-width: 650px) { .article-feature { margin-top: 25px; } }

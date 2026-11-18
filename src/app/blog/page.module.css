@@ -79,3 +79,6 @@
 @media (forced-colors: active) {
  .page :global(.library-controls .library-region select) { appearance: auto; -webkit-appearance: auto; background-image: none; }
 }
+
+/* Show the complete editorial illustration instead of the former 150px category artwork. */
+.page :global(.guide-art.guide-art--image) { height: auto; padding: 0; aspect-ratio: 16 / 9; flex-shrink: 0; }

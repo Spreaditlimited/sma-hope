@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { GuideImage } from "@/components/guide-image";
+import { getGuideImage } from "@/lib/guide-images";
 import { Icon, type IconName } from "@/components/icon";
 import type { Guide } from "@/content/guides";
 import { guideReadingMinutes, type GuidePreview } from "@/lib/guide-preview";
@@ -10,15 +12,17 @@ const icons: Record<string, IconName> = {
   "Family & community": "heart",
 };
 export function GuideCard({ guide }: { guide: Guide | GuidePreview }) {
+  const image = getGuideImage(guide.slug);
   return (
     <article className="guide-card">
       <Link
         href={`/blog/${guide.slug}`}
-        className="guide-art"
+        className={`guide-art${image ? " guide-art--image" : ""}`}
         tabIndex={-1}
-        aria-hidden="true"
+        aria-label={`Read ${guide.title}`}
         data-category={guide.category}
       >
+        {image ? <GuideImage slug={guide.slug} variant="card" /> : <>
         <Icon name={icons[guide.category] || "book"} size={60} />
         <span>SMA HOPE / FIELD GUIDE</span>
         <span className="guide-art-word">
@@ -30,6 +34,7 @@ export function GuideCard({ guide }: { guide: Guide | GuidePreview }) {
                 ? "Together."
                 : "Understand."}
         </span>
+        </>}
       </Link>
       <div className="guide-card-copy">
         <div className="article-meta">

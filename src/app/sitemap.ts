@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 import { getGuides } from "@/lib/articles";
+import { getGuideImage, guideImageUrl } from "@/lib/guide-images";
 import { topics } from "@/lib/topics";
 import { getAllUpdates } from "@/lib/content";
 const routes = [
@@ -32,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...guides.map((g) => ({
       url: `${siteConfig.url}/blog/${g.slug}`,
       lastModified: g.updatedAt,
+      ...(getGuideImage(g.slug) ? { images: [guideImageUrl(getGuideImage(g.slug)!, 1600)] } : {}),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),

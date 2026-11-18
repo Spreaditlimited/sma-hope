@@ -18,4 +18,5 @@ export type MetadataConfig = {
   language?: string;
   publishedTime?: string;
   modifiedTime?: string;
+  image?: { url: string; width: number; height: number; alt: string };
 };

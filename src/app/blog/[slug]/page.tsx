@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { GuideImage } from "@/components/guide-image";
+import { getGuideImage, guideImageUrl } from "@/lib/guide-images";
 import { topics } from "@/lib/topics";
 import { notFound } from "next/navigation";
 import { getGuides } from "@/lib/articles";
@@ -20,18 +22,20 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const guide = (await getGuides()).find(g => g.slug === slug);
   if (!guide) return {};
-  return buildMetadata({ title: guide.title, description: guide.excerpt, path: `/blog/${slug}`, type: "article", publishedTime: guide.publishedAt, modifiedTime: guide.updatedAt, language: language(guide.audience) });
+  const image = getGuideImage(guide.slug);
+  return buildMetadata({ ...(image ? { image: { url: image.sharingUrl, width: 1200, height: 630, alt: image.alt } } : {}), title: guide.title, description: guide.excerpt, path: `/blog/${slug}`, type: "article", publishedTime: guide.publishedAt, modifiedTime: guide.updatedAt, language: language(guide.audience) });
 }
 export default async function GuidePage({ params }: Props) {
   const { slug } = await params;
   const guides = await getGuides();
   const guide = guides.find(g => g.slug === slug);
   if (!guide) notFound();
+  const image = getGuideImage(guide.slug);
   const topic = topics.find(t => t.name === guide.category);
   const related = guide.related.map(id => guides.find(g => g.slug === id)).filter((g): g is NonNullable<typeof g> => Boolean(g));
   const sources = [...new Map([...guide.sections.map(s => s.source), ...(guide.faqs || []).map(f => f.source)].filter((s): s is NonNullable<typeof s> => Boolean(s)).map(s => [s.url, s])).values()];
   const schema = { "@context": "https://schema.org", "@graph": [
-    { "@type": "Article", "@id": `${siteConfig.url}/blog/${guide.slug}#article`, headline: guide.title, description: guide.excerpt, ...(guide.publishedAt ? { datePublished: guide.publishedAt } : {}), dateModified: guide.updatedAt, author: { "@type": "Organization", name: siteConfig.shortName, url: `${siteConfig.url}/about` }, publisher: { "@type": "Organization", name: siteConfig.shortName, url: siteConfig.url }, mainEntityOfPage: `${siteConfig.url}/blog/${guide.slug}`, inLanguage: language(guide.audience), citation: sources.map(s => s.url), ...(guide.audience ? { spatialCoverage: guide.audience } : {}) },
+    { "@type": "Article", "@id": `${siteConfig.url}/blog/${guide.slug}#article`, headline: guide.title, description: guide.excerpt, ...(image ? { image: { "@type": "ImageObject", url: guideImageUrl(image, 1600), width: 1600, height: 900, caption: image.alt } } : {}), ...(guide.publishedAt ? { datePublished: guide.publishedAt } : {}), dateModified: guide.updatedAt, author: { "@type": "Organization", name: siteConfig.shortName, url: `${siteConfig.url}/about` }, publisher: { "@type": "Organization", name: siteConfig.shortName, url: siteConfig.url }, mainEntityOfPage: `${siteConfig.url}/blog/${guide.slug}`, inLanguage: language(guide.audience), citation: sources.map(s => s.url), ...(guide.audience ? { spatialCoverage: guide.audience } : {}) },
     { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Knowledge hub", item: `${siteConfig.url}/blog` }, { "@type": "ListItem", position: 2, name: guide.category, item: `${siteConfig.url}/blog/topics/${topic?.slug}` }, { "@type": "ListItem", position: 3, name: guide.title, item: `${siteConfig.url}/blog/${guide.slug}` }] },
   ] };
   return <div className={`guide-page ${styles.page}`} lang={language(guide.audience)}>
@@ -42,6 +46,7 @@ export default async function GuidePage({ params }: Props) {
       <h1>{guide.title}</h1>
       <p className="article-deck">{guide.excerpt}</p>
       <div className="article-byline"><span className="author-mark">SH</span><div><strong>SMA Hope Foundation editorial team</strong><p>Updated <time dateTime={guide.updatedAt}>{new Date(guide.updatedAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time> · {readingMinutes(guide)} min read</p></div><span className="review-label">{guide.clinical ? "SMA information" : "Practical family guide"}</span></div>
+      {image && <figure className="article-feature"><GuideImage slug={guide.slug} /></figure>}
     </header>
     <div className="container article-layout">
       <aside className="article-toc"><p className="eyebrow">In this guide</p><nav aria-label="Table of contents">{guide.sections.map((s, i) => <a key={s.title} href={`#section-${i + 1}`}>{s.title}</a>)}{Boolean(guide.faqs?.length) && <a href="#questions">Frequently asked questions</a>}<a href="#checklist">Your practical checklist</a>{sources.length > 0 && <a href="#sources">Sources and editorial information</a>}</nav><Link href="/support-for-families" className="toc-support"><Icon name="people" /><strong>Have a practical question?</strong><span>Explore support or use the Support button →</span></Link></aside>

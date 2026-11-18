@@ -9,6 +9,7 @@ export function buildMetadata({
   language = "en-NG",
   publishedTime,
   modifiedTime,
+  image,
 }: MetadataConfig): Metadata {
   const fullTitle = `${title} | ${siteConfig.shortName}`;
   const url = `${siteConfig.url}${path}`;
@@ -21,7 +22,7 @@ export function buildMetadata({
       description,
       url,
       siteName: siteConfig.name,
-      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
+      images: [image || { url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
       locale: language === "en" ? "en_NG" : language.replace("-", "_"),
       type,
       ...(type === "article" ? { publishedTime, modifiedTime } : {}),
@@ -30,8 +31,9 @@ export function buildMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [siteConfig.ogImage],
+      images: [image ? { url: image.url, alt: image.alt } : siteConfig.ogImage],
     },
+    ...(image ? { robots: { googleBot: { "max-image-preview": "large" as const } } } : {}),
     alternates: {
       canonical: url,
     },
