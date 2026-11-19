@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
           {/* INTRO SECTION */}
           <section className="prose prose-lg md:prose-xl text-gray-700 max-w-3xl mx-auto md:text-left">
             <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
-              Last updated: March 17, 2026
+              Last updated: November 19, 2026
             </p>
             <p className="font-medium text-gray-900">
               SMA Hope Foundation Nigeria (&quot;SMA Hope&quot;, &quot;we&quot;, &quot;us&quot;, or
@@ -244,12 +244,21 @@ export default function PrivacyPolicyPage() {
                   understand traffic and improve content.
                 </li>
                 <li>
+                  <strong className="text-gray-900">Advertising cookies (Meta Pixel):</strong> with
+                  your permission, we use Meta Pixel to measure visits from our advertising and
+                  support relevant ads on Facebook and Instagram. Meta may receive page URLs,
+                  browser and device information, and cookie identifiers. We do not send contact
+                  form contents, account details or health records through this integration.
+                  The pixel is excluded from account, admin, contact and book checkout pages.
+                  Read <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta’s Privacy Policy</a> for how Meta uses this information.
+                </li>
+                <li>
                   <strong className="text-gray-900">Preference cookies:</strong> remember user
                   settings where available.
                 </li>
               </ul>
               <p className="italic text-sm mt-4">
-                You can accept or reject optional cookies via our cookie notice where presented. You
+                You can accept or reject optional cookies using our cookie notice and change your choice at any time through Cookie settings in the footer. You
                 may also manage cookies through browser settings. Disabling certain cookies may
                 affect parts of site functionality.
               </p>

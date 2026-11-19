@@ -1,203 +1,43 @@
-import { PageHeader } from "@/components/page-header";
-import { ContentPageBg } from "@/components/content-page-bg";
+import Image from "next/image";
+import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
+import { supportWhatsAppUrl } from "@/lib/support";
+import { FoundationBook } from "@/components/foundation-book";
+import styles from "@/components/foundation-pages.module.css";
 
 export const metadata = buildMetadata({
-  title: "About the Foundation",
-  description:
-    "A foundation shaped by lived experience, committed to awareness, dignity, and support.",
+  title: "About SMA Hope Foundation Nigeria: Awareness, Families and Advocacy",
+  description: "Meet SMA Hope Foundation Nigeria, a registered foundation shaped by the Nkwocha family’s experience of SMA. Discover our mission, resources and ways to get involved.",
   path: "/about",
 });
-
+const work = [
+  { title: "Make SMA easier to understand", text: "Plain-language guides, FAQs and awareness content explain the condition and help readers prepare better questions about diagnosis, testing, care and everyday life.", href: "/what-is-sma", label: "Start with SMA" },
+  { title: "Help families find a starting point", text: "Practical resources help families organise reports, prepare for appointments and think through care, school and support. Our support conversation offers a human point of contact.", href: "/support-for-families", label: "Explore family resources" },
+  { title: "Make the realities of care visible", text: "We bring family experience into public conversation: the decisions, access barriers, daily responsibilities and need for inclusion that continue beyond a diagnosis.", href: "/our-story", label: "Meet the family behind the work" },
+  { title: "Build understanding people can act on", text: "Our knowledge hub gives relatives, teachers, friends and supporters practical ways to learn and respond. Our book offers a fuller account of the family experience behind this mission.", href: "/blog", label: "Visit the knowledge hub" },
+];
+const values = [
+  ["Dignity", "People living with SMA are people first. We aim to reflect their humanity and potential, with care for privacy and how stories are shared."],
+  ["Clarity", "Useful information should be understandable. We explain terms, link sources and help readers identify practical questions."],
+  ["Compassion", "We listen to what a family needs, rather than assuming that everyone’s experience or circumstances will be the same."],
+  ["Responsibility", "We distinguish lived experience from medical guidance, explain our role and build this work with attention to trust and stewardship."],
+];
 export default function AboutPage() {
-  return (
-    <ContentPageBg image="/home/home-who-we-are.png">
-      <PageHeader
-        title="About the Foundation"
-        intro="A foundation shaped by lived experience, committed to awareness, dignity, and support"
-        backgroundImage="/home/home-who-we-are.png"
-      />
-
-      <div className="container mx-auto px-4 py-12 md:py-20 max-w-5xl">
-        <div className="space-y-16 md:space-y-24">
-          {/* INTRO SECTION */}
-          <section className="prose prose-lg md:prose-xl text-gray-700 max-w-3xl mx-auto text-center md:text-left">
-            <p className="font-medium text-gray-900">
-              SMA Hope Foundation Nigeria is a registered foundation born out of real family
-              experience with Spinal Muscular Atrophy. We exist because SMA is not only a medical
-              condition. It is a life-altering reality that affects children, parents, siblings,
-              caregivers, finances, emotions, and the future a family once imagined.
-            </p>
-            <p>
-              In many places, awareness is still low. Families can spend too long searching for
-              answers, carrying heavy burdens in private, and trying to navigate a condition that
-              few people around them truly understand. We started this foundation because we know
-              that reality firsthand, and we believe families affected by SMA deserve more
-              understanding, more visibility, and more support than they often receive.
-            </p>
-          </section>
-
-          <hr className="border-gray-200 max-w-3xl mx-auto" />
-
-          {/* WHY WE EXIST */}
-          <section className="prose prose-lg text-gray-700 max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Why We Exist</h2>
-            <p className="font-semibold text-gray-900">
-              SMA Hope Foundation Nigeria exists to help close a serious gap.
-            </p>
-            <p>
-              That gap is the gap between diagnosis and understanding. The gap between sympathy and
-              informed support. The gap between what families are carrying and what society is able
-              to see.
-            </p>
-            <p>
-              For many people, SMA is still unfamiliar. For many families, it becomes part of
-              everyday life in ways that are exhausting, costly, and deeply emotional. A
-              child&apos;s breathing, feeding, strength, movement, and stability may all require
-              close attention. Parents may be forced to learn complex care realities very quickly.
-              Even where love is abundant, the burden can still be overwhelming.
-            </p>
-            <p className="italic border-l-4 border-[var(--primary)] pl-4 my-6 bg-gray-50 py-2 rounded-r-lg">
-              This foundation exists because families should not have to carry that weight in
-              silence, and because awareness must grow if support is ever going to deepen.
-            </p>
-          </section>
-
-          {/* MISSION & VISION - TWO COLUMN */}
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <div className="prose prose-lg text-gray-700">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">Our Mission</h2>
-              <p>
-                Our mission is to raise awareness about Spinal Muscular Atrophy, support affected
-                families with compassion and clarity, promote dignity for children living with the
-                condition, and help build a more informed and humane response around SMA in Nigeria
-                and beyond.
-              </p>
-              <p>
-                We want to make SMA easier to understand in plain language. We want to help families
-                feel seen. We want to create a public voice that is grounded in truth, not pity. And
-                we want to encourage a kind of support that is thoughtful, practical, and
-                respectful.
-              </p>
-            </div>
-
-            <div className="prose prose-lg text-gray-700">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">Our Vision</h2>
-              <p className="font-medium text-gray-900">
-                We envision a future where families affected by SMA are better understood, better
-                supported, and less alone.
-              </p>
-              <p>
-                We want to see a stronger culture of awareness, more informed public conversation,
-                deeper compassion, and more serious attention given to the realities families face.
-                We believe no child living with SMA should be reduced to a diagnosis, and no family
-                walking this road should feel invisible.
-              </p>
-            </div>
-          </section>
-
-          {/* VALUES & FOCUS - TWO COLUMN */}
-          <section className="grid grid-cols-1 md:grid-cols-12 gap-12 max-w-5xl mx-auto items-start">
-            <div className="md:col-span-7 prose prose-lg text-gray-700">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">What We Stand For</h2>
-              <ul className="space-y-4 list-none pl-0">
-                <li className="pl-4 border-l-2 border-gray-300">
-                  <strong className="text-gray-900 block mb-1">Compassion</strong>
-                  Real compassion goes beyond feeling sorry for people. It listens, learns,
-                  understands, and responds with care.
-                </li>
-                <li className="pl-4 border-l-2 border-gray-300">
-                  <strong className="text-gray-900 block mb-1">Dignity</strong>
-                  Every child living with SMA deserves to be seen with worth, humanity, and honour.
-                  Every family deserves the same.
-                </li>
-                <li className="pl-4 border-l-2 border-gray-300">
-                  <strong className="text-gray-900 block mb-1">Truth</strong>
-                  We believe this work must be rooted in honesty. SMA is difficult. The burden is
-                  real. Awareness must begin there.
-                </li>
-                <li className="pl-4 border-l-2 border-gray-300">
-                  <strong className="text-gray-900 block mb-1">Responsibility</strong>A
-                  public-facing foundation must be serious about trust, stewardship, and the way it
-                  carries its work.
-                </li>
-                <li className="pl-4 border-l-2 border-gray-300">
-                  <strong className="text-gray-900 block mb-1">Hope</strong>
-                  Not shallow hope. Not decorative hope. The kind of hope that tells the truth about
-                  suffering and still chooses to build, support, and stand with others.
-                </li>
-              </ul>
-            </div>
-
-            <div className="md:col-span-5 bg-[#edf5fb] p-8 rounded-2xl border border-[#d4e4ef] shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">What We Focus On</h2>
-              <ul className="list-disc pl-6 space-y-3 marker:text-[var(--primary)] font-semibold text-gray-800 text-lg">
-                <li>Awareness</li>
-                <li>Education</li>
-                <li>Family Support</li>
-                <li>Advocacy</li>
-                <li>Trust-Building</li>
-              </ul>
-            </div>
-          </section>
-
-          {/* HISTORY & REGISTRATION - TWO COLUMN */}
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <div className="prose prose-lg text-gray-700">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">How This Foundation Began</h2>
-              <p>
-                SMA Hope Foundation Nigeria did not begin as a formal project first. It began in the
-                lived realities of a family trying to understand, manage, and respond to Spinal
-                Muscular Atrophy.
-              </p>
-              <p>
-                What we have seen and carried has shaped this foundation deeply. The long days. The
-                medical decisions. The fears families rarely explain fully. The need for endurance.
-                The search for help. The weight of trying to hold on to dignity and hope while
-                facing a condition many people do not understand.
-              </p>
-              <p>
-                Over time, it became clear to us that our experience should not remain private if it
-                could help others understand SMA more clearly and support affected families more
-                meaningfully. That conviction is what gave rise to this foundation.
-              </p>
-            </div>
-
-            <div className="prose prose-lg text-gray-700">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Registered & Serious About the Work
-              </h2>
-              <p>
-                SMA Hope Foundation Nigeria is a registered foundation in Nigeria. That matters to
-                us because this work deserves structure, accountability, and long-term seriousness.
-              </p>
-              <p>
-                We do not want this platform to be a place of vague promises or emotional language
-                without substance. We want it to be a credible public space where people can learn,
-                connect, support, and follow the growth of a mission built on real experience and
-                genuine commitment.
-              </p>
-            </div>
-          </section>
-
-          <hr className="border-gray-200 max-w-3xl mx-auto" />
-
-          {/* LOOKING AHEAD */}
-          <section className="prose prose-lg text-gray-700 max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Looking Ahead</h2>
-            <p>
-              We know that meaningful work is built over time. This foundation is being built with
-              care, clarity, and a strong sense of responsibility. Some parts of the work will grow
-              gradually, but the purpose is already clear: to raise awareness, support families,
-              protect dignity, and help build a more informed response to SMA.
-            </p>
-            <p className="font-semibold text-xl text-gray-900 mt-8">
-              We are committed to doing this work in a way that is deeply human, publicly
-              responsible, and worthy of trust.
-            </p>
-          </section>
-        </div>
-      </div>
-    </ContentPageBg>
-  );
+  const url = `${siteConfig.url}/about`;
+  const schema = { "@context": "https://schema.org", "@graph": [
+    { "@type": "AboutPage", "@id": `${url}#page`, url, name: "About SMA Hope Foundation Nigeria", about: { "@id": `${siteConfig.url}/#organization` }, publisher: { "@id": `${siteConfig.url}/#organization` }, inLanguage: "en", dateModified: "2026-11-19" },
+    { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url }, { "@type": "ListItem", position: 2, name: "About the foundation", item: url }] },
+  ] };
+  return <div className={styles.page}>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
+    <header className={styles.hero}><div className={`container ${styles.heroGrid}`}><div><Link href="/" className="eyebrow">About SMA Hope Foundation Nigeria</Link><h1><span className={styles.headlineLine}>Understanding SMA.</span><span className={styles.headlineAccent}>Supporting families.</span></h1><p className={styles.deck}>A registered Nigerian foundation shaped by a family’s experience of spinal muscular atrophy.</p><p>We help people understand SMA, support families with clear information and practical questions, and advocate for a more informed response in Nigeria and beyond.</p><div className={styles.actions}><a href="#our-work" className="btn btn-primary">Explore our work</a><Link href="/contact" className="btn btn-secondary">Get in touch</Link></div></div><aside className={styles.missionCard} aria-labelledby="mission-title"><p className="eyebrow">Our mission</p><h2 id="mission-title">Better understanding.<br/>More meaningful support.</h2><p>To raise awareness of SMA, support affected families with compassion and clarity, and promote dignity for people living with the condition.</p><div><span>Our vision</span><p>A future in which families affected by SMA are better understood, better supported and less alone.</p></div></aside></div></header>
+    <section className={`container ${styles.section} ${styles.origin}`} aria-labelledby="origin-title"><div className={styles.sectionIntro}><p className="eyebrow">Who we are</p><h2 id="origin-title">Lived experience gave this work its purpose.</h2><p>SMA Hope grew from Tochukwu and Ijeoma Nkwocha’s journey as parents of Kamsi and Kachi, two sisters living with SMA.</p></div><div className={styles.originGrid}><figure className={styles.familyPhoto}><Image src="/family.jpg" alt="Tochukwu and Ijeoma Nkwocha with their daughters Kamsi and Kachi" width={3589} height={3024} sizes="(max-width: 800px) calc(100vw - 40px), 40vw"/><figcaption>The Nkwocha family, whose experience inspired SMA Hope.</figcaption></figure><div className={styles.prose}><p>For our family, SMA brought a steep learning curve: medical decisions, daily care, the search for treatment access and the work of keeping family life moving. It also revealed how little many people knew about the condition.</p><p>The foundation gives that experience a wider purpose. We want families to have somewhere to begin, and the people around them to understand how to respond with care and respect.</p><p>Our starting point is Nigeria. Our resources also speak to families and supporters across Africa and internationally, with country guides that recognise that health systems and access routes differ.</p><Link href="/our-story" className="text-link">Read our family’s story</Link></div></div></section>
+    <section id="our-work" className={styles.workBand} aria-labelledby="work-title"><div className={`container ${styles.section}`}><div className={styles.sectionIntro}><p className="eyebrow">What we do</p><h2 id="work-title">Useful information. A human connection. A public voice.</h2><p>Our work connects awareness with the questions people face at home, in appointments, at school and in the wider community.</p></div><div className={styles.workGrid}>{work.map(item => <article key={item.title}><h3>{item.title}</h3><p>{item.text}</p><Link href={item.href} className="text-link">{item.label}</Link></article>)}</div></div></section>
+    <section className={`container ${styles.section}`} aria-labelledby="approach-title"><div className={styles.sectionIntro}><p className="eyebrow">How we work</p><h2 id="approach-title">The standards behind the mission.</h2><p>The way we communicate and support families matters as much as the subjects we cover.</p></div><div className={styles.values}>{values.map(([title,text]) => <div key={title}><h3>{title}</h3><p>{text}</p></div>)}</div><div className={styles.role}><div><h3>Our role in a family’s care journey</h3><p>We provide education, awareness and practical support conversations. Clinical assessment, diagnosis and treatment decisions belong with qualified healthcare professionals.</p></div><div><h3>Honest about what we can offer</h3><p>A conversation with SMA Hope does not guarantee a test, medicine or funding. We help families clarify their questions and build understanding. For medical emergencies, seek emergency care directly.</p></div></div></section>
+    <section className={`container ${styles.trust}`} aria-labelledby="trust-title"><div><p className="eyebrow">Trust and stewardship</p><h2 id="trust-title">A registered foundation.<br/>A responsibility to the people we serve.</h2><p>SMA Hope Foundation Nigeria is registered in Nigeria. We are building this work with attention to accountability, respectful communication and the responsible use of support.</p><p>Our transparency page explains the foundation’s current priorities and approach to stewardship. Our editorial policy explains how we use sources and distinguish general information from individual medical advice.</p></div><div className={styles.trustLinks}><Link href="/transparency"><strong>Transparency</strong><span>Our priorities and stewardship commitments</span></Link><Link href="/editorial-policy"><strong>Editorial approach</strong><span>How we prepare and source information</span></Link><Link href="/contact"><strong>Questions and enquiries</strong><span>Contact the foundation directly</span></Link></div></section>
+    <div className={`container ${styles.bookSection}`}><FoundationBook context="about"/></div>
+    <section className={`container ${styles.section}`} aria-labelledby="involved-title"><div className={styles.sectionIntro}><p className="eyebrow">Take part</p><h2 id="involved-title">There is more than one way to help.</h2><p>Whether you need information, want to support the mission or have a practical collaboration in mind, start here.</p></div><div className={styles.involved}><article><h3>For families</h3><p>Explore the guides or speak with us about what you need help understanding.</p><a href={supportWhatsAppUrl} className="text-link" target="_blank" rel="noopener noreferrer">Chat with SMA Hope</a></article><article><h3>For supporters</h3><p>Share a useful resource, introduce someone to the book or contribute to the foundation’s mission.</p><Link href="/donate" className="text-link">Support the foundation</Link></article><article><h3>For potential partners</h3><p>We welcome conversations with clinicians, testing laboratories, educators and organisations interested in awareness and practical access questions.</p><Link href="/contact" className="text-link">Discuss a collaboration</Link></article></div></section>
+    <section className={`container ${styles.closing}`}><div><p className="eyebrow">Begin with understanding</p><h2>One useful conversation can be a starting point.</h2><p>Learn what SMA is, explore the questions families ask, or contact us about the work you would like to support.</p></div><div className={styles.actions}><Link href="/what-is-sma" className="btn btn-primary">Understand SMA</Link><Link href="/faqs" className="btn btn-secondary">Find answers</Link></div></section>
+  </div>;
 }

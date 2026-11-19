@@ -2490,14 +2490,24 @@ textarea:focus-visible {
   margin: 10px 0 22px;
   color: light-dark(#4c6654, var(--text-soft));
 }
-.hope-footer nav a {
+.hope-footer nav a,
+.hope-footer nav .footer-cookie-settings {
   display: block;
   font-size: 15px;
   color: light-dark(#73816f, var(--text-soft));
   text-decoration: none;
   margin-bottom: 12px;
 }
-.hope-footer nav a:hover {
+.hope-footer nav .footer-cookie-settings {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.hope-footer nav a:hover,
+.hope-footer nav .footer-cookie-settings:hover {
   text-decoration: underline;
 }
 .hope-footer-bottom {
@@ -2779,7 +2789,8 @@ textarea:focus-visible {
   .hope-footer nav h2 {
     font-size: 13px;
   }
-  .hope-footer nav a {
+  .hope-footer nav a,
+  .hope-footer nav .footer-cookie-settings {
     font-size: 16px;
   }
   .hope-footer-bottom {

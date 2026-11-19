@@ -1,3 +1,4 @@
+import { CookieSettingsButton } from "@/components/cookie-settings-button";
 import { BrandLogo } from "@/components/brand-logo";
 import Link from "next/link";
 const groups = [
@@ -52,6 +53,7 @@ export function Footer() {
                 {l}
               </Link>
             ))}
+            {g.name === "Be part of it" && <CookieSettingsButton />}
           </nav>
         ))}
       </div>

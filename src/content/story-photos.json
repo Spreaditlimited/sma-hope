@@ -1,0 +1,90 @@
+[
+  {
+    "group": "early",
+    "src": "/story/journey/kamsi-lagos-after-sma-diagnosis.webp",
+    "width": 810,
+    "height": 1080,
+    "alt": "Kamsi smiling in a supportive seat in Lagos",
+    "caption": "Kamsi in Lagos after her diagnosis."
+  },
+  {
+    "group": "early",
+    "src": "/story/journey/kachi-dubai-before-sma-diagnosis.webp",
+    "width": 768,
+    "height": 1024,
+    "alt": "Kachi sitting on a bed in Dubai before her diagnosis",
+    "caption": "Kachi in Dubai before her diagnosis. She had met her early developmental milestones."
+  },
+  {
+    "group": "early",
+    "src": "/story/journey/kamsi-kachi-sisters-early-family-life.webp",
+    "width": 768,
+    "height": 1024,
+    "alt": "Kamsi and Kachi lying together when Kachi was a baby",
+    "caption": "The sisters together, when Kachi was still a baby and before her diagnosis."
+  },
+  {
+    "group": "everyday",
+    "src": "/story/journey/kamsi-dubai-before-ng-feeding-tube.webp",
+    "width": 810,
+    "height": 1080,
+    "alt": "Kamsi seated in her pushchair in Dubai",
+    "caption": "A moment from everyday life in Dubai, before Kamsi began using an NG feeding tube."
+  },
+  {
+    "group": "dubai",
+    "src": "/story/journey/kamsi-first-admission-al-jalila-dubai.webp",
+    "width": 1012,
+    "height": 1800,
+    "alt": "Kamsi receiving care in a bed at Al Jalila Hospital in Dubai",
+    "caption": "Kamsi’s first admission at Al Jalila Hospital in Dubai."
+  },
+  {
+    "group": "dubai",
+    "src": "/story/journey/kamsi-breathing-support-al-jalila-dubai.webp",
+    "width": 810,
+    "height": 1080,
+    "alt": "Kamsi in a hospital bed with breathing support at Al Jalila in Dubai",
+    "caption": "One of Kamsi’s most difficult admissions at Al Jalila in Dubai."
+  },
+  {
+    "group": "uk",
+    "src": "/story/journey/kamsi-hospital-stay-alder-hey-uk.webp",
+    "width": 1200,
+    "height": 1600,
+    "alt": "Kamsi resting in a hospital bed at Alder Hey, with monitoring equipment nearby",
+    "caption": "One of Kamsi’s hospital stays at Alder Hey in the UK."
+  },
+  {
+    "group": "uk",
+    "src": "/story/journey/kamsi-admission-breathing-support-alder-hey.webp",
+    "width": 900,
+    "height": 1600,
+    "alt": "Kamsi receiving breathing support during an admission at Alder Hey",
+    "caption": "Breathing support during another admission at Alder Hey."
+  },
+  {
+    "group": "uk",
+    "src": "/story/journey/kamsi-recuperating-alder-hey-hospital.webp",
+    "width": 899,
+    "height": 1599,
+    "alt": "Kamsi smiling while sitting in a hospital bed at Alder Hey",
+    "caption": "Kamsi recuperating while still in hospital at Alder Hey."
+  },
+  {
+    "group": "everyday",
+    "src": "/story/journey/kamsi-kachi-together-alder-hey-recovery.webp",
+    "width": 1350,
+    "height": 1800,
+    "alt": "Kamsi sitting up in bed at Alder Hey, with Kachi beside her",
+    "caption": "Kamsi recuperating at Alder Hey, with Kachi beside her."
+  },
+  {
+    "group": "everyday",
+    "src": "/story/journey/kamsi-accessible-park-united-kingdom.webp",
+    "width": 1350,
+    "height": 1800,
+    "alt": "Kamsi in her wheelchair on an accessible roundabout at a UK park",
+    "caption": "Time at a park in the UK. Life beyond appointments matters too."
+  }
+]
