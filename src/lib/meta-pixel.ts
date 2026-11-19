@@ -1,6 +1,6 @@
 import { readCookieConsent } from "./cookie-consent";
 
-export const META_PIXEL_ID = "627907282665147";
+export const META_PIXEL_ID = "2521801154897796";
 const SCRIPT_ID = "smahope-meta-pixel";
 type Pixel = {
   (...args: unknown[]): void;

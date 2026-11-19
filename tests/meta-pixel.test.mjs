@@ -52,12 +52,12 @@ test("consent loads SDK once, disables automatic events, initializes the correct
   assert.equal(b.scripts[0].src,"https://connect.facebook.net/en_US/fbevents.js");
   assert.equal(b.window.fbq.disablePushState,true);
   assert.deepEqual(Array.from(b.window.fbq.queue[0]),["consent","revoke"]);
-  assert.deepEqual(Array.from(b.window.fbq.queue[1]),["set","autoConfig",false,"627907282665147"]);
-  assert.deepEqual(Array.from(b.window.fbq.queue[2]),["init","627907282665147"]);
+  assert.deepEqual(Array.from(b.window.fbq.queue[1]),["set","autoConfig",false,"2521801154897796"]);
+  assert.deepEqual(Array.from(b.window.fbq.queue[2]),["init","2521801154897796"]);
   b.scripts[0].onload();b.navigate("/book");assert.equal(b.events().length,1);
   b.navigate("/blog");assert.equal(b.events().length,2);
   b.navigate("/book");assert.equal(b.events().length,3);
-  assert.deepEqual(Array.from(b.events()[0]),["trackSingle","627907282665147","PageView"]);
+  assert.deepEqual(Array.from(b.events()[0]),["trackSingle","2521801154897796","PageView"]);
 });
 test("private and contact/checkout pages never load or send the pixel", () => {
   for (const route of ["/account","/account/login","/admin","/admin/users","/api/orders","/contact","/order-book","/order-book/success"]) {
