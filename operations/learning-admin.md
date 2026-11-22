@@ -1,0 +1,15 @@
+# Learning administration improvements — 22 November 2026
+
+Production release authorised by the owner on 22 November 2026, after all 55 unit tests, 11 isolated end-to-end checks, focused lint, TypeScript and the final production build passed. Release uses committed code and the SMA Hope Git integration.
+
+Route: /admin/learning. Default is all active course enrolments; an enrolment-month selector narrows the cohort, while progress reflects the current saved state. Directory search/status/pagination do not change cohort totals or the anonymous cohort export.
+
+Added course totals, lesson engagement, seven-day inactivity, name/email/anonymous-reference search, 20-row server pagination, individual lesson records and mobile learner cards. Only existing authorised admin/ops roles may read records. Only admin may change course availability. All report responses are private/no-store. No new permissions or database migrations are required.
+
+Counts: started means positive saved playback, any quiz attempt or a recorded completion. Completed means all five lesson checks have been passed. Later failed attempts do not erase an earlier pass. First/latest quiz scores use the current quiz version; only attempted lessons contribute to score denominators. Lesson engagement may be out of order and is not a sequential conversion funnel. Saved playback is a resume point, not verified viewing time. Inactivity is measured from enrolment or the latest recorded lesson activity, not account login. It is a follow-up indicator, not proof someone abandoned learning. Ad attribution and cost-per-completion are not inferred from these records.
+
+Exports contain anonymous references, enrolment time, passed-lesson count and numeric quiz scores. No names, emails, raw identity IDs or quiz answer payloads are exported. Search supports these references for authorised internal follow-up. CSV always covers the selected cohort, not a directory search result.
+
+Verification: node --test tests/learning-admin.test.mjs; node tests/integration/learning-admin.mjs (requires the isolated localhost:3021 server and /private/tmp/sma-lms-test.env). The integration test is restricted to 127.0.0.1:33317/smahope_test and creates synthetic identities/sessions directly, exercising actual Better Auth session validation without changing CAPTCHA. It checks real SQL aggregation, anonymous/learner denial, ops permissions, same-origin writes, first/latest scores, repeated attempts, out-of-order progress, search wildcards, pagination, empty/invalid cohorts and exports. Synthetic fixtures are removed by default; SMA_ADMIN_QA_KEEP=1 retains them for local visual review only. Never apply those figures to real programme reports.
+
+The local browser currently uses a temporary synthetic admin session and synthetic learners for owner review. No production learner records were created or changed. Test-session material is stored only under /private/tmp, not in Git. The preview login cookie expires after 30 minutes; the backing synthetic session expires after eight hours. Other existing local test records are preserved.

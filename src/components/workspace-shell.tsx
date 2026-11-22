@@ -147,8 +147,8 @@ export function WorkspaceShell({
               <h1>{title}</h1>
               {subtitle && <p>{subtitle}</p>}
             </div>
-            {pathname !== "/account/learn" && <Link href={admin ? "/admin/donations" : "/donate"} className="btn btn-primary">
-              {admin ? "View donations" : "Make a donation"}
+            {pathname !== "/account/learn" && <Link href={admin ? pathname === "/admin/learning" ? "/learn/understanding-sma" : "/admin/donations" : "/donate"} className="btn btn-primary">
+              {admin ? pathname === "/admin/learning" ? "View course" : "View donations" : "Make a donation"}
               <Icon name="arrow" size={16} />
             </Link>}
           </div>
