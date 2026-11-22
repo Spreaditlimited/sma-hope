@@ -1,3 +1,4 @@
+import { CAPTCHA_ACTIONS, verifyCaptcha } from '@/lib/captcha';
 import { NextResponse } from "next/server";
 import { upsertBrevoSubscriber } from "@/lib/brevo";
 
@@ -23,6 +24,7 @@ function splitName(name?: string) {
 }
 
 export async function POST(request: Request) {
+  const blocked=await verifyCaptcha(request,CAPTCHA_ACTIONS.newsletter);if(blocked)return blocked;
   const payload = (await request.json().catch(() => null)) as NewsletterPayload | null;
   if (!payload || typeof payload !== "object" || (payload.name !== undefined && typeof payload.name !== "string") || typeof payload.email !== "string") return NextResponse.json({error:"Please enter your name and email."},{status:400});
 

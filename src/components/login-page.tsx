@@ -1,4 +1,6 @@
 "use client";
+import { captchaHeaders } from '@/lib/captcha-client';
+import { CaptchaNotice } from '@/components/captcha-notice';
 import { BrandLogo } from "@/components/brand-logo";
 
 import Link from "next/link";
@@ -23,13 +25,13 @@ export function LoginPage({admin = false, setup = false}: {admin?:boolean;setup?
     setLoading(true);
 
     try {
-      const result = await (admin ? adminAuth : accountAuth).signIn.email({email:email.trim(),password});
+      const result = await (admin ? adminAuth : accountAuth).signIn.email({email:email.trim(),password},{headers:await captchaHeaders(admin?"admin_login":"login")});
       if (result.error) {setError(result.error.message || "Unable to sign in.");return;}
       const next = new URLSearchParams(window.location.search).get("next");
       router.push(admin ? "/admin" : next && ["/account", "/account/learn", "/account/orders", "/account/donations", "/account/subscriptions"].includes(next) ? next : "/account");
       router.refresh();
-    } catch {
-      setError("Unable to connect. Please check your connection and try again.");
+    } catch (failure) {
+      setError(failure instanceof Error && failure.message.startsWith("Security verification") ? failure.message : "Unable to connect. Please check your connection and try again.");
     } finally {
       setLoading(false);
     }
@@ -78,6 +80,7 @@ export function LoginPage({admin = false, setup = false}: {admin?:boolean;setup?
             <Link href={admin ? "/admin/reset-password" : "/account/reset-password"} className={styles.reset}>
               Forgot your password?
             </Link>
+            <CaptchaNotice />
             {error && <p className={styles.error} role="alert">{error}</p>}
             <button type="submit" className={`btn btn-primary ${styles.submit}`} disabled={loading}>
               {loading ? "Signing in…" : "Sign in"}

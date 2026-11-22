@@ -1,4 +1,6 @@
 "use client";
+import { captchaHeaders } from '@/lib/captcha-client';
+import { CaptchaNotice } from '@/components/captcha-notice';
 
 import Link from "next/link";
 import { PasswordInput } from "@/components/password-input";
@@ -26,13 +28,13 @@ export function ResetPasswordPage({admin = false, token = ""}: {admin?:boolean;t
     setLoading(true);
 
     try {
-      const result = await auth.requestPasswordReset({email,redirectTo:`${window.location.origin}/${admin ? "admin" : "account"}/reset-password`});
+      const result = await auth.requestPasswordReset({email,redirectTo:`${window.location.origin}/${admin ? "admin" : "account"}/reset-password`},{headers:await captchaHeaders(admin?"admin_password_reset":"password_reset")});
       if (result.error) {setError(result.error.message || "Unable to send reset link.");return;}
       setMessage(
         "If an account exists for this email, you’ll receive a secure link to choose a new password.",
       );
-    } catch {
-      setError("Unable to connect. Please try again.");
+    } catch (failure) {
+      setError(failure instanceof Error && failure.message.startsWith("Security verification") ? failure.message : "Unable to connect. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -57,7 +59,7 @@ export function ResetPasswordPage({admin = false, token = ""}: {admin?:boolean;t
     setLoading(true);
 
     try {
-      const { error: updateError } = await auth.resetPassword({ newPassword:password, token });
+      const { error: updateError } = await auth.resetPassword({ newPassword:password, token },{headers:await captchaHeaders(admin?"admin_password_update":"password_update")});
       if (updateError) {
         setError(updateError.message || "Unable to update your password.");
         return;
@@ -66,8 +68,8 @@ export function ResetPasswordPage({admin = false, token = ""}: {admin?:boolean;t
       setConfirmPassword("");
       setPasswordUpdated(true);
       setMessage("Password updated successfully.");
-    } catch {
-      setError("Unable to connect. Please try again.");
+    } catch (failure) {
+      setError(failure instanceof Error && failure.message.startsWith("Security verification") ? failure.message : "Unable to connect. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -156,6 +158,7 @@ export function ResetPasswordPage({admin = false, token = ""}: {admin?:boolean;t
                 className="w-full px-4 py-3 rounded-xl border border-gray-200"
               />
             </div>
+            <CaptchaNotice />
             <button type="submit" className="btn btn-primary w-full" disabled={loading}>
               {loading ? "Updating..." : "Update Password"}
             </button>
@@ -179,6 +182,7 @@ export function ResetPasswordPage({admin = false, token = ""}: {admin?:boolean;t
                 className="w-full px-4 py-3 rounded-xl border border-gray-200"
               />
             </div>
+            <CaptchaNotice />
             <button type="submit" className="btn btn-primary w-full" disabled={loading}>
               {loading ? "Sending..." : "Send Reset Link"}
             </button>

@@ -1,3 +1,4 @@
+import { CAPTCHA_ACTIONS, verifyCaptcha } from '@/lib/captcha';
 import { NextResponse } from "next/server";
 import { recipientForPurpose } from "@/lib/contact-routing";
 import { sendTransactionalEmail } from "@/lib/email";
@@ -42,6 +43,7 @@ function friendlyDeliveryError(error: unknown) {
 }
 
 export async function POST(request: Request) {
+  const blocked=await verifyCaptcha(request,CAPTCHA_ACTIONS.contact);if(blocked)return blocked;
   const payload = (await request.json().catch(() => null)) as ContactPayload | null;
   if (!payload || typeof payload !== "object" || ["fullName","email","subject","message","purpose"].some(key => typeof payload[key as keyof ContactPayload] !== "string")) return NextResponse.json({error:"Please complete the required fields."},{status:400});
   if (String(payload.message).length > 15000 || String(payload.subject).length > 200 || String(payload.email).length > 254) return NextResponse.json({error:"Your message is too long."},{status:400});

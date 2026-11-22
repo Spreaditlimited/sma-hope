@@ -1,9 +1,12 @@
+import { authCaptchaAction, verifyCaptcha } from '@/lib/captcha';
 import { after } from 'next/server';
 import { getAuth, assertSameOrigin } from '@/lib/auth/server';
 import { buildCourseSignupLead, sendCourseSignupLead } from '@/lib/meta-course-lead';
 export async function GET(request: Request) {return getAuth().handler(request);}
 export async function POST(request: Request) {
-  const signup=new URL(request.url).pathname === '/api/auth/sign-up/email';
+  const action=authCaptchaAction(request);
+  if(action){const blocked=await verifyCaptcha(request,action);if(blocked)return blocked;}
+  const signup=new URL(request.url).pathname.replace(/\/+$/,'') === '/api/auth/sign-up/email';
   let courseSignup=false;
   if (signup) {
     try {

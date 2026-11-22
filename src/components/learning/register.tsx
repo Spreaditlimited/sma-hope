@@ -1,4 +1,6 @@
 'use client';
+import { captchaHeaders } from '@/lib/captcha-client';
+import { CaptchaNotice } from '@/components/captcha-notice';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -24,7 +26,7 @@ export function LearnerRegistration() {
     try {
       const response = await fetch('/api/auth/sign-up/email', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...await captchaHeaders('register') },
         body: JSON.stringify({
           name: String(form.get('name') || '').trim(),
           email: String(form.get('email') || '').trim(),
@@ -34,7 +36,9 @@ export function LearnerRegistration() {
         }),
       });
       if (!response.ok) {
-        throw new Error(response.status === 429
+        throw new Error((response.status === 403 || response.status === 503)
+          ? 'Security verification failed. Please try again.'
+          : response.status === 429
           ? 'Too many attempts. Please wait and try again.'
           : 'We could not create an account. If you already have one, sign in or reset your password.');
       }
@@ -65,6 +69,7 @@ export function LearnerRegistration() {
               <label htmlFor="learner-password">Create a password<PasswordInput id="learner-password" name="password" required minLength={12} maxLength={128} autoComplete="new-password" aria-describedby="learner-password-help" /><small id="learner-password-help">Use at least 12 characters.</small></label>
               <label className={styles.consent} htmlFor="learner-consent"><input id="learner-consent" name="terms" type="checkbox" required /><span>I agree to the <Link href="/terms">terms</Link> and <Link href="/privacy-policy">privacy notice</Link>. SMA Hope will store my account, course progress and quiz answers. I do not need to provide medical information.</span></label>
             </fieldset>
+            <CaptchaNotice />
             {error && <div className={styles.error} role="alert"><p>{error}</p><Link href="/account/login?next=/account/learn">Sign in</Link><span> · </span><Link href="/account/reset-password">Reset password</Link></div>}
             <button type="submit" className={`btn btn-primary ${styles.submit}`} disabled={busy}>{busy ? 'Creating account…' : 'Create free account'}<span aria-hidden="true">↗</span></button>
           </form>

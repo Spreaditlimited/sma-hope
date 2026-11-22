@@ -1,4 +1,6 @@
 "use client";
+import { captchaHeaders } from '@/lib/captcha-client';
+import { CaptchaNotice } from '@/components/captcha-notice';
 import { type FormEvent, useRef, useState, useId } from "react";
 type Props = { inline?:boolean;buttonLabel?:string;buttonClassName?:string;disabledButtonLabel?:string;disabledButtonClassName?:string;disabledButtonFullWidth?:boolean };
 export function BookPreorderSignup({inline=false,buttonLabel="Get book updates",buttonClassName="btn btn-primary",disabledButtonLabel}:Props) {
@@ -24,7 +26,7 @@ export function BookPreorderSignup({inline=false,buttonLabel="Get book updates",
     try {
       const response = await fetch("/api/newsletter", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...await captchaHeaders("newsletter") },
         body: JSON.stringify(payload),
       });
       const json = (await response.json().catch(() => null)) as { error?: string } | null;
@@ -37,8 +39,8 @@ export function BookPreorderSignup({inline=false,buttonLabel="Get book updates",
       form.reset();
       setFormStartedAt(Date.now());
       setSuccess(true);
-    } catch {
-      setError("Unable to join the email list right now.");
+    } catch (failure) {
+      setError(failure instanceof Error ? failure.message : "Unable to join the email list right now.");
     } finally {
       setIsSubmitting(false);
     }
@@ -49,6 +51,7 @@ export function BookPreorderSignup({inline=false,buttonLabel="Get book updates",
     <label htmlFor={`${id}-name`}>Your name<input id={`${id}-name`} name="name" autoComplete="name" required /></label>
     <label htmlFor={`${id}-email`}>Email address<input id={`${id}-email`} name="email" type="email" autoComplete="email" required /></label>
     <input name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{display:"none"}} />
+    <CaptchaNotice />
     {error&&<p className="form-error" role="alert">{error}</p>}
     {success&&<p role="status" className="auth-note">Thank you. You’re on the list for book news and updates.</p>}
     <button className="btn btn-primary" disabled={isSubmitting||success}>{isSubmitting?"Joining…":success?"You’re on the list":"Keep me updated"}</button>

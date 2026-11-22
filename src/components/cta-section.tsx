@@ -1,4 +1,6 @@
 "use client";
+import { captchaHeaders } from '@/lib/captcha-client';
+import { CaptchaNotice } from '@/components/captcha-notice';
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { Icon } from "@/components/icon";
@@ -26,7 +28,7 @@ export function CTASection({
     try {
       const response = await fetch("/api/newsletter", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...await captchaHeaders("newsletter") },
         body: JSON.stringify({
           name: String(data.get("name") || "").trim(),
           email: String(data.get("email") || "").trim(),
@@ -112,6 +114,7 @@ export function CTASection({
                   />
                 </label>
               </div>
+              <CaptchaNotice />
               {error && (
                 <p role="alert" className="form-error">
                   {error}

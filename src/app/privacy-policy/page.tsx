@@ -137,6 +137,8 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
 
+          <section className="prose prose-lg max-w-3xl mx-auto"><h2>Spam and account protection</h2><p>We use Google reCAPTCHA v3 when you submit registration, sign-in, password reset, contact and newsletter forms. It evaluates technical and interaction signals to help distinguish legitimate requests from automated abuse. Google receives information needed to provide this security service; we do not send your form answers or course progress as reCAPTCHA action data. See <a href="https://policies.google.com/privacy">Google’s Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a>.</p></section>
+
           {/* ROW 3: SHARING & INTERNATIONAL TRANSFERS */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto items-start">
             <div className="prose prose-lg text-gray-700 bg-gray-50 p-6 md:p-8 rounded-2xl border border-gray-100">

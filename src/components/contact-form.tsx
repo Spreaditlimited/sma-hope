@@ -1,4 +1,6 @@
 "use client";
+import { captchaHeaders } from '@/lib/captcha-client';
+import { CaptchaNotice } from '@/components/captcha-notice';
 
 import { useEffect, useState } from "react";
 
@@ -65,7 +67,7 @@ export function ContactForm() {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...await captchaHeaders("contact") },
         body: JSON.stringify(payload),
       });
 
@@ -93,7 +95,9 @@ export function ContactForm() {
         title: "Unable to send message",
         message: isOffline
           ? "You appear to be offline. Please reconnect to the internet and try again."
-          : errorMessage.toLowerCase().includes("failed to fetch")
+          : errorMessage.startsWith("Security verification")
+            ? errorMessage
+            : errorMessage.toLowerCase().includes("failed to fetch")
             ? "We could not reach our contact service right now. Please refresh the page and try again in a moment."
             : "Something went wrong while sending your message. Please try again shortly.",
       });
@@ -145,6 +149,7 @@ export function ContactForm() {
         <textarea id="message" name="message" rows={7} required />
       </div>
       <input type="text" name="company" tabIndex={-1} autoComplete="off" style={{ display: "none" }} />
+      <CaptchaNotice />
       <button disabled={loading} type="submit" className="btn btn-primary" style={{ marginTop: "1rem" }}>
         {loading ? "Sending..." : "Send Message"}
       </button>
