@@ -29,7 +29,7 @@ body {
 }
 
 body {
-  font-family: var(--font-dm-sans), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: var(--font-body), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.65;
 }
 
@@ -38,10 +38,10 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-family: var(--font-manrope), var(--font-dm-sans), sans-serif;
+  font-family: var(--font-heading), Georgia, "Times New Roman", serif;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 550;
   color: light-dark(#102637, var(--text));
 }
 
@@ -112,7 +112,7 @@ a {
 }
 
 .brand-text {
-  font-family: var(--font-manrope), var(--font-dm-sans), sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
   font-size: 1.03rem;
 }
@@ -693,9 +693,9 @@ a {
 
 .book-showcase-title {
   margin: 0;
-  font-family: var(--font-manrope), var(--font-dm-sans), sans-serif;
+  font-family: var(--font-heading), Georgia, "Times New Roman", serif;
   font-size: 1.08rem;
-  font-weight: 800;
+  font-weight: 550;
   color: light-dark(#123b57, var(--text));
 }
 
@@ -1772,7 +1772,7 @@ hr.section-divider {
 
 .footer-brand {
   margin: 0;
-  font-family: var(--font-manrope), var(--font-dm-sans), sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 1.5rem;
   color: light-dark(#17364a, var(--text));
 }
@@ -1908,3 +1908,10 @@ body::-webkit-scrollbar {
 .library-region select { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 36px 12px 14px; min-height: 48px; max-width: 100%; }
 .library-region select:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
 @media(max-width:650px) { .library-region { align-items: stretch; flex-direction: column; } }
+
+/* Source Serif 4 gives public headings their editorial voice; Source Sans 3
+   stays consistent across reading, navigation and the private learning tools. */
+body { font-optical-sizing: auto; }
+button, input, select, textarea { font-family: var(--font-body), system-ui, sans-serif; }
+.workspace-typography { --font-heading: var(--font-body); }
+.workspace-typography :is(h1, h2, h3, h4) { font-weight: 600; letter-spacing: -.02em; }

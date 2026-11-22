@@ -3,7 +3,7 @@
 .launcher:hover { background: var(--primary-strong); }
 .panel { position: absolute; right: 0; bottom: calc(100% + 12px); width: min(360px, calc(100vw - 40px)); max-height: calc(100dvh - 110px); overflow-y: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--text); box-shadow: 0 16px 48px #12292c26; }
 .header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 18px 16px 16px 20px; border-bottom: 1px solid var(--line); }
-.header h2 { margin: 0; font-size: 18px; font-weight: 650; }
+.header h2 { margin: 0; font-size: 18px; font-weight: 550; }
 .header p { margin: 7px 0 0; font-size: 13px; line-height: 1.6; color: var(--text-soft); }
 .close { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; margin-top: -8px; margin-right: -6px; padding: 0; border: 0; border-radius: 50%; color: var(--text); background: transparent; cursor: pointer; }
 .close:hover { background: var(--surface-muted); }

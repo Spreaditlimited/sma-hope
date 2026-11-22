@@ -57,7 +57,13 @@ for (let i = 0; i < routes.length; i += 4) {
         const schema = JSON.parse(match[1]);
         assert.equal(typeof schema["@context"], "string", `${path} JSON-LD context`);
         assert.equal(schema["@context"].toLowerCase(), "https://schema.org");
-        assert.equal(typeof schema["@type"], "string", `${path} JSON-LD type`);
+        // Graph documents put each entity's type on its node, not the root.
+        const entities = Array.isArray(schema["@graph"]) ? schema["@graph"] : [schema];
+        assert.ok(entities.length > 0, `${path} JSON-LD entities`);
+        for (const entity of entities) {
+          const types = Array.isArray(entity["@type"]) ? entity["@type"] : [entity["@type"]];
+          assert.ok(types.length > 0 && types.every((type) => typeof type === "string" && type.length > 0), `${path} JSON-LD type`);
+        }
       }
       pages.set(path, html);
       console.log(`PASS ${path}`);
@@ -128,7 +134,13 @@ const checks = await Promise.allSettled([
   })(),
 ]);
 for (const result of checks) if (result.status === "rejected") failures.push(result.reason.message);
-if (pages.has("/book")) assert.ok(pages.get("/book").includes("Not yet released."));
+if (pages.has("/book")) {
+  const book = pages.get("/book");
+  assert.ok(!book.includes("Not yet released."), "book is released");
+  assert.ok((book.match(/>Buy Now<\/a>/g) || []).length >= 4, "book has hero and edition purchase links");
+  for (const edition of ["kindle", "paperback", "hardcover"])
+    assert.ok(book.toLowerCase().includes(edition), `book ${edition} edition`);
+}
 assert.ok(!pages.get("/book")?.includes("July 31, 2026"));
 if (failures.length) {
   console.error("FAILED:", failures.join("\n"));

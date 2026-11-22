@@ -14,7 +14,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const isWorkspaceRoute = pathname.startsWith("/account") || pathname.startsWith("/admin");
 
   if (isWorkspaceRoute) {
-    return <><MetaPixel /><div id="main-content">{(pathname.endsWith("/login") || pathname.includes("reset-password")) && <div className="auth-appearance"><ThemePicker /></div>}{children}</div></>;
+    return <><MetaPixel /><div id="main-content" className="workspace-typography">{(pathname.endsWith("/login") || pathname.includes("reset-password")) && <div className="auth-appearance"><ThemePicker /></div>}{children}</div></>;
   }
 
   return (
@@ -23,8 +23,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main id="main-content">{children}</main>
       <CTASection
-        headline="Together, we can make room for more hope."
-        body="Learn, share, give, or lend your voice. Help us build a more informed and supportive world for families living with SMA."
+        headline="Stay informed. Stay connected."
+        body="Practical SMA guidance, new learning resources and news from the foundation. Useful information for families, caregivers and everyone who wants to help."
         primary={{ label: "Give hope", href: "/donate" }}
         secondary={{ label: "Contact Us", href: "/contact" }}
       />

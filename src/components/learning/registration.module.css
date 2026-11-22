@@ -3,7 +3,7 @@
 .logo{display:block;width:150px;line-height:0}
 .storyContent{max-width:470px;margin:0 auto;width:100%}
 .eyebrow{font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;line-height:1.7;color:var(--accent-gold,#986c48);margin:0 0 15px}
-.story h2{font-size:clamp(28px,3vw,42px);line-height:1.22;letter-spacing:-.045em;color:inherit;margin:0 0 20px}
+.story h2{font-size:clamp(28px,3vw,42px);line-height:1.22;letter-spacing: -.02em;color:inherit;margin:0 0 20px}
 .storyContent>p:not(.eyebrow){font-size:15px;line-height:1.9;max-width:410px;color:var(--text-soft,#536653)}
 .artwork{display:block;max-width:390px;width:100%;height:auto;aspect-ratio:1;clip-path:inset(0 0 10% 0);border-radius:0;margin:28px 0 22px}
 .features{display:flex;flex-wrap:wrap;gap:10px 19px;max-width:430px;color:var(--text-soft,#536653);font-size:11px;line-height:1.8}
@@ -12,7 +12,7 @@
 .formArea{display:flex;justify-content:center;align-items:center;min-width:0;padding:42px clamp(28px,5vw,80px)}
 .card{width:100%;max-width:440px}
 .mobileLogo{display:none}
-.card h1{font-size:38px;line-height:1.15;letter-spacing:-.045em;color:var(--text,#173a2b);margin:0 0 18px}
+.card h1{font-size:38px;line-height:1.15;letter-spacing: -.02em;color:var(--text,#173a2b);margin:0 0 18px}
 .intro{font-size:15px;line-height:1.85;color:var(--text-soft,#536653);margin:0 0 14px}
 .nextStep{font-size:12px;line-height:1.85;color:var(--text-soft,#536653);padding:14px 16px;border:1px solid var(--line,#dce2da);border-radius:10px;margin:0 0 27px}
 .nextStep strong{font-weight:650;color:var(--text,#173a2b)}

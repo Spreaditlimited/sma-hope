@@ -41,27 +41,28 @@ export default async function Home() {
               <span className="eyebrow-line" /> A Nigerian foundation. A shared hope.
             </p>
             <h1>
-              Every family deserves
+              Understand SMA.
               <br />
-              <em>understanding.</em>
+              <em>Recognise the signs.</em>
               <br />
-              Every life, possibility.
+              Know when to seek help.
             </h1>
             <p className="hero-description">
-              Spinal muscular atrophy can change a family’s world. Together, we can make that world
-              more informed, more supportive, and less lonely.
+              Clear information about spinal muscular atrophy (SMA) for parents, caregivers and
+              families in Nigeria. Take our free five-lesson course to understand possible warning
+              signs, prepare for a conversation with a doctor and learn about care and support.
             </p>
             <div className="button-row">
-              <Link className="btn btn-primary" href="/support-for-families">
-                Find your next step <Icon name="arrow" size={17} />
+              <Link className="btn btn-primary" href="/account/register">
+                Start learning — free <Icon name="arrow" size={17} />
               </Link>
               <Link className="text-link" href="/what-is-sma">
-                Understand SMA <span aria-hidden="true">↗</span>
+                What is SMA? <span aria-hidden="true">↗</span>
               </Link>
             </div>
             <div className="hero-footnote">
               <Icon name="shield" size={18} />
-              <span>Rooted in lived experience. Guided by dignity.</span>
+              <span>Founded by parents raising two children with SMA.</span>
             </div>
           </div>
           <figure className="hero-photo">

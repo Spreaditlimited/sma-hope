@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Manrope } from "next/font/google";
+import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import "./redesign.css";
 import "./theme.css";
@@ -40,14 +40,17 @@ const orgSchema = {
   },
 };
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
+const sourceSans = Source_Sans_3({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-body",
+  display: "swap",
 });
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
+const sourceSerif = Source_Serif_4({
+  axes: ["opsz"],
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-heading",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -56,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning className={`${dmSans.variable} ${manrope.variable}`}>
+    <html lang="en" data-theme="light" suppressHydrationWarning className={`${sourceSans.variable} ${sourceSerif.variable}`}>
       <head><script dangerouslySetInnerHTML={{ __html: themeInitScript }} /><meta name="theme-color" content="#fbfaf7" /></head>
       <body>
         <a href="#main-content" className="skip-link">

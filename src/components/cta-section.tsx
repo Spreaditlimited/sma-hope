@@ -49,16 +49,21 @@ export function CTASection({
     }
   }
   return (
-    <section className="hope-newsletter">
+    <section className="hope-newsletter" aria-labelledby="newsletter-heading">
       <div className="container newsletter-layout">
         <div>
-          <p className="eyebrow">There is a place for you in this story</p>
-          <h2>{headline}</h2>
+          <p className="eyebrow">The SMA Hope newsletter</p>
+          <h2 id="newsletter-heading">{headline}</h2>
           <p>{body}</p>
-          <div className="button-row">
-            <Link className="btn btn-primary" href={primary.href}>
+          <ul className="newsletter-benefits">
+            <li><span className="newsletter-benefit-icon"><Icon name="book" size={21} /></span><div><h3>Guidance for everyday questions</h3><p>New guides on understanding SMA, care and family life.</p></div></li>
+            <li><span className="newsletter-benefit-icon"><Icon name="file" size={21} /></span><div><h3>More ways to learn</h3><p>Free course updates and resources to read, watch and share.</p></div></li>
+            <li><span className="newsletter-benefit-icon"><Icon name="people" size={21} /></span><div><h3>A closer connection to our work</h3><p>Foundation news and opportunities to support families in Nigeria.</p></div></li>
+          </ul>
+          <div className="newsletter-other-ways">
+            <Link className="text-link" href={primary.href}>
               {primary.label}
-              <Icon name="heart" size={16} />
+              <Icon name="arrow" size={16} />
             </Link>
             {secondary && (
               <Link className="text-link" href={secondary.href}>
@@ -68,13 +73,9 @@ export function CTASection({
           </div>
         </div>
         <div className="newsletter-form">
-          <p className="eyebrow">Stay connected</p>
-          <h3>
-            A little more understanding,
-            <br />
-            in your inbox.
-          </h3>
-          <p>Receive foundation news, thoughtful guides, and ways to stand with families.</p>
+          <div className="newsletter-form-top"><span className="newsletter-form-symbol"><Icon name="heart" size={23} /></span><span>Free to subscribe</span></div>
+          <h3>Join the SMA Hope newsletter.</h3>
+          <p>Leave your name and email, and we’ll keep you connected to useful information and the work ahead.</p>
           {success ? (
             <div className="newsletter-success" role="status">
               <Icon name="check" />
@@ -82,7 +83,7 @@ export function CTASection({
               <p>Thank you for being part of the SMA Hope community.</p>
             </div>
           ) : (
-            <form onSubmit={submit}>
+            <form onSubmit={submit} aria-label="Subscribe to the SMA Hope newsletter" aria-busy={busy}>
               <input
                 name="company"
                 type="text"
@@ -114,20 +115,20 @@ export function CTASection({
                   />
                 </label>
               </div>
-              <CaptchaNotice />
               {error && (
                 <p role="alert" className="form-error">
                   {error}
                 </p>
               )}
               <button type="submit" className="btn btn-primary" disabled={busy}>
-                {busy ? "Joining…" : "Join our community"}
+                {busy ? "Subscribing…" : "Subscribe to the newsletter"}
                 <Icon name="arrow" size={16} />
               </button>
               <p className="newsletter-privacy">
                 By subscribing, you agree to receive emails from SMA Hope. Unsubscribe at any time.{" "}
                 <Link href="/privacy-policy">Privacy policy</Link>
               </p>
+              <CaptchaNotice />
             </form>
           )}
         </div>
