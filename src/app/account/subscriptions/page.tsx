@@ -1,5 +1,9 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
+import { requirePageAccount } from '@/lib/auth/require-page-account';
 
-export default function SubscriptionsPage() {
-  redirect("/account/donations");
+export const dynamic = 'force-dynamic';
+
+export default async function Page() {
+  await requirePageAccount('/account/subscriptions');
+  redirect('/account/donations');
 }

@@ -1,0 +1,9 @@
+SMA Hope course hero illustration — 22 November 2026
+Generated using the built-in image-generation tool.
+Final project asset: public/learning/sma-awareness-parent-baby-doctor.png
+Original source retained in the Codex generated-images directory.
+
+Prompt:
+Use case: illustration-story. Create one new square hero illustration for the SMA Hope free awareness course website. The two input images are STYLE REFERENCES ONLY, not edit targets. Match their premium minimalist flat editorial style: bold softly rounded dark forest green contours, large simple sage shapes, warm copper accents, subtle cream paper background (#f6f2e9). Scene: a calm Nigerian mother holding her infant securely on her lap during a conversation with a Nigerian female paediatric doctor, who has a small stethoscope and a simple closed clipboard. Baby is the emotional focal point, awake and comfortable, with head properly supported. Three figures only, centred as a balanced compact group. Use elegant simplified faces and clean, anatomically coherent hands, understated expressions. Medium shot, generous margins, all heads and supporting arms inside the frame. No medical procedures, distress, devices or dramatic hospital imagery. Same restrained visual language as the reference images, not photographic, not 3D, no gradients, no comic exaggeration. No lettering, no title, no watermark, and do not redraw the logo; the real SMA Hope logo will be placed separately in the webpage. The final image will sit in the right-hand hero card on a cream landing page.
+
+Style references: existing approved understanding-sma-nigeria.jpg and sma-treatment-access-nigeria.png blog artwork.

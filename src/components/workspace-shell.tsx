@@ -1,4 +1,5 @@
 "use client";
+import learningStyles from "@/components/learning/learning.module.css";
 import { ThemePicker } from "@/components/theme-provider";
 import { BrandLogo } from "@/components/brand-logo";
 import Link from "next/link";
@@ -9,6 +10,7 @@ import { accountAuth, adminAuth } from "@/lib/auth/client";
 type Item = { label: string; href: string; icon: IconName };
 const accountItems: Item[] = [
   { label: "Overview", href: "/account", icon: "grid" },
+  { label: "My learning", href: "/account/learn", icon: "book" },
   { label: "My donations", href: "/account/donations", icon: "heart" },
   { label: "Book orders", href: "/account/orders", icon: "box" },
 ];
@@ -17,6 +19,7 @@ const adminItems: Item[] = [
   { label: "Donations", href: "/admin/donations", icon: "heart" },
   { label: "Book orders", href: "/admin/book-orders", icon: "box" },
   { label: "Supporters", href: "/admin/donors", icon: "people" },
+  { label: "Learning", href: "/admin/learning", icon: "book" },
   { label: "Content library", href: "/admin/content", icon: "book" },
   { label: "Settings", href: "/admin/settings", icon: "settings" },
 ];
@@ -60,7 +63,7 @@ export function WorkspaceShell({
   }
   return (
     <div
-      className={`workspace ${admin ? "workspace-admin" : "workspace-account"}`}
+      className={`workspace ${admin ? "workspace-admin" : "workspace-account"} ${pathname === "/account/learn" ? learningStyles.learningShell : ""}`}
       onKeyDown={(e) => {
         if (e.key === "Escape") setOpen(false);
       }}
@@ -70,7 +73,7 @@ export function WorkspaceShell({
           <BrandLogo />
         </Link>
         <p className="workspace-section-label">
-          {admin ? "Foundation management" : "Your supporter space"}
+          {admin ? "Foundation management" : "Your SMA Hope space"}
         </p>
         <nav
           aria-label={admin ? "Admin navigation" : "Account navigation"}
@@ -99,7 +102,7 @@ export function WorkspaceShell({
           <span className="avatar">{email ? email.slice(0, 1).toUpperCase() : "SH"}</span>
           <div>
             <strong>
-              {admin ? (role === "admin" ? "Administrator" : "Operations") : "Supporter account"}
+              {admin ? (role === "admin" ? "Administrator" : "Operations") : "SMA Hope account"}
             </strong>
             <span title={email}>{email || "Checking your session…"}</span>
           </div>
@@ -139,15 +142,15 @@ export function WorkspaceShell({
           <div className="workspace-page-heading">
             <div>
               <p className="eyebrow">
-                {admin ? "SMA Hope / Administration" : "SMA Hope / Your support matters"}
+                {admin ? "SMA Hope / Administration" : pathname === "/account/learn" ? "SMA Hope / Learn with understanding" : "SMA Hope / Your support matters"}
               </p>
               <h1>{title}</h1>
               {subtitle && <p>{subtitle}</p>}
             </div>
-            <Link href={admin ? "/admin/donations" : "/donate"} className="btn btn-primary">
+            {pathname !== "/account/learn" && <Link href={admin ? "/admin/donations" : "/donate"} className="btn btn-primary">
               {admin ? "View donations" : "Make a donation"}
               <Icon name="arrow" size={16} />
-            </Link>
+            </Link>}
           </div>
           {children}
         </main>

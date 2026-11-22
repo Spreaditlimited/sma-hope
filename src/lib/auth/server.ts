@@ -24,7 +24,7 @@ function createAuth(scope: AuthScope) {
     session: { modelName: `${scope}_session`, expiresIn: admin ? 28800 : 604800, cookieCache: {enabled:false} },
     verification: { modelName: `${scope}_verification` },
     emailAndPassword: {
-      enabled: true, disableSignUp: true, minPasswordLength: 12, revokeSessionsOnPasswordReset: true,
+      enabled: true, disableSignUp: admin, minPasswordLength: 12, revokeSessionsOnPasswordReset: true,
       sendResetPassword: async ({ user, url }) => {
         const result = await sendTransactionalEmail({ to:user.email,
           subject: admin ? "Set your SMA Hope administrator password" : "Set your SMA Hope account password",
@@ -40,16 +40,18 @@ function createAuth(scope: AuthScope) {
       },
     },
     rateLimit: { enabled:true, storage:"database", modelName:"auth_rate_limit", window:60, max:30,
-      customRules:{"/sign-in/email":{window:60,max:5},"/request-password-reset":{window:60,max:3}} },
+      customRules:{"/sign-up/email":{window:60,max:3},"/sign-in/email":{window:60,max:5},"/request-password-reset":{window:60,max:3}} },
     advanced: {
       cookiePrefix: admin ? "smahope_admin" : "smahope_account",
       useSecureCookies: authOrigin().startsWith("https:"),
       defaultCookieAttributes: { httpOnly:true, sameSite:"lax", path:"/" },
     },
     databaseHooks: {
-      session: {create:{before:async(session)=>{
-        const [rows] = await getPool().promise().query(`SELECT active FROM ${scope}_identity WHERE id=?`,[session.userId]);
-        if (!(rows as {active:number}[])[0]?.active) return false;
+      session: {create:{before:async(session, context)=>{
+        // Use the auth adapter so signup sees its own uncommitted user.
+        const user = await context?.context.internalAdapter.findUserById(session.userId);
+        if (!user || !(user as typeof user & {active?:boolean|number}).active) return false;
+        return {data:session};
       }}},
     },
     plugins:[nextCookies()],

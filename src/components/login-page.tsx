@@ -2,7 +2,8 @@
 import { BrandLogo } from "@/components/brand-logo";
 
 import Link from "next/link";
-import Image from "next/image";
+import { AccountAuthStory } from "@/components/learning/account-auth-story";
+import styles from "@/components/learning/registration.module.css";
 import { Icon } from "@/components/icon";
 import { PasswordInput } from "@/components/password-input";
 import { FormEvent, useState } from "react";
@@ -17,13 +18,15 @@ export function LoginPage({admin = false, setup = false}: {admin?:boolean;setup?
   const [loading, setLoading] = useState(false);
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (loading) return;
     setError("");
     setLoading(true);
 
     try {
       const result = await (admin ? adminAuth : accountAuth).signIn.email({email:email.trim(),password});
       if (result.error) {setError(result.error.message || "Unable to sign in.");return;}
-      router.push(admin ? "/admin" : "/account");
+      const next = new URLSearchParams(window.location.search).get("next");
+      router.push(admin ? "/admin" : next && ["/account", "/account/learn", "/account/orders", "/account/donations", "/account/subscriptions"].includes(next) ? next : "/account");
       router.refresh();
     } catch {
       setError("Unable to connect. Please check your connection and try again.");
@@ -33,99 +36,62 @@ export function LoginPage({admin = false, setup = false}: {admin?:boolean;setup?
   }
 
   return (
-    <div className="auth-layout">
-      <aside className="auth-story">
-        <Link href="/" className="auth-logo">
-          <BrandLogo />
-        </Link>
-        <div>
-          <p className="eyebrow">A shared purpose</p>
-          <h2>
-            Small acts of care.
-            <br />
-            <em>Lasting connections.</em>
-          </h2>
-          <p>
-            Your account brings your donations, recurring giving, and book orders together in one
-            place.
-          </p>
-          <Image
-            className="auth-family"
-            src="/family.jpg"
-            alt="The family behind SMA Hope Foundation"
-            width={600}
-            height={505}
-            sizes="(max-width: 800px) 0px, 45vw"
-          />
-        </div>
-        <Link href="/" className="text-link">
-          ← Back to the foundation
-        </Link>
-      </aside>
-      <main className="auth-form-side">
-        <Link className="auth-mobile-home text-link" href="/">
-          ← SMA Hope Foundation
-        </Link>
-        <div className="auth-form-card">
-          <span className="auth-lock">
-            <Icon name="shield" size={25} />
-          </span>
-          <p className="eyebrow">{admin ? "SMA Hope administration" : "Your SMA Hope account"}</p>
+    <div className={styles.page}>
+      <AccountAuthStory />
+      <main className={styles.formArea}>
+        <div className={styles.card}>
+          <Link href="/learn/understanding-sma" className={styles.mobileLogo} aria-label="Back to the SMA Hope course"><BrandLogo /></Link>
+          <p className={styles.eyebrow}>{admin ? "SMA Hope administration" : "Your SMA Hope account"}</p>
           <h1>Welcome back.</h1>
-          <p>{admin ? "Sign in to manage the foundation’s content, supporters, and operations." : "Sign in to view your giving and keep track of your orders."}</p>
+          <p className={styles.intro}>{admin ? "Sign in to manage the foundation’s content, supporters, and operations." : "Sign in to continue learning, view your giving and keep track of your orders."}</p>
           {setup && (
-            <div className="auth-note">
+            <p className={styles.nextStep}>
               Your account was created after payment. Use the secure link sent to your email to choose your password.
-            </div>
+            </p>
           )}
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="account-email">
-              Email address
-              <input
-                id="account-email"
-                type="email"
-                autoComplete="username"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="you@example.com"
-              />
-            </label>
-            <label htmlFor="account-password">
-              Password
-              <PasswordInput
-                id="account-password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </label>
-            <Link href={admin ? "/admin/reset-password" : "/account/reset-password"} className="auth-reset">
+          <form onSubmit={handleSubmit} aria-busy={loading} className={styles.loginForm}>
+            <fieldset disabled={loading} className={styles.fields}>
+              <legend className={styles.srOnly}>Sign in to your {admin ? "administrator" : "SMA Hope"} account</legend>
+              <label htmlFor="account-email">
+                Email address
+                <input
+                  id="account-email"
+                  type="email"
+                  autoComplete="username"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="you@example.com"
+                />
+              </label>
+              <label htmlFor="account-password">
+                Password
+                <PasswordInput
+                  id="account-password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
+            </fieldset>
+            <Link href={admin ? "/admin/reset-password" : "/account/reset-password"} className={styles.reset}>
               Forgot your password?
             </Link>
-            {error && (
-              <p className="form-error" role="alert">
-                {error}
-              </p>
-            )}
-            <button type="submit" className="btn btn-primary" disabled={loading}>
+            {error && <p className={styles.error} role="alert">{error}</p>}
+            <button type="submit" className={`btn btn-primary ${styles.submit}`} disabled={loading}>
               {loading ? "Signing in…" : "Sign in"}
               <Icon name="arrow" size={17} />
             </button>
           </form>
-          <div className="auth-account-note">
+          <div className={styles.accountNote}>
             <strong>{admin ? "Administrator access" : "New to SMA Hope?"}</strong>
-            <p>
-              {admin ? "This is a separate administrator account. Use Forgot your password to set up access after an invitation." : "Supporter accounts are created after a donation or book purchase. Use the same email address to keep your records together."}
-            </p>
-            <Link href="/contact">Need help accessing your account? →</Link>
+            <p>{admin ? "This is a separate administrator account. Use Forgot your password to set up access after an invitation." : "Create a free learning account, or use the same account created after a donation or book purchase."}</p>
+            {!admin && <Link href="/account/register">Create a free learning account →</Link>}
           </div>
+          <p className={styles.help}><Link href="/learn/understanding-sma">← Back to the course</Link><span>Need a hand? <Link href="/contact">Contact us</Link></span></p>
+          <p className={styles.privacy}><Link href="/privacy-policy">Privacy</Link><span aria-hidden="true"> · </span><Link href="/terms">Terms</Link><span> · SMA Hope Foundation Nigeria</span></p>
         </div>
-        <p className="auth-privacy">
-          <Link href="/privacy-policy">Privacy</Link> · <Link href="/terms">Terms</Link> · SMA Hope
-          Foundation Nigeria
-        </p>
       </main>
     </div>
   );

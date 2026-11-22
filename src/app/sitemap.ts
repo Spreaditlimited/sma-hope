@@ -14,6 +14,7 @@ const routes = [
   "/donate",
   "/contact",
   "/blog",
+  "/learn/understanding-sma",
   "/updates",
   "/transparency",
   "/faqs",

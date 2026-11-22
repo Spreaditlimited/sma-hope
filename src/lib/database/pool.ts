@@ -5,6 +5,12 @@ import { resolve } from "node:path";
 const shared = globalThis as typeof globalThis & { smahopePool?: Pool };
 export function getPool() {
   if (shared.smahopePool) return shared.smahopePool;
+  if (process.env.NODE_ENV !== "production" && process.env.SMAHOPE_TEST_DATABASE_URL) {
+    const test = new URL(process.env.SMAHOPE_TEST_DATABASE_URL);
+    if(test.host!=="127.0.0.1:33317" || test.username!=="smahope_test" || test.pathname!=="/smahope_test" || !test.password)throw new Error("Invalid isolated test database");
+    shared.smahopePool=createPool({host:test.hostname,port:33317,user:test.username,password:decodeURIComponent(test.password),database:"smahope_test",connectionLimit:3,timezone:"Z",decimalNumbers:true});
+    return shared.smahopePool;
+  }
   const url = new URL(process.env.SMAHOPE_DATABASE_URL || "mysql://invalid");
   if (url.username !== "smahope_app" || url.pathname !== "/smahope" || !url.password ||
     !["195.35.29.41:3308", "127.0.0.1:13309"].includes(url.host)) {

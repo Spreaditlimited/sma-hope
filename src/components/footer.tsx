@@ -17,6 +17,7 @@ const groups = [
     links: [
       ["What is SMA?", "/what-is-sma"],
       ["Knowledge hub", "/blog"],
+      ["Free SMA course", "/learn/understanding-sma"],
       ["Support for families", "/support-for-families"],
       ["FAQs", "/faqs"],
       ["Our editorial approach", "/editorial-policy"],

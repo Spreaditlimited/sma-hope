@@ -8,6 +8,7 @@ import { Icon } from "@/components/icon";
 const links = [
   ["Understand SMA", "/what-is-sma"],
   ["Knowledge hub", "/blog"],
+  ["Free course", "/learn/understanding-sma"],
   ["Our story", "/our-story"],
   ["The book", "/book"],
   ["About us", "/about"],

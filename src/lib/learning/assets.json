@@ -1,0 +1,87 @@
+[
+  {
+    "number": 1,
+    "folder": "Lesson 01 - what-sma-is",
+    "filename": "SMA_Hope_Course_Lesson_01_Landscape.mp4",
+    "sha256": "486217e4b040ac0861c985d81eae4494a6f8f80bf4a549cb3c8321660f717ba4",
+    "uid": "0ee5f9f4bdece5f40e67ab0c817f0ccf",
+    "state": "ready",
+    "duration": 165.23,
+    "playback": {
+      "hls": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/0ee5f9f4bdece5f40e67ab0c817f0ccf/manifest/video.m3u8",
+      "dash": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/0ee5f9f4bdece5f40e67ab0c817f0ccf/manifest/video.mpd"
+    },
+    "requireSignedURLs": true,
+    "captionsUploaded": true,
+    "transcript": "A baby can smile, follow your face and enjoy a game, yet still struggle to move. Those things can exist together. Welcome to this free course from S M A Hope Foundation. We will help you notice concerns, understand what they might mean and know the next step. We will not ask you to diagnose a child from a video.\n\nSpinal muscular atrophy, or S M A, is a genetic condition that causes muscle weakness. To understand it, think about the connection between a nerve and a muscle. Specialised nerve cells, called motor neurons, carry messages that help muscles move. In S M A, these cells are affected. The muscles receive less effective support, and movement becomes difficult.\n\nThe common form is linked to changes in a gene called survival motor neuron one, written S M N one. This gene helps the body make a protein that motor neurons need. When there is too little working protein, the nerve cells can be damaged or lost. It is not caused by a parent's attitude, a child's laziness or a failure to love them enough.\n\nWeakness may affect holding the head up, sitting, standing or walking. It can also affect the muscles involved in breathing, coughing and swallowing. That is why S M A care looks beyond whether somebody can walk. The pattern and severity vary. A difficulty in one of these areas is a reason to understand more, not proof that S M A is the cause.\n\nYou may hear S M A described using type numbers. These traditionally describe when symptoms begin and which movement skills are achieved. They do not tell you a person's intelligence, interests or value. Two people with the same type may have different needs. Listen to the person and family, rather than assuming a number explains their whole life.\n\nThere are treatments for S M A, and supportive care remains important. Earlier diagnosis can make a difference to treatment decisions. But information online cannot decide which treatment someone needs or what is available to them. A clinical team must consider the individual. Our useful role is to notice concerns and help a family reach appropriate assessment without unnecessary delay.\n\nKeep this distinction in mind throughout the course: recognising a concern is not the same as confirming a diagnosis. In the next lesson, we will look at observations worth raising with a doctor. Before moving on, answer the short questions below. If an explanation surprises you, replay that part. The aim is understanding, not rushing through.\n",
+    "sources": "Educational sources checked 22 November 2026\n\nhttps://www.curesma.org/about-sma/\nhttps://medlineplus.gov/genetics/condition/spinal-muscular-atrophy/\nhttps://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/\n"
+  },
+  {
+    "number": 2,
+    "folder": "Lesson 02 - noticing-weakness",
+    "filename": "SMA_Hope_Course_Lesson_02_Landscape.mp4",
+    "sha256": "d53aa22d30644e8ac5137b032563b2cc7fad0962cf04c39597de417b1cb6bee3",
+    "uid": "bc0978d04f85610d8bd54fb0b6308399",
+    "state": "ready",
+    "duration": 161.27,
+    "playback": {
+      "hls": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/bc0978d04f85610d8bd54fb0b6308399/manifest/video.m3u8",
+      "dash": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/bc0978d04f85610d8bd54fb0b6308399/manifest/video.mpd"
+    },
+    "requireSignedURLs": true,
+    "captionsUploaded": true,
+    "transcript": "Imagine a parent saying, my child keeps struggling to get up from the floor. A useful response is not, stop worrying, or, the child is just lazy. Ask what they have noticed, when it began and whether it is changing. This lesson is about recognising a pattern that deserves assessment, without attaching a diagnosis yourself.\n\nIn a baby, concerns can include unusually weak or floppy limbs, limited movement against gravity, or difficulty developing head and trunk control. Feeding or breathing difficulties can occur alongside weakness. These signs have several possible causes. A clinician needs to examine the baby and consider their age, development and wider health. Do not try to reproduce a physical examination at home.\n\nThere is a difference between a skill that has not yet developed and a skill a child used to have but has lost. Both can need attention. Loss of an acquired movement skill deserves prompt medical assessment. A child who previously sat steadily but now struggles should not simply be told to wait. Do not wait to finish this course before seeking help.\n\nIn an older child, repeated difficulty rising, climbing stairs or keeping up with usual activities may suggest weakness. But falls or tiredness alone do not tell us the cause. Describe what is happening in ordinary life. Avoid forcing repeated movements to prove a point, and do not compare a child harshly with siblings or classmates.\n\nA short note can help: what movement is difficult, when you first noticed it, whether the difficulty is getting worse, and whether any skill has been lost. Bring relevant health records. A brief video of an ordinary activity can help if it can be taken safely and respectfully. Never delay urgent care to make a recording.\n\nSudden weakness or weakness getting worse quickly needs urgent medical attention. Serious difficulty breathing needs emergency care immediately. For ongoing weakness, developmental concerns or lost movement skills, arrange medical assessment and explain exactly what has changed. In Nigeria, a doctor or paediatric service can assess the concern and advise the appropriate referral route. The foundation cannot replace that examination.\n\nThe message is not that every late milestone means S M A. It is that persistent concerns deserve a clear next step, and losing a skill should be taken seriously. Notice the pattern, describe it clearly and seek assessment. Now use the questions below to practise choosing an appropriate response to a concern.\n",
+    "sources": "Educational sources checked 22 November 2026\n\nhttps://www.nice.org.uk/guidance/ng127/chapter/Recommendations-for-children-aged-under-16\nhttps://www.curesma.org/testing-diagnosis/\nhttps://www.aafp.org/afp/2015/0101/p38\n"
+  },
+  {
+    "number": 3,
+    "folder": "Lesson 03 - assessment-and-testing",
+    "filename": "SMA_Hope_Course_Lesson_03_Landscape.mp4",
+    "sha256": "903bfd8c5d4c5e696d914ef3e7ccf932e381ab2fc580e827019294c3844f273a",
+    "uid": "2e4f54f8d0e8deaa0ddafe5c2d775124",
+    "state": "ready",
+    "duration": 165.7,
+    "playback": {
+      "hls": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/2e4f54f8d0e8deaa0ddafe5c2d775124/manifest/video.m3u8",
+      "dash": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/2e4f54f8d0e8deaa0ddafe5c2d775124/manifest/video.mpd"
+    },
+    "requireSignedURLs": true,
+    "captionsUploaded": true,
+    "transcript": "You have noticed persistent weakness. What happens next? A doctor takes a history and examines the person. They may ask about development, changes in movement, feeding, breathing and family history. Several conditions can cause weakness. The goal is to investigate the cause, not to fit every child into the first condition we have read about.\n\nFor the common form of S M A, diagnosis involves genetic testing of survival motor neuron one, the S M N one gene. A blood sample, or sometimes a cheek swab, may be used. A doctor may arrange the test or refer to a specialist. Ask who will explain the result and what the next step will be while you wait.\n\nMany tests look for missing copies of this gene. Some other changes need additional analysis. A report is not simply a green light or a red light without context. If concerns remain after an initial result, ask what was tested, what the method could detect and whether further investigation is appropriate. Do not dismiss persistent symptoms because of an unexplained result.\n\nCarrier screening asks whether a person could pass on a genetic change. Diagnostic testing investigates whether a condition explains someone's symptoms. Those are different questions. A carrier-screening result should not replace assessment of a child with weakness. Equally, a person being a carrier does not mean they have the symptoms of S M A themselves.\n\nThere is an important limitation some families do not hear about. A test may count two copies but not show whether they sit one on each chromosome, or both together on one with none on the other. That second arrangement can be a silent carrier. Detection depends on the method and ancestry. Two copies alone do not mean somebody is a carrier; they mean interpretation matters.\n\nTell the clinician if S M A has occurred in the family, even if an earlier screen was reassuring. Ask for a copy of the report and a plain-language explanation. A genetics professional can discuss residual risk and reproductive questions without blame. Do not calculate a family's individual risk from a social media post, and do not assume a laboratory partnership exists before it is confirmed.\n\nThe useful questions are simple: what are we investigating, what does this test detect, and what should we do next? Keep copies of results and follow up concerns that remain unanswered. In the next lesson, we will look at breathing and feeding, including situations in which waiting for another appointment is not appropriate.\n",
+    "sources": "Educational sources checked 22 November 2026\n\nhttps://www.curesma.org/testing-diagnosis/\nhttps://www.curesma.org/genetics/\nhttps://arupconsult.com/ati/spinal-muscular-atrophy\nhttps://www.ncbi.nlm.nih.gov/books/NBK1352/\n"
+  },
+  {
+    "number": 4,
+    "folder": "Lesson 04 - breathing-and-feeding",
+    "filename": "SMA_Hope_Course_Lesson_04_Landscape.mp4",
+    "sha256": "08254c890f4dc2d4304f7634a36d0f4996390de4c80e68042132dec5163c6270",
+    "uid": "beea1ecaea13635db07ec5ca1662ead4",
+    "state": "ready",
+    "duration": 169.27,
+    "playback": {
+      "hls": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/beea1ecaea13635db07ec5ca1662ead4/manifest/video.m3u8",
+      "dash": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/beea1ecaea13635db07ec5ca1662ead4/manifest/video.mpd"
+    },
+    "requireSignedURLs": true,
+    "captionsUploaded": true,
+    "transcript": "When people hear muscle weakness, they often think only about walking. But breathing, coughing and swallowing use muscles too. S M A can affect these functions. This does not mean every person has the same difficulties. It means changes in breathing or feeding deserve attention, even if movement concerns are the reason a family first sought help.\n\nThe muscles around the chest help move air. A cough also needs muscle strength to help clear mucus. If the cough is weak, clearing secretions can be harder. A respiratory infection may create extra problems for someone with muscle weakness. If the person has a care plan, follow it and contact the clinical team when new concerns arise.\n\nBreathing may become shallow during sleep, so looking comfortable during the day does not tell the whole story. A respiratory team can assess breathing and cough strength and decide what support is appropriate. Devices and settings are individual clinical decisions. Borrowing equipment or copying another family's settings can be unsafe. Ask for advice that fits the person.\n\nSwallowing moves food and drink towards the stomach while protecting the airway. Weakness can make this difficult. Food or liquid entering the airway is called aspiration. A video cannot tell you whether a person is aspirating. A swallowing assessment helps the team understand feeding safety and what further support may be needed.\n\nRepeated coughing during meals, feeds taking much longer or concerns about growth are reasons to speak with the care team. The response may involve swallowing and nutrition professionals. Some people need changes to feeding; some need tube feeding. These decisions depend on assessment, circumstances and preferences. They are not a judgement on the family's effort or care.\n\nIf someone has serious difficulty breathing now, seek emergency medical care immediately. Choking with breathing difficulty is also an emergency. Do not wait for the next course lesson, a comment reply or a message from the foundation. Use the person's emergency plan if one is available, while arranging urgent help. Ongoing, less severe concerns still need timely clinical follow-up.\n\nTake two ideas from this lesson. Breathing and feeding support must fit the individual. And serious breathing difficulty cannot wait for an online conversation. The questions below ask you to distinguish assessment needs from emergencies. They do not train you to diagnose aspiration, prescribe equipment or provide emergency treatment.\n",
+    "sources": "Educational sources checked 22 November 2026\n\nhttps://www.curesma.org/breathing/\nhttps://www.curesma.org/nutrition/\nhttps://www.curesma.org/wp-content/uploads/2020/02/02252020_Nutrition_Basics_vWeb.pdf\nhttps://www.nice.org.uk/guidance/ng127/chapter/Recommendations-for-children-aged-under-16\n"
+  },
+  {
+    "number": 5,
+    "folder": "Lesson 05 - taking-the-next-step",
+    "filename": "SMA_Hope_Course_Lesson_05_Landscape.mp4",
+    "sha256": "db9a11c72f2e54dbc1b81207a56b9dfc6dbdefd42067d6a2bf8c2765ade48c8c",
+    "uid": "90c861d1b678aba22cbe7c8191a75a0e",
+    "state": "ready",
+    "duration": 177.17,
+    "playback": {
+      "hls": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/90c861d1b678aba22cbe7c8191a75a0e/manifest/video.m3u8",
+      "dash": "https://customer-1vkeaflxib2kotwm.cloudflarestream.com/90c861d1b678aba22cbe7c8191a75a0e/manifest/video.mpd"
+    },
+    "requireSignedURLs": true,
+    "captionsUploaded": true,
+    "transcript": "You do not need to be certain that a child has S M A before raising a concern. You need to explain what you have noticed and seek an appropriate assessment. This final lesson brings the course together: what to prepare, what to ask, how to follow up and how to support a family while answers are still uncertain.\n\nBefore an appointment, write a short timeline. Which movement is difficult? When did that start? Is it changing? Has any previously acquired skill been lost? Include feeding or breathing concerns and relevant family history. Bring existing reports. Keep the description factual. A page of clear observations is often more useful than a long list of conditions found online.\n\nAsk the doctor: what could explain this, do we need a specialist assessment, and what should we do if it worsens? Ask when to expect results and whom to contact if they do not arrive. In Nigeria, referral options vary by location and service. Get a specific plan from the treating team rather than assuming a named centre offers a test or treatment.\n\nIf the difficulty persists, explain that clearly at follow-up. If a movement skill is lost or weakness worsens, seek reassessment promptly. If symptoms change suddenly or breathing becomes seriously difficult, seek urgent care instead of waiting for a routine appointment. Asking again is not the same as diagnosing the condition yourself. It is making sure an unresolved concern receives attention.\n\nSupport can be practical. Ask what would make an appointment, a school day or an ordinary family activity easier. Listen before offering a remedy. Respect privacy and do not share a child's pictures or medical information without permission. Physical weakness does not tell you what a child understands or hopes to do. Inclusion starts with seeing the person and adapting the activity.\n\nHere is the course in four steps. Notice persistent weakness or loss of skills. Describe the pattern and timing. Seek appropriate medical assessment. Follow up unanswered concerns, and act urgently when serious symptoms appear. The foundation can share information and help families find a starting point. It cannot confirm a diagnosis from a message or guarantee access to a treatment.\n\nComplete the final questions below and revisit any lesson you found difficult. Your course record shows the lessons and checks you have completed; it is not a clinical qualification. If you share what you have learned, share the course link and encourage assessment rather than labelling someone. Thank you for learning with S M A Hope Foundation, Nigeria.\n",
+    "sources": "Educational sources checked 22 November 2026\n\nhttps://www.nice.org.uk/guidance/ng127/chapter/Recommendations-for-children-aged-under-16\nhttps://smauk.org.uk/support-team/\nhttps://smauk.org.uk/support-information/our-information-service/\nhttps://www.nhs.uk/conditions/spinal-muscular-atrophy-sma/\n"
+  }
+]
