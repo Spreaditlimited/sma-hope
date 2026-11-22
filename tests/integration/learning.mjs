@@ -15,7 +15,7 @@ async function api(route,{cookie='',method='GET',body,site=origin}={}){return fe
 const cookies=r=>r.headers.getSetCookie().map(x=>x.split(';')[0]).join('; ');
 try{
  assert.equal((await api('/api/auth/ok')).status,200);assert.equal((await api('/api/learning')).status,401);assert.equal((await api('/api/admin/learning')).status,401);check('Anonymous access denied');
- const html=await(await api('/learn/understanding-sma')).text();assert.ok(html.includes('Notice the signs.'));assert.ok(html.includes('Start learning'));check('Public course landing page renders');
+ const html=await(await api('/learn/understanding-sma')).text();assert.ok(html.includes('Understand SMA.'));assert.ok(html.includes('Start learning'));check('Public course landing page renders');
  const email='sma-browser-'+Date.now()+'@example.test',password='Local-SMA-Learning-2026!';
  const signup=await api('/api/auth/sign-up/email',{method:'POST',body:{name:'SMA Test Learner',email,password,terms:true}});
  assert.equal(signup.status,200,await signup.clone().text());const cookie=cookies(signup);assert.ok(cookie);const user=(await signup.json()).user;

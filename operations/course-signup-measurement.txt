@@ -1,0 +1,25 @@
+SMA Hope course sign-up measurement — 22 November 2026
+
+Production release authorised by the owner on 22 November 2026. Release uses committed code and the SMA Hope Git integration.
+
+Event: standard Meta Lead, pixel/dataset 2521801154897796.
+Trigger: successful creation of a new account through the course registration form. Does not fire for form visits, button clicks, failed/duplicate sign-ups, sign-ins, existing-user enrolment, video views, quiz attempts or completions.
+
+Consent and country: requires the existing explicit advertising-consent cookie and Vercel's trusted NG country header. Unknown countries, non-Nigerian visitors and non-Vercel development requests are excluded. The course remains available without optional tracking. Cookie controls and a measurement disclosure are available on registration.
+
+Data sent: generic Lead; creation time; stable opaque event ID; canonical registration URL without query parameters; browser user agent; valid trusted client IP where available; validated existing _fbp/_fbc identifiers where present. No names, emails, passwords, raw account IDs, course titles, genetic/medical information, lesson activity, quiz answers or scores. Browser pixel remains excluded from account/admin routes. This is server-only Lead delivery; no browser Lead is fired, so an existing PageView cannot double-count it. One bounded retry reuses the exact event ID and time.
+
+Delivery: next/server after() runs after successful registration; provider failures do not change the account response. Calls have a four-second timeout and one retry for network/transient failures. No identifiers, tokens or provider payloads are logged. There is no durable replay queue; use LMS records for complete enrolment and completion figures.
+
+Configuration: SMAHOPE_CAPI_TOKEN is saved only in ignored local configuration and as a production-only Vercel secret. META_CAPI_ENABLED=true and META_CAPI_GRAPH_VERSION=v25.0 have been prepared in the SMA Hope production environment. No Meta test-event code is configured in production. Local optional tracking remains disabled. Test-event mode is required for non-production provider calls.
+
+Meta configuration: confirmed the intended SMA Hope Data Source and existing Health & wellness condition classification. Meta warns European visitors may be blocked and certain standard events may be restricted elsewhere. No category, restriction, automatic-matching, legal acknowledgement or event-blocking settings were changed. A synthetic Lead sent with the dataset's Test Events code was acknowledged (events_received=1). This confirms endpoint acceptance, not unrestricted use in ad optimisation. The browser Test Events UI was not observed to display a processed event. Do not rename events, change source domains or remove restrictions to bypass these controls.
+
+Validation: 45 unit tests passed, focused ESLint passed, TypeScript passed and an isolated production build passed. Tests cover successful-signup-only scheduling, preserved auth cookies, explicit consent, Nigeria-only geolocation, rejected/malformed identifiers, no private/clinical payload data, missing/disabled configuration, fixed dataset routing, transient/permanent failures, stable deduplication and continued private-page pixel exclusion. Local rendering verified the course CTA points directly to /account/register and the mobile heading reads Start with understanding.
+
+Release verification: confirm the exact Git commit and production page fixes. Observe server events from a genuinely consenting Nigerian visitor when available. Do not send a real person's registration data as a synthetic test or claim Meta totals equal all learners.
+
+Primary references:
+https://developers.facebook.com/documentation/ads-commerce/conversions-api/parameters
+https://developers.facebook.com/documentation/ads-commerce/conversions-api/deduplicate-pixel-and-server-events
+https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/v25.0/

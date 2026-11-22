@@ -245,12 +245,13 @@ export default function PrivacyPolicyPage() {
                   understand traffic and improve content.
                 </li>
                 <li>
-                  <strong className="text-gray-900">Advertising cookies (Meta Pixel):</strong> with
+                  <strong className="text-gray-900">Optional advertising measurement (Meta Pixel and Conversions API):</strong> with
                   your permission, we use Meta Pixel to measure visits from our advertising and
                   support relevant ads on Facebook and Instagram. Meta may receive page URLs,
                   browser and device information, and cookie identifiers. We do not send contact
-                  form contents, account details or health records through this integration.
-                  The pixel is excluded from account, admin, contact and book checkout pages.
+                  form contents, names, emails, passwords, course titles, learning activity, quiz answers or health records through this integration.
+                  With advertising permission, a successful course account sign-up can also send a generic Lead event from our server using the registration page URL without query parameters, browser information, IP address where available and existing Meta cookie identifiers. An opaque event ID prevents duplicate delivery from being counted twice. Registration works if you decline.
+                  The browser pixel remains excluded from account, admin, contact and book checkout pages. No lesson views, diagnoses or quiz results are shared with Meta.
                   Read <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta’s Privacy Policy</a> for how Meta uses this information.
                 </li>
                 <li>

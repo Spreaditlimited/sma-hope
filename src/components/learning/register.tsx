@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState, type FormEvent } from 'react';
+import { CookieNotice } from '@/components/cookie-notice';
+import { CookieSettingsButton } from '@/components/cookie-settings-button';
 import { BrandLogo } from '@/components/brand-logo';
 import { PasswordInput } from '@/components/password-input';
 import { AccountAuthStory } from './account-auth-story';
@@ -28,6 +30,7 @@ export function LearnerRegistration() {
           email: String(form.get('email') || '').trim(),
           password: form.get('password'),
           terms: form.get('terms') === 'on',
+          signupSource: 'learning',
         }),
       });
       if (!response.ok) {
@@ -51,7 +54,7 @@ export function LearnerRegistration() {
         <div className={styles.card}>
           <Link href="/learn/understanding-sma" className={styles.mobileLogo} aria-label="Back to the SMA Hope course"><BrandLogo /></Link>
           <p className={styles.eyebrow}>Your SMA Hope account</p>
-          <h1>Start with<br />understanding.</h1>
+          <h1>Start with <br />understanding.</h1>
           <p className={styles.intro}>Create your free account to save your progress and check what you’ve learned.</p>
           <p className={styles.nextStep}>Next, you’ll enrol in <strong>Understanding SMA</strong>. No payment details required.</p>
           <form onSubmit={submit} aria-busy={busy}>
@@ -65,10 +68,12 @@ export function LearnerRegistration() {
             {error && <div className={styles.error} role="alert"><p>{error}</p><Link href="/account/login?next=/account/learn">Sign in</Link><span> · </span><Link href="/account/reset-password">Reset password</Link></div>}
             <button type="submit" className={`btn btn-primary ${styles.submit}`} disabled={busy}>{busy ? 'Creating account…' : 'Create free account'}<span aria-hidden="true">↗</span></button>
           </form>
+          <p className={styles.measurement}>With optional advertising permission, we tell Meta that a sign-up was completed to measure our campaigns. We do not send your name, email, course details or quiz answers. <CookieSettingsButton /></p>
           <p className={styles.signIn}>Already have an account? <Link href="/account/login?next=/account/learn">Sign in →</Link></p>
           <p className={styles.help}><Link href="/learn/understanding-sma">← Back to the course</Link><span>Need a hand? <Link href="/contact">Contact us</Link></span></p>
         </div>
       </main>
+      <CookieNotice />
     </div>
   );
 }

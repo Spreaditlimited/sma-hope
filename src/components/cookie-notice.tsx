@@ -38,7 +38,7 @@ export function CookieNotice() {
     <aside ref={notice} className="cookie-notice" role="dialog" aria-live="polite" aria-label="Cookie notice">
       <p className="cookie-notice-title">Cookie Notice</p>
       <p className="cookie-notice-body">
-        We use essential cookies to keep this website functional. With your permission, we also use Meta Pixel advertising cookies to measure our campaigns and help show relevant ads on Facebook and Instagram.
+        We use essential cookies to keep this website functional. With your permission, we also use Meta Pixel advertising cookies and server-side sign-up measurement to measure our campaigns and help show relevant ads on Facebook and Instagram.
       </p>
       <div className="cookie-notice-actions">
         <button type="button" className="btn btn-secondary" onClick={() => handleChoice("declined")}>Decline optional</button>
