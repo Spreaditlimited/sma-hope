@@ -31,9 +31,58 @@ function LearningVideo({lesson,onError,onPosition}:{lesson:Lesson;onError:(messa
   return <><Script src="https://embed.cloudflarestream.com/embed/sdk.latest.js" onReady={()=>setSdk(true)}/>{error?<div className={styles.videoLoading} role="alert"><div><p>{error}</p><button className="btn btn-secondary" onClick={()=>{setError('');setPlayback(null);setAttempt(x=>x+1);}}>Reload video</button></div></div>:playback?<iframe ref={iframe} className={styles.video} src={`${playback.embedUrl}?primaryColor=%23986c48&letterboxColor=%23173a2b&startTime=${startTime}`} title={lesson.title} allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" allowFullScreen/>:<div className={styles.videoLoading} role="status">Preparing your video…</div>}<p className={styles.note}>English captions are available in the player. Your place is saved as you watch.</p>{playback&&<details className={styles.panel}><summary>Read the lesson transcript</summary><div className={styles.transcript}>{playback.transcript}</div><h3>Sources and further reading</h3><div className={styles.sources}>{playback.sources}</div></details>}</>;
 }
 function Quiz({lesson,completed}:{lesson:Lesson;completed:()=>void}){
-  const [answers,setAnswers]=useState<Record<string,number>>({}),[result,setResult]=useState<Result|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState('');
-  async function submit(e:FormEvent){e.preventDefault();setBusy(true);setError('');try{const r=await api<Result>('/api/learning',{action:'quiz',lesson:lesson.slug,answers:lesson.questions.map(q=>answers[q.id])});setResult(r);if(r.passed)completed();}catch(e){setError(e instanceof Error?e.message:'Please try again.');}finally{setBusy(false);}}
-  return <section className={`${styles.panel} ${styles.quizPanel}`}><p className={styles.eyebrow}>Put it into practice</p><h2>Check your understanding.</h2><p>Answer three questions after watching. Two correct answers complete the lesson. Read the explanations and try again whenever you need.</p>{lesson.latest&&!result&&<p className={styles.note}>Last attempt: {lesson.latest.score} of {lesson.latest.total} correct.</p>}{error&&<p role="alert" className={styles.error}>{error}</p>}{result?<div aria-live="polite"><p className={styles.success}><strong>{result.score} of {result.total} correct.</strong> {result.passed?'Lesson completed.':'Review the explanations and try again.'}</p>{result.results.map((x,i)=><div className={styles.explanation} key={x.id}><strong>{i+1}. {x.correct?'Correct':'Review this answer'}</strong><p>{x.explanation}</p></div>)}<button className="btn btn-secondary" onClick={()=>{setResult(null);setAnswers({});}}>Try the questions again</button></div>:<form onSubmit={submit}>{lesson.questions.map((q,i)=><fieldset key={q.id} disabled={busy}><legend>{i+1}. {q.question}</legend>{q.options.map((option,j)=><label className={styles.option} key={option}><input type="radio" name={q.id} required value={j} checked={answers[q.id]===j} onChange={()=>setAnswers(a=>({...a,[q.id]:j}))}/><span>{option}</span></label>)}</fieldset>)}<button className="btn btn-primary" disabled={busy}>{busy?'Saving answers…':'Check my answers →'}</button></form>}</section>;
+  const [answers,setAnswers]=useState<Record<string,number>>({});
+  const [result,setResult]=useState<Result|null>(null);
+  const [busy,setBusy]=useState(false);
+  const [error,setError]=useState('');
+  const summary=useRef<HTMLParagraphElement>(null);
+  const heading=useRef<HTMLHeadingElement>(null);
+  const retryFocus=useRef(false);
+
+  useEffect(()=>{
+    // Keep the form mounted so submitting never collapses the page behind the reader.
+    const target=result?summary.current:retryFocus.current?heading.current:null;
+    if(!target)return;
+    retryFocus.current=false;
+    target.focus({preventScroll:true});
+    target.scrollIntoView({block:'nearest',behavior:'instant'});
+  },[result]);
+
+  async function submit(e:FormEvent){
+    e.preventDefault();
+    if(busy||result)return;
+    setBusy(true);setError('');
+    try{
+      const r=await api<Result>('/api/learning',{action:'quiz',lesson:lesson.slug,answers:lesson.questions.map(q=>answers[q.id])});
+      setResult(r);
+      if(r.passed)completed();
+    }catch(e){setError(e instanceof Error?e.message:'Please try again.');}
+    finally{setBusy(false);}
+  }
+  function retry(){retryFocus.current=true;setAnswers({});setResult(null);setError('');}
+
+  return <section className={`${styles.panel} ${styles.quizPanel}`}>
+    <p className={styles.eyebrow}>Put it into practice</p>
+    <h2 ref={heading} tabIndex={-1} className={styles.quizFocus}>Check your understanding.</h2>
+    <p>Answer three questions after watching. Two correct answers complete the lesson. Read the explanations and try again whenever you need.</p>
+    {lesson.latest&&!result&&<p className={styles.note}>Last attempt: {lesson.latest.score} of {lesson.latest.total} correct.</p>}
+    {error&&<p role="alert" className={styles.error}>{error}</p>}
+    <form onSubmit={submit} aria-busy={busy}>
+      {lesson.questions.map((q,i)=><fieldset key={q.id} disabled={busy||Boolean(result)}>
+        <legend>{i+1}. {q.question}</legend>
+        {q.options.map((option,j)=><label className={styles.option} key={option}>
+          <input type="radio" name={q.id} required value={j} checked={answers[q.id]===j} onChange={()=>setAnswers(a=>({...a,[q.id]:j}))}/>
+          <span>{option}</span>
+        </label>)}
+      </fieldset>)}
+      <button type="submit" className="btn btn-primary" disabled={busy||Boolean(result)}>{busy?'Saving answers…':result?'Answers checked':'Check my answers →'}</button>
+    </form>
+    {result&&<div className={styles.quizFeedback} role="region" aria-label="Your quiz results">
+      <p ref={summary} tabIndex={-1} role="status" className={`${styles.success} ${styles.quizFocus}`}><strong>{result.score} of {result.total} correct.</strong> {result.passed?'Lesson completed.':'Review the explanations and try again.'}</p>
+      {result.results.map((x,i)=><div className={styles.explanation} key={x.id}><strong>{i+1}. {x.correct?'Correct':'Review this answer'}</strong><p>{x.explanation}</p></div>)}
+      <button type="button" className={`btn btn-secondary ${styles.quizRetry}`} onClick={retry}>Try the questions again</button>
+    </div>}
+  </section>;
 }
 export function CourseWorkspace(){
   const {data:session,isPending}=accountAuth.useSession(),[state,setState]=useState<State|null>(null),[slug,setSlug]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),[retry,setRetry]=useState(0);
