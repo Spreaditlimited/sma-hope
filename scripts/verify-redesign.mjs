@@ -3,6 +3,7 @@ const base = process.env.PREVIEW_URL || "http://localhost:3002";
 const routes = [
   "/",
   "/about",
+  "/project-one-million",
   "/what-is-sma",
   "/our-story",
   "/support-for-families",

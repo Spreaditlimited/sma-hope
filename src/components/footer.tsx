@@ -26,6 +26,7 @@ const groups = [
   {
     name: "Be part of it",
     links: [
+      ["Project One Million", "/project-one-million"],
       ["Make a donation", "/donate"],
       ["Contact us", "/contact"],
       ["My account", "/account"],

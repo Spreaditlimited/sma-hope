@@ -11,9 +11,9 @@
 .landing{background:var(--bg,#fbfaf7);color:var(--text,#173a2b)}
 .landing h1,.landing h2,.landing h3{color:inherit}
 .hero{padding-top:72px;gap:64px;grid-template-columns:1.12fr .88fr}
-.heroArtwork{margin:0;overflow:hidden;border:1px solid #173a2b18;border-radius:26px;background:#f6f2e9;color:#173a2b;box-shadow:0 18px 60px #173a2b07}
-.heroArtwork>img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover}
-.heroArtwork figcaption{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px 28px;border-top:1px solid #173a2b18;font-family: var(--font-body), system-ui, sans-serif;font-size:16px;font-weight:700;line-height:1.55;letter-spacing:-.025em}
+.heroArtwork{margin:0;border:0;background:transparent;color:var(--text,#173a2b);box-shadow:none}
+.heroArtwork>img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.heroArtwork figcaption{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px 28px;border-top:1px solid var(--line,#dce2dd);font-family: var(--font-body), system-ui, sans-serif;font-size:16px;font-weight:700;line-height:1.55;letter-spacing:-.025em}
 .heroArtwork figcaption img{width:102px;height:auto;flex-shrink:0}
 .callout h2{color:var(--on-brand-deep,#fbfaf7)}
 .callout p+p{margin-top:22px}
@@ -150,3 +150,24 @@
  .courseBadge{max-width:100%;overflow-wrap:anywhere}
  .lessonTitle{overflow-wrap:anywhere}
 }
+
+.supportCourse{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:center;padding:42px;margin-bottom:64px;border:1px solid var(--line);border-radius:20px;background:var(--surface-muted)}
+.supportCourse>div{min-width:0}
+.supportCourse h2{font-size:clamp(27px,2.7vw,36px);line-height:1.25;margin:0 0 22px;text-wrap:balance}
+.supportCourse p{line-height:1.85;font-size:16px}
+.supportCourse .note{font-size:13px;margin-top:18px;color:var(--text-soft);opacity:1}
+.supportCourseActions{display:flex;flex-direction:column;align-items:flex-start;gap:23px}
+.supportCourseActions a{max-width:100%;white-space:normal;text-align:center}
+@media(max-width:767px){.supportCourse{grid-template-columns:1fr;padding:28px 24px;gap:28px;margin-bottom:44px}.supportCourseActions{align-items:stretch}.supportCourse h2{font-size:28px}.supportCourse p{font-size:15px}}
+
+/* Course landing uses the shared dark palette while preserving its light colours. */
+.heroBand{background:light-dark(transparent,var(--surface-muted));border-bottom:1px solid light-dark(transparent,var(--line))}
+.landing .eyebrow,.landing .hero h1 em,.landing .lessonCard>span{color:light-dark(#986c48,var(--accent-gold))}
+.landing .intro{color:var(--text)}
+.landing .section,.landing .lessonCard{border-color:var(--line)}
+.landing .lessonCard{background:light-dark(transparent,var(--surface))}
+.landing .lessonCard p,.landing .lessonCard small{color:var(--text-soft);opacity:1}
+.landing .note{color:var(--text-soft);opacity:1}
+.landing .heroArtwork{color:var(--text);background:transparent}
+.heroArtwork figcaption :global(.brand-logo){flex-shrink:0;width:102px}
+@media(max-width:720px){.heroArtwork figcaption :global(.brand-logo){width:90px}}

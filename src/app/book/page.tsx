@@ -49,9 +49,14 @@ export default async function Book({ searchParams }: { searchParams: Promise<{ m
               <div className="book-purchase-note"><span>Kindle edition on {store.name}</span><a href="#editions">Explore all editions →</a></div>
             </div>
           </div>
-          <div className="book-landing-cover">
-            <Image src={book.cover} alt={`${book.title}, by ${book.authors.join(" and ")}: cream cover with green lettering and intertwined green and copper threads`} width={1600} height={2473} sizes="(max-width: 650px) 70vw, 350px" preload />
-          </div>
+          <figure className="book-landing-cover book-hero-collection">
+            <div className="book-hero-stack">
+              <div className="book-hero-volume book-hero-volume--hardcover"><BookEditionMockup format="Hardcover" /></div>
+              <div className="book-hero-volume book-hero-volume--paperback"><BookEditionMockup format="Paperback" /></div>
+              <div className="book-hero-volume book-hero-volume--kindle"><BookEditionMockup format="EBook" /></div>
+            </div>
+            <figcaption>Kindle <span aria-hidden="true">·</span> Paperback <span aria-hidden="true">·</span> Hardcover</figcaption>
+          </figure>
         </div>
       </section>
       <section className="container hope-section mission-layout">

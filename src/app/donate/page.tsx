@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Donate to SMA Hope Foundation Nigeria",
   description:
-    "Support SMA awareness, family education, and advocacy in Nigeria. Give once or explore recurring support through SMA Hope Foundation.",
+    "Help more people in Nigeria access our free SMA course. Support awareness, family education and the work of SMA Hope Foundation.",
   path: "/donate",
 });
 export default function Donate() {
@@ -15,9 +15,27 @@ export default function Donate() {
     <>
       <PageHeader
         title="Help understanding grow."
-        intro="Your support helps us build a more informed and compassionate response to SMA in Nigeria."
+        intro="Help more parents and caregivers understand SMA, recognise possible warning signs and know when to seek medical help."
       />
-      <section className="container hope-section action-page-grid">
+      <section className="container course-giving-intro" aria-labelledby="course-giving-heading">
+        <div>
+          <p className="eyebrow">Project One Million · Start with learning</p>
+          <h2 id="course-giving-heading">Free to learn.<br /><em>Worth helping others find.</em></h2>
+          <p>Our five-lesson Understanding SMA course gives parents, caregivers and communities a clear place to start. Your support can help us reach people who have never heard of SMA and keep useful information accessible.</p>
+          <Link href="/project-one-million" className="text-link">Explore Project One Million →</Link>
+        </div>
+        <div className="course-giving-detail">
+          <h3>What your support can help cover</h3>
+          <ul>
+            <li>Outreach that introduces the course to more people in Nigeria.</li>
+            <li>Video delivery, captions and accessible learning resources.</li>
+            <li>Keeping information useful and understanding what learners gain.</li>
+          </ul>
+          <p>We can report enrolments, lesson completion and quiz results without publishing learners’ personal information. Donations support SMA Hope’s wider charitable work, including the course; they are not restricted to a particular lesson or learner.</p>
+          <a href="#give" className="btn btn-primary">Support this work <Icon name="arrow" size={17} /></a>
+        </div>
+      </section>
+      <section className="container hope-section action-page-grid" id="give" aria-label="Make a donation">
         <div className="action-page-copy">
           <p className="eyebrow">A shared commitment</p>
           <h2 className="display-heading">

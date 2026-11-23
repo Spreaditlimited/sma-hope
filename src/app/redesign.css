@@ -3232,6 +3232,31 @@ textarea:focus-visible {
   border-right: 4px solid #c4b38c;
   box-shadow: 0 -4px #d5c6a4, 0 4px #d5c6a4;
 }
+/* A shared-cover composition keeps all three reading formats together. */
+.book-hero-collection { margin: 0; min-width: 0; padding: 0; gap: 28px; }
+.book-hero-stack { position: relative; width: 100%; aspect-ratio: 1.06; isolation: isolate; }
+.book-hero-stack::before {
+  content: ""; position: absolute; inset: 80% 0 -3%;
+  background: radial-gradient(ellipse, light-dark(#65573c29, #00000040), transparent 67%);
+  z-index: -1;
+}
+.book-hero-volume { position: absolute; }
+.book-hero-volume--hardcover { width: 52%; right: 3%; top: 0; z-index: 1; }
+.book-hero-volume--paperback { width: 46%; left: 23%; top: 15%; z-index: 2; }
+.book-hero-volume--kindle { width: 33%; left: 0; bottom: 0; z-index: 3; }
+.book-hero-stack .edition-mockup { height: auto; margin: 0; border-radius: 0; background: none; display: block; }
+.book-hero-stack .edition-mockup-object { width: 100%; }
+.book-hero-stack .edition-mockup-cover img { width: 100%; box-shadow: none; }
+.book-hero-stack .edition-mockup--kindle .edition-mockup-object { padding: 7% 6% 15%; }
+.book-hero-stack .edition-mockup-device-mark { font-size: clamp(8px, .8vw, 12px); bottom: 3%; }
+.book-hero-collection figcaption {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  color: var(--text-soft); font-size: 15px; letter-spacing: .025em;
+}
+@media (min-width: 651px) and (max-width: 1000px) {
+  .book-hero-collection { padding: 0; }
+  .book-hero-collection figcaption { gap: 7px; font-size: 12px; }
+}
 .book-edition h3 { margin: 0 0 16px; font-size: 25px; }
 .book-edition p { color: var(--text-soft); }
 .book-edition-isbn { font-size: 14px; overflow-wrap: anywhere; margin-top: 12px; }
@@ -3297,6 +3322,21 @@ textarea:focus-visible {
 .reset-page input {
   border-radius: 4px;
 }
+/* Give the book introduction room to read across the desktop hero. */
+@media (min-width: 1001px) {
+  .book-landing-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: clamp(24px, 2.5vw, 40px);
+  }
+  .book-landing h1 {
+    font-size: clamp(64px, 5.6vw, 82px);
+    text-wrap: balance;
+  }
+  .book-subtitle { max-width: 54ch; text-wrap: pretty; }
+  .book-deck { max-width: 62ch; text-wrap: pretty; }
+  .book-landing-cover { padding-inline: 0; }
+}
+
 @media (max-width: 1000px) {
   .action-page-grid,
   .book-landing-grid,
@@ -3427,3 +3467,18 @@ textarea:focus-visible {
 .guide-image { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: #f6f2e9; }
 .article-feature { margin: 34px 0 0; overflow: hidden; border: 1px solid var(--line); border-radius: 6px; }
 @media (max-width: 650px) { .article-feature { margin-top: 25px; } }
+
+/* A clear course-funding invitation, separate from the giving form. */
+.course-giving-intro{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);padding-block:54px 64px;border-bottom:1px solid var(--line)}
+.course-giving-intro>div{min-width:0}
+.course-giving-intro h2{font-size:clamp(30px,3.4vw,46px);line-height:1.2;margin:0 0 25px;text-wrap:balance}
+.course-giving-intro h2 em{font-style:normal;color:var(--link,var(--primary))}
+.course-giving-intro p{font-size:17px;line-height:1.85;margin-bottom:24px;max-width:60ch}
+.course-giving-detail{padding:30px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.course-giving-detail h3{font-size:24px;line-height:1.35;margin:0 0 22px}
+.course-giving-detail ul{padding-left:21px;margin:0 0 24px;line-height:1.85}
+.course-giving-detail li+li{margin-top:10px}
+.course-giving-detail p{font-size:14px;color:var(--text-soft);line-height:1.85}
+.course-giving-detail .btn{max-width:100%;white-space:normal;text-align:center}
+#give{scroll-margin-top:30px}
+@media(max-width:767px){.course-giving-intro{grid-template-columns:1fr;padding-block:35px 45px;gap:30px}.course-giving-intro p{font-size:16px}.course-giving-detail{padding:24px}.course-giving-detail p{font-size:14px}}
