@@ -134,3 +134,19 @@
  .bottomActions>a{width:100%}
  .bottomActions>p{text-align:center;font-size:13px}
 }
+
+/* Lesson content must shrink with the viewport, including native mobile selects. */
+.course{width:100%;min-width:0;max-width:100%}
+.workspace,.sidebar,.content,.panel,.lessonHeader,.mobileLessonPicker{min-width:0;max-width:100%}
+.content{overflow-wrap:anywhere}
+.mobileLessonPicker select{min-width:0;inline-size:100%;max-inline-size:100%}
+.video,.videoLoading{min-width:0;max-width:100%}
+.transcript{overflow-wrap:anywhere;overflow-x:hidden}
+.top{flex-wrap:wrap}
+.completionNotice>div{min-width:0}
+@media(max-width:720px){
+ :global(.workspace):has(.course){min-width:0;max-width:100%;overflow-x:clip}
+ .course{overflow-x:clip}
+ .courseBadge{max-width:100%;overflow-wrap:anywhere}
+ .lessonTitle{overflow-wrap:anywhere}
+}
