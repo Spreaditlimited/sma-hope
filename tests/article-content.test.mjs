@@ -16,9 +16,9 @@ const validation = fs.readFileSync(new URL("../src/lib/article-validation.ts", i
 const { validGuide } = await moduleFrom(validation);
 
 test("every released article validates and has distinct answers, FAQs and a research brief", () => {
-  assert.equal(released.length, 14);
+  assert.equal(released.length, 18);
   assert.equal(scheduled.length, 12);
-  assert.equal(content.length, 26);
+  assert.equal(content.length, 30);
   assert.equal(new Set(content.map(g => g.slug)).size, content.length);
   for (const guide of content) {
     assert.ok(validGuide(guide), guide.slug);

@@ -12,7 +12,7 @@ test('every published and scheduled article has a distinct accessible Cloudinary
  assert.equal(new Set(assets.map(x=>x.src)).size,articles.length);
  assert.equal(new Set(assets.map(x=>x.sharingUrl)).size,articles.length);
  assert.equal(new Set(assets.map(x=>x.alt)).size,articles.length);
- for(const article of articles){const image=getGuideImage(article.slug);assert.ok(image,article.slug);assert.ok(image.alt.length>25);assert.equal(image.width,2400);assert.equal(image.height,1350);for(const url of [image.src,image.sharingUrl]){const u=new URL(url);assert.equal(u.protocol,'https:');assert.equal(u.hostname,'res.cloudinary.com');assert.ok(u.pathname.includes('/smahope/blog/features/'+article.slug+'-flat-2026-11-18'));}assert.notEqual(image.src,image.sharingUrl);}
+ for(const article of articles){const image=getGuideImage(article.slug);assert.ok(image,article.slug);assert.ok(image.alt.length>25);assert.equal(image.width,2400);assert.equal(image.height,1350);for(const url of [image.src,image.sharingUrl]){const u=new URL(url);assert.equal(u.protocol,'https:');assert.equal(u.hostname,'res.cloudinary.com');const suffix=u.pathname.split('/smahope/blog/features/'+article.slug+'-flat-')[1];assert.match(suffix || '',/^\d{4}-\d{2}-\d{2}(?:-social)?\.jpg$/);}assert.notEqual(image.src,image.sharingUrl);}
  assert.equal(getGuideImage('a-new-unillustrated-draft'),undefined);
 });
 test('responsive delivery preserves the versioned asset and caps requested width at the master size',()=>{

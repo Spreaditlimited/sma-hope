@@ -17,7 +17,7 @@ export function validGuide(value: unknown): value is Guide {
   if (!value || typeof value !== "object") return false;
   const g = value as Guide;
   return text(g.slug, 3, 180) && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(g.slug) && g.slug !== "topics" &&
-    text(g.title, 5, 180) && text(g.excerpt, 20, 350) && topics.some(t => t.name === g.category) &&
+    text(g.title, 5, 180) && (!g.seoTitle || text(g.seoTitle, 5, 180)) && (!g.bookPlacement || ["inline", "end"].includes(g.bookPlacement)) && text(g.excerpt, 20, 350) && topics.some(t => t.name === g.category) &&
     typeof g.clinical === "boolean" && list(g.summary, 8) && g.summary.length > 0 &&
     list(g.checklist, 20) && list(g.related, 8) && g.related.every(s => /^[a-z0-9-]+$/.test(s)) &&
     date(g.updatedAt) && (!g.publishedAt || date(g.publishedAt)) && (!g.sourcesCheckedAt || date(g.sourcesCheckedAt)) &&

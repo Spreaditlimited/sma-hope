@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props) {
   const guide = (await getGuides()).find(g => g.slug === slug);
   if (!guide) return {};
   const image = getGuideImage(guide.slug);
-  return buildMetadata({ ...(image ? { image: { url: image.sharingUrl, width: 1200, height: 630, alt: image.alt } } : {}), title: guide.title, description: guide.excerpt, path: `/blog/${slug}`, type: "article", publishedTime: guide.publishedAt, modifiedTime: guide.updatedAt, language: language(guide.audience) });
+  return buildMetadata({ ...(image ? { image: { url: image.sharingUrl, width: 1200, height: 630, alt: image.alt } } : {}), title: guide.seoTitle || guide.title, description: guide.excerpt, path: `/blog/${slug}`, type: "article", publishedTime: guide.publishedAt, modifiedTime: guide.updatedAt, language: language(guide.audience) });
 }
 export default async function GuidePage({ params }: Props) {
   const { slug } = await params;
@@ -36,6 +36,7 @@ export default async function GuidePage({ params }: Props) {
   const sources = [...new Map([...guide.sections.map(s => s.source), ...(guide.faqs || []).map(f => f.source)].filter((s): s is NonNullable<typeof s> => Boolean(s)).map(s => [s.url, s])).values()];
   const schema = { "@context": "https://schema.org", "@graph": [
     { "@type": "Article", "@id": `${siteConfig.url}/blog/${guide.slug}#article`, headline: guide.title, description: guide.excerpt, ...(image ? { image: { "@type": "ImageObject", url: guideImageUrl(image, 1600), width: 1600, height: 900, caption: image.alt } } : {}), ...(guide.publishedAt ? { datePublished: guide.publishedAt } : {}), dateModified: guide.updatedAt, author: { "@type": "Organization", name: siteConfig.shortName, url: `${siteConfig.url}/about` }, publisher: { "@type": "Organization", name: siteConfig.shortName, url: siteConfig.url }, mainEntityOfPage: `${siteConfig.url}/blog/${guide.slug}`, inLanguage: language(guide.audience), citation: sources.map(s => s.url), ...(guide.audience ? { spatialCoverage: guide.audience } : {}) },
+    ...(guide.faqs?.length ? [{ "@type": "FAQPage", "@id": `${siteConfig.url}/blog/${guide.slug}#questions`, mainEntity: guide.faqs.map(faq => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }] : []),
     { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Knowledge hub", item: `${siteConfig.url}/blog` }, { "@type": "ListItem", position: 2, name: guide.category, item: `${siteConfig.url}/blog/topics/${topic?.slug}` }, { "@type": "ListItem", position: 3, name: guide.title, item: `${siteConfig.url}/blog/${guide.slug}` }] },
   ] };
   return <div className={`guide-page ${styles.page}`} lang={language(guide.audience)}>
@@ -57,11 +58,12 @@ export default async function GuidePage({ params }: Props) {
         {guide.clinical && <p className="medical-note">This information supports conversations with your care team and does not replace individual medical advice. For severe breathing difficulty, choking or sudden serious illness, seek emergency medical care; do not wait for a support-chat reply.</p>}
         {guide.sections.map((s, i) => <div key={s.title}>
           <section id={`section-${i + 1}`}><h2>{s.title}</h2>{s.paragraphs.map(p => <p key={p}>{p}</p>)}{s.bullets && <ul>{s.bullets.map(b => <li key={b}>{b}</li>)}</ul>}{s.table && <div className={styles.tableWrap} role="region" aria-label={s.title} tabIndex={0}><table><thead><tr>{s.table.columns.map(c => <th scope="col" key={c}>{c}</th>)}</tr></thead><tbody>{s.table.rows.map((row, index) => <tr key={index}>{row.map((cell, col) => <td key={col}>{cell}</td>)}</tr>)}</tbody></table></div>}{s.source && <p className="source-link">Source: <a href={s.source.url} target="_blank" rel="noopener noreferrer">{s.source.title} ↗</a></p>}{s.links && <GuideLinks links={s.links} />}</section>
-          {i === 2 && <ArticleBookCTA guide={guide} />}
+          {i === 2 && guide.bookPlacement !== "end" && <ArticleBookCTA guide={guide} />}
         </div>)}
         {Boolean(guide.faqs?.length) && <section id="questions" className={styles.faqs}><h2>Frequently asked questions</h2>{guide.faqs?.map(f => <details key={f.question}><summary>{f.question}</summary><p>{f.answer}</p>{f.source && <p className="source-link"><a href={f.source.url} target="_blank" rel="noopener noreferrer">{f.source.title} ↗</a></p>}</details>)}</section>}
         <section id="checklist" className="print-checklist"><p className="eyebrow">Take this with you</p><h2>Your practical checklist</h2><ul>{guide.checklist.map(c => <li key={c}><span className="check-box" aria-hidden="true" />{c}</li>)}</ul></section>
         <ArticleTools />
+        {guide.bookPlacement === "end" && <ArticleBookCTA guide={guide} />}
         {guide.links && <section><h2>Useful next steps</h2><GuideLinks links={guide.links} /></section>}
         <section id="sources" className="article-endnote"><h2>Sources and editorial information</h2>{guide.sourcesCheckedAt ? <p>Sources checked on <time dateTime={guide.sourcesCheckedAt}>{new Date(guide.sourcesCheckedAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time>. Access rules, provider services and prices can change. Check the named service before making a commitment.</p> : <p>Check the linked source and named service for current information.</p>}{sources.length > 0 && <ul>{sources.map(s => <li key={s.url}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title} ↗</a></li>)}</ul>}<p>Written by the foundation editorial team. {guide.clinical ? "Medical decisions should be made with the person’s care team." : "Planning tools and practical suggestions should be adapted to the family’s circumstances."}</p><Link href="/editorial-policy">Editorial approach</Link><span> · </span><Link href="/contact">Suggest a correction</Link><p>For the personal story behind the foundation, <Link href="/book">explore When Every Breath Matters</Link>.</p></section>
       </article>

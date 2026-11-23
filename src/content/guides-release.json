@@ -1,5 +1,830 @@
 [
   {
+    "slug": "itvisma-cost-insurance-financial-help-usa",
+    "title": "Itvisma costs in the US: what might your family actually pay?",
+    "intro": [
+      "A price attached to a gene therapy can stop you in your tracks. Before you try to work out how your family could possibly pay it, there is an important distinction: the price of the medicine is not necessarily the amount you will owe.",
+      "For Itvisma, your own costs depend on your insurance, the treatment center, the services around treatment and any assistance you qualify for. There is no honest, useful single figure that applies to every US family. What you can do is get the right people to check the same treatment plan and put their answers in writing.",
+      "This guide is for families using the US healthcare system. It explains how to build that estimate, what can sit outside it and where to ask for help. It does not quote a guaranteed family price."
+    ],
+    "sections": [
+      {
+        "title": "Start with the treatment your specialist is actually discussing",
+        "paragraphs": [
+          "Itvisma is an FDA-approved gene therapy for adults and children aged two years and older with SMA and a confirmed SMN1 mutation. It is administered once by an intrathecal injection, into the fluid around the spinal cord. Your specialist must decide whether it is appropriate for the person being treated.",
+          "Use the exact medicine name when you speak to an insurer. A general answer about “SMA treatment” or “gene therapy” may not address Itvisma, its administration or the particular treatment center. An answer about another SMA medicine is not a substitute for checking this one.",
+          "Ask the clinic to give you a short written description of the proposed treatment and the contact details of the person handling insurance. Keep that description beside you during calls. It saves you having to explain a complex plan from memory."
+        ],
+        "source": {
+          "title": "FDA: ITVISMA",
+          "url": "https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/itvisma"
+        }
+      },
+      {
+        "title": "Ask for three different numbers",
+        "paragraphs": [
+          "First, ask what the treatment center expects to bill. Second, ask what the insurer expects to allow under its agreement with the providers. Third, ask what the insurer estimates will be your responsibility. Those are different questions.",
+          "An insurer’s allowed amount is the amount recognised under the plan for a covered service. It may differ from the provider’s charge. The family estimate should be based on your actual benefits and the proposed providers, rather than a calculation using a price found online.",
+          "For example, “twenty per cent coinsurance” still leaves unanswered what amount that percentage applies to, how much deductible remains and whether an applicable out-of-pocket limit has been reached. Ask the benefits team to explain the calculation line by line. You should be able to see where the estimate came from."
+        ],
+        "source": {
+          "title": "HealthCare.gov: allowed amount",
+          "url": "https://www.healthcare.gov/glossary/allowed-amount/"
+        }
+      },
+      {
+        "title": "Make sure the estimate includes more than the medicine",
+        "paragraphs": [
+          "Ask the center to list the services it expects around treatment. Depending on the clinical plan, these may include specialist visits, tests, administration, facility services, any planned anesthesia or sedation, medicines used alongside treatment and follow-up appointments. Ask which items require separate coverage checks.",
+          "The current Itvisma prescribing information includes a boxed warning about serious liver injury. It calls for corticosteroid treatment and monitoring, including liver monitoring for at least three months after injection. The treating team should explain the individual schedule and any additional monitoring. Do not change that plan to reduce a bill.",
+          "A practical question is: “Who will arrange each follow-up, and where will it happen?” A nearby laboratory may make travel easier, but the clinical team must agree that arrangement and the insurer must confirm the relevant coverage. One-time administration does not mean there is only one appointment to plan for."
+        ],
+        "source": {
+          "title": "ITVISMA US prescribing information, revised June 2026",
+          "url": "https://www.novartis.com/us-en/sites/novartis_us/files/Itvisma.pdf"
+        }
+      },
+      {
+        "title": "Use a simple cost sheet",
+        "paragraphs": [
+          "Create one page with a row for each expected service. Give each row six spaces: provider, proposed date, insurance approval needed, estimated family payment, person checking it and next action. Leave unknown amounts blank and mark them “awaiting estimate”. A blank is more useful than a guessed number that later becomes part of your budget.",
+          "Keep travel and household costs in a separate section. Include transport, accessible accommodation if needed, parking, meals away from home, childcare for siblings and income you may lose while attending appointments. These are planning prompts, not costs every family will incur.",
+          "Add the date and author of every estimate. Ask how long it remains valid and what could change it. Save the original email or document as well as your summary. If somebody later gives you a different figure, you will have a clear starting point for asking why."
+        ]
+      },
+      {
+        "title": "Check the deductible and out-of-pocket limit carefully",
+        "paragraphs": [
+          "Ask how much of your deductible remains and whether your plan has an individual limit within family coverage. Then ask how much of the relevant out-of-pocket maximum remains for the proposed treatment year.",
+          "For covered in-network benefits, an applicable out-of-pocket limit can substantially change the final calculation. But premiums, non-covered services, out-of-network care and some charges outside the allowed amount do not simply become covered because you have reached that limit. Do not treat it as a ceiling on every expense your household might face.",
+          "Plan years matter too. If treatment and follow-up cross into a new benefit year, ask how the reset affects the estimate. Do not move treatment dates yourself for financial reasons; ask the clinical and benefits teams to discuss any timing question together."
+        ],
+        "source": {
+          "title": "HealthCare.gov: out-of-pocket maximum",
+          "url": "https://www.healthcare.gov/glossary/out-of-pocket-maximum-limit/"
+        }
+      },
+      {
+        "title": "Check the providers as well as the building",
+        "paragraphs": [
+          "A hospital name on a network list is not a complete answer. Ask the benefits team to verify the proposed treatment location and the professionals and laboratories expected to bill. If the final list is not known yet, ask when it will be available and who will check it.",
+          "Keep the question specific: “Is this service covered for this patient, at this location, with these providers, on the proposed date?” Ask the representative to explain any limits in the answer and give you a reference number.",
+          "If the suggested center is outside your network, ask what covered alternatives exist and whether a network exception can be considered. Let the clinical team explain why a particular center is needed. Do not assume an exception will be granted, and do not assume paying first guarantees reimbursement later."
+        ]
+      },
+      {
+        "title": "Ask Novartis Patient Support about help",
+        "paragraphs": [
+          "Novartis Patient Support for Itvisma offers help with benefits verification, prior authorization, appeals and identifying financial-support options. The official program page also describes assistance for eligible people with private insurance and a patient-assistance route. The program team should confirm which option, if any, fits your circumstances.",
+          "Contact the program through its official website, ideally alongside the clinic’s benefits coordinator. Ask what documents are needed and which costs any help would cover. Manufacturer support is not a guarantee of insurance approval, and the support team does not replace your clinicians.",
+          "Avoid budgeting around a copay offer until you have the current terms and an eligibility decision. A statement that some patients may receive help does not mean your family will receive that help."
+        ],
+        "source": {
+          "title": "Novartis Patient Support for ITVISMA",
+          "url": "https://www.itvisma.com/support/novartis-patient-support"
+        }
+      },
+      {
+        "title": "Questions to ask before you rely on any assistance offer",
+        "paragraphs": [
+          "Ask whether the help is for the medicine alone or also for administration and other services. Ask about maximum benefits, expiry dates, renewal requirements and whether the program can pay a provider directly. If your insurance changes, ask whether you must apply again.",
+          "Also ask your insurer how a third-party payment is treated under your particular plan. Will it count towards your deductible or out-of-pocket limit? Request a clear answer rather than assuming all financial help is processed in the same way.",
+          "If assistance is not available, ask the hospital social worker or financial counselor about other possibilities. Before sharing documents with an unfamiliar organization, confirm who operates it, what it funds and how it handles applications. Do not pay somebody who promises to secure approval or a grant for you."
+        ]
+      },
+      {
+        "title": "Get the treatment pathway and financial pathway together",
+        "paragraphs": [
+          "The manufacturer’s treatment pathway includes work by the prescribing team and patient-support service before administration. Ask the clinic where your case currently sits: waiting for records, benefit verification, an insurer decision, a treatment date or something else.",
+          "Write one named contact beside the next unfinished task. For instance, the clinic may be sending records while the benefits office checks administration charges. Ask when you should expect an update and who to contact if it does not arrive.",
+          "Keep a short list of outstanding questions rather than starting every call from the beginning. “We have approval for the medicine; we are still waiting for the facility estimate” is easier for the next person to act on than “We are trying to sort out insurance”."
+        ],
+        "source": {
+          "title": "ITVISMA: steps towards treatment",
+          "url": "https://www.itvisma.com/path-to-itvisma"
+        }
+      },
+      {
+        "title": "If the estimate looks impossible, ask for a case conference",
+        "paragraphs": [
+          "You do not have to solve the whole bill by making separate calls indefinitely. Ask whether the center can arrange a joint conversation with its benefits coordinator, social worker and relevant patient-support contact. You can ask for an interpreter or accessible information if you need it.",
+          "Send a short agenda: what is approved, what is still uncertain, what the family estimate includes and what help has been considered. Explain practical limits too, such as being unable to travel repeatedly or take unpaid leave. That information can help the team identify questions worth investigating.",
+          "If coverage has been denied, move to the appeal process with the clinic rather than treating the estimate as a final bill. Our separate guide to SMA insurance approval and appeals explains how to organise that conversation."
+        ],
+        "links": [
+          {
+            "label": "How to check coverage and respond to a denial",
+            "href": "/blog/sma-gene-therapy-insurance-coverage-appeals-usa"
+          }
+        ]
+      },
+      {
+        "title": "Keep the paperwork manageable",
+        "paragraphs": [
+          "Cure SMA’s insurance resources include a health-insurance roadmap and state-specific information. These can help you understand the language used by a plan and locate relevant US support.",
+          "For your own records, keep four folders: coverage decisions, estimates and bills, assistance applications, and treatment logistics. Use a call log with the date, person, reference number and promised next step. Ask a trusted person to help keep it current if that would take pressure off you.",
+          "Before paying a bill that does not match the estimate, ask the billing office to explain the difference and confirm whether insurance processing is complete. An explanation of benefits is not itself the same thing as a bill. Keep copies and ask for clarification while you still have the relevant documents together."
+        ],
+        "source": {
+          "title": "Cure SMA: insurance resources",
+          "url": "https://www.curesma.org/insurance-resources/"
+        }
+      },
+      {
+        "title": "A short message you can send to the center",
+        "paragraphs": [
+          "You could write: “Our family is preparing for possible Itvisma treatment. Please help us obtain a written estimate of our responsibility for the medicine, administration, facility services, tests and follow-up care. Please identify any separate providers, approvals or services not included. We also need to understand assistance options and which costs may fall in a new benefit year.”",
+          "Add the practical question that matters most to you. It might be the number of trips, whether a local laboratory is possible or how to manage a plan change. A useful estimate should help you make arrangements, not leave you with another unexplained total.",
+          "The next achievable step is often small: obtain the benefits coordinator’s name, find the plan document or send the missing record. You do not need every answer before asking for help with the first one."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does Itvisma have one fixed out-of-pocket price?",
+        "answer": "No. Your responsibility depends on your actual coverage, providers, covered services, benefit-year position and any confirmed assistance. Ask the treatment center and insurer for an individual written estimate."
+      },
+      {
+        "question": "Does a one-time treatment mean one bill?",
+        "answer": "Not necessarily. The medicine, administration, testing, facility services and follow-up can involve different providers or claims. Ask for an estimate covering the planned pathway."
+      },
+      {
+        "question": "Can I assume a manufacturer programme will cover everything?",
+        "answer": "No. Ask the official program team to confirm eligibility, covered costs and limits in writing. Do not assume a program covers travel, time away from work or all medical services."
+      },
+      {
+        "question": "What if treatment spans two insurance years?",
+        "answer": "Ask how the deductible and applicable out-of-pocket limit reset, and have the team estimate follow-up separately. Discuss timing with the clinical team; do not delay or change treatment yourself."
+      },
+      {
+        "question": "Where should I begin today?",
+        "answer": "Ask your specialist’s office for the person who handles Itvisma insurance access. Request a benefits check and a list of services to be included in your family estimate."
+      }
+    ],
+    "bookContext": "If you want to understand more of what searching for SMA care can mean inside a family, When Every Breath Matters shares Tochukwu and Ijeoma Nkwocha’s experience of raising two daughters with SMA. It is a family memoir, not a guide to US insurance benefits.",
+    "audience": "United States",
+    "sourcesCheckedAt": "2026-11-23",
+    "seoTitle": "Itvisma Cost, Insurance and Financial Help in the US",
+    "excerpt": "Understand Itvisma out-of-pocket costs, insurance estimates, financial support and the questions to ask before treatment in the United States.",
+    "category": "Diagnosis & care",
+    "summary": [
+      "Get an individual written estimate rather than treating a medicine price as your family’s bill.",
+      "Check the medicine, administration, providers, tests and follow-up separately.",
+      "Confirm assistance eligibility and the costs covered before relying on an offer."
+    ],
+    "checklist": [
+      "Find the clinic’s benefits coordinator.",
+      "Request a list of the services expected around treatment.",
+      "Check proposed providers and treatment location with the plan.",
+      "Ask for the deductible and applicable out-of-pocket balance.",
+      "Get the current assistance terms and eligibility decision.",
+      "Budget travel and household costs separately.",
+      "Save estimates, approval letters and call reference numbers."
+    ],
+    "clinical": true,
+    "updatedAt": "2026-11-23",
+    "publishedAt": "2026-11-23",
+    "bookPlacement": "end",
+    "related": [
+      "sma-treatment-support-usa",
+      "sma-gene-therapy-insurance-coverage-appeals-usa",
+      "spinal-muscular-atrophy-home-care-usa"
+    ],
+    "links": [
+      {
+        "label": "US overview: treatment, insurance and family support",
+        "href": "/blog/sma-treatment-support-usa"
+      },
+      {
+        "label": "Free Understanding SMA course",
+        "href": "/learn/understanding-sma"
+      }
+    ]
+  },
+  {
+    "slug": "sma-gene-therapy-insurance-coverage-appeals-usa",
+    "title": "SMA gene therapy and insurance: how to check coverage and handle a denial",
+    "intro": [
+      "“Does my insurance cover it?” sounds like a question that should have a yes-or-no answer. With SMA gene therapy, the useful answer is usually more specific: which medicine, for which person, at which center, under which plan?",
+      "You should not have to know the whole insurance system before you can ask for treatment. The aim here is to help you work with the specialist’s office, understand what the insurer is asking for and avoid losing time over a missing document or an unclear decision.",
+      "This is a guide to the US process. Commercial insurance, employer plans, Medicaid and Medicare can have different rules. Your plan documents and decision letter are the starting point for your own case."
+    ],
+    "sections": [
+      {
+        "title": "Find out who is making the coverage decision",
+        "paragraphs": [
+          "Look at the insurance card, then ask the plan to identify the benefit arrangement. Is it a commercial policy, a self-funded employer plan, Medicaid or Medicare coverage? Ask which organization handles the proposed medicine and who handles its administration.",
+          "You can say: “My specialist is considering an SMA gene therapy. Who checks the coverage requirements, and where can my clinic obtain the policy that applies to my plan?” Write down the answer and the reference number.",
+          "A public policy on an insurer’s website can be useful background, but it may not govern your particular benefits. Do not spend days assembling a packet for the wrong department. Ask the clinic’s access team to confirm the submission route before records are sent."
+        ]
+      },
+      {
+        "title": "Keep three separate decisions in view",
+        "paragraphs": [
+          "A medicine can be approved by the FDA, recommended for an individual by a specialist and still require a separate insurance decision. Those decisions answer different questions. Regulatory approval does not, by itself, establish your benefits or what you will owe.",
+          "Ask the clinic to name the exact therapy it is requesting. Then ask the insurer whether it requires prior authorization, which means approval before the proposed treatment. Ask whether the medicine, administration and site of care need separate approvals.",
+          "For a benefits summary, request your Summary of Benefits and Coverage and the fuller plan document or evidence of coverage. A short summary can explain basic cost sharing, while the detailed documents and applicable policy help the access team investigate the particular request."
+        ],
+        "source": {
+          "title": "HealthCare.gov: Summary of Benefits and Coverage",
+          "url": "https://www.healthcare.gov/health-care-law-protections/summary-of-benefits-and-coverage/"
+        }
+      },
+      {
+        "title": "Ask for the current policy, with its date",
+        "paragraphs": [
+          "Policy wording changes. Ask which version applies on the proposed treatment date, and save the document or secure link. If a representative refers to a requirement, ask where it appears and whether an exception process exists.",
+          "For example, Cigna’s published Itvisma policy IP0790, effective 13 August 2026, requires prior authorization and includes documented genetic confirmation involving pathogenic SMN1 variants among its criteria. It also says an individual benefit plan can differ from the standard policy. This is an illustration of the detail a request may involve, not a statement that Cigna’s rules apply to everyone.",
+          "Give the policy to the prescribing team. They can compare the clinical record with the actual requirements and explain any point that needs clarification. Parents should not have to interpret complex treatment criteria on their own."
+        ],
+        "source": {
+          "title": "Cigna ITVISMA coverage policy IP0790, effective 13 August 2026",
+          "url": "https://static.cigna.com/assets/chcp/pdf/coveragePolicies/pharmacy/ip_0790_coveragepositioncriteria_spinal_muscular_atrophy_gene_therapy_itvisma.pdf"
+        }
+      },
+      {
+        "title": "Which genetic records should we collect?",
+        "paragraphs": [
+          "Ask for the complete diagnostic laboratory report, including its interpretation, rather than a cropped screenshot or a message saying “positive”. Check that it identifies the person being treated and includes the report date. Ask the specialist or genetic counselor to explain any wording you do not understand.",
+          "In the usual SMN1-related form of SMA, the genetic findings used to establish an affected person’s diagnosis are different from a relative’s carrier-screening result. A carrier report for a parent is not a substitute for the patient’s diagnostic evidence. SMN2 copy-number information can also be relevant to the clinical picture, but it does not replace the SMN1 findings.",
+          "If the report is incomplete or the result is uncertain, let the clinical team decide what additional information is needed. Do not arrange repeat testing solely because an online checklist mentions it."
+        ],
+        "source": {
+          "title": "GeneReviews: spinal muscular atrophy",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK1352/"
+        }
+      },
+      {
+        "title": "Build a packet that answers the insurer’s questions",
+        "paragraphs": [
+          "Ask the clinic who owns the prior-authorization submission. Offer to help obtain records, but agree where everything should be sent and who will check the packet before it goes in.",
+          "A useful organising list is: current insurance details; the patient’s diagnostic report; the specialist’s treatment request; the exact therapy and proposed center; relevant treatment history; supporting clinical records requested by the policy; and any plan forms or required consent. The clinic should decide which medical details are needed.",
+          "Put the request or case number on later correspondence. If you receive a request for more information, find out exactly what is missing and who is providing it. Sending a whole folder again without identifying the missing item can make the process harder to follow."
+        ]
+      },
+      {
+        "title": "What should the specialist’s letter explain?",
+        "paragraphs": [
+          "The clinical letter should address the patient and the proposed treatment, not simply say that SMA is serious. Ask the specialist to explain the medical basis for the request and respond to any relevant policy criteria using the patient’s actual records.",
+          "You can help by checking practical facts: the correct insurance identification, the proposed location, which records have already been supplied and whether the plan has requested anything further. Leave clinical judgments, test interpretation and treatment recommendations with the treating team.",
+          "Before submission, ask who will track receipt. A fax confirmation or portal status is worth keeping, but also ask when the insurer considers the packet complete. If a decision is delayed, knowing that date and the case number gives the next call a clear focus."
+        ]
+      },
+      {
+        "title": "If the answer is no, get the written reason",
+        "paragraphs": [
+          "A telephone “no” is not enough to organise an appeal. Ask for the written decision, the specific reason, the policy or plan provision relied on, the appeal instructions and the deadline. Check whether the refusal concerns the medicine, a provider, the site, missing information or another issue.",
+          "HealthCare.gov describes internal appeals in which the plan reconsiders its decision and reviews additional supporting material. Keep the denial and the original request together. Record when you received the notice, because deadlines can depend on that date.",
+          "A missing laboratory report calls for a different response from a finding that treatment does not meet a medical criterion. Ask the clinic to help identify the problem before deciding what to submit next."
+        ],
+        "source": {
+          "title": "HealthCare.gov: internal appeals",
+          "url": "https://www.healthcare.gov/appeal-insurance-company-decision/internal-appeals/"
+        }
+      },
+      {
+        "title": "A clinician-to-clinician discussion may help, but check the deadline",
+        "paragraphs": [
+          "Ask whether the plan offers a peer-to-peer discussion, in which the treating clinician discusses the decision with the insurer’s reviewer. Find out who can request it and when it must happen.",
+          "Do not assume that arranging this discussion pauses a formal appeal deadline or counts as the appeal itself. Ask the plan to explain how the two processes relate, and keep following the written appeal instructions unless you receive clear guidance otherwise.",
+          "If the denial rests on an apparent factual error, make that easy to see. For example, ask the clinic to identify the page already supplied or send the missing evidence through the proper route. Keep the explanation calm, specific and tied to the stated reason for refusal."
+        ]
+      },
+      {
+        "title": "Make the appeal easy to follow",
+        "paragraphs": [
+          "Use the denial’s own headings or reasons as a checklist. For each point, identify the relevant correction, explanation or clinical evidence. Ask the treating team to supply the medical argument and identify the supporting documents.",
+          "An appeal covering note could say: “We request reconsideration of decision [reference] dated [date] for [treatment]. The stated reason was [reason]. The attached specialist letter and records address that reason. Please confirm receipt, whether the submission is complete and the date by which a decision is expected.”",
+          "Add the patient and plan details requested by the secure submission process. Keep copies of the packet and proof of delivery. Avoid sending genetic reports through ordinary social-media messages or including unrelated relatives’ results when they have not been requested."
+        ]
+      },
+      {
+        "title": "When waiting may be medically unsafe",
+        "paragraphs": [
+          "Tell the treating specialist immediately if the standard review timescale could create a clinical risk. Ask whether the circumstances meet the plan’s criteria for an expedited process and what evidence the clinician needs to provide.",
+          "Urgent review is a formal route with its own requirements. It is not the same as marking an email “urgent”, repeatedly calling customer service or assuming every SMA request automatically qualifies. Have the clinical team explain why waiting would be unsafe in this particular case.",
+          "Keep clinical care moving while the coverage question is being addressed. Ask the team what support and follow-up should continue during the decision period. Do not stop, switch or delay prescribed care on the basis of an insurance conversation alone."
+        ]
+      },
+      {
+        "title": "If an internal appeal is unsuccessful",
+        "paragraphs": [
+          "Depending on the plan and decision, an independent external review may be available. HealthCare.gov explains the external-review route for eligible health-plan decisions. Ask the insurer which route applies and whether another internal step is required first.",
+          "Check the notice rather than borrowing a deadline from somebody else’s story. For the process described by HealthCare.gov, an external-review request generally has a four-month filing window; state and plan arrangements can differ. If time is short or the instructions are unclear, seek help promptly.",
+          "CMS also points people towards consumer assistance. Ask the hospital social worker or access team where to obtain help for your particular plan. An external review is a possible next step, not a promise that the decision will be reversed."
+        ],
+        "source": {
+          "title": "HealthCare.gov: external review",
+          "url": "https://www.healthcare.gov/appeal-insurance-company-decision/external-review/"
+        }
+      },
+      {
+        "title": "Medicare and Medicaid need their own route",
+        "paragraphs": [
+          "If Medicare is involved, use the appeal instructions for the kind of Medicare coverage you have. Medicare’s official guidance says the process varies between Original Medicare, Medicare health plans and drug plans. Do not assume the commercial-plan steps or deadlines above apply.",
+          "For Medicaid, ask the state program or managed-care plan for the applicable decision, appeal and hearing instructions. Ask the clinic whether the proposed service is being requested under the correct benefit and whether a case manager can help.",
+          "If more than one payer is involved, have the benefits team clarify who is responsible for each part of the request. Keep each decision separately labelled. A letter from one payer should not be read as an answer from every organization involved."
+        ],
+        "source": {
+          "title": "Medicare: filing an appeal",
+          "url": "https://www.medicare.gov/providers-services/claims-appeals-complaints/appeals"
+        }
+      },
+      {
+        "title": "Approval still needs a careful final check",
+        "paragraphs": [
+          "Before treatment, ask what the approval actually covers, its valid dates and the approved location. Ask whether any administration or facility component remains outstanding. Then request an individual cost estimate; a coverage approval and a family bill are different documents.",
+          "If the plan, treatment date or location changes, tell the access team straight away. Ask whether anything must be checked or submitted again. Do not assume an existing approval transfers unchanged.",
+          "Cure SMA’s insurance resources can help families understand terminology and find state-specific information. The most useful next step may be one focused call with the clinic’s benefits coordinator, rather than another evening searching for policies that may not apply to you."
+        ],
+        "source": {
+          "title": "Cure SMA: insurance resources",
+          "url": "https://www.curesma.org/insurance-resources/"
+        },
+        "links": [
+          {
+            "label": "Itvisma costs and possible financial help",
+            "href": "/blog/itvisma-cost-insurance-financial-help-usa"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does an SMN1 result guarantee insurance approval?",
+        "answer": "No. Genetic evidence can support the request, but the insurer also considers the applicable benefits and other requirements. Ask the treating team to use the patient’s full diagnostic report."
+      },
+      {
+        "question": "Can I use my own carrier result for my child’s request?",
+        "answer": "A parent’s carrier-screening result does not replace the child’s diagnostic evidence. Ask the specialist which reports are needed for the person being considered for treatment."
+      },
+      {
+        "question": "Does a peer-to-peer call replace a formal appeal?",
+        "answer": "Do not assume it does. Ask how that discussion fits the plan’s appeal process and whether it changes any deadline. Keep following the written instructions."
+      },
+      {
+        "question": "Should I use the same appeal deadline for every insurer?",
+        "answer": "No. Use your decision letter and plan-specific process. Medicare, Medicaid and different commercial arrangements can have different rules."
+      },
+      {
+        "question": "Can SMA Hope obtain insurance approval for us?",
+        "answer": "We provide education and practical information. Coverage decisions belong with the plan, and clinical evidence should come from the treating team. We cannot guarantee approval or an appeal outcome."
+      }
+    ],
+    "bookContext": "Insurance paperwork describes only one part of living with SMA. When Every Breath Matters follows the family experience behind SMA Hope, including the search for care and the pressures that can sit behind treatment decisions. Readers in the US can find its Kindle, paperback and hardcover editions on our book page.",
+    "audience": "United States",
+    "sourcesCheckedAt": "2026-11-23",
+    "seoTitle": "SMA Gene Therapy Insurance: Coverage and Appeals in the US",
+    "excerpt": "A practical US guide to SMA gene therapy insurance, prior authorisation, genetic records and appeals, with questions for your clinic and health plan.",
+    "category": "Diagnosis & care",
+    "summary": [
+      "Check the exact therapy and the policy that applies to your own plan.",
+      "Use the patient’s diagnostic report and ask the specialist to lead the clinical submission.",
+      "Read the written denial and preserve the applicable appeal deadlines."
+    ],
+    "checklist": [
+      "Identify the actual plan and submission route.",
+      "Obtain the current coverage policy and its date.",
+      "Ask for the patient’s complete diagnostic report.",
+      "Agree who submits and tracks the request.",
+      "Keep the written denial and note the receipt date.",
+      "Ask which appeal or urgent-review route applies.",
+      "Check approval dates, location and remaining cost questions."
+    ],
+    "clinical": true,
+    "updatedAt": "2026-11-23",
+    "publishedAt": "2026-11-23",
+    "bookPlacement": "end",
+    "related": [
+      "sma-treatment-support-usa",
+      "itvisma-cost-insurance-financial-help-usa",
+      "spinal-muscular-atrophy-home-care-usa"
+    ],
+    "links": [
+      {
+        "label": "US overview: treatment, insurance and family support",
+        "href": "/blog/sma-treatment-support-usa"
+      },
+      {
+        "label": "Free Understanding SMA course",
+        "href": "/learn/understanding-sma"
+      }
+    ]
+  },
+  {
+    "slug": "spinal-muscular-atrophy-home-care-usa",
+    "title": "SMA home care: making a practical plan for your family",
+    "intro": [
+      "When you search for “SMA home care”, you may mean several things at once. What should we do each day? Do we need a nurse? What equipment belongs at home? Who helps if I am exhausted or cannot cover a shift?",
+      "Those are reasonable questions. Home care for spinal muscular atrophy should start with the person’s own needs and a written plan from their healthcare team. It should also recognise what the household can realistically manage.",
+      "This guide helps families in the United States organise that conversation. It is not a set of instructions for operating breathing equipment, giving medicines or changing a feeding plan. Those tasks need individual guidance and training."
+    ],
+    "sections": [
+      {
+        "title": "Start with what an ordinary day actually involves",
+        "paragraphs": [
+          "Before the next care-planning appointment, write down a typical day. Include waking, getting dressed, meals, school or work, travel, rest, evening care and overnight support. Note where help is needed and where things currently go wrong.",
+          "Be specific. “Mornings are difficult” gives the team less to work with than “Getting ready takes two adults, and the second person leaves for work at seven”. “We need more support” becomes easier to discuss when you can identify the task, the time and what happens if nobody is available.",
+          "Include what the person with SMA wants to do. A plan should make room for school, relationships, interests and choices. If the person can take part in the discussion, ask which parts of the day they most want to change."
+        ]
+      },
+      {
+        "title": "Ask for one written plan that the whole team can use",
+        "paragraphs": [
+          "SMA care can involve several services. Cure SMA describes the importance of individual planning, including preparation for everyday care and medical emergencies. Ask who will bring the different recommendations together and who updates the plan when something changes.",
+          "Keep a current summary with the diagnosis, key clinicians, prescribed medicines, allergies and the person’s agreed care needs. Add the date and the contact route for routine questions and urgent concerns. Avoid making the summary so long that nobody can quickly find the important information.",
+          "When a recommendation changes, ask which older instruction it replaces. Tell the other professionals who need to know. A family should not be left choosing between two conflicting sets of instructions without clarification."
+        ],
+        "source": {
+          "title": "Cure SMA: handling medical issues",
+          "url": "https://www.curesma.org/handling-medical-issues/"
+        }
+      },
+      {
+        "title": "Make breathing support a planned conversation",
+        "paragraphs": [
+          "SMA can weaken breathing and coughing muscles. Some people need help clearing secretions or breathing during sleep, illness or other times. A respiratory specialist should assess the person and explain their individual support and monitoring needs.",
+          "Ask for a routine plan and an illness plan. If equipment is prescribed, get practical training on its use, cleaning, alarms and troubleshooting. Ask whom to contact if it breaks and what the backup arrangement is. Do not copy another family’s device settings or make changes based on an online video.",
+          "Ask the team to explain which changes require urgent advice and which require emergency help. Keep those instructions where every trained caregiver can find them. A familiar symptom can still need attention if it is different from the person’s usual pattern."
+        ],
+        "source": {
+          "title": "Cure SMA: breathing risks and care",
+          "url": "https://www.curesma.org/breathing/"
+        }
+      },
+      {
+        "title": "Treat feeding questions as individual questions",
+        "paragraphs": [
+          "Tell the team about changes such as tiring during meals, difficulty swallowing, coughing with food or drink, or meals becoming much longer. A dietitian and the appropriate swallowing professionals can help assess what is happening and recommend a plan.",
+          "There is no single diet that fits every person with SMA. Food texture, fluid advice, nutritional support and feeding-tube decisions should reflect an assessment, not a standard menu found online. Do not change a prescribed feeding routine without advice.",
+          "Write down the questions that matter at home: how to manage meals away from home, what to do if supplies are delayed and who checks growth or weight. If tube feeding is part of the plan, ask for training and a clear route for problems with the tube or pump."
+        ],
+        "source": {
+          "title": "Cure SMA: nutrition",
+          "url": "https://www.curesma.org/nutrition/"
+        }
+      },
+      {
+        "title": "Ask the therapists to work with your real home",
+        "paragraphs": [
+          "A recommendation can look straightforward in a clinic and be difficult in a small bathroom or beside a low bed. Ask the physical therapist or occupational therapist to consider where care happens, who assists and what equipment you already have.",
+          "Discuss positioning, seating, transfers, comfort, access and activities that matter to the person. Ask for a demonstration of any technique or exercise prescribed. If something hurts, feels unsafe or cannot be done with the available help, report that rather than quietly continuing.",
+          "Photographs or measurements may help a therapist understand the space if they cannot visit, but share these through the service’s agreed secure route. The goal is a plan your household can use, with appropriate equipment and training, not a list of tasks you feel obliged to attempt alone."
+        ],
+        "source": {
+          "title": "Cure SMA: care series booklets",
+          "url": "https://www.curesma.org/care-series-booklets/"
+        }
+      },
+      {
+        "title": "Different kinds of help do different jobs",
+        "paragraphs": [
+          "When asking for home support, name the tasks first. Are you asking for skilled nursing, help with daily activities, a break for the usual caregiver, equipment or coordination between services? Those needs may be assessed and funded through different routes.",
+          "Ask the care manager what each proposed worker can do, what training is required and who supervises the work. If a task needs clinical training, family goodwill is not a substitute for that training. Equally, a neighbour bringing a meal can be useful without becoming responsible for medical care.",
+          "Write down the hours when support is most needed. An offer of help that misses the overnight shift or school-morning routine may not solve the actual problem. Explain the gap and ask what alternatives can be explored."
+        ]
+      },
+      {
+        "title": "For US funding, ask about Medicaid home and community services",
+        "paragraphs": [
+          "Medicaid home and community-based services can support eligible people to receive services in their homes or communities. States organise programs differently, so ask the state Medicaid agency or case manager which pathway fits the person’s assessed needs.",
+          "Some waiver programs can include services such as personal care, respite and case management. Eligibility, available services and access arrangements depend on the program. A diagnosis alone does not tell you what package will be approved or when a worker will be available.",
+          "Ask about the next practical step: an eligibility application, needs assessment, care-plan request or another referral. If there is a waiting list, ask what other benefits or interim support can be considered. Do not assume one unanswered application rules out every route."
+        ],
+        "source": {
+          "title": "Medicaid: home and community-based services waivers",
+          "url": "https://www.medicaid.gov/medicaid/home-community-based-services/home-community-based-services-authorities/home-community-based-services-1915c"
+        }
+      },
+      {
+        "title": "For a child under 21, ask about EPSDT as well",
+        "paragraphs": [
+          "Children under 21 who are enrolled in Medicaid have the Early and Periodic Screening, Diagnostic and Treatment benefit, usually called EPSDT. It includes requirements for medically necessary Medicaid-coverable services to address identified health conditions, within federal guidance.",
+          "Ask the child’s team and Medicaid plan whether the requested service should be considered through EPSDT. This is worth asking about separately from a waiver program; do not assume they are the same application or that one replaces the other.",
+          "Keep the request specific and supported by the clinical team. If a service is refused, request the written reason and instructions for challenging the decision. Do not read this overview as a promise of a particular number of nursing hours or a particular item of equipment."
+        ],
+        "source": {
+          "title": "Medicaid: EPSDT benefits for children under 21",
+          "url": "https://www.medicaid.gov/medicaid/benefits/early-and-periodic-screening-diagnostic-and-treatment"
+        }
+      },
+      {
+        "title": "An approved shift still needs somebody to fill it",
+        "paragraphs": [
+          "If home-care hours have been authorized but remain unfilled, record that clearly. Keep the approved hours separate from the hours actually delivered. Tell the agency, case manager and relevant clinical contact what care is going uncovered.",
+          "Ask which agencies are being contacted, who is coordinating the search and when the situation will be reviewed. If the family is covering the gap, explain the effect on sleep, work and safe care. A statement that help is approved can hide how little help is arriving.",
+          "Make a backup plan with the team for missed shifts. Identify who can safely cover which tasks and when the absence of trained help means the arrangement is unsafe. Do not agree to a plan that depends on an untrained person performing a task they cannot safely manage."
+        ]
+      },
+      {
+        "title": "Build the equipment plan around supplies and backup",
+        "paragraphs": [
+          "Keep an equipment list with the supplier, service number, prescription contact and the parts you need to reorder. Add the next supply date and any problems you are already trying to resolve. Check that another caregiver can find it.",
+          "For powered medical equipment, ask the clinical team and supplier how to prepare for an outage or device failure. Confirm any prescribed battery arrangements and how long they are expected to support the actual equipment in use. A generic household power bank is not automatically suitable for a medical device.",
+          "Ask when to call the supplier, when to call the clinical team and when to seek emergency help. Test your understanding during training. It is better to ask a basic question while help is available than to discover an unanswered question overnight."
+        ]
+      },
+      {
+        "title": "Prepare for an emergency without turning every day into one",
+        "paragraphs": [
+          "Call 911 for severe breathing difficulty, blue or gray color, unresponsiveness or another immediate threat to life. Follow the individual emergency plan while help is coming. Do not wait for a website reply or try to resolve an insurance issue first.",
+          "For less immediate concerns, use the clinical team’s advice route and explain what has changed from the person’s usual condition. Keep the emergency summary accessible and include relevant equipment and treatment information for responders.",
+          "An emergency bag can hold the documents and items the team recommends for that person. Ask what belongs in it, how to keep it current and what would need to travel with the person. The list should come from the care plan rather than becoming an expensive collection of things nobody has advised you to buy."
+        ]
+      },
+      {
+        "title": "Let support include ordinary family life",
+        "paragraphs": [
+          "A useful offer from a relative might be a regular school pickup, a prepared meal or time with a sibling. Ask for a defined task and time. “Could you take the other children on Thursday afternoon?” is easier to answer than “Please let us know if you can help”.",
+          "Protect the person’s privacy and choices. Ask before sharing medical updates, inviting visitors or describing their care in a group chat. A child still needs age-appropriate choices; an adult should be involved in decisions about their own support.",
+          "Cure SMA provides US community-support resources, including information and programs for families. Check the current eligibility and availability directly. You can also ask your clinic about local connections. Peer support can make questions easier to ask, while medical decisions remain with the treating team."
+        ],
+        "source": {
+          "title": "Cure SMA: community support",
+          "url": "https://www.curesma.org/community-support/"
+        }
+      },
+      {
+        "title": "Bring these questions to your next care-planning call",
+        "paragraphs": [
+          "Ask: Which tasks require trained help? What should happen during an illness? Who reviews feeding and breathing concerns? Which equipment and supplies are prescribed? Who is coordinating funding requests? What is the plan for an unfilled shift or equipment failure?",
+          "Then choose the most pressing two or three gaps. Agree an action, a named person and a date to check progress for each. You do not need to solve every possible future problem in one appointment.",
+          "Ask for the updated plan afterwards, in a form you can share with the people who need it. Revisit it when circumstances change: a move, school starting, a new treatment, a different caregiver or a change in the person’s needs. Home care should be something the team builds with your family, rather than a burden left for you to figure out alone."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does everyone with SMA need a home nurse?",
+        "answer": "No. Support needs differ. Ask for an individual assessment of the tasks involved and the training or professional help required. Neither the diagnosis nor another family’s care package determines your own needs."
+      },
+      {
+        "question": "Can home care stop after SMA treatment?",
+        "answer": "Do not stop prescribed support on that assumption. Ask the treating team to reassess needs and explain any changes to the care plan. Treatment and everyday support address different parts of care."
+      },
+      {
+        "question": "What if nobody can cover approved nursing hours?",
+        "answer": "Document the hours actually unfilled and tell the agency, case manager and clinical team. Ask for an active staffing plan and a safe backup arrangement rather than treating the approval as care already delivered."
+      },
+      {
+        "question": "Where can a US family ask about financial coverage?",
+        "answer": "Start with the health plan and clinic’s care manager. Ask about relevant Medicaid benefits, home and community programs and, for Medicaid-enrolled children under 21, EPSDT. Eligibility and services need individual confirmation."
+      },
+      {
+        "question": "How can friends help without taking on medical tasks?",
+        "answer": "Offer reliable practical help with meals, errands, siblings or other agreed tasks. Ask what is welcome and respect privacy. Clinical care should only be undertaken by people with the necessary training and authority."
+      }
+    ],
+    "bookContext": "The routines around feeding, sleep and breathing are part of the family story in When Every Breath Matters. For relatives and friends trying to understand what caregiving can feel like, the memoir offers that human perspective alongside SMA Hope’s practical guides.",
+    "audience": "United States",
+    "sourcesCheckedAt": "2026-11-23",
+    "seoTitle": "SMA Home Care in the US: A Practical Family Guide",
+    "excerpt": "A US family guide to SMA home care, breathing and feeding plans, equipment, nursing, Medicaid questions, backup care and support for children.",
+    "category": "Living with SMA",
+    "summary": [
+      "Build home care around the person’s assessed needs, ordinary day and written care plan.",
+      "Get individual training for prescribed care and agree safe backup arrangements.",
+      "Ask about relevant US coverage routes and distinguish authorised hours from care actually delivered."
+    ],
+    "checklist": [
+      "Write down the daily tasks and the gaps in help.",
+      "Ask for a current written care and emergency plan.",
+      "Confirm who provides equipment training and support.",
+      "Discuss feeding and breathing questions with the relevant clinicians.",
+      "Ask the care manager about applicable funding routes.",
+      "Record authorised care separately from delivered care.",
+      "Agree a safe plan for missed shifts and equipment failure."
+    ],
+    "clinical": true,
+    "updatedAt": "2026-11-23",
+    "publishedAt": "2026-11-23",
+    "bookPlacement": "end",
+    "related": [
+      "sma-treatment-support-usa",
+      "itvisma-cost-insurance-financial-help-usa",
+      "sma-gene-therapy-insurance-coverage-appeals-usa"
+    ],
+    "links": [
+      {
+        "label": "US overview: treatment, insurance and family support",
+        "href": "/blog/sma-treatment-support-usa"
+      },
+      {
+        "label": "Free Understanding SMA course",
+        "href": "/learn/understanding-sma"
+      },
+      {
+        "label": "Practical ways relatives and friends can help",
+        "href": "/blog/supporting-an-sma-family"
+      }
+    ]
+  },
+  {
+    "slug": "sma-treatment-appointments-school-work-usa",
+    "title": "SMA appointments, school and work: how to make the week manageable",
+    "intro": [
+      "The appointment may be at ten, but the day rarely begins there. There is the journey, equipment to pack, a child to get ready, somebody to tell at school and a conversation about time away from work. Afterwards, there may still be follow-up calls and another appointment to arrange.",
+      "You cannot make every part predictable. You can, however, ask the clinic, school and employer to work from the same realistic picture of what the appointment requires.",
+      "This guide is for US families. It offers a planning method and explains where to ask about school support and leave from work. It does not prescribe a treatment timetable or assume every parent has the same employment rights."
+    ],
+    "sections": [
+      {
+        "title": "Ask the clinic for the whole appointment pathway",
+        "paragraphs": [
+          "Start with the next few planned visits rather than trying to organise an entire year from memory. Ask the team to distinguish treatment, preparation, tests, monitoring, therapy and ordinary follow-up. Ask which dates are confirmed and which are provisional.",
+          "For each visit, find out the expected arrival time, likely time on site, any preparation the team requires and the advice about returning to normal activities afterwards. If sedation or anesthesia is planned, ask for the individual instructions about recovery and travel.",
+          "Do not promise school or work that you will be back immediately after the injection or consultation. Ask for a realistic range, and make clear which part of the day remains uncertain. It is easier to allow for a late finish in advance than negotiate it from a hospital corridor."
+        ]
+      },
+      {
+        "title": "Different treatments can mean different demands on the diary",
+        "paragraphs": [
+          "Ask the team to explain the schedule for the particular medicine and regimen being used. Avoid borrowing dates from another family or an older treatment guide. The administration, tests and follow-up should all be listed by the clinic.",
+          "For Itvisma, for example, a one-time injection still comes with a clinical plan before and afterwards. Ask the treating team to give you the monitoring dates and explain what can be arranged locally. A treatment described as one-time should not be mistaken for one afternoon away from school or work.",
+          "If arrangements become difficult, tell the team early. Ask what flexibility is clinically appropriate and what cannot move. Do not postpone a prescribed dose, test or review yourself because it falls on an inconvenient day."
+        ],
+        "source": {
+          "title": "ITVISMA: steps towards treatment",
+          "url": "https://www.itvisma.com/path-to-itvisma"
+        }
+      },
+      {
+        "title": "Use one calendar, with three kinds of information",
+        "paragraphs": [
+          "Put clinical dates in one color or category. Put practical tasks in another: transport, leave requests, sibling arrangements, authorization checks and equipment preparation. Keep a third category for recovery or flexible time where the team says it may be needed.",
+          "A shared calendar can help, but a paper calendar works too. The important thing is that the people doing the work can see the version that is current. Avoid maintaining several separate schedules that disagree.",
+          "Label uncertain appointments clearly. Add the name of the person who will confirm them and the date you should hear back. Before asking a family member to take leave or booking non-refundable travel, check the clinical and access arrangements that could still change."
+        ]
+      },
+      {
+        "title": "Ask whether visits can be coordinated",
+        "paragraphs": [
+          "Ask whether appointments with different specialists can sensibly happen on one day, whether agreed tests can be completed nearer home and which conversations could be done remotely. These are questions for the clinical team, not reasons to remove visits from the plan yourself.",
+          "Also ask whether combining everything would make the day too long. A shorter total travel burden may still mean a tiring day with little room for meals, breathing routines, transfers or rest. Explain those needs while the schedule is being built.",
+          "If a clinician needs results before making a decision, check the timing. A local test on the wrong day may create another visit rather than save one. Get the agreed order of events written down, including who checks the results and contacts you."
+        ]
+      },
+      {
+        "title": "Tell the school what the child needs to keep learning",
+        "paragraphs": [
+          "A school needs more than a list of absence dates. Explain the likely effect on attendance, energy, deadlines, access and participation. Ask for a meeting with the appropriate school contact, such as the Section 504 coordinator or special-education team.",
+          "Discuss what would actually help: a manageable catch-up plan, access to materials, flexibility around disability-related appointments, an agreed contact for missed work and a realistic return after treatment. Ask the school to evaluate needs and record the support it agrees to provide.",
+          "The Department of Education’s disability guidance gives examples of modifications such as changes to attendance policies when disability-related absences require them. The right arrangement should reflect the individual student, not depend on a teacher informally making an exception every time."
+        ],
+        "source": {
+          "title": "US Department of Education: disability discrimination FAQs",
+          "url": "https://www.ed.gov/laws-and-policy/civil-rights-laws/disability-discrimination/frequently-asked-questions-disability-discrimination"
+        }
+      },
+      {
+        "title": "An IEP, a Section 504 plan and a health plan have different jobs",
+        "paragraphs": [
+          "An Individualized Education Program, or IEP, is used for eligible students who need special education and related services under IDEA. Section 504 is a different legal framework for eligible students with disabilities. A student’s needs and evaluation determine the appropriate route; SMA does not automatically put every child in the same category.",
+          "A school health plan may set out day-to-day health arrangements. Ask how it connects with the student’s educational supports and which staff need the relevant instructions. Do not assume one document settles every question about access, learning and health.",
+          "You can ask the school to explain the evaluation process and your procedural rights. If the child already has a plan, ask whether changes are needed before the next treatment period rather than waiting until missed work has accumulated."
+        ],
+        "source": {
+          "title": "US Department of Education: Section 504 and appropriate education",
+          "url": "https://www.ed.gov/laws-and-policy/civil-rights-laws/disability-discrimination/frequently-asked-questions-section-504-free-appropriate-public-education-fape"
+        }
+      },
+      {
+        "title": "Agree a catch-up plan that does not punish recovery",
+        "paragraphs": [
+          "Ask each teacher what work is essential during the absence and what can wait. Try to avoid a return day on which every missed assignment becomes due at once. Identify who coordinates the response across subjects, especially for an older child.",
+          "Discuss how the child will receive explanations, not just worksheets. A folder full of tasks can still leave a student without the teaching needed to complete them. Ask about an appropriate way to ask questions and stay connected to the class.",
+          "Include the child in choices where possible. Some children will want friends to know why they are away; others will want less detail shared. Agree what the school can say, who can say it and how the child can remain part of ordinary class life."
+        ]
+      },
+      {
+        "title": "For work, ask about intermittent leave",
+        "paragraphs": [
+          "The federal Family and Medical Leave Act can provide eligible employees of covered employers with unpaid, job-protected leave for qualifying needs. Medically necessary leave may be taken in separate blocks or on a reduced schedule. Eligibility requirements apply; being a parent of a child with SMA is not, on its own, confirmation of eligibility.",
+          "Ask HR or the leave administrator how to request an assessment of your eligibility, what certification is needed and how to report planned appointments. Ask separately about pay, accrued leave and any state or employer benefits.",
+          "Keep the request practical: the likely frequency, approximate time needed and the uncertainty the clinician has identified. You do not need to promise that future illness or appointments will follow an exact pattern that the medical team cannot predict."
+        ],
+        "source": {
+          "title": "US Department of Labor: FMLA frequently asked questions",
+          "url": "https://www.dol.gov/agencies/whd/fmla/faq/"
+        }
+      },
+      {
+        "title": "Get the clinician’s help with the paperwork",
+        "paragraphs": [
+          "If leave certification is needed, ask the clinic how it handles forms and how long completion usually takes. Give it the employer’s form and the return deadline. Ask who follows up if the leave administrator requests clarification.",
+          "For school documentation, request a description of the functional needs relevant to the school’s planning. For work, use the applicable certification process. Those are not necessarily the same letter, and neither automatically requires sending an employer the whole family’s medical history.",
+          "Ask where forms should be returned securely and keep a copy of the completed documents. If somebody says the paperwork is incomplete, ask for the exact missing information in writing. That gives the clinic something specific to address and reduces repeated back-and-forth."
+        ]
+      },
+      {
+        "title": "What about school meetings during working hours?",
+        "paragraphs": [
+          "Some parents also need time for meetings about their child’s school support. In a 2019 opinion letter, the Department of Labor explained that attending certain IEP meetings could qualify for FMLA leave in the particular circumstances described, involving children with serious health conditions and care arrangements.",
+          "That does not make every school meeting an automatic FMLA entitlement. If a meeting relates to your child’s qualifying care needs, ask the leave administrator and clinician how the rules apply to your circumstances. Refer them to the official guidance if useful.",
+          "For any meeting, ask for an agenda and decide who needs to attend. If timing is a problem, ask whether remote participation or another appointment is possible. Keep the focus on the decisions that need to be made for the child."
+        ],
+        "source": {
+          "title": "US Department of Labor: FMLA opinion on certain IEP meetings",
+          "url": "https://www.dol.gov/whd/opinion/FMLA/2019/2019_08_08_2A_FMLA.pdf"
+        }
+      },
+      {
+        "title": "If unpaid time is the problem, say so early",
+        "paragraphs": [
+          "A protected absence can still be unaffordable. Ask HR to explain available paid leave, whether accrued leave can be used, and any applicable state program or workplace policy. Ask how benefit contributions are handled while you are away.",
+          "Then put the household cost into the appointment plan. Include the time needed for travel and follow-up as well as the visit. Ask the hospital social worker about appropriate practical assistance, but do not build the budget around help that has not been confirmed.",
+          "If you are self-employed or do not meet a leave program’s requirements, discuss the practical constraints with the clinic. You may still be able to coordinate visits or identify support with transport and siblings. An unavailable employment benefit does not mean your logistical difficulties should go unheard."
+        ]
+      },
+      {
+        "title": "Give family helpers a defined role",
+        "paragraphs": [
+          "Choose tasks that are useful and safe: a sibling pickup, a prepared meal, a ride for a household member or help making routine calls. Tell the helper the date, the task and when you will confirm the arrangement.",
+          "If care itself is being shared, make sure the person has the training and authority required for those tasks. Do not let a crowded calendar turn an unprepared relative into the assumed replacement for a trained caregiver.",
+          "Have a backup for the task most likely to disrupt the day. It might be transport or collecting another child. Share only the information each helper needs. A person helping with pickup does not automatically need access to medical records or the school’s full support plan."
+        ]
+      },
+      {
+        "title": "Try a short planning message instead of several long explanations",
+        "paragraphs": [
+          "To the clinic: “We need to coordinate treatment with school and work. Please confirm the next visits, preparation, expected time on site and follow-up. Please also tell us what can be arranged locally and which dates must remain fixed.”",
+          "To school: “These planned medical visits may affect attendance and deadlines. Can we agree one contact and a manageable learning plan, including what happens if recovery takes longer than expected?”",
+          "To work: “I need information about leave for recurring medical care for my child. Please explain the eligibility and certification process, how to report appointments and any pay or benefit arrangements I should understand.”",
+          "Adapt the messages to the actual situation. You are asking each organization to do its part, rather than asking one person to solve everything."
+        ]
+      },
+      {
+        "title": "Review the plan after the next visit",
+        "paragraphs": [
+          "After the appointment, note what took longer than expected and what helped. Was transport suitable? Were school materials available? Did the time away from work match the estimate? Were follow-up tasks clearly assigned?",
+          "Use those details to improve the next visit. A realistic schedule comes from learning what happens for your family, not from creating a perfect-looking calendar once. Keep the parts that worked and ask for help with the parts that did not.",
+          "If the child’s health needs change, start with the clinical team and update school and work arrangements accordingly. The purpose of the plan is to make care and ordinary life fit together as well as possible, with room for the person at the center of it all."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Should we schedule treatment only during school holidays?",
+        "answer": "Ask the treating team about appropriate timing. Do not delay or move prescribed care yourself to avoid an absence. School support should be planned around necessary care."
+      },
+      {
+        "question": "Does every child with SMA automatically need an IEP?",
+        "answer": "No. The school should evaluate the individual student’s needs and eligibility. An IEP, Section 504 supports and a health plan serve different purposes."
+      },
+      {
+        "question": "Can a parent use FMLA for recurring appointments?",
+        "answer": "An eligible employee may be able to use intermittent FMLA leave for medically necessary care of a qualifying family member. Ask the leave administrator about your actual eligibility and certification requirements."
+      },
+      {
+        "question": "Does FMLA guarantee paid leave?",
+        "answer": "No. Federal FMLA leave is generally unpaid. Ask separately about accrued leave, employer benefits and any relevant state program."
+      },
+      {
+        "question": "Can we combine every appointment into one day?",
+        "answer": "Ask the team whether that is clinically and practically suitable. A combined day can reduce travel but may also be too long or conflict with the order in which tests and reviews need to happen."
+      }
+    ],
+    "bookContext": "When Every Breath Matters gives a family perspective on the work that happens around SMA care, including the demands that do not appear on an appointment letter. It may be useful reading for relatives or friends who want to understand why practical, reliable help matters.",
+    "audience": "United States",
+    "sourcesCheckedAt": "2026-11-23",
+    "seoTitle": "SMA Appointments, School and Work: A US Family Guide",
+    "excerpt": "Practical planning for US families managing SMA treatment appointments, school absences, support plans, work leave and follow-up care.",
+    "category": "Living with SMA",
+    "summary": [
+      "Plan the whole visit, including preparation, travel and follow-up.",
+      "Agree school supports and investigate work-leave eligibility before dates become urgent.",
+      "Ask the clinical team about flexibility; never move prescribed care yourself."
+    ],
+    "checklist": [
+      "Get confirmed and provisional dates from the clinic.",
+      "Include preparation, travel, monitoring and recovery advice.",
+      "Ask which visits can appropriately be coordinated.",
+      "Agree one school contact and a manageable learning plan.",
+      "Ask HR about leave eligibility, certification and pay arrangements.",
+      "Arrange practical help and a backup for the hardest task.",
+      "Review what worked after the next appointment."
+    ],
+    "clinical": true,
+    "updatedAt": "2026-11-23",
+    "publishedAt": "2026-11-23",
+    "bookPlacement": "end",
+    "related": [
+      "sma-treatment-support-usa",
+      "itvisma-cost-insurance-financial-help-usa",
+      "sma-gene-therapy-insurance-coverage-appeals-usa"
+    ],
+    "links": [
+      {
+        "label": "US overview: treatment, insurance and family support",
+        "href": "/blog/sma-treatment-support-usa"
+      },
+      {
+        "label": "Free Understanding SMA course",
+        "href": "/learn/understanding-sma"
+      }
+    ]
+  },
+  {
     "slug": "understanding-sma-nigeria",
     "title": "Spinal muscular atrophy (SMA) in Nigeria: a family’s starting guide",
     "category": "Understanding SMA",
@@ -1259,7 +2084,7 @@
       "sma-book-club-discussion-guide"
     ],
     "clinical": false,
-    "updatedAt": "2026-11-20",
+    "updatedAt": "2026-11-23",
     "sourcesCheckedAt": "2026-11-17",
     "audience": "Nigeria",
     "intro": [
@@ -1301,6 +2126,10 @@
       {
         "label": "When Every Breath Matters: a book club discussion guide",
         "href": "/blog/sma-book-club-discussion-guide"
+      },
+      {
+        "label": "For US readers: planning SMA home care",
+        "href": "/blog/spinal-muscular-atrophy-home-care-usa"
       }
     ]
   },
@@ -1991,7 +2820,7 @@
       "sma-treatment-support-canada"
     ],
     "bookContext": "When Every Breath Matters tells the story of a Nigerian family raising children with SMA and seeking care across borders. US readers can find the Kindle, paperback and hardcover editions on Amazon.",
-    "updatedAt": "2026-11-20",
+    "updatedAt": "2026-11-23",
     "sourcesCheckedAt": "2026-11-17",
     "category": "Diagnosis & care",
     "summary": [
@@ -2017,6 +2846,22 @@
       {
         "label": "SMA in Canada: treatment coverage, specialist care and family support",
         "href": "/blog/sma-treatment-support-canada"
+      },
+      {
+        "label": "Itvisma costs in the US: what might your family actually pay?",
+        "href": "/blog/itvisma-cost-insurance-financial-help-usa"
+      },
+      {
+        "label": "SMA gene therapy and insurance: how to check coverage and handle a denial",
+        "href": "/blog/sma-gene-therapy-insurance-coverage-appeals-usa"
+      },
+      {
+        "label": "SMA home care: making a practical plan for your family",
+        "href": "/blog/spinal-muscular-atrophy-home-care-usa"
+      },
+      {
+        "label": "SMA appointments, school and work: how to make the week manageable",
+        "href": "/blog/sma-treatment-appointments-school-work-usa"
       }
     ]
   },

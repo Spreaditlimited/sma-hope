@@ -15,7 +15,7 @@ export async function editorialArticles(): Promise<ArticleRecord[]> {
 const cachedArticles = unstable_cache(async (): Promise<ArticleRecord[]> => {
   if (!process.env.SMAHOPE_DATABASE_URL) return initialGuides.map(content => ({slug:content.slug,title:content.title,status:"published",content,revision:0}));
   return editorialArticles();
-},["smahope-articles","2026-11-20-editorial-voice"],{revalidate:300,tags:["guides"]});
+},["smahope-articles","2026-11-23-us-practical-guides"],{revalidate:300,tags:["guides"]});
 export const getGuides = cache(async (): Promise<Guide[]> => {
   // Evaluate the clock outside the data cache on every request, including sitemap requests.
   await connection();

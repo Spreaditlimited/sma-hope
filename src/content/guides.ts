@@ -13,6 +13,8 @@ export type GuideSection = {
 export type Guide = {
   slug: string;
   title: string;
+  seoTitle?: string;
+  bookPlacement?: "inline" | "end";
   category: string;
   excerpt: string;
   summary: string[];

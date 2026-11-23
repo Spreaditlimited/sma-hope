@@ -987,5 +987,85 @@
     "checkedAt": "2026-11-17",
     "scheduledFor": "2026-12-31T09:00:00.000Z",
     "publication": "Prepared locally for the approved Monday/Thursday 09:00 Europe/London schedule. Activation requires deployment."
+  },
+  {
+    "slug": "itvisma-cost-insurance-financial-help-usa",
+    "audience": "United States",
+    "primaryIntent": "Itvisma costs in the US: what might your family actually pay?",
+    "checkedAt": "2026-11-23",
+    "keywords": [
+      {
+        "keyword": "itvisma cost",
+        "markets": {
+          "United States": {
+            "exportEstimate": "140.0",
+            "measurement": "Google estimate including close variants; blank means unavailable",
+            "advertiserCompetition": "Low"
+          }
+        }
+      }
+    ],
+    "methodology": "US Google Search; November 2025–October 2026; direct historical checks and related ideas, supported by observed US Search Console questions.",
+    "sourceEvidence": "SMA Hope US research pack, 23 November 2026"
+  },
+  {
+    "slug": "sma-gene-therapy-insurance-coverage-appeals-usa",
+    "audience": "United States",
+    "primaryIntent": "SMA gene therapy and insurance: how to check coverage and handle a denial",
+    "checkedAt": "2026-11-23",
+    "keywords": [
+      {
+        "keyword": "sma gene therapy insurance coverage",
+        "markets": {
+          "United States": {
+            "exportEstimate": "",
+            "measurement": "Google estimate including close variants; blank means unavailable",
+            "advertiserCompetition": ""
+          }
+        }
+      }
+    ],
+    "methodology": "US Google Search; November 2025–October 2026; direct historical checks and related ideas, supported by observed US Search Console questions.",
+    "sourceEvidence": "SMA Hope US research pack, 23 November 2026"
+  },
+  {
+    "slug": "spinal-muscular-atrophy-home-care-usa",
+    "audience": "United States",
+    "primaryIntent": "SMA home care: making a practical plan for your family",
+    "checkedAt": "2026-11-23",
+    "keywords": [
+      {
+        "keyword": "spinal muscular atrophy home care",
+        "markets": {
+          "United States": {
+            "exportEstimate": "",
+            "measurement": "Google estimate including close variants; blank means unavailable",
+            "advertiserCompetition": ""
+          }
+        }
+      }
+    ],
+    "methodology": "US Google Search; November 2025–October 2026; direct historical checks and related ideas, supported by observed US Search Console questions.",
+    "sourceEvidence": "SMA Hope US research pack, 23 November 2026"
+  },
+  {
+    "slug": "sma-treatment-appointments-school-work-usa",
+    "audience": "United States",
+    "primaryIntent": "SMA appointments, school and work: how to make the week manageable",
+    "checkedAt": "2026-11-23",
+    "keywords": [
+      {
+        "keyword": "sma treatment appointments",
+        "markets": {
+          "United States": {
+            "exportEstimate": "",
+            "measurement": "Google estimate including close variants; blank means unavailable",
+            "advertiserCompetition": ""
+          }
+        }
+      }
+    ],
+    "methodology": "US Google Search; November 2025–October 2026; direct historical checks and related ideas, supported by observed US Search Console questions.",
+    "sourceEvidence": "SMA Hope US research pack, 23 November 2026"
   }
 ]
