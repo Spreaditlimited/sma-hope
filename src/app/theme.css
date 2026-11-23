@@ -168,3 +168,18 @@ input::placeholder, textarea::placeholder { color: var(--text-soft); opacity: .8
 .theme-option[data-highlighted] { background:var(--surface-raised);outline:2px solid var(--focus);outline-offset:-2px; }
 .theme-check { margin-left:auto; }
 .theme-hint { display:block;margin:0;padding:8px 10px;font-size:12px;line-height:1.5;color:var(--text-soft); }
+
+/* The homepage follows the same dark surface hierarchy as the foundation pages. */
+[data-theme="dark"] .home-page .hope-hero {
+  background: var(--surface-muted);
+  border-bottom: 1px solid var(--line);
+}
+[data-theme="dark"] .home-page :is(.hope-hero h1 em, .display-heading em) { color: var(--link); }
+[data-theme="dark"] .home-page .eyebrow-line { background: var(--accent-gold); }
+[data-theme="dark"] .home-page .pathway-section { background: var(--bg); border-top: 0; }
+[data-theme="dark"] .home-page :is(.pathway-top > svg, .pathway-arrow) { color: var(--link); }
+[data-theme="dark"] .home-page .pathway-top > span { color: var(--accent-gold); }
+[data-theme="dark"] .home-page .photo-label { background: var(--surface-raised); color: var(--text); }
+[data-theme="dark"] .home-page .book-feature-art { background: var(--surface); border: 1px solid var(--line); }
+[data-theme="dark"] .home-page .story-band { color: var(--on-brand-deep); }
+[data-theme="dark"] .home-page .story-band .eyebrow { color: var(--accent-gold); }

@@ -33,7 +33,7 @@ const pathways: { title: string; text: string; href: string; icon: IconName }[] 
 export default async function Home() {
   const guides = await getGuides();
   return (
-    <>
+    <div className="home-page">
       <section className="hope-hero">
         <div className="container hero-layout">
           <div className="hero-copy">
@@ -210,6 +210,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
