@@ -1915,3 +1915,6 @@ body { font-optical-sizing: auto; }
 button, input, select, textarea { font-family: var(--font-body), system-ui, sans-serif; }
 .workspace-typography { --font-heading: var(--font-body); }
 .workspace-typography :is(h1, h2, h3, h4) { font-weight: 600; letter-spacing: -.02em; }
+
+/* Keep v3 verification invisible; CaptchaNotice supplies visible attribution. */
+.grecaptcha-badge { visibility: hidden !important; }
