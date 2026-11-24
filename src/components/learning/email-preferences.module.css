@@ -1,0 +1,10 @@
+
+.card{padding:clamp(24px,3vw,40px);border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--text);max-width:800px;margin:28px 0;min-width:0;overflow-wrap:anywhere}
+.card h2{font-family:var(--font-heading),Georgia,serif;font-size:clamp(25px,3vw,34px);font-weight:500;line-height:1.22;letter-spacing:-.025em;margin:10px 0 20px;max-width:22ch}
+.card p{line-height:1.8;max-width:65ch;margin:0 0 18px;color:var(--text-soft)}
+.card .eyebrow{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-soft);margin:0}
+.card .choice{display:flex;align-items:flex-start;gap:13px;padding:20px 0;margin:4px 0 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);line-height:1.7;color:var(--text);cursor:pointer}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 22px}.actions button{min-height:44px}
+.card .note{font-size:12px;line-height:1.85;color:var(--text-soft);margin:22px 0 0}
+.card [role=status],.card [role=alert]{font-weight:600;margin:18px 0;color:var(--text)}
+@media(max-width:600px){.card{margin:22px 0;padding:25px 22px;border-radius:14px}.card h2{font-size:27px;margin-bottom:18px}.card p,.card .choice{font-size:14px}.actions{display:grid;grid-template-columns:1fr;gap:10px}.actions button{width:100%;justify-content:center}.card .note{font-size:12px}.card .choice{padding:18px 0}}

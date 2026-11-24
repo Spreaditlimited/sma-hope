@@ -1,0 +1,13 @@
+# Learning emails
+
+Additive migration: database/004-learning-reminders.sql. Back up before applying. Existing learners remain opted out; new learners choose an unchecked registration option or account email preferences. Global delivery defaults paused and can be activated by an admin at /admin/marketing after review. Set a unique server-only CRON_SECRET of at least 32 characters in production. Vercel cron runs hourly at minute 15 and sends its Bearer token; previews never receive scheduled production cron requests. Do not reuse auth or payment secrets.
+
+The first release uses the existing branded SMTP sender. Accepted is SMTP acceptance, not delivery. Reserved/uncertain records are not retried automatically: investigate provider logs before any manual remediation. Missing SMTP means skipped, not accepted. No bulk broadcasts or fundraising subscriptions are created. Unsubscribe links require confirmation for a normal GET and support RFC 8058 one-click POST without a login. Existing unsubscribe links remain valid until an explicit resubscription rotates the token.
+
+Scheduled batches are bounded to 20 accounts. A database lock prevents overlapping workers. Progress, permission, global pause and completion are rechecked before dispatch. A once-only completion acknowledgment is sent on the next hourly run, without waiting for the reminder quiet period. Reminder caps are 72 hours between journey messages, two in seven days and three inactivity messages in 30 days. Each stage sends once. Final reminders stop further inactivity reminders. SMTP ambiguity means there is no guarantee of exactly-once external delivery, but uncertain sends are never blindly retried.
+
+Use mocked delivery for automated tests, synthetic accounts in the isolated database for integration tests, and local rendered emails for visual QA. Do not test against real learners or send live mail as a smoke test.
+
+## Release verification — 24 November 2026
+
+71 automated tests and 20 isolated integration checks passed; four SMTP messages were captured locally, with zero external test email. Lint, TypeScript and production build passed. Safari was checked at 375px and 1280px, in light and dark appearances, including signup permission, account pause/resume, unsubscribe, administrator controls and branded previews. Existing shared square checkbox styling is reused. Real SMTP authentication was verified without sending. The additive database migration followed a backup and preserved existing record counts. The authorised release enables hourly delivery only for learners who explicitly opt in; existing accounts remain unsubscribed.

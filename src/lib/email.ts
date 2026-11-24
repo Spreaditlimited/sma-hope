@@ -9,6 +9,8 @@ export async function sendTransactionalEmail(input: {
   text: string;
   replyTo?: string;
   design?: EmailDesign;
+  headers?: Record<string,string>;
+  messageId?: string;
 }) {
   const to = input.to.trim().toLowerCase();
   const usePartnershipMailbox = to === env.partnershipsEmailAddress.trim().toLowerCase();
@@ -25,6 +27,7 @@ export async function sendTransactionalEmail(input: {
     host: env.smtpHost,
     port: env.smtpPort,
     secure: env.smtpPort === 465,
+    connectionTimeout: 8000, greetingTimeout: 8000, socketTimeout: 10000,
     auth: { user: smtpUser, pass: smtpPass },
   });
 
@@ -41,6 +44,8 @@ export async function sendTransactionalEmail(input: {
     subject: input.subject,
     text: input.text,
     html,
+    ...(input.headers ? {headers:input.headers} : {}),
+    ...(input.messageId ? {messageId:input.messageId} : {}),
     ...(input.replyTo ? { replyTo: input.replyTo } : {}),
   });
 

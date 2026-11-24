@@ -25,7 +25,6 @@
 .fields input:focus-visible{outline:2px solid var(--focus,#b78b43);outline-offset:3px}
 .fields small{font-size:11px;line-height:1.7;font-weight:400;color:var(--text-soft,#536653);margin-top:0}
 .fields .consent{display:flex;align-items:flex-start;gap:12px;font-size:12px;font-weight:400;line-height:1.85;margin-top:3px}
-.fields .consent input{appearance:auto;display:block;width:18px;min-width:18px;max-width:18px;height:18px;min-height:18px;flex:0 0 18px;margin:3px 0 0;padding:0;border-radius:3px;accent-color:var(--primary,#173a2b);box-shadow:none}
 .consent>span{display:block;min-width:0;flex:1;color:var(--text-soft,#536653)}
 .consent a{text-decoration:underline;text-underline-offset:3px;color:var(--text,#173a2b)}
 .submit{display:flex;width:100%;justify-content:space-between;align-items:center;gap:20px;min-height:49px;margin-top:24px;padding:13px 20px;font-size:14px;border-radius:9px}

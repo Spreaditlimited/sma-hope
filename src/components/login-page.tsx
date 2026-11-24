@@ -28,7 +28,7 @@ export function LoginPage({admin = false, setup = false}: {admin?:boolean;setup?
       const result = await (admin ? adminAuth : accountAuth).signIn.email({email:email.trim(),password},{headers:await captchaHeaders(admin?"admin_login":"login")});
       if (result.error) {setError(result.error.message || "Unable to sign in.");return;}
       const next = new URLSearchParams(window.location.search).get("next");
-      router.push(admin ? "/admin" : next && ["/account", "/account/learn", "/account/orders", "/account/donations", "/account/subscriptions"].includes(next) ? next : "/account");
+      router.push(admin ? "/admin" : next && ["/account", "/account/learn", "/account/orders", "/account/donations", "/account/subscriptions", "/account/email-preferences"].includes(next) ? next : "/account");
       router.refresh();
     } catch (failure) {
       setError(failure instanceof Error && failure.message.startsWith("Security verification") ? failure.message : "Unable to connect. Please check your connection and try again.");

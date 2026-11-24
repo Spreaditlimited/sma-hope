@@ -33,6 +33,7 @@ export function LearnerRegistration() {
           password: form.get('password'),
           terms: form.get('terms') === 'on',
           signupSource: 'learning',
+          learningEmails: form.get('learningEmails') === 'on',
         }),
       });
       if (!response.ok) {
@@ -67,7 +68,8 @@ export function LearnerRegistration() {
               <label htmlFor="learner-name">Full name<input id="learner-name" name="name" required minLength={2} maxLength={180} autoComplete="name" /></label>
               <label htmlFor="learner-email">Email address<input id="learner-email" name="email" type="email" required maxLength={254} autoComplete="email" inputMode="email" /></label>
               <label htmlFor="learner-password">Create a password<PasswordInput id="learner-password" name="password" required minLength={12} maxLength={128} autoComplete="new-password" aria-describedby="learner-password-help" /><small id="learner-password-help">Use at least 12 characters.</small></label>
-              <label className={styles.consent} htmlFor="learner-consent"><input id="learner-consent" name="terms" type="checkbox" required /><span>I agree to the <Link href="/terms">terms</Link> and <Link href="/privacy-policy">privacy notice</Link>. SMA Hope will store my account, course progress and quiz answers. I do not need to provide medical information.</span></label>
+              <label className={`${styles.consent} editor-checkbox`} htmlFor="learner-consent"><input id="learner-consent" name="terms" type="checkbox" required /><span>I agree to the <Link href="/terms">terms</Link> and <Link href="/privacy-policy">privacy notice</Link>. SMA Hope will store my account, course progress and quiz answers. I do not need to provide medical information.</span></label>
+              <label className={`${styles.consent} editor-checkbox`} htmlFor="learning-email-consent"><input id="learning-email-consent" name="learningEmails" type="checkbox" /><span>Email me occasional course reminders and a completion message. Optional; unsubscribe at any time. This does not subscribe me to fundraising updates.</span></label>
             </fieldset>
             <CaptchaNotice />
             {error && <div className={styles.error} role="alert"><p>{error}</p><Link href="/account/login?next=/account/learn">Sign in</Link><span> · </span><Link href="/account/reset-password">Reset password</Link></div>}

@@ -13,6 +13,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isWorkspaceRoute = pathname.startsWith("/account") || pathname.startsWith("/admin");
 
+  if (pathname === "/learning-emails") return <main id="main-content">{children}</main>;
+
   if (isWorkspaceRoute) {
     return <><MetaPixel /><div id="main-content" className="workspace-typography">{(pathname.endsWith("/login") || pathname.includes("reset-password")) && <div className="auth-appearance"><ThemePicker /></div>}{children}</div></>;
   }

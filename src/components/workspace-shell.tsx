@@ -11,6 +11,7 @@ type Item = { label: string; href: string; icon: IconName };
 const accountItems: Item[] = [
   { label: "Overview", href: "/account", icon: "grid" },
   { label: "My learning", href: "/account/learn", icon: "book" },
+  { label: "Email preferences", href: "/account/email-preferences", icon: "settings" },
   { label: "My donations", href: "/account/donations", icon: "heart" },
   { label: "Book orders", href: "/account/orders", icon: "box" },
 ];
@@ -20,6 +21,7 @@ const adminItems: Item[] = [
   { label: "Book orders", href: "/admin/book-orders", icon: "box" },
   { label: "Supporters", href: "/admin/donors", icon: "people" },
   { label: "Learning", href: "/admin/learning", icon: "book" },
+  { label: "Learning emails", href: "/admin/marketing", icon: "settings" },
   { label: "Content library", href: "/admin/content", icon: "book" },
   { label: "Settings", href: "/admin/settings", icon: "settings" },
 ];

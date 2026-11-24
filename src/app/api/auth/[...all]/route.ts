@@ -1,4 +1,5 @@
 import { authCaptchaAction, verifyCaptcha } from '@/lib/captcha';
+import { savePreferences } from '@/lib/learning/reminders';
 import { after } from 'next/server';
 import { getAuth, assertSameOrigin } from '@/lib/auth/server';
 import { buildCourseSignupLead, sendCourseSignupLead } from '@/lib/meta-course-lead';
@@ -8,6 +9,7 @@ export async function POST(request: Request) {
   if(action){const blocked=await verifyCaptcha(request,action);if(blocked)return blocked;}
   const signup=new URL(request.url).pathname.replace(/\/+$/,'') === '/api/auth/sign-up/email';
   let courseSignup=false;
+  let learningEmails=false;
   if (signup) {
     try {
       assertSameOrigin(request);
@@ -16,6 +18,7 @@ export async function POST(request: Request) {
       const body=JSON.parse(raw);
       if(body.terms!==true || typeof body.name!=='string' || body.name.trim().length<2 || body.name.length>180 || typeof body.password!=='string' || body.password.length>128)return Response.json({error:'Please complete the registration form and accept the terms.'},{status:400});
       courseSignup=body.signupSource==='learning';
+      learningEmails=body.learningEmails===true;
     } catch { return Response.json({error:'Invalid registration'},{status:403}); }
   }
   const response=await getAuth().handler(request);
@@ -23,6 +26,7 @@ export async function POST(request: Request) {
     try {
       const created=await response.clone().json();
       if (typeof created.user?.id==='string') {
+        if(learningEmails){try{await savePreferences(created.user.id,true,0,'registration');}catch{console.warn('Learning email preference could not be saved; learner can choose again in account.');}}
         const event=buildCourseSignupLead(request,created.user.id);
         if(event)after(async()=>{await sendCourseSignupLead(event);});
       }
