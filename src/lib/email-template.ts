@@ -1,10 +1,12 @@
 export type EmailDesign = {
+  variant?: "learning";
+  copy?: string;
+  links?: { unsubscribe: string; preferences: string; share?: string };
   heading?: string;
   eyebrow?: string;
   action?: { label: string; url: string };
   note?: { title: string; text: string };
 };
-
 function escapeHtml(value: string) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
@@ -12,97 +14,72 @@ function safeUrl(value: string) {
   try { const url = new URL(value); return ["https:", "http:"].includes(url.protocol) ? url.href : null; }
   catch { return null; }
 }
+function link(value: string | undefined, label: string) {
+  const url = value && safeUrl(value);
+  return url ? `<a class="email-link" href="${escapeHtml(url)}" style="color:#174e60;text-decoration:underline;">${escapeHtml(label)}</a>` : "";
+}
 function linkify(value: string) {
   return value.split(/(https?:\/\/[^\s<>"']+)/g).map(part => {
     const url = /^https?:\/\//.test(part) ? safeUrl(part) : null;
-    return url ? `<a class="email-link" href="${escapeHtml(url)}" style="color:#174e60;text-decoration:underline;word-break:break-all;">${escapeHtml(part)}</a>` : escapeHtml(part);
+    return url ? link(url, "Open link") : escapeHtml(part);
   }).join("");
 }
 function bodyHtml(text: string) {
-  const lines = text.split("\n");
   const blocks: string[] = [];
-  let paragraph: string[] = [], details: {label:string;value:string}[] = [];
+  let paragraph: string[] = [], details: { label: string; value: string }[] = [];
   const flushParagraph = () => {
-    if (paragraph.length) blocks.push(`<p class="email-copy" style="margin:0 0 20px;color:#53645f;font-size:17px;line-height:1.65;overflow-wrap:anywhere;">${paragraph.map(linkify).join("<br>")}</p>`);
+    if (paragraph.length) blocks.push(`<p class="email-copy" style="margin:0 0 22px;color:#53645f;font-size:16px;line-height:1.8;overflow-wrap:anywhere;">${paragraph.map(linkify).join("<br>")}</p>`);
     paragraph = [];
   };
   const flushDetails = () => {
-    if (details.length) blocks.push(`<table role="presentation" class="email-muted" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 24px;background:#e8eee4;border-radius:8px;table-layout:fixed;">${details.map(pair => `<tr><td class="email-copy email-border" width="38%" valign="top" style="padding:12px 16px;border-bottom:1px solid #dce3d8;color:#53645f;font-size:14px;word-break:break-word;">${escapeHtml(pair.label)}</td><td class="email-ink email-border" valign="top" style="padding:12px 16px;border-bottom:1px solid #dce3d8;color:#183747;font-size:15px;word-break:break-word;">${linkify(pair.value)}</td></tr>`).join("")}</table>`);
+    if (details.length) blocks.push(`<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:4px 0 28px;table-layout:fixed;">${details.map(pair => `<tr><td class="email-copy email-border" width="38%" valign="top" style="padding:13px 16px 13px 0;border-bottom:1px solid #e1e5de;color:#53645f;font-size:13px;line-height:1.7;word-break:break-word;">${escapeHtml(pair.label)}</td><td class="email-ink email-border" valign="top" style="padding:13px 0;border-bottom:1px solid #e1e5de;color:#183747;font-size:14px;line-height:1.7;word-break:break-word;">${linkify(pair.value)}</td></tr>`).join("")}</table>`);
     details = [];
   };
-  for (const line of lines) {
+  for (const line of text.split("\n")) {
     if (!line.trim()) { flushParagraph(); flushDetails(); continue; }
     const pair = line.match(/^([A-Za-z][A-Za-z \-]{1,47}):\s+(.+)$/);
-    if (pair) { flushParagraph(); details.push({label:pair[1],value:pair[2]}); }
+    if (pair) { flushParagraph(); details.push({ label: pair[1], value: pair[2] }); }
     else { flushDetails(); paragraph.push(line); }
   }
   flushParagraph(); flushDetails();
   return blocks.join("");
 }
-
-/** Table layout and inline light styles remain usable when a mail client strips CSS. */
+/** One shared, restrained layout. Inline styles and tables support mail clients that strip CSS. */
 export function renderEmailTemplate(input: { subject: string; text: string; siteUrl?: string; design?: EmailDesign }) {
-  const origin = safeUrl(input.siteUrl || "https://www.smahope.org") || "https://www.smahope.org";
-  const site = new URL(origin).origin;
-  const design = input.design || {};
+  const site = new URL(safeUrl(input.siteUrl || "https://www.smahope.org") || "https://www.smahope.org").origin;
+  const design = input.design || {}, learning = design.variant === "learning";
   const actionUrl = design.action && safeUrl(design.action.url);
-  const body = actionUrl ? input.text.split("\n").filter(line => line.trim() !== actionUrl && !/^(Dashboard|SMA Hope order dashboard):\s+https?:\/\//.test(line)).join("\n") : input.text;
-  const preheader = input.text.split("\n").find(line => line.trim()) || input.subject;
+  const body = learning && design.copy ? design.copy : input.text.split("\n").filter(line => line.trim() !== actionUrl && !/^(Dashboard|SMA Hope order dashboard):\s+https?:\/\//.test(line)).join("\n");
+  const preheader = (learning ? design.copy : input.text)?.split("\n").find(line => line.trim() && !/^hello[,.!]?$/i.test(line.trim())) || input.subject;
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark"><title>${escapeHtml(input.subject)}</title>
 <style>
-  :root { color-scheme:light dark;supported-color-schemes:light dark; }
-  body { margin:0;padding:0;-webkit-text-size-adjust:100%; }
-  table { mso-table-lspace:0;mso-table-rspace:0; }
-  td,p,a { font-family:Arial,Helvetica,sans-serif; }
-  a[x-apple-data-detectors] { color:inherit!important; }
-  .email-logo-dark { display:none;max-height:0;overflow:hidden;mso-hide:all; }
-  @media(max-width:480px) { .email-outer{padding:20px 10px!important}.email-pad{padding:26px 22px!important}.email-heading{font-size:32px!important}.email-button{display:block!important;text-align:center!important} }
-  @media(prefers-color-scheme:dark) {
-    .email-canvas { background:#101b1b!important; }
-    .email-surface { background:#192827!important; }
-    .email-muted { background:#283d34!important; }
-    .email-ink { color:#edf3ef!important; }
-    .email-copy { color:#b7c5be!important; }
-    .email-border { border-color:#3c5047!important; }
-    .email-link { color:#c2dfd3!important; }
-    .email-button,.email-button-cell { background:#dce9df!important;color:#183747!important;border-color:#dce9df!important; }
-    .email-logo-light { display:none!important;max-height:0!important;overflow:hidden!important; }
-    .email-logo-dark { display:block!important;max-height:none!important;overflow:visible!important; }
-  }
-  [data-ogsc] .email-ink { color:#edf3ef!important; }
-  [data-ogsc] .email-copy { color:#b7c5be!important; }
-  [data-ogsc] .email-link { color:#c2dfd3!important; }
-  [data-ogsc] .email-surface { background:#192827!important; }
-  [data-ogsc] .email-muted { background:#283d34!important; }
-  [data-ogsc] .email-canvas { background:#101b1b!important; }
-  [data-ogsc] .email-logo-light { display:none!important; }
-  [data-ogsc] .email-logo-dark { display:block!important;max-height:none!important;overflow:visible!important; }
-</style></head>
-<body class="email-canvas" style="background:#f2f0e9;margin:0;padding:0;">
+:root{color-scheme:light dark;supported-color-schemes:light dark}body{margin:0;padding:0;-webkit-text-size-adjust:100%}table{mso-table-lspace:0;mso-table-rspace:0}td,p,a{font-family:Arial,Helvetica,sans-serif}a[x-apple-data-detectors]{color:inherit!important}.email-logo-dark{display:none;max-height:0;overflow:hidden;mso-hide:all}
+@media(max-width:480px){.email-outer{padding:16px 10px!important}.email-pad{padding-left:24px!important;padding-right:24px!important}.email-heading{font-size:28px!important}.email-button{display:block!important;text-align:center!important}}
+@media(prefers-color-scheme:dark){.email-canvas{background:#101b1b!important}.email-surface{background:#192827!important}.email-ink{color:#edf3ef!important}.email-copy{color:#b7c5be!important}.email-border{border-color:#3c5047!important}.email-link{color:#c2dfd3!important}.email-button,.email-button-cell{background:#dce9df!important;color:#183747!important;border-color:#dce9df!important}.email-logo-light{display:none!important;max-height:0!important;overflow:hidden!important}.email-logo-dark{display:block!important;max-height:none!important;overflow:visible!important}}
+[data-ogsc] .email-ink{color:#edf3ef!important}[data-ogsc] .email-copy{color:#b7c5be!important}[data-ogsc] .email-link{color:#c2dfd3!important}[data-ogsc] .email-surface{background:#192827!important}[data-ogsc] .email-canvas{background:#101b1b!important}[data-ogsc] .email-border{border-color:#3c5047!important}[data-ogsc] .email-logo-light{display:none!important}[data-ogsc] .email-logo-dark{display:block!important;max-height:none!important;overflow:visible!important}
+</style></head><body class="email-canvas" style="margin:0;padding:0;background:#f2f0e9;">
 <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;">${escapeHtml(preheader)}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>
 <table role="presentation" class="email-canvas" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f2f0e9;"><tr><td class="email-outer" align="center" style="padding:36px 16px;">
-<!--[if mso]><table role="presentation" width="600"><tr><td><![endif]-->
-<table role="presentation" class="email-surface email-border" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;background:#fffdf8;border:1px solid #dce3d8;border-radius:16px;border-spacing:0;overflow:hidden;">
-<tr><td class="email-pad email-border" style="padding:26px 36px;border-bottom:1px solid #dce3d8;">
-<a href="${escapeHtml(site)}" style="text-decoration:none;">
-<img class="email-logo-light" src="${escapeHtml(site)}/SMA%20Hope%20Foundation%20logo.png" width="140" alt="SMA Hope Foundation" style="display:block;width:140px;max-width:100%;height:auto;border:0;color:#183747;font-size:16px;">
-<!--[if !mso]><!--><img class="email-logo-dark" src="${escapeHtml(site)}/sma-hope-logo-dark.png" width="140" alt="SMA Hope Foundation" style="display:none;max-height:0;overflow:hidden;width:140px;height:auto;border:0;mso-hide:all;color:#edf3ef;font-size:16px;"><!--<![endif]-->
+<!--[if mso]><table role="presentation" width="560"><tr><td><![endif]-->
+<table role="presentation" class="email-surface" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:560px;background:#fffdf8;border-radius:8px;border-spacing:0;overflow:hidden;">
+<tr><td class="email-pad" style="padding:36px 36px 0;"><a href="${escapeHtml(site)}" style="text-decoration:none;">
+<img class="email-logo-light" src="${escapeHtml(site)}/SMA%20Hope%20Foundation%20logo.png" width="112" alt="SMA Hope Foundation" style="display:block;width:112px;height:auto;border:0;color:#183747;font-size:14px;">
+<!--[if !mso]><!--><img class="email-logo-dark" src="${escapeHtml(site)}/sma-hope-logo-dark.png" width="112" alt="SMA Hope Foundation" style="display:none;max-height:0;overflow:hidden;width:112px;height:auto;border:0;mso-hide:all;color:#edf3ef;font-size:14px;"><!--<![endif]-->
 </a></td></tr>
-<tr><td class="email-pad" style="padding:36px;">
-<p class="email-copy" style="margin:0 0 16px;color:#53645f;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">${escapeHtml(design.eyebrow || "SMA Hope Foundation")}</p>
-<h1 class="email-heading email-ink" style="margin:0 0 26px;font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.15;font-weight:400;letter-spacing:-1px;color:#183747;">${escapeHtml(design.heading || input.subject)}</h1>
+<tr><td class="email-pad" style="padding:32px 36px;">
+<h1 class="email-heading email-ink" style="margin:0 0 26px;font-family:Georgia,'Times New Roman',serif;font-size:32px;line-height:1.2;font-weight:400;letter-spacing:-.6px;color:#183747;">${escapeHtml(design.heading || input.subject)}</h1>
 ${bodyHtml(body)}
-${actionUrl ? `<table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:6px 0 26px;"><tr><td class="email-button-cell" bgcolor="#183747" style="border-radius:8px;background:#183747;"><a class="email-button" href="${escapeHtml(actionUrl)}" style="display:inline-block;padding:15px 25px;border:1px solid #183747;border-radius:8px;background:#183747;color:#fff;font-size:16px;font-weight:600;line-height:1.4;text-decoration:none;">${escapeHtml(design.action!.label)} &nbsp;→</a></td></tr></table><p class="email-copy" style="margin:0 0 24px;color:#53645f;font-size:13px;line-height:1.6;">If the button doesn’t work, <a class="email-link" href="${escapeHtml(actionUrl)}" style="color:#174e60;word-break:break-all;">open this link</a> or copy it into your browser:<br><span style="word-break:break-all;">${escapeHtml(actionUrl)}</span></p>` : ""}
-${design.note ? `<table role="presentation" class="email-muted" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 27px;background:#e8eee4;border-radius:10px;"><tr><td style="padding:19px 21px;"><p class="email-ink" style="margin:0 0 5px;font-size:15px;line-height:1.65;color:#183747;font-weight:600;">${escapeHtml(design.note.title)}</p><p class="email-copy" style="margin:0;font-size:15px;line-height:1.65;color:#53645f;">${escapeHtml(design.note.text)}</p></td></tr></table>` : ""}
-<p class="email-ink" style="margin:0;color:#183747;font-size:16px;line-height:1.7;">With care,<br><strong>The SMA Hope team</strong></p>
+${design.note ? `<div class="email-border" style="margin:0 0 28px;padding:0 0 0 18px;border-left:2px solid #dce3d8;"><p class="email-ink" style="margin:0 0 6px;color:#183747;font-size:14px;line-height:1.8;font-weight:600;">${escapeHtml(design.note.title)}</p><p class="email-copy" style="margin:0;color:#53645f;font-size:14px;line-height:1.8;">${escapeHtml(design.note.text)}</p></div>` : ""}
+${actionUrl ? `<table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:8px 0 28px;"><tr><td class="email-button-cell" bgcolor="#183747" style="border-radius:4px;background:#183747;"><a class="email-button" href="${escapeHtml(actionUrl)}" style="display:inline-block;padding:15px 24px;border:1px solid #183747;border-radius:4px;background:#183747;color:#fff;font-size:15px;font-weight:600;line-height:1.5;text-decoration:none;">${escapeHtml(design.action!.label)} &nbsp;→</a></td></tr></table>` : ""}
+${learning && design.links?.share ? `<p class="email-copy" style="margin:0 0 28px;color:#53645f;font-size:14px;line-height:1.8;">Know someone who would find this useful? ${link(design.links.share, "Share the free course")}</p>` : ""}
+<p class="email-ink" style="margin:0;color:#183747;font-size:14px;line-height:1.8;">With care,<br>The SMA Hope team</p>
 </td></tr>
-<tr><td class="email-muted email-pad" style="padding:25px 36px;background:#e8eee4;">
-<p class="email-ink" style="margin:0 0 9px;font-family:Georgia,'Times New Roman',serif;font-size:21px;line-height:1.4;color:#183747;">Hope. Support. A way forward.</p>
-<p class="email-copy" style="margin:0 0 14px;color:#53645f;font-size:14px;line-height:1.7;">Standing alongside families affected by spinal muscular atrophy in Nigeria.</p>
-<p style="margin:0;font-size:14px;line-height:1.7;"><a class="email-link" href="${escapeHtml(site)}" style="color:#174e60;">Visit SMA Hope</a> &nbsp;·&nbsp; <a class="email-link" href="mailto:help@smahope.org" style="color:#174e60;">Get in touch</a></p>
+<tr><td class="email-pad email-border" style="padding:22px 36px 28px;border-top:1px solid #e1e5de;">
+${learning ? `<p class="email-copy" style="margin:0 0 10px;color:#53645f;font-size:12px;line-height:1.8;">You chose learning emails from SMA Hope. You can pause or stop them at any time.</p><p style="margin:0;font-size:12px;line-height:1.9;">${link(design.links?.preferences, "Email preferences")} &nbsp;·&nbsp; ${link(design.links?.unsubscribe, "Stop learning emails")}</p>` : `<p style="margin:0;font-size:12px;line-height:1.9;">${link(site, "Visit SMA Hope")} &nbsp;·&nbsp; <a class="email-link" href="mailto:help@smahope.org" style="color:#174e60;text-decoration:underline;">Get in touch</a></p>`}
+${actionUrl ? `<p class="email-copy" style="margin:10px 0 0;color:#53645f;font-size:12px;line-height:1.8;">Trouble with the button? ${link(actionUrl, "Open this link")}.</p>` : ""}
 </td></tr></table>
 <!--[if mso]></td></tr></table><![endif]-->
-<p class="email-copy" style="max-width:530px;margin:18px auto 0;color:#53645f;text-align:center;font-size:12px;line-height:1.7;">SMA Hope Foundation · Lagos, Nigeria<br>You received this email because of activity connected to SMA Hope Foundation.</p>
+<p class="email-copy" style="margin:18px 0 0;color:#53645f;text-align:center;font-size:11px;line-height:1.8;">SMA Hope Foundation · Lagos, Nigeria</p>
 </td></tr></table></body></html>`;
 }

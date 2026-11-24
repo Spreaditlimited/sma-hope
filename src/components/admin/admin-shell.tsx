@@ -6,5 +6,5 @@ export function AdminShell(props: {
   role: string;
   children: React.ReactNode;
 }) {
-  return <WorkspaceShell {...props} />;
+  return <WorkspaceShell {...props} pending={!props.email} />;
 }

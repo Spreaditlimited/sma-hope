@@ -11,7 +11,6 @@ export default function Page(){
  const session=useAdminSession(),[data,setData]=useState<Overview|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);
  useEffect(()=>{if(session.loading)return;const c=new AbortController();adminFetch<Overview>('/api/admin/marketing',{signal:c.signal}).then(setData).catch(()=>{if(!c.signal.aborted)setError('Unable to load learning email settings.');});return()=>c.abort();},[session.loading]);
  async function toggle(){if(!data)return;setBusy(true);setError('');try{setData(await adminFetch<Overview>('/api/admin/marketing',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({enabled:!data.enabled})}));}catch{setError('Unable to save the setting. Please try again.');}finally{setBusy(false);}}
- if(session.loading)return <p role="status">Checking administrator access…</p>;
  const due=data?Object.values(data.due).reduce((a,b)=>a+b,0):0;
  return <AdminShell title="Learning emails" subtitle="Thoughtful reminders that help learners take their next step." email={session.email} role={session.role}><div className={styles.page}>
  {error&&<p className={styles.error} role="alert">{error}</p>}

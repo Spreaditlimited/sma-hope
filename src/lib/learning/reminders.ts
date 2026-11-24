@@ -4,6 +4,10 @@ import type { RowDataPacket } from 'mysql2';
 import { getPool } from '@/lib/database/pool';
 import { sendTransactionalEmail, renderEmailTemplate } from '@/lib/email';
 import { env } from '@/lib/env';
+import type { EmailDesign } from '@/lib/email-template';
+function learningDesign(message: ReturnType<typeof reminderMessage>): EmailDesign {
+ return { variant:'learning', heading:message.heading, copy:message.copy.replace(/([.!?]) /,'$1\n\n'), action:{label:message.label,url:message.url}, links:{unsubscribe:message.unsubscribe,preferences:new URL('/account/email-preferences',authOrigin()).href,share:message.share} };
+}
 import { authOrigin } from '@/lib/auth/server';
 import { smaCourseLessons, SMA_COURSE_SLUG } from './content';
 import { nextReminder, reminderMessage, type Journey, type Delivery } from './reminder-policy';
@@ -71,7 +75,7 @@ export async function reminderOverview() {
  db.query<RowDataPacket[]>('SELECT action,created_at FROM learning_email_audit ORDER BY id DESC LIMIT 20')]);
  const learners=await candidates(),due:Record<string,number>={};
  for(const l of learners){const key=nextReminder(l.journey,Date.now());if(key)due[key]=(due[key]||0)+1;}
- return {enabled:!!settings[0]?.enabled,senderConfigured:!!env.helpEmailAddress && !!env.helpEmailPassword, schedulerConfigured:!!process.env.CRON_SECRET && process.env.CRON_SECRET.length>=32,optedIn:learners.length,due,stats,recent,audit,templates:['welcome','enrol','start','resume','finish','final','complete'].map(k=>{const m=reminderMessage(k as Parameters<typeof reminderMessage>[0],authOrigin(),'PREVIEW');return {...m,html:renderEmailTemplate({subject:m.subject,text:m.text,siteUrl:authOrigin(),design:{heading:m.heading,eyebrow:'Your learning · SMA Hope',action:{label:m.label,url:m.url}}})};})};
+ return {enabled:!!settings[0]?.enabled,senderConfigured:!!env.helpEmailAddress && !!env.helpEmailPassword, schedulerConfigured:!!process.env.CRON_SECRET && process.env.CRON_SECRET.length>=32,optedIn:learners.length,due,stats,recent,audit,templates:['welcome','enrol','start','resume','finish','final','complete'].map(k=>{const m=reminderMessage(k as Parameters<typeof reminderMessage>[0],authOrigin(),'PREVIEW');return {...m,html:renderEmailTemplate({subject:m.subject,text:m.text,siteUrl:authOrigin(),design:learningDesign(m)})};})};
 }
 export async function setReminderSwitch(enabled:boolean,actor:string) {
  const db=await getPool().promise().getConnection();
@@ -99,7 +103,7 @@ export async function runReminders() {
    const m=reminderMessage(key,authOrigin(),l.token,l.journey.nextLesson);
    const unsubscribeUrl=new URL('/api/learning/emails/unsubscribe',authOrigin());unsubscribeUrl.searchParams.set('token',l.token);
    try{
-    const result=await sendTransactionalEmail({to:l.email,subject:m.subject,text:m.text,design:{heading:m.heading,eyebrow:'Your learning · SMA Hope',action:{label:m.label,url:m.url}},headers:{'List-Unsubscribe':`<${unsubscribeUrl.href}>`,'List-Unsubscribe-Post':'List-Unsubscribe=One-Click'},messageId:`<learning-${id}@smahope.org>`});
+    const result=await sendTransactionalEmail({to:l.email,subject:m.subject,text:m.text,design:learningDesign(m),headers:{'List-Unsubscribe':`<${unsubscribeUrl.href}>`,'List-Unsubscribe-Post':'List-Unsubscribe=One-Click'},messageId:`<learning-${id}@smahope.org>`});
     if(result.skipped){await db.query("UPDATE learning_email_deliveries SET status='skipped' WHERE id=?",[id]);continue;}
     await db.query("UPDATE learning_email_deliveries SET status='accepted',sent_at=NOW(3) WHERE id=?",[id]);accepted++;
    }catch(failure){

@@ -21,7 +21,7 @@ export function AccountWorkspaceShell(props: {
   }, [isPending, data?.user, router, pathname]);
   // Also hide the workspace immediately if an open tab loses its session.
   if (isPending || !data?.user) {
-    return <p role="status" style={{ padding: '48px 24px', textAlign: 'center' }}>Checking your account…</p>;
+    return <WorkspaceShell {...props} email="" pending />;
   }
   return <WorkspaceShell {...props} />;
 }

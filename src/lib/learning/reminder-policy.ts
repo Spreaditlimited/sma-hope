@@ -28,8 +28,8 @@ export function nextReminder(j: Journey, now: number): ReminderKey | null {
 }
 export function reminderMessage(key: ReminderKey, site: string, token: string, lesson = '') {
  const origin = new URL(site).origin;
- const resume = new URL('/account/learn', origin);
- if (lesson) resume.searchParams.set('lesson', lesson);
+ const resume = new URL(key === 'complete' ? '/account/learn/feedback' : '/account/learn', origin);
+ if (lesson && key !== 'complete') resume.searchParams.set('lesson', lesson);
  resume.searchParams.set('utm_source','smahope'); resume.searchParams.set('utm_medium','email'); resume.searchParams.set('utm_campaign','learning-reminders');
  const unsubscribe = new URL('/learning-emails', origin); unsubscribe.searchParams.set('token', token);
  const messages: Record<ReminderKey,{subject:string;heading:string;copy:string;label:string}> = {
@@ -39,8 +39,9 @@ export function reminderMessage(key: ReminderKey, site: string, token: string, l
  resume:{subject:'Continue your SMA Hope course when it suits you',heading:'Pick up where you stopped.',copy:'There is no need to start again. Your place is saved in Understanding SMA. Watch your next unfinished lesson and try its short questions when you are ready. If anything is getting in the way, reply to this email and we will try to help.',label:'Continue learning'},
  finish:{subject:'One more lesson to complete your course',heading:'You are nearly there.',copy:'You have completed four of the five lessons in Understanding SMA. One more lesson and its short questions will finish the course. Your saved progress is waiting whenever you have a little time.',label:'Finish the final lesson'},
  final:{subject:'Your course will still be here',heading:'Come back when you are ready.',copy:'It has been a little while since your last step in Understanding SMA. Your account and saved progress are still available. This is our last reminder for this course, so you can return in your own time.',label:'Return to the course'},
- complete:{subject:'You have completed Understanding SMA',heading:'Thank you for taking the time.',copy:'You have completed all five lessons and their short checks in Understanding SMA. We hope the course has helped you understand SMA and the steps to seek appropriate help. Reply to tell us what was useful or what we could explain more clearly. If someone else would benefit, share the free course: '+origin+'/learn/understanding-sma',label:'Revisit your lessons'},
+ complete:{subject:'You have completed Understanding SMA',heading:'Thank you for taking the time.',copy:'You have completed all five lessons and their short checks in Understanding SMA. We hope the course has helped you understand SMA and the steps to seek appropriate help. Please rate the course and tell us what was useful or what we could explain more clearly. Your feedback is private to the foundation.',label:'Share your course feedback'},
  };
  const m=messages[key];
- return {...m,url:resume.href,unsubscribe:unsubscribe.href,text:`Hello,\n\n${m.copy}\n\n${resume.href}\n\nYou chose learning emails from SMA Hope. These are separate from fundraising updates.\nStop learning emails: ${unsubscribe.href}\nManage or pause reminders: ${origin}/account/email-preferences`};
+ const share = key === 'complete' ? origin+'/learn/understanding-sma' : undefined;
+ return {...m,url:resume.href,unsubscribe:unsubscribe.href,share,text:`Hello,\n\n${m.copy}${share?'\n\nShare the free course: '+share:''}\n\n${resume.href}\n\nYou chose learning emails from SMA Hope. These are separate from fundraising updates.\nStop learning emails: ${unsubscribe.href}\nManage or pause reminders: ${origin}/account/email-preferences`};
 }

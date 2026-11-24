@@ -11,6 +11,7 @@ type Item = { label: string; href: string; icon: IconName };
 const accountItems: Item[] = [
   { label: "Overview", href: "/account", icon: "grid" },
   { label: "My learning", href: "/account/learn", icon: "book" },
+  { label: "Course feedback", href: "/account/learn/feedback", icon: "heart" },
   { label: "Email preferences", href: "/account/email-preferences", icon: "settings" },
   { label: "My donations", href: "/account/donations", icon: "heart" },
   { label: "Book orders", href: "/account/orders", icon: "box" },
@@ -21,6 +22,7 @@ const adminItems: Item[] = [
   { label: "Book orders", href: "/admin/book-orders", icon: "box" },
   { label: "Supporters", href: "/admin/donors", icon: "people" },
   { label: "Learning", href: "/admin/learning", icon: "book" },
+  { label: "Course feedback", href: "/admin/learning/feedback", icon: "heart" },
   { label: "Learning emails", href: "/admin/marketing", icon: "settings" },
   { label: "Content library", href: "/admin/content", icon: "book" },
   { label: "Settings", href: "/admin/settings", icon: "settings" },
@@ -31,12 +33,14 @@ export function WorkspaceShell({
   email,
   role,
   children,
+  pending = false,
 }: {
   title: string;
   subtitle?: string;
   email: string;
   role?: string;
   children: React.ReactNode;
+  pending?: boolean;
 }) {
   const admin = role !== undefined;
   const pathname = usePathname();
@@ -104,9 +108,9 @@ export function WorkspaceShell({
           <span className="avatar">{email ? email.slice(0, 1).toUpperCase() : "SH"}</span>
           <div>
             <strong>
-              {admin ? (role === "admin" ? "Administrator" : "Operations") : "SMA Hope account"}
+              {admin ? (role === "admin" ? "Administrator" : role === "ops" ? "Operations" : "Foundation account") : "SMA Hope account"}
             </strong>
-            <span title={email}>{email || "Checking your session…"}</span>
+            <span title={email} className={!email ? "workspace-profile-placeholder" : undefined} aria-hidden={!email || undefined}>{email || "\u00a0"}</span>
           </div>
         </div>
         <button className="workspace-signout" onClick={signOut} disabled={signingOut}>
@@ -144,17 +148,23 @@ export function WorkspaceShell({
           <div className="workspace-page-heading">
             <div>
               <p className="eyebrow">
-                {admin ? "SMA Hope / Administration" : pathname === "/account/learn" ? "SMA Hope / Learn with understanding" : "SMA Hope / Your support matters"}
+                {admin ? "SMA Hope / Administration" : pathname.startsWith("/account/learn") ? "SMA Hope / Learn with understanding" : "SMA Hope / Your support matters"}
               </p>
               <h1>{title}</h1>
               {subtitle && <p>{subtitle}</p>}
             </div>
-            {pathname !== "/account/learn" && <Link href={admin ? pathname === "/admin/learning" ? "/learn/understanding-sma" : "/admin/donations" : "/donate"} className="btn btn-primary">
+            {!pathname.startsWith("/account/learn") && <Link href={admin ? pathname === "/admin/learning" ? "/learn/understanding-sma" : "/admin/donations" : "/donate"} className="btn btn-primary">
               {admin ? pathname === "/admin/learning" ? "View course" : "View donations" : "Make a donation"}
               <Icon name="arrow" size={16} />
             </Link>}
           </div>
-          {children}
+          {pending ? (
+            <div className="workspace-panel workspace-pending" role="status" aria-label="Loading workspace" aria-busy="true">
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+            </div>
+          ) : children}
         </main>
       </div>
     </div>
