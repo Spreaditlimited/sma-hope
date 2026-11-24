@@ -44,7 +44,7 @@ test("no Meta SDK request or event before consent, on rejection, or with legacy 
 test("legacy rejection is respected, while the new advertising choice is versioned", () => {
   const b=browser("smahope_cookie_consent=declined");assert.equal(b.consent.readCookieConsent(),"declined");
   b.consent.saveCookieConsent("accepted");assert.equal(b.consent.readCookieConsent(),"accepted");
-  assert.match(b.writes.at(-1),/smahope_cookie_consent_v2=accepted.*SameSite=Lax; Secure/);
+  assert.ok(b.writes.some(value => /smahope_cookie_consent_v2=accepted.*SameSite=Lax; Secure/.test(value)));
 });
 test("consent loads SDK once, disables automatic events, initializes the correct ID and tracks after load", () => {
   const b=browser();b.consent.saveCookieConsent("accepted");b.navigate("/book");b.navigate("/book");

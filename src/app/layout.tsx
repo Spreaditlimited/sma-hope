@@ -6,6 +6,7 @@ import "./theme.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { themeInitScript } from "@/lib/theme";
 import { siteConfig } from "@/lib/site";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { SiteShell } from "@/components/site-shell";
 
 export const metadata: Metadata = {
@@ -80,7 +81,7 @@ export default function RootLayout({
             __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
           }}
         />)}
-        <ThemeProvider><SiteShell>{children}</SiteShell></ThemeProvider>
+        <ThemeProvider><GoogleAnalytics /><SiteShell>{children}</SiteShell></ThemeProvider>
       </body>
     </html>
   );

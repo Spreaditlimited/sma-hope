@@ -3,6 +3,19 @@ export const CONSENT_CHANGED_EVENT = "smahope:consent-changed";
 export const COOKIE_SETTINGS_EVENT = "smahope:cookie-settings";
 export type CookieConsent = "accepted" | "declined";
 let volatileChoice: CookieConsent | null = null;
+let volatileAnalyticsChoice: CookieConsent | null = null;
+const ANALYTICS_COOKIE = "smahope_analytics_consent_v1";
+
+export function readAnalyticsConsent(): CookieConsent | null {
+  if (typeof document === "undefined") return null;
+  if (volatileAnalyticsChoice) return volatileAnalyticsChoice;
+  try {
+    const value = document.cookie.split(";").map(part => part.trim()).find(part => part.startsWith(ANALYTICS_COOKIE+"="))?.slice(ANALYTICS_COOKIE.length+1);
+    if (value === "accepted" || value === "declined") return value;
+  } catch { return null; }
+  // Earlier permission mentioned Meta only. Never treat it as Google permission.
+  return readCookieConsent() === "declined" ? "declined" : null;
+}
 
 export function readCookieConsent(): CookieConsent | null {
   if (typeof document === "undefined") return null;
@@ -25,5 +38,10 @@ export function saveCookieConsent(value: CookieConsent) {
     // Honour the choice for this tab if persistent cookies are unavailable.
     volatileChoice = value;
   }
+  volatileAnalyticsChoice = null;
+  try {
+    document.cookie = `${ANALYTICS_COOKIE}=${value}; Max-Age=15552000; Path=/; SameSite=Lax${secure}`;
+    if (readAnalyticsConsent() !== value) volatileAnalyticsChoice = value;
+  } catch { volatileAnalyticsChoice = value; }
   window.dispatchEvent(new Event(CONSENT_CHANGED_EVENT));
 }

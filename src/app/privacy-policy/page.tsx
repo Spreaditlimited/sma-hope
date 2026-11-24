@@ -244,7 +244,7 @@ export default function PrivacyPolicyPage() {
                 </li>
                 <li>
                   <strong className="text-gray-900">Analytics/performance cookies:</strong> help us
-                  understand traffic and improve content.
+                  understand traffic and improve content. With your permission, Google Analytics measures visits to our public pages using cookie identifiers and technical information about your browser and device. We exclude account, admin, contact, checkout and email-preference pages, strip URL query strings and fragments, and send only the origin of referring websites. We do not send names, email addresses, form answers, learning progress, quiz results or medical records. Google advertising features and automatic form, search and video collection are disabled. Earlier Meta-only cookie permission does not activate Google Analytics. You can decline or withdraw permission through Cookie settings.
                 </li>
                 <li>
                   <strong className="text-gray-900">Optional advertising measurement (Meta Pixel and Conversions API):</strong> with
