@@ -1,4 +1,5 @@
 import "server-only";
+import { attachDatabasePool } from "@vercel/functions";
 import { createPool, type Pool } from "mysql2";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -21,8 +22,9 @@ export function getPool() {
     password: decodeURIComponent(url.password), database: "smahope",
     ssl: { ca: readFileSync(resolve(process.cwd(), "certificates/mysql-ca.pem")), rejectUnauthorized: true },
     connectionLimit: process.env.VERCEL ? 2 : 3, maxIdle: 0, waitForConnections: true, queueLimit: 30,
-    connectTimeout: 10000, idleTimeout: 30000, timezone: "Z", decimalNumbers: true,
+    connectTimeout: 10000, idleTimeout: process.env.VERCEL ? 5000 : 30000, timezone: "Z", decimalNumbers: true,
   });
+  if (process.env.VERCEL) attachDatabasePool(pool);
   shared.smahopePool = pool;
   return pool;
 }

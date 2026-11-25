@@ -41,7 +41,8 @@ test('all public and administrator authentication actions, including trailing sl
  assert.equal(m.authCaptchaAction(request('/api/auth/get-session')),null);assert.equal(m.authCaptchaAction(request('/api/auth/sign-out')),null);
 });
 function route(path,captcha,dependencies={}){
- const exports={};vm.runInNewContext(compile(path),{exports,URL,Request,Response,console,require:id=>id==='@/lib/captcha'?captcha:id==='next/server'?{NextResponse:Response,after:()=>{}}:dependencies[id]||{}});return exports;
+ const authResponse={};vm.runInNewContext(compile('src/lib/auth/response.ts'),{exports:authResponse,Response,console});
+ const exports={};vm.runInNewContext(compile(path),{exports,URL,Request,Response,console,require:id=>id==='@/lib/auth/response'?authResponse:id==='@/lib/captcha'?captcha:id==='next/server'?{NextResponse:Response,after:()=>{}}:dependencies[id]||{}});return exports;
 }
 test('every form endpoint blocks missing/invalid CAPTCHA before authentication, email delivery, subscriptions or CAPI side effects',async()=>{
  const captcha=verifier();let calls=0;const auth={getAuth:()=>({handler:async()=>{calls++;return Response.json({ok:true});}})};

@@ -12,13 +12,15 @@ export function GoogleSignIn({returnTo='/account/learn'}:{returnTo?:string}) {
     setBusy(true); setError('');
     try {
       const response = await fetch('/api/auth/sign-in/social', {method:'POST',headers:{'Content-Type':'application/json',...await captchaHeaders('login')},body:JSON.stringify({provider:'google',callbackURL:returnTo,additionalData:{termsAccepted:true}})});
+      if (!response.ok) throw new Error(response.status === 429 ? 'Too many sign-in attempts. Please wait a minute and try again.' : 'Google sign-in is temporarily unavailable. Please try again shortly.');
       const data = await response.json();
       if (!response.ok || typeof data.url !== 'string') throw new Error('Google sign-in is unavailable. Please try again or use your email.');
       const url = new URL(data.url);
       if (url.protocol !== 'https:' || url.hostname !== 'accounts.google.com') throw new Error('Google sign-in is unavailable. Please use your email.');
       window.location.assign(url.href);
     } catch (failure) {
-      setError(failure instanceof Error ? failure.message : 'Unable to connect to Google. Please try again.');
+      const message = failure instanceof Error ? failure.message : '';
+      setError(/^(Security verification|Google sign-in|Too many sign-in attempts)/.test(message) ? message : 'Unable to connect to Google. Please try again shortly.');
       setBusy(false);
     }
   }

@@ -1,10 +1,11 @@
 import { googleAdsRegistrationReceipt, GOOGLE_ADS_REGISTRATION_HEADER } from '@/lib/google-ads-registration';
+import { handleAuthRequest } from '@/lib/auth/response';
 import { authCaptchaAction, verifyCaptcha } from '@/lib/captcha';
 import { savePreferences } from '@/lib/learning/reminders';
 import { after } from 'next/server';
 import { getAuth, assertSameOrigin } from '@/lib/auth/server';
 import { buildCourseSignupLead, sendCourseSignupLead } from '@/lib/meta-course-lead';
-export async function GET(request: Request) {return getAuth().handler(request);}
+export async function GET(request: Request) {return handleAuthRequest(request, request=>getAuth().handler(request));}
 export async function POST(request: Request) {
   const action=authCaptchaAction(request);
   if(action){const blocked=await verifyCaptcha(request,action);if(blocked)return blocked;}
@@ -22,7 +23,7 @@ export async function POST(request: Request) {
       learningEmails=body.learningEmails===true;
     } catch { return Response.json({error:'Invalid registration'},{status:403}); }
   }
-  const response=await getAuth().handler(request);
+  const response=await handleAuthRequest(request, request=>getAuth().handler(request));
   if (courseSignup && response.ok) {
     try {
       const created=await response.clone().json();

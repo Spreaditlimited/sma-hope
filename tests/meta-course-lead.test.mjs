@@ -52,7 +52,8 @@ test('transient failures retry with identical event ID and time; permanent rejec
 async function signupRoute({body,status=200,path='/api/auth/sign-up/email',consent=true}){
  const callbacks=[],events=[],m=moduleFor(),exports={};
  const response=Response.json(status===200?{user:{id:'created-user'}}:{error:'Unable to register'},{status,headers:{'set-cookie':'session=preserved; HttpOnly'}});
- vm.runInNewContext(compile('src/app/api/auth/[...all]/route.ts'),{exports,URL,Response,console,require:id=>id==='@/lib/captcha'?{authCaptchaAction:()=>null}:id==='next/server'?{after:fn=>callbacks.push(fn)}:id==='@/lib/auth/server'?{assertSameOrigin:()=>{},getAuth:()=>({handler:async()=>response})}:{buildCourseSignupLead:m.buildCourseSignupLead,sendCourseSignupLead:async e=>events.push(e)}});
+ const authResponse={};vm.runInNewContext(compile('src/lib/auth/response.ts'),{exports:authResponse,Response,console});
+ vm.runInNewContext(compile('src/app/api/auth/[...all]/route.ts'),{exports,URL,Response,console,require:id=>id==='@/lib/auth/response'?authResponse:id==='@/lib/captcha'?{authCaptchaAction:()=>null}:id==='next/server'?{after:fn=>callbacks.push(fn)}:id==='@/lib/auth/server'?{assertSameOrigin:()=>{},getAuth:()=>({handler:async()=>response})}:{buildCourseSignupLead:m.buildCourseSignupLead,sendCourseSignupLead:async e=>events.push(e)}});
  const r=await exports.POST(new Request('https://www.smahope.org'+path,{method:'POST',headers:{'Content-Type':'application/json','User-Agent':'Test Browser','x-vercel-ip-country':'NG',cookie:consent?'smahope_cookie_consent_v2=accepted':''},body:JSON.stringify(body)}));
  if(r.ok)assert.equal(r.headers.get('set-cookie'),'session=preserved; HttpOnly');
  for(const fn of callbacks)await fn();return {r,events};
