@@ -1,3 +1,4 @@
+import { googleAdsRegistrationReceipt, GOOGLE_ADS_REGISTRATION_HEADER } from '@/lib/google-ads-registration';
 import { authCaptchaAction, verifyCaptcha } from '@/lib/captcha';
 import { savePreferences } from '@/lib/learning/reminders';
 import { after } from 'next/server';
@@ -27,12 +28,16 @@ export async function POST(request: Request) {
       const created=await response.clone().json();
       if (typeof created.user?.id==='string') {
         if(learningEmails){try{await savePreferences(created.user.id,true,0,'registration');}catch{console.warn('Learning email preference could not be saved; learner can choose again in account.');}}
+        try {
+          const receipt=googleAdsRegistrationReceipt(request);
+          if(receipt)response.headers.set(GOOGLE_ADS_REGISTRATION_HEADER,receipt);
+        } catch { console.warn('Optional Google registration measurement could not be prepared.'); }
         const event=buildCourseSignupLead(request,created.user.id);
         if(event)after(async()=>{await sendCourseSignupLead(event);});
       }
     } catch {
       // Advertising measurement must never break a successful registration or expose its details.
-      console.warn('Meta course signup measurement: unable to prepare event.');
+      console.warn('Optional course signup measurement: unable to prepare event.');
     }
   }
   return response;

@@ -1,4 +1,5 @@
 'use client';
+import { trackGoogleAdsRegistration } from '@/lib/google-ads';
 import { captchaHeaders } from '@/lib/captcha-client';
 import { CaptchaNotice } from '@/components/captcha-notice';
 
@@ -44,6 +45,7 @@ export function LearnerRegistration({returnTo=null}:{returnTo?:string|null}) {
           ? 'Too many attempts. Please wait and try again.'
           : 'We could not create an account. If you already have one, sign in or reset your password.');
       }
+      if (!privateReturn) await trackGoogleAdsRegistration(response.headers.get('x-smahope-learning-registration'));
       router.replace(privateReturn || '/account/learn');
       router.refresh();
     } catch (failure) {
@@ -76,7 +78,7 @@ export function LearnerRegistration({returnTo=null}:{returnTo?:string|null}) {
             {error && <div className={styles.error} role="alert"><p>{error}</p><Link href={'/account/login?next='+encodeURIComponent(privateReturn||'/account/learn')}>Sign in</Link><span> · </span><Link href="/account/reset-password">Reset password</Link></div>}
             <button type="submit" className={`btn btn-primary ${styles.submit}`} disabled={busy}>{busy ? 'Creating account…' : 'Create free account'}<span aria-hidden="true">↗</span></button>
           </form>
-          {!privateReturn && <p className={styles.measurement}>With optional advertising permission, we tell Meta that a sign-up was completed to measure our campaigns. We do not send your name, email, course details or quiz answers. <CookieSettingsButton /></p>}
+          {!privateReturn && <p className={styles.measurement}>With optional advertising permission, Google Ads and Meta receive a completed registration event to measure our campaigns. We do not send your name, email, medical information or quiz answers. <CookieSettingsButton /></p>}
           <p className={styles.signIn}>Already have an account? <Link href={'/account/login?next='+encodeURIComponent(privateReturn||'/account/learn')}>Sign in →</Link></p>
           <p className={styles.help}><Link href="/learn/understanding-sma">← Back to the course</Link><span>Need a hand? <Link href="/contact">Contact us</Link></span></p>
         </div>

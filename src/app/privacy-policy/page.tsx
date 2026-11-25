@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
           {/* INTRO SECTION */}
           <section className="prose prose-lg md:prose-xl text-gray-700 max-w-3xl mx-auto md:text-left">
             <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
-              Last updated: November 22, 2026
+              Last updated: November 25, 2026
             </p>
             <p className="font-medium text-gray-900">
               SMA Hope Foundation Nigeria (&quot;SMA Hope&quot;, &quot;we&quot;, &quot;us&quot;, or
@@ -244,7 +244,7 @@ export default function PrivacyPolicyPage() {
                 </li>
                 <li>
                   <strong className="text-gray-900">Analytics/performance cookies:</strong> help us
-                  understand traffic and improve content. With your permission, Google Analytics measures visits to our public pages using cookie identifiers and technical information about your browser and device. We exclude account, admin, contact, checkout and email-preference pages, strip URL query strings and fragments, and send only the origin of referring websites. We do not send names, email addresses, form answers, learning progress, quiz results or medical records. Google advertising features and automatic form, search and video collection are disabled. Earlier Meta-only cookie permission does not activate Google Analytics. You can decline or withdraw permission through Cookie settings.
+                  understand traffic and improve content. With your permission, Google Analytics measures visits to our public pages using cookie identifiers and technical information about your browser and device. We exclude account, admin, contact, checkout and email-preference pages, strip URL query strings and fragments, and send only the origin of referring websites. We do not send names, email addresses, form answers, learning progress, quiz results or medical records. Google Analytics advertising features and automatic form, search and video collection are disabled. Earlier Meta-only cookie permission does not activate Google Analytics. You can decline or withdraw permission through Cookie settings.
                 </li>
                 <li>
                   <strong className="text-gray-900">Optional advertising measurement (Meta Pixel and Conversions API):</strong> with
@@ -255,6 +255,9 @@ export default function PrivacyPolicyPage() {
                   With advertising permission, a successful course account sign-up can also send a generic Lead event from our server using the registration page URL without query parameters, browser information, IP address where available and existing Meta cookie identifiers. An opaque event ID prevents duplicate delivery from being counted twice. Registration works if you decline.
                   The browser pixel remains excluded from account, admin, contact and book checkout pages. No lesson views, diagnoses or quiz results are shared with Meta.
                   Read <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta’s Privacy Policy</a> for how Meta uses this information.
+                </li>
+                <li>
+                  <strong className="text-gray-900">Google Ads registration measurement:</strong> with separate optional permission, SMA Hope stores a valid Google ad-click identifier in its own attribution cookie for up to 30 days and sends a generic event only after a new learning account has been created successfully. Google’s tag may also set advertising cookies, normally lasting up to 90 days. The event contains an anonymous random registration reference to avoid duplicate counting, a clean registration page address and an ad-click identifier when available. Google also receives technical information needed to process the request, such as your IP address and browser information. We do not send names, emails, form answers, medical information, lesson activity or quiz results. We do not use enhanced conversions or personalised advertising signals. Tags stay off on private account, clinician and diagnostic pages; the learning registration form is the limited exception for this completion event. Earlier Meta or Analytics permission does not activate Google Ads measurement. If you decline or withdraw permission, measurement stops and the advertising-attribution cookies are removed. Registration remains available. See <a href="https://policies.google.com/privacy">Google’s Privacy Policy</a>.
                 </li>
                 <li>
                   <strong className="text-gray-900">Preference cookies:</strong> remember user

@@ -1,0 +1,35 @@
+Google Ads course registration measurement — 25 November 2026
+
+Approved grant customer: 943-952-8870. Do not use legacy account 781-562-1141.
+Conversion: Free learning - registration completed
+Action ID: 7917480155
+Destination: AW-18595577422/28PsCNvRrL8dEM78h6NF
+Primary Sign-up action; count One per interaction; no monetary value;
+30-day click-through window; data-driven attribution; enhanced conversions off.
+
+Story: optional advertising consent and a valid ad click on a public page ->
+learning registration -> successful auth response after account creation ->
+random measurement receipt -> one Google conversion before dashboard navigation.
+Not triggered by CTA clicks, page views, failures, duplicates, sign-in, private
+foundation/diagnostic registrations, or registrations without Google Ads consent.
+
+One shared Google SDK retains consent-gated GA4. Ad personalization stays denied.
+No learner name, email, medical data, lesson progress, quiz answers or scores are
+sent. Private clinical/account routes remain excluded; the public learning signup
+form is a limited exception. Click cookies last 30 days; Google may set its own
+90-day cookies. Revoking consent removes attribution cookies. A blocked or slow
+provider cannot prevent registration (maximum optional measurement wait: 800ms).
+
+Checks before release: 105 unit/regression tests passed; TypeScript and focused
+ESLint passed; normal Turbopack production build passed. Nine integration checks
+passed against the isolated local test database, including real account creation,
+session preservation and negative cases. Synthetic integration accounts cleaned.
+Earlier Safari harness also verified event delivery, no duplicates, delayed SDK
+loading, private exclusions and withdrawal without sending test conversions to
+Google. No database migration or new production secret is required.
+
+Release through committed code and existing Git integration. Campaign launch
+remains unapproved. Production tag diagnostics and a successful real test signup
+must be checked after deployment. Google Ads can take up to 48 hours to update;
+actual ad-attributed conversion reporting additionally requires a genuine ad
+interaction. Do not fabricate ad-click IDs or treat tag delivery as credited ads.

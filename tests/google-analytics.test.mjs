@@ -7,7 +7,7 @@ function browser(saved='',route='/book',host='www.smahope.org') {
  const scripts=[],writes=[],jar=new Map(saved.split('; ').filter(Boolean).map(x=>x.split('='))),cache={};
  const document={title:'SMA Hope',referrer:'https://example.com/private?email=reader@example.test',get cookie(){return [...jar].map(([k,v])=>k+'='+v).join('; ');},set cookie(value){writes.push(value);const [name,v]=value.split(';')[0].split('=');if(value.includes('Max-Age=0'))jar.delete(name);else jar.set(name,v);},createElement(){return {remove(){}};},head:{appendChild(script){scripts.push(script);}}};
  const window={location:new URL(`https://${host}${route}`),dispatchEvent(){}};
- function load(name){if(cache[name])return cache[name];const exports={};cache[name]=exports;vm.runInNewContext(ts.transpileModule(fs.readFileSync(`src/lib/${name}.ts`,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports,require:dependency=>load(dependency.replace(/^\.\//,'')),window,document,URL,Event});return exports;}
+ function load(name){if(cache[name])return cache[name];const exports={};cache[name]=exports;vm.runInNewContext(ts.transpileModule(fs.readFileSync(`src/lib/${name}.ts`,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports,Date,Set,require:dependency=>load(dependency.replace(/^\.\//,'')),window,document,URL,Event});return exports;}
  const analytics=load('google-analytics'),consent=load('cookie-consent');
  return {window,document,scripts,writes,analytics,consent,navigate(route){window.location=new URL(`https://${host}${route}`);analytics.syncGoogleAnalytics(window.location.pathname);},commands(){return (window.dataLayer||[]).map(args=>Array.from(args));},events(){return this.commands().filter(args=>args[0]==='event');}};
 }

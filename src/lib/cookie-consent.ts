@@ -5,6 +5,19 @@ export type CookieConsent = "accepted" | "declined";
 let volatileChoice: CookieConsent | null = null;
 let volatileAnalyticsChoice: CookieConsent | null = null;
 const ANALYTICS_COOKIE = "smahope_analytics_consent_v1";
+export const GOOGLE_ADS_CONSENT_COOKIE = "smahope_google_ads_consent_v1";
+let volatileGoogleAdsChoice: CookieConsent | null = null;
+
+export function readGoogleAdsConsent(): CookieConsent | null {
+  if (typeof document === "undefined") return null;
+  if (volatileGoogleAdsChoice) return volatileGoogleAdsChoice;
+  try {
+    const value = document.cookie.split(";").map(part => part.trim()).find(part => part.startsWith(GOOGLE_ADS_CONSENT_COOKIE+"="))?.slice(GOOGLE_ADS_CONSENT_COOKIE.length+1);
+    if (value === "accepted" || value === "declined") return value;
+  } catch { return null; }
+  // Previous permission covered Meta and/or Analytics, not Google Ads.
+  return readCookieConsent() === "declined" ? "declined" : null;
+}
 
 export function readAnalyticsConsent(): CookieConsent | null {
   if (typeof document === "undefined") return null;
@@ -43,5 +56,10 @@ export function saveCookieConsent(value: CookieConsent) {
     document.cookie = `${ANALYTICS_COOKIE}=${value}; Max-Age=15552000; Path=/; SameSite=Lax${secure}`;
     if (readAnalyticsConsent() !== value) volatileAnalyticsChoice = value;
   } catch { volatileAnalyticsChoice = value; }
+  volatileGoogleAdsChoice = null;
+  try {
+    document.cookie = `${GOOGLE_ADS_CONSENT_COOKIE}=${value}; Max-Age=15552000; Path=/; SameSite=Lax${secure}`;
+    if (readGoogleAdsConsent() !== value) volatileGoogleAdsChoice = value;
+  } catch { volatileGoogleAdsChoice = value; }
   window.dispatchEvent(new Event(CONSENT_CHANGED_EVENT));
 }
