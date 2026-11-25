@@ -41,6 +41,7 @@ export function authCaptchaAction(request: Request, admin=false): CaptchaAction 
   const path=new URL(request.url).pathname.replace(/\/+$/,'');
   const base=admin?'/api/admin-auth':'/api/auth';
   if (path===base+'/sign-up/email') return CAPTCHA_ACTIONS.register;
+  if (!admin && path===base+'/sign-in/social') return CAPTCHA_ACTIONS.login;
   if (path===base+'/sign-in/email') return admin?CAPTCHA_ACTIONS.adminLogin:CAPTCHA_ACTIONS.login;
   if (path===base+'/request-password-reset') return admin?CAPTCHA_ACTIONS.adminPasswordReset:CAPTCHA_ACTIONS.passwordReset;
   if (path===base+'/reset-password') return admin?CAPTCHA_ACTIONS.adminPasswordUpdate:CAPTCHA_ACTIONS.passwordUpdate;

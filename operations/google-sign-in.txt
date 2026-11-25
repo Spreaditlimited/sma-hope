@@ -1,0 +1,43 @@
+SMA Hope Google sign-in — 25 November 2026
+
+Google project: sma-hope-sign-in, separate from diagnostic document storage.
+OAuth application: SMA Hope. External, in production. No sensitive or restricted
+scopes. Server requests only openid, email and profile, with online access and
+no inherited Google scopes. No Gmail or Drive access, and no new paid billing.
+Approved callback: https://www.smahope.org/api/auth/callback/google
+Local verification callback: http://localhost:3043/api/auth/callback/google
+SMAHOPE_GOOGLE_CLIENT_ID and SMAHOPE_GOOGLE_CLIENT_SECRET are server-only,
+configured in ignored local environment and production-only Vercel secrets.
+The downloaded credential was moved from Downloads into ignored .local storage.
+
+Shared Continue with Google component on learner registration and account login.
+Email/password remains available; administrator authentication stays separate.
+The existing reCAPTCHA v3 check protects social-sign-in initiation. Better Auth
+handles PKCE, state validation and provider token exchange. All return paths are
+restricted to approved local account destinations. Terms acknowledgement and
+learning-versus-private purpose travel through server-trusted OAuth context.
+Local identities must already have verified email before implicit Google linking;
+otherwise the user is directed to use their existing email/password account.
+OAuth tokens are encrypted at rest through Better Auth's supported option.
+
+Only a newly created, verified Google learner gets the short-lived signed
+registration handoff. Its receipt is bound to the authenticated user, expires
+after two minutes and is cleared when consumed. Optional Google Ads measurement
+uses the existing registration event, transaction deduplication and consent.
+Returning Google users and private diagnostic/clinician registrations do not
+create course-registration conversions. Google signup does not opt into emails.
+
+Validation: 108 unit/regression tests, 13 real local API/database OAuth checks
+with a synthetic provider, TypeScript, focused ESLint and the production build
+passed. Safari layouts checked on desktop and at 375px, including dark mode.
+Synthetic accounts from integration runs were cleaned up. The synthetic OAuth
+provider and browser verification fixture remain outside the production repo.
+No schema migration is required. Real Google account selection/consent must be
+tested on the live site after the owner-authorised Git deployment.
+
+Related tracking release 762f6a1 was deployed and the owner completed a real
+registration. Tag Assistant captured one conversion command to the approved
+AW-18595577422/28PsCNvRrL8dEM78h6NF destination with an anonymous transaction
+reference and a clean registration URL. Ads tag detailed output was restricted
+in Tag Assistant; no attributed conversion credit is claimed without an actual
+ad interaction. The campaign remains unpublished.

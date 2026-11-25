@@ -1,5 +1,7 @@
 import "server-only";
 import { betterAuth } from "better-auth";
+import { createAuthMiddleware, APIError, addOAuthServerContext, getOAuthState } from "better-auth/api";
+import { googleSignInEnabled, googleSignInDestination, googleLearningDestination, validGoogleContext, issueGoogleRegistration, GOOGLE_REGISTRATION_COOKIE, GOOGLE_REGISTRATION_PATH, GOOGLE_NEW_LEARNER_PATH } from "./google-registration";
 import { MysqlDialect } from "kysely";
 import { nextCookies } from "better-auth/next-js";
 import { getPool } from "@/lib/database/pool";
@@ -21,7 +23,23 @@ function createAuth(scope: AuthScope) {
     baseURL: authOrigin(), basePath: admin ? "/api/admin-auth" : "/api/auth", secret,
     trustedOrigins: [authOrigin()], database: {dialect:new MysqlDialect({pool:getPool()}),type:"mysql",transaction:true},
     user: { modelName: `${scope}_identity`, additionalFields: { active: { type: "boolean", defaultValue: true, input: false } } },
-    account: { modelName: `${scope}_credential` },
+    account: { modelName: `${scope}_credential`, encryptOAuthTokens:true, accountLinking:{requireLocalEmailVerified:true} },
+    socialProviders: !admin && googleSignInEnabled() ? {google:{clientId:process.env.SMAHOPE_GOOGLE_CLIENT_ID!,clientSecret:process.env.SMAHOPE_GOOGLE_CLIENT_SECRET!,prompt:"select_account",accessType:"online",includeGrantedScopes:false}} : {},
+    hooks: !admin ? {before:createAuthMiddleware(async ctx=>{
+      if(ctx.path!=="/sign-in/social")return;
+      if(!googleSignInEnabled() || ctx.body?.provider!=="google" || ctx.body?.idToken || ctx.body?.additionalData?.termsAccepted!==true)throw new APIError("BAD_REQUEST",{message:"Please continue using the Google sign-in button."});
+      if(!ctx.request)throw new APIError("FORBIDDEN",{message:"Invalid sign-in request."});
+      assertSameOrigin(ctx.request);
+      const destination=googleSignInDestination(ctx.body.callbackURL);
+      const learning=googleLearningDestination(destination);
+      ctx.body.callbackURL=authOrigin()+destination;
+      ctx.body.newUserCallbackURL=authOrigin()+(learning ? GOOGLE_NEW_LEARNER_PATH : destination);
+      ctx.body.errorCallbackURL=authOrigin()+"/account/login?google=error";
+      ctx.body.scopes=["openid","email","profile"];
+      ctx.body.additionalParams={};
+      ctx.body.additionalData={};
+      await addOAuthServerContext({smaSignup:{source:learning ? "learning" : "foundation",terms:true}});
+    })} : undefined,
     session: { modelName: `${scope}_session`, expiresIn: admin ? 28800 : 604800, cookieCache: {enabled:false} },
     verification: { modelName: `${scope}_verification` },
     emailAndPassword: {
@@ -52,13 +70,24 @@ function createAuth(scope: AuthScope) {
       },
     },
     rateLimit: { enabled:true, storage:"database", modelName:"auth_rate_limit", window:60, max:30,
-      customRules:{"/sign-up/email":{window:60,max:3},"/sign-in/email":{window:60,max:5},"/request-password-reset":{window:60,max:3}} },
+      customRules:{"/sign-in/social":{window:60,max:5},"/sign-up/email":{window:60,max:3},"/sign-in/email":{window:60,max:5},"/request-password-reset":{window:60,max:3}} },
     advanced: {
       cookiePrefix: admin ? "smahope_admin" : "smahope_account",
       useSecureCookies: authOrigin().startsWith("https:"),
       defaultCookieAttributes: { httpOnly:true, sameSite:"lax", path:"/" },
     },
     databaseHooks: {
+      user:{create:{before:async(user,context)=>{
+        if(admin || !(context?.path==="/callback/google" || (context?.path==="/callback/:id" && context.params?.id==="google")))return {data:user};
+        const state=await getOAuthState();
+        if(!validGoogleContext(state?.serverContext?.smaSignup) || user.emailVerified!==true)throw new APIError("BAD_REQUEST",{message:"Please restart Google sign-in with a verified email."});
+        return {data:user};
+      },after:async(user,context)=>{
+        if(admin || !(context?.path==="/callback/google" || (context?.path==="/callback/:id" && context.params?.id==="google")))return;
+        const state=await getOAuthState();
+        const signup=state?.serverContext?.smaSignup;
+        if(validGoogleContext(signup) && signup.source==="learning")context.setCookie(GOOGLE_REGISTRATION_COOKIE,issueGoogleRegistration(user.id),{httpOnly:true,secure:authOrigin().startsWith("https:"),sameSite:"lax",path:GOOGLE_REGISTRATION_PATH,maxAge:120});
+      }}},
       session: {create:{before:async(session, context)=>{
         // Use the auth adapter so signup sees its own uncommitted user.
         const user = await context?.context.internalAdapter.findUserById(session.userId);

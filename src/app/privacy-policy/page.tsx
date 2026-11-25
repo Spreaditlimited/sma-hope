@@ -101,6 +101,7 @@ export default function PrivacyPolicyPage() {
                   Book or resource purchase details, where available through our checkout flow.
                 </li>
                 <li>Any other information you choose to submit in forms or correspondence.</li>
+                <li>If you choose Google sign-in, Google shares your name, verified email address and basic profile with SMA Hope to create or access your account. We do not request Gmail, Google Drive or other Google account content. Google sign-in does not subscribe you to course reminders or fundraising emails. A short-lived, protected first-party cookie can finish a new learning registration; advertising measurement still requires your separate optional cookie permission.</li>
               </ul>
 
               <h3 className="text-lg font-bold text-gray-900 mt-6 mb-2">

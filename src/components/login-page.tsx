@@ -1,4 +1,5 @@
 "use client";
+import { GoogleSignIn } from "@/components/google-sign-in";
 import { captchaHeaders } from '@/lib/captcha-client';
 import { CaptchaNotice } from '@/components/captcha-notice';
 import { BrandLogo } from "@/components/brand-logo";
@@ -12,7 +13,7 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { accountAuth, adminAuth } from "@/lib/auth/client";
 
-export function LoginPage({admin = false, setup = false, returnTo = null}: {admin?:boolean;setup?:boolean;returnTo?:string|null}) {
+export function LoginPage({admin = false, setup = false, returnTo = null,googleEnabled=false,googleError=false}: {admin?:boolean;setup?:boolean;returnTo?:string|null;googleEnabled?:boolean;googleError?:boolean}) {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -51,6 +52,8 @@ export function LoginPage({admin = false, setup = false, returnTo = null}: {admi
               Your account was created after payment. Use the secure link sent to your email to choose your password.
             </p>
           )}
+          {googleError && <p className={styles.error} role="alert">Google sign-in was not completed. If this email already has an account, sign in with your password or use the password reset link. You can then continue with your existing progress.</p>}
+          {!admin && googleEnabled && <GoogleSignIn returnTo={returnTo || '/account/learn'}/>}
           <form onSubmit={handleSubmit} aria-busy={loading} className={styles.loginForm}>
             <fieldset disabled={loading} className={styles.fields}>
               <legend className={styles.srOnly}>Sign in to your {admin ? "administrator" : "SMA Hope"} account</legend>

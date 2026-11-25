@@ -1,4 +1,5 @@
 'use client';
+import { GoogleSignIn } from '@/components/google-sign-in';
 import { trackGoogleAdsRegistration } from '@/lib/google-ads';
 import { captchaHeaders } from '@/lib/captcha-client';
 import { CaptchaNotice } from '@/components/captcha-notice';
@@ -13,7 +14,7 @@ import { PasswordInput } from '@/components/password-input';
 import { AccountAuthStory } from './account-auth-story';
 import styles from './registration.module.css';
 
-export function LearnerRegistration({returnTo=null}:{returnTo?:string|null}) {
+export function LearnerRegistration({returnTo=null,googleEnabled=false}:{returnTo?:string|null;googleEnabled?:boolean}) {
   const router = useRouter();
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -65,6 +66,7 @@ export function LearnerRegistration({returnTo=null}:{returnTo?:string|null}) {
           <h1>{privateReturn ? <>Your private<br/>SMA Hope space.</> : <>Start with <br />understanding.</>}</h1>
           <p className={styles.intro}>{privateReturn ? 'Create an account to use your private foundation workspace.' : 'Create your free account to save your progress and check what you’ve learned.'}</p>
           <p className={styles.nextStep}>{privateReturn ? 'No payment details required. Creating an account does not submit a patient report or clinician application.' : <>Next, you’ll enrol in <strong>Understanding SMA</strong>. No payment details required.</>}</p>
+          {googleEnabled && <GoogleSignIn returnTo={privateReturn || '/account/learn'}/>}
           <form onSubmit={submit} aria-busy={busy}>
             <fieldset disabled={busy} className={styles.fields}>
               <legend className={styles.srOnly}>Create your learning account</legend>
