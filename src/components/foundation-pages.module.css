@@ -161,3 +161,15 @@
  .photoGrid figcaption { font-size: 15px; padding-top: 12px; }
 }
 @media print { .photoEssay { break-inside: avoid; } .photoGrid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+
+/* Match the workspace panels in public dark mode. */
+:global([data-theme="dark"]) :global(.public-site) :is(.missionCard, .workGrid article, .book) {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  box-shadow: none;
+}
+:global([data-theme="dark"]) :global(.public-site) :is(.statement, .workBand) {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}

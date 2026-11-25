@@ -169,17 +169,87 @@ input::placeholder, textarea::placeholder { color: var(--text-soft); opacity: .8
 .theme-check { margin-left:auto; }
 .theme-hint { display:block;margin:0;padding:8px 10px;font-size:12px;line-height:1.5;color:var(--text-soft); }
 
-/* The homepage follows the same dark surface hierarchy as the foundation pages. */
-[data-theme="dark"] .home-page .hope-hero {
-  background: var(--surface-muted);
+/* Public pages use the workspace canvas and flat, bordered surfaces.
+   Keep these tokens local so admin, learner workspaces and light mode retain
+   their existing treatment. Photos and editorial typography are unchanged. */
+[data-theme="dark"] .public-site {
+  --bg: #203335;
+  --brand-deep: var(--surface);
+  --on-brand-deep: var(--text);
+  --warm-surface: var(--surface-raised);
+  background: var(--bg);
+  color: var(--text);
+}
+[data-theme="dark"] .public-site .hope-header {
+  background: var(--surface);
+}
+[data-theme="dark"] .public-site .utility-bar {
+  background: var(--surface);
+  color: var(--text-soft);
   border-bottom: 1px solid var(--line);
 }
-[data-theme="dark"] .home-page :is(.hope-hero h1 em, .display-heading em) { color: var(--link); }
-[data-theme="dark"] .home-page .eyebrow-line { background: var(--accent-gold); }
-[data-theme="dark"] .home-page .pathway-section { background: var(--bg); border-top: 0; }
-[data-theme="dark"] .home-page :is(.pathway-top > svg, .pathway-arrow) { color: var(--link); }
-[data-theme="dark"] .home-page .pathway-top > span { color: var(--accent-gold); }
-[data-theme="dark"] .home-page .photo-label { background: var(--surface-raised); color: var(--text); }
-[data-theme="dark"] .home-page .book-feature-art { background: var(--surface); border: 1px solid var(--line); }
-[data-theme="dark"] .home-page .story-band { color: var(--on-brand-deep); }
-[data-theme="dark"] .home-page .story-band .eyebrow { color: var(--accent-gold); }
+[data-theme="dark"] .public-site :is(.utility-bar b, .utility-bar .theme-picker) {
+  color: var(--text-soft);
+}
+[data-theme="dark"] .public-site :is(.hope-links a:hover, .hope-links a[aria-current="page"]) {
+  color: var(--link);
+}
+[data-theme="dark"] .public-site .hope-links a[aria-current="page"]::after {
+  background: var(--link);
+}
+[data-theme="dark"] .public-site :is(.hope-hero, .library-header, .editorial-page-header, .content-page-bg, .book-page-bg) {
+  background: var(--bg);
+}
+[data-theme="dark"] .public-site .hope-hero {
+  border-bottom: 1px solid var(--line);
+}
+[data-theme="dark"] .public-site :is(.hope-hero h1 em, .display-heading em, .library-header h1 em) {
+  color: var(--text);
+}
+[data-theme="dark"] .public-site .eyebrow-line { background: var(--line); }
+[data-theme="dark"] .public-site .pathway-section {
+  background: var(--surface);
+  border-top: 0;
+}
+[data-theme="dark"] .public-site :is(.pathway-top > svg, .pathway-arrow, .pathway-top > span) {
+  color: var(--text-soft);
+}
+[data-theme="dark"] .public-site .hero-photo figcaption {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+[data-theme="dark"] .public-site .hero-photo figcaption > span { color: var(--text-soft); }
+[data-theme="dark"] .public-site .photo-label {
+  background: var(--surface-raised);
+  color: var(--text);
+}
+[data-theme="dark"] .public-site :is(.story-band, .hope-newsletter, .site-footer) {
+  background: var(--surface);
+  color: var(--text);
+  border-block: 1px solid var(--line);
+}
+[data-theme="dark"] .public-site .story-band :is(.eyebrow, p:not(.eyebrow)) {
+  color: var(--text-soft);
+}
+[data-theme="dark"] .public-site .story-band h2 { color: var(--text); }
+[data-theme="dark"] .public-site .story-band .text-link { color: var(--link); }
+[data-theme="dark"] .public-site :is(.guide-card, .newsletter-form, .book-feature-art, .cookie-notice) {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  box-shadow: none;
+}
+[data-theme="dark"] .public-site .newsletter-form { background: var(--bg); }
+[data-theme="dark"] .public-site .newsletter-form-symbol { color: var(--text-soft); }
+[data-theme="dark"] .public-site :is(.takeaways, .print-checklist, .toc-support, .editorial-note, .course-giving-detail) {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  box-shadow: none;
+}
+[data-theme="dark"] .public-site .filter-tabs button[aria-pressed="true"] {
+  background: var(--surface-raised);
+  border-color: var(--line);
+  color: var(--text);
+}

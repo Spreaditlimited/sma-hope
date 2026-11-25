@@ -171,3 +171,23 @@
 .landing .heroArtwork{color:var(--text);background:transparent}
 .heroArtwork figcaption :global(.brand-logo){flex-shrink:0;width:102px}
 @media(max-width:720px){.heroArtwork figcaption :global(.brand-logo){width:90px}}
+
+/* Public course surfaces follow the admin palette without changing lesson UI. */
+:global([data-theme="dark"]) :global(.public-site) .landing :is(.eyebrow, .lessonCard > span) {
+  color: var(--text-soft);
+}
+:global([data-theme="dark"]) :global(.public-site) .landing .hero h1 em {
+  color: var(--text);
+}
+:global([data-theme="dark"]) :global(.public-site) .landing :is(.lessonCard, .supportCourse) {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  box-shadow: none;
+}
+:global([data-theme="dark"]) :global(.public-site) .callout {
+  background: var(--surface);
+  color: var(--text-soft);
+  border-block: 1px solid var(--line);
+}
+:global([data-theme="dark"]) :global(.public-site) .callout h2 { color: var(--text); }

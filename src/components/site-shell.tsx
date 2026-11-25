@@ -21,6 +21,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      <div className="public-site">
       <MetaPixel />
       <Navbar />
       <main id="main-content">{children}</main>
@@ -33,6 +34,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <Footer />
       <CookieNotice />
       <SupportLauncher key={pathname} />
+      </div>
     </>
   );
 }

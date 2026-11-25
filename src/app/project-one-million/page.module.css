@@ -93,3 +93,14 @@
 @media(max-width:800px){.heroGrid,.purpose,.missionGrid,.closing,.questions{grid-template-columns:1fr;gap:30px}.goalCard{display:none}.hero{padding:38px 0 40px}.hero h1{font-size:clamp(33px,7.2vw,47px);line-height:1.18;text-wrap:initial}.deck{font-size:19px;margin-top:23px}.heroText{font-size:16px}.sectionNav{gap:0 23px;padding-block:15px}.sectionNav a{font-size:13px}.purpose h2{max-width:24ch}.prose p{font-size:17px}.missionBand{padding-block:44px}.missionGrid>div>p{font-size:20px}.sectionIntro>p:not(:global(.eyebrow)){font-size:17px}.pillars{gap:20px}.pillar{padding:25px}.learningGrid{grid-template-columns:minmax(0,.65fr) minmax(0,1fr);gap:28px}.learningGrid p:not(:global(.eyebrow)){font-size:16px}.measures{grid-template-columns:1fr;gap:30px}.measures h3{margin-bottom:13px}.reporting{gap:30px}.involved{grid-template-columns:1fr;gap:32px}.questions{padding-bottom:45px}.closing{padding-block:40px 50px}.closing .actions{justify-content:flex-start}.planNote{padding:23px}.roadmap article{grid-template-columns:65px minmax(0,1fr);gap:15px 25px}.yearNumber{grid-column:2;text-align:left;display:flex;gap:6px 16px;align-items:baseline;flex-wrap:wrap}.yearNumber strong{font-size:27px}.yearNumber span,.yearNumber small{margin:0}.yearNumber small{flex-basis:100%}}
 @media(max-width:600px){.pillars,.learningGrid,.reporting{grid-template-columns:1fr}.learningGrid figure{max-width:280px}.learningGrid{gap:26px}.page :global(.eyebrow){font-size:11px;line-height:1.8;letter-spacing:.12em}.hero .actions{align-items:stretch;flex-direction:column;gap:20px}.hero .actions a{width:100%}.heroNote{font-size:12px}.sectionNav{gap:0 20px}.goalLabel{font-size:16px}.pillar h3{font-size:25px}.pillar>p:not(.status){font-size:16px}.learningBand{padding-block:35px 42px}.learningGrid h2{font-size:31px}.learningGrid .actions{gap:22px}.section{padding-block:46px}.roadmap article{grid-template-columns:1fr;gap:13px;padding-block:25px}.year{font-size:15px;padding:0}.yearNumber{grid-column:auto}.yearFocus h3{font-size:24px}.yearFocus p{font-size:16px}.planNote{padding:23px 20px;gap:14px}.planNote p{font-size:14px}.questions h2{margin-bottom:18px}.questions summary{font-size:16px}.closing .actions{align-items:stretch;flex-direction:column}.closing .actions a{width:100%}}
 @media print{.sectionNav,.actions{display:none}.hero,.missionBand,.learningBand,.measureBand{background:none;color:#000}.goalCard{display:none}.heroGrid,.purpose,.missionGrid,.learningGrid,.questions,.closing{display:block}.section{padding-block:25px}.missionBand h2,.missionGrid .vision{color:#000}}
+
+:global([data-theme="dark"]) :global(.public-site) :is(.goalCard, .pillar, .planNote) {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  box-shadow: none;
+}
+:global([data-theme="dark"]) :global(.public-site) :is(.missionBand, .learningBand, .measureBand) {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}

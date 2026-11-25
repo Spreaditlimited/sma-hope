@@ -155,3 +155,10 @@
 
 .selectField { display: grid; align-content: start; gap: 10px; width: 100%; min-width: 0; }
 .selectViewport { max-height: min(320px, var(--radix-select-content-available-height)); overflow-y: auto; }
+
+:global([data-theme="dark"]) :global(.public-site) :is(.panel, .stats div) {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  box-shadow: none;
+}
