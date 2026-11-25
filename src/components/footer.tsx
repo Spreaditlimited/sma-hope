@@ -19,6 +19,7 @@ const groups = [
       ["Knowledge hub", "/blog"],
       ["Free SMA course", "/learn/understanding-sma"],
       ["Support for families", "/support-for-families"],
+      ["Report a concern", "/report-a-concern"],
       ["FAQs", "/faqs"],
       ["Our editorial approach", "/editorial-policy"],
     ],
@@ -28,6 +29,7 @@ const groups = [
     links: [
       ["Project One Million", "/project-one-million"],
       ["Make a donation", "/donate"],
+      ["Clinician network", "/clinician-network"],
       ["Contact us", "/contact"],
       ["My account", "/account"],
       ["Privacy policy", "/privacy-policy"],

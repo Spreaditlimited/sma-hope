@@ -7,7 +7,8 @@ import { PasswordInput } from "@/components/password-input";
 import { FormEvent, useState } from "react";
 import { accountAuth, adminAuth } from "@/lib/auth/client";
 
-export function ResetPasswordPage({admin = false, token = ""}: {admin?:boolean;token?:string}) {
+export function ResetPasswordPage({admin = false, token = "", returnTo}: {admin?:boolean;token?:string;returnTo?:string}) {
+  const loginUrl = admin ? "/admin/login" : "/account/login" + (["/account/clinician", "/account/diagnostics"].includes(returnTo || "") ? "?next=" + encodeURIComponent(returnTo!) : "");
   const auth = admin ? adminAuth : accountAuth;
 
   const [email, setEmail] = useState("");
@@ -79,7 +80,7 @@ export function ResetPasswordPage({admin = false, token = ""}: {admin?:boolean;t
     <main className="reset-page">
       <section className="w-full max-w-lg bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-md">
         <Link
-          href={admin ? "/admin/login" : "/account/login"}
+          href={loginUrl}
           className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)] hover:text-[var(--primary-strong)] hover:underline"
         >
           <span aria-hidden>←</span>
@@ -118,7 +119,7 @@ export function ResetPasswordPage({admin = false, token = ""}: {admin?:boolean;t
             <p className="mt-2 text-sm leading-6 text-emerald-800">
               Your password has been changed. Use your new password the next time you sign in.
             </p>
-            <Link href={admin ? "/admin/login" : "/account/login"} className="btn btn-primary mt-5 w-full text-center">
+            <Link href={loginUrl} className="btn btn-primary mt-5 w-full text-center">
               Go to Sign In
             </Link>
           </div>

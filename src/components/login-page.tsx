@@ -12,7 +12,7 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { accountAuth, adminAuth } from "@/lib/auth/client";
 
-export function LoginPage({admin = false, setup = false}: {admin?:boolean;setup?:boolean}) {
+export function LoginPage({admin = false, setup = false, returnTo = null}: {admin?:boolean;setup?:boolean;returnTo?:string|null}) {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,8 +27,8 @@ export function LoginPage({admin = false, setup = false}: {admin?:boolean;setup?
     try {
       const result = await (admin ? adminAuth : accountAuth).signIn.email({email:email.trim(),password},{headers:await captchaHeaders(admin?"admin_login":"login")});
       if (result.error) {setError(result.error.message || "Unable to sign in.");return;}
-      const next = new URLSearchParams(window.location.search).get("next");
-      router.push(admin ? "/admin" : next && ["/account", "/account/learn", "/account/orders", "/account/donations", "/account/subscriptions", "/account/email-preferences", "/account/learn/feedback"].includes(next) ? next : "/account");
+      const next = returnTo || new URLSearchParams(window.location.search).get("next");
+      router.push(admin ? "/admin" : next && ["/account", "/account/learn", "/account/orders", "/account/donations", "/account/subscriptions", "/account/email-preferences", "/account/learn/feedback", "/account/diagnostics", "/account/clinician"].includes(next) ? next : "/account");
       router.refresh();
     } catch (failure) {
       setError(failure instanceof Error && failure.message.startsWith("Security verification") ? failure.message : "Unable to connect. Please check your connection and try again.");
@@ -90,7 +90,7 @@ export function LoginPage({admin = false, setup = false}: {admin?:boolean;setup?
           <div className={styles.accountNote}>
             <strong>{admin ? "Administrator access" : "New to SMA Hope?"}</strong>
             <p>{admin ? "This is a separate administrator account. Use Forgot your password to set up access after an invitation." : "Create a free learning account, or use the same account created after a donation or book purchase."}</p>
-            {!admin && <Link href="/account/register">Create a free learning account →</Link>}
+            {!admin && <Link href={returnTo ? "/account/register?next="+encodeURIComponent(returnTo) : "/account/register"}>{returnTo ? "Create your free account →" : "Create a free learning account →"}</Link>}
           </div>
           <p className={styles.help}><Link href="/learn/understanding-sma">← Back to the course</Link><span>Need a hand? <Link href="/contact">Contact us</Link></span></p>
           <p className={styles.privacy}><Link href="/privacy-policy">Privacy</Link><span aria-hidden="true"> · </span><Link href="/terms">Terms</Link><span> · SMA Hope Foundation Nigeria</span></p>

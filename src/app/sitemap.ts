@@ -16,6 +16,8 @@ const routes = [
   "/blog",
   "/learn/understanding-sma",
   "/project-one-million",
+  "/report-a-concern",
+  "/clinician-network",
   "/updates",
   "/transparency",
   "/faqs",

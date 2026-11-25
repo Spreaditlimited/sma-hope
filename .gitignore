@@ -46,3 +46,7 @@ next-env.d.ts
 /public/email-design-preview.html
 
 !.env.example
+
+# Private diagnostic programme planning and connection records
+/operations/diagnostic-*.md
+/operations/public-diagnostic-services-validation.md

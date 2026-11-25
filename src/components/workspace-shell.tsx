@@ -10,6 +10,8 @@ import { accountAuth, adminAuth } from "@/lib/auth/client";
 type Item = { label: string; href: string; icon: IconName };
 const accountItems: Item[] = [
   { label: "Overview", href: "/account", icon: "grid" },
+  { label: "Diagnostic access", href: "/account/diagnostics", icon: "heart" },
+  { label: "Clinician network", href: "/account/clinician", icon: "people" },
   { label: "My learning", href: "/account/learn", icon: "book" },
   { label: "Course feedback", href: "/account/learn/feedback", icon: "heart" },
   { label: "Email preferences", href: "/account/email-preferences", icon: "settings" },
@@ -21,6 +23,7 @@ const adminItems: Item[] = [
   { label: "Donations", href: "/admin/donations", icon: "heart" },
   { label: "Book orders", href: "/admin/book-orders", icon: "box" },
   { label: "Supporters", href: "/admin/donors", icon: "people" },
+  { label: "Diagnostic access", href: "/admin/diagnostics", icon: "heart" },
   { label: "Learning", href: "/admin/learning", icon: "book" },
   { label: "Course feedback", href: "/admin/learning/feedback", icon: "heart" },
   { label: "Learning emails", href: "/admin/marketing", icon: "settings" },
@@ -49,7 +52,7 @@ export function WorkspaceShell({
   const [signingOut, setSigningOut] = useState(false);
   const [error, setError] = useState("");
   const items = (admin ? adminItems : accountItems).filter(
-    (i) => i.href !== "/admin/settings" || role === "admin",
+    (i) => !["/admin/settings", "/admin/diagnostics"].includes(i.href) || role === "admin",
   );
   async function signOut() {
     setSigningOut(true);
@@ -148,12 +151,12 @@ export function WorkspaceShell({
           <div className="workspace-page-heading">
             <div>
               <p className="eyebrow">
-                {admin ? "SMA Hope / Administration" : pathname.startsWith("/account/learn") ? "SMA Hope / Learn with understanding" : "SMA Hope / Your support matters"}
+                {admin ? "SMA Hope / Administration" : pathname.startsWith("/account/diagnostics") || pathname.startsWith("/account/clinician") ? "SMA Hope / Diagnostic access" : pathname.startsWith("/account/learn") ? "SMA Hope / Learn with understanding" : "SMA Hope / Your support matters"}
               </p>
               <h1>{title}</h1>
               {subtitle && <p>{subtitle}</p>}
             </div>
-            {!pathname.startsWith("/account/learn") && <Link href={admin ? pathname === "/admin/learning" ? "/learn/understanding-sma" : "/admin/donations" : "/donate"} className="btn btn-primary">
+            {!pathname.startsWith("/account/learn") && !pathname.startsWith("/account/diagnostics") && !pathname.startsWith("/account/clinician") && !pathname.startsWith("/admin/diagnostics") && <Link href={admin ? pathname === "/admin/learning" ? "/learn/understanding-sma" : "/admin/donations" : "/donate"} className="btn btn-primary">
               {admin ? pathname === "/admin/learning" ? "View course" : "View donations" : "Make a donation"}
               <Icon name="arrow" size={16} />
             </Link>}

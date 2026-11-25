@@ -21,7 +21,7 @@ let currentPath: string | null = null;
 let lastTrackedPath: string | null = null;
 
 export function isPixelPage(pathname: string): boolean {
-  return !["/account", "/admin", "/api", "/contact", "/order-book", "/learning-emails"].some((base) => pathname === base || pathname.startsWith(`${base}/`));
+  return !["/account", "/admin", "/api", "/contact", "/order-book", "/learning-emails", "/report-a-concern", "/clinician-network"].some((base) => pathname === base || pathname.startsWith(`${base}/`));
 }
 
 function canTrack(): boolean {

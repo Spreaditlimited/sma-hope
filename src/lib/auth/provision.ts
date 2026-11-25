@@ -2,6 +2,7 @@ import "server-only";
 import { randomUUID, randomBytes } from "node:crypto";
 import { hashPassword } from "better-auth/crypto";
 import { getPool } from "@/lib/database/pool";
+import { requireSetupDelivery } from "./setup-delivery";
 import { getAuth, authOrigin, type AuthScope } from "./server";
 export async function ensureIdentity(email: string, name: string, scope: AuthScope = "account") {
   const db = getPool().promise();
@@ -28,6 +29,7 @@ export async function ensureIdentity(email: string, name: string, scope: AuthSco
     throw new Error("Unable to create account.");
   } finally { connection.release(); }
 }
-export async function sendSetupLink(email: string, scope: AuthScope = "account") {
-  await getAuth(scope).api.requestPasswordReset({body:{email,redirectTo:`${authOrigin()}/${scope === "administrator" ? "admin" : "account"}/reset-password`}});
+export async function sendSetupLink(email: string, scope: AuthScope = "account", journey: boolean | "diagnostics" = false) {
+  const send = () => getAuth(scope).api.requestPasswordReset({body:{email,redirectTo:`${authOrigin()}/${scope === "administrator" ? "admin" : "account"}/reset-password${journey ? "?next=" + encodeURIComponent(journey === "diagnostics" ? "/account/diagnostics" : "/account/clinician") : ""}`}});
+  if (journey) await requireSetupDelivery(send); else await send();
 }

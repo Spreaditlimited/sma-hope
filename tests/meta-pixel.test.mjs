@@ -60,7 +60,7 @@ test("consent loads SDK once, disables automatic events, initializes the correct
   assert.deepEqual(Array.from(b.events()[0]),["trackSingle","2521801154897796","PageView"]);
 });
 test("private and contact/checkout pages never load or send the pixel", () => {
-  for (const route of ["/account","/account/login","/admin","/admin/users","/api/orders","/contact","/order-book","/order-book/success"]) {
+  for (const route of ["/report-a-concern","/report-a-concern/privacy","/clinician-network","/account/diagnostics","/account/clinician","/account","/account/login","/admin","/admin/users","/api/orders","/contact","/order-book","/order-book/success"]) {
     const b=browser("smahope_cookie_consent_v2=accepted",route);b.navigate(route);assert.equal(b.scripts.length,0);assert.equal(b.events().length,0);
   }
 });

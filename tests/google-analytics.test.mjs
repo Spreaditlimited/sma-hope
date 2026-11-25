@@ -23,7 +23,7 @@ test('Google initializes once with advertising disabled and sends one manual pag
  b.navigate('/blog');b.navigate('/book');assert.equal(b.events().length,3);assert.equal(b.commands().filter(args=>args[0]==='config').length,1);
 });
 test('Analytics excludes private pages and credential-bearing URLs, including delayed SDK load',()=>{
- for(const path of ['/account','/account/learn/feedback','/admin','/api/learning','/contact','/order-book','/learning-emails?token=secret','/book?email=test@example.test']){const b=browser(granted,path);b.navigate(path);assert.equal(b.scripts.length,0);assert.equal(b.window['ga-disable-G-T3PKCFSW9V'],true);}
+ for(const path of ['/report-a-concern','/report-a-concern/privacy','/clinician-network','/account/diagnostics','/account/clinician','/account','/account/learn/feedback','/admin','/api/learning','/contact','/order-book','/learning-emails?token=secret','/book?email=test@example.test']){const b=browser(granted,path);b.navigate(path);assert.equal(b.scripts.length,0);assert.equal(b.window['ga-disable-G-T3PKCFSW9V'],true);}
  const b=browser(granted);b.navigate('/book');b.navigate('/account/login');b.scripts[0].onload();assert.equal(b.events().length,0);assert.equal(b.window['ga-disable-G-T3PKCFSW9V'],true);
 });
 test('Analytics strips queries, fragments and referring paths from page views',()=>{
