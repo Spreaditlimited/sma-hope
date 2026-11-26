@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     const admin = getDatabase();
     const result = await admin
       .from("donations")
-      .select("id, email, amount_major, currency, donation_interval, status, paystack_reference, created_at, paid_at")
+      .select("id, email, amount_major, currency, donation_interval, status, paystack_reference, created_at, paid_at, metadata")
       .gte("created_at", since)
       .order("created_at", { ascending: false })
       .limit(500);
@@ -31,11 +31,14 @@ export async function GET(request: Request) {
       paystack_reference: string;
       created_at: string;
       paid_at: string | null;
+      metadata: {supportPreference?:{id?:string;title?:string;category?:string}};
     }>;
 
+    const supportItem = url.searchParams.get("supportItem");
+    if (supportItem) rows = rows.filter(row => row.metadata?.supportPreference?.id === supportItem);
     if (q) {
       rows = rows.filter((row) => {
-        const hay = `${row.email} ${row.paystack_reference} ${row.currency} ${row.status}`.toLowerCase();
+        const hay = `${row.email} ${row.paystack_reference} ${row.currency} ${row.status} ${row.metadata?.supportPreference?.title || ""}`.toLowerCase();
         return hay.includes(q);
       });
     }

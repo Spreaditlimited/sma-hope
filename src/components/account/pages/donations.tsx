@@ -12,6 +12,7 @@ type DonationRow = {
   donation_interval: string;
   status: string;
   created_at: string;
+  metadata?: {supportPreference?:{title?:string}};
 };
 
 type SubscriptionRow = {
@@ -454,6 +455,7 @@ export default function DonationsPage() {
                       <p className="text-xl font-bold tracking-tight text-gray-900">
                         {row.currency} {Number(row.amount_major).toLocaleString()}
                       </p>
+                      {row.metadata?.supportPreference?.title && <p className="text-gray-500 mt-1">Support preference: {row.metadata.supportPreference.title}</p>}
                     </div>
                     <p className="mt-1 flex items-center text-sm text-gray-500">
                       <svg

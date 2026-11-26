@@ -8,11 +8,11 @@ const intlSuggested = [20, 50, 100, 500];
 type Location = "nigeria" | "international";
 const internationalDonationsEnabled = process.env.NEXT_PUBLIC_ENABLE_INTERNATIONAL_DONATIONS === "true";
 
-export function DonationOptions() {
+export function DonationOptions({selectedItem}: {selectedItem?: {id:string;title:string;costNaira:number|null}} = {}) {
   const searchParams = useSearchParams();
   const [location, setLocation] = useState<Location>("nigeria");
-  const [amount, setAmount] = useState<number>(nigeriaSuggested[1]);
-  const [customAmount, setCustomAmount] = useState("");
+  const [amount, setAmount] = useState<number>(selectedItem?.costNaira ?? nigeriaSuggested[1]);
+  const [customAmount, setCustomAmount] = useState(selectedItem?.costNaira && !nigeriaSuggested.includes(selectedItem.costNaira) ? String(selectedItem.costNaira) : "");
   const [interval, setInterval] = useState<"one_time" | "monthly">("one_time");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -67,6 +67,7 @@ export function DonationOptions() {
           interval,
           amount,
           currency,
+          ...(selectedItem ? {supportItemId:selectedItem.id} : {}),
         }),
       });
 
@@ -200,7 +201,7 @@ export function DonationOptions() {
               className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${
                 interval === "monthly" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
               }`}
-              onClick={() => setInterval("monthly")}
+              onClick={() => {setInterval("monthly");setAmount(suggested[1]);setCustomAmount("");setErrorMessage("");}}
             >
               Monthly
             </button>
@@ -220,7 +221,7 @@ export function DonationOptions() {
               type="button"
               className={`py-3 rounded-xl font-bold text-lg transition-all border ${
                 !customAmount && amount === value
-                  ? "bg-[#eaf4fb] border-[var(--primary)] text-[var(--primary-strong)] ring-1 ring-[var(--primary)]"
+                  ? "bg-[#eaf4fb] border-[var(--link)] text-[var(--link)] ring-1 ring-[var(--link)]"
                   : "bg-white border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50 shadow-sm"
               }`}
               onClick={() => {
@@ -243,7 +244,9 @@ export function DonationOptions() {
             inputMode="numeric"
             pattern="[0-9]*"
             className={`${inputClass} !pl-14`}
-            placeholder="Other amount"
+            aria-label="Other donation amount"
+            disabled={interval === "monthly"}
+            placeholder={interval === "monthly" ? "Choose a monthly amount above" : "Other amount"}
             value={customAmount}
             onChange={(event) => {
               const digitsOnly = event.target.value.replace(/[^\d]/g, "");

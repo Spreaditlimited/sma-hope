@@ -11,7 +11,7 @@ const links = [
   ["Free course", "/learn/understanding-sma"],
   ["Our story", "/our-story"],
   ["The book", "/book"],
-  ["About us", "/about"],
+  ["Support", "/support-sma-care"],
 ];
 export function Navbar() {
   const [open, setOpen] = useState(false);

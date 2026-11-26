@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { env } from "@/lib/env";
+import { activeSupportItem } from "@/lib/support-catalog-server";
+import { supportPreference } from "@/lib/support-catalog";
 
 type DonationPayload = {
   fullName?: string;
@@ -9,6 +11,7 @@ type DonationPayload = {
   amount?: number;
   currency?: "NGN" | "USD";
   source?: "public" | "account";
+  supportItemId?: string;
 };
 
 function isValidEmail(value: string) {
@@ -141,6 +144,15 @@ export async function POST(request: Request) {
     );
   }
 
+  let preference;
+  if (payload.supportItemId !== undefined) {
+    if (typeof payload.supportItemId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(payload.supportItemId) || payload.supportItemId.length > 80) return NextResponse.json({ok:false,error:"Invalid support preference."},{status:400});
+    try {
+      const item = await activeSupportItem(payload.supportItemId);
+      if (!item) return NextResponse.json({ok:false,error:"This support option is no longer accepting donations. Please choose another option."},{status:409});
+      preference = supportPreference(item);
+    } catch { return NextResponse.json({ok:false,error:"Unable to confirm your support preference. Please try again."},{status:503}); }
+  }
   const amountMinor = Math.round(amount * 100);
   const callbackUrl = toAbsoluteUrl(
     source === "account" ? "/account/donations?status=success" : env.paystackDonationSuccessUrl,
@@ -155,6 +167,7 @@ export async function POST(request: Request) {
     callback_url: callbackUrl,
     metadata: {
       kind: "donation",
+      ...(preference ? {supportPreference:preference} : {}),
       fullName,
       location,
       interval,

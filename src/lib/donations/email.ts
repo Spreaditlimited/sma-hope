@@ -17,6 +17,7 @@ export async function sendDonationThankYouEmail(input: {
   reference: string;
   paidAt: string;
   subscriptionCode?: string | null;
+  supportPreference?: string;
 }) {
   const siteUrl = env.siteUrl.replace(/\/$/, "");
   const recurring = input.interval === "monthly" || Boolean(input.subscriptionCode);
@@ -42,6 +43,7 @@ export async function sendDonationThankYouEmail(input: {
       `Donation type: ${recurring ? "Recurring monthly donation" : "One-time donation"}`,
       `Amount: ${formatAmount(input.amountMajor, input.currency)}`,
       `Payment reference: ${input.reference}`,
+      input.supportPreference ? `Support preference: ${input.supportPreference}. This records your preference; your donation supports the foundation’s charitable work and is not restricted to this item.` : "",
       `Paid at: ${paidAt}`,
       input.subscriptionCode ? `Subscription code: ${input.subscriptionCode}` : "",
       siteUrl ? `Dashboard: ${siteUrl}/account/donations` : "",

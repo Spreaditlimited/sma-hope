@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import {parseEnv} from 'node:util';
+import {createRequire} from 'node:module';
+import {spawnSync,spawn} from 'node:child_process';
+const root=process.cwd(),work='/private/tmp/sma-support-preview';
+fs.mkdirSync(work,{recursive:true});
+const copy=spawnSync('rsync',['-a','--exclude=.git','--exclude=node_modules','--exclude=.next','--exclude=.env*','--exclude=output',root+'/',work+'/']);if(copy.status)throw Error('Copy failed');
+if(!fs.existsSync(work+'/node_modules'))fs.symlinkSync(root+'/node_modules',work+'/node_modules');
+const env={...process.env,...parseEnv(fs.readFileSync('/private/tmp/sma-lms-test.env','utf8')),NODE_ENV:'development',SMAHOPE_AUTH_URL:'http://localhost:3043',NEXT_PUBLIC_SITE_URL:'http://localhost:3043',SMAHOPE_CAPTCHA_SECRET_KEY:'isolated-test-only',SMAHOPE_CAPTCHA_SITE_KEY:'isolated-test-only',PAYSTACK_SECRET_KEY:'sk_test_isolated',PAYSTACK_DONATION_MONTHLY_PLAN_CODES_NGN:'5000:PLN_isolated5000,10000:PLN_isolated10000,25000:PLN_isolated25000,50000:PLN_isolated50000',META_CAPI_ENABLED:'false',SMTP_HOST:'',HELP_EMAIL_PASSWORD:'',PARTNERSHIPS_EMAIL_PASSWORD:'',NODE_OPTIONS:'--import='+root+'/scripts/testing/support-provider.mjs'};
+const u=new URL(env.SMAHOPE_TEST_DATABASE_URL);if(u.host!=='127.0.0.1:33317'||u.pathname!=='/smahope_test')throw Error('Isolated DB required');
+const require=createRequire(root+'/package.json'),mysql=require('mysql2/promise');
+const db=await mysql.createConnection({host:u.hostname,port:33317,user:u.username,password:decodeURIComponent(u.password),database:'smahope_test'});
+for(const sql of fs.readFileSync(root+'/database/011-support-catalog.sql','utf8').split(';').filter(s=>s.trim()))await db.query(sql);await db.end();
+const child=spawn(process.execPath,['node_modules/next/dist/bin/next','dev','--webpack','--port','3043'],{cwd:work,env,stdio:'inherit'});child.on('exit',code=>process.exit(code||0));

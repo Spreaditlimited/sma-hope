@@ -21,6 +21,7 @@ const accountItems: Item[] = [
 const adminItems: Item[] = [
   { label: "Overview", href: "/admin", icon: "grid" },
   { label: "Donations", href: "/admin/donations", icon: "heart" },
+  { label: "Support catalogue", href: "/admin/support-items", icon: "box" },
   { label: "Book orders", href: "/admin/book-orders", icon: "box" },
   { label: "Supporters", href: "/admin/donors", icon: "people" },
   { label: "Diagnostic access", href: "/admin/diagnostics", icon: "heart" },

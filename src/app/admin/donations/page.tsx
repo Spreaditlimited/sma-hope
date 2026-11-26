@@ -15,6 +15,7 @@ type DonationRow = {
   status: string;
   paystack_reference: string;
   created_at: string;
+  metadata?: {supportPreference?:{title?:string}};
 };
 
 export default function AdminDonationsPage() {
@@ -217,6 +218,7 @@ export default function AdminDonationsPage() {
                         <p className="font-bold text-gray-900 tracking-tight">
                           {row.currency} {Number(row.amount_major || 0).toLocaleString()}
                         </p>
+                        {row.metadata?.supportPreference?.title && <p className="text-gray-500 mt-1">Preference: {row.metadata.supportPreference.title}</p>}
                       </td>
 
                       {/* Type */}

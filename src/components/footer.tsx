@@ -29,6 +29,7 @@ const groups = [
     links: [
       ["Project One Million", "/project-one-million"],
       ["Make a donation", "/donate"],
+      ["Support SMA care", "/support-sma-care"],
       ["Clinician network", "/clinician-network"],
       ["Contact us", "/contact"],
       ["My account", "/account"],

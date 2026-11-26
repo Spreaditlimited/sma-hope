@@ -12,6 +12,7 @@ const routes = [
   "/support-for-families",
   "/book",
   "/donate",
+  "/support-sma-care",
   "/contact",
   "/blog",
   "/learn/understanding-sma",

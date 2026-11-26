@@ -153,6 +153,7 @@ export async function storePaymentFromVerifiedTransaction(tx: TransactionData) {
             reference,
             paidAt,
             subscriptionCode,
+            supportPreference: typeof metadata.supportPreference === "object" && metadata.supportPreference !== null && "title" in metadata.supportPreference ? String(metadata.supportPreference.title).slice(0,100) : undefined,
           }),
       );
     } catch (error) {

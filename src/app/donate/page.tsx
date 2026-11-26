@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { activeSupportItem } from "@/lib/support-catalog-server";
+import { supportCostLabel } from "@/lib/support-catalog";
+export const dynamic = "force-dynamic";
 import { Suspense } from "react";
 import { PageHeader } from "@/components/page-header";
 import { DonationOptions } from "@/components/donation-options";
@@ -7,16 +10,19 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Donate to SMA Hope Foundation Nigeria",
   description:
-    "Help more people in Nigeria access our free SMA course. Support awareness, family education and the work of SMA Hope Foundation.",
+    "Donate to SMA Hope in Nigeria. Support free SMA education, clinical assessment, genetic testing, equipment, nutrition and practical family support.",
   path: "/donate",
 });
-export default function Donate() {
+export default async function Donate({ searchParams }: { searchParams: Promise<{ item?: string }> }) {
+  const params = await searchParams;
+  const selectedItem = params.item ? await activeSupportItem(params.item) : null;
   return (
     <>
       <PageHeader
-        title="Help understanding grow."
-        intro="Help more parents and caregivers understand SMA, recognise possible warning signs and know when to seek medical help."
+        title="Help a family take the next step."
+        intro="Support clear SMA education, clinical assessment, testing, equipment, nutrition and practical help for families in Nigeria."
       />
+      <section className="container hope-section" aria-label="Explore support needs"><div className="giving-trust"><h2>See what your support can help cover.</h2><p>Explore equipment prices, clinical assessment, nutrition and other areas of care. Each listing explains its cost basis and what is still being confirmed.</p><Link href="/support-sma-care" className="btn btn-secondary">Explore support needs</Link></div></section>
       <section className="container course-giving-intro" aria-labelledby="course-giving-heading">
         <div>
           <p className="eyebrow">Project One Million · Start with learning</p>
@@ -44,14 +50,14 @@ export default function Donate() {
             <em>Stand with families.</em>
           </h2>
           <p>
-            Support the foundation’s work in awareness, family-centred education, and advocacy
-            shaped by lived experience.
+            Support the foundation’s work in SMA education and family support, from first questions
+            to clinical assessment and practical care.
           </p>
           <ul className="giving-purpose">
             {[
               "Clear, accessible information about SMA",
-              "Practical resources for families and communities",
-              "A stronger public voice for dignity and understanding",
+              "Clinical assessment and access to appropriate testing",
+              "Equipment, nutrition and practical family support",
             ].map((t) => (
               <li key={t}>
                 <Icon name="check" size={18} />
@@ -75,9 +81,11 @@ export default function Donate() {
             <Link href="/contact">Get in touch.</Link>
           </p>
         </div>
-        <div className="action-form-card">
+        <div className="action-form-card" id="donation-checkout" style={{scrollMarginTop:"2rem"}}>
           <Suspense fallback={<p role="status">Loading donation options…</p>}>
-            <DonationOptions />
+            {params.item && !selectedItem && <p role="status" className="auth-note">That support option is not currently accepting donations. You can make a general donation below or <Link href="/support-sma-care">choose another need</Link>.</p>}
+            {selectedItem && <div className="giving-trust"><p className="eyebrow">Your support preference</p><h3>{selectedItem.title}</h3><p>{selectedItem.costNaira === null && selectedItem.costUsd == null ? "The cost is being confirmed. You can contribute any amount." : `${supportCostLabel(selectedItem)} ${selectedItem.unit}. You can contribute part of this cost.${selectedItem.costUsd != null ? " This budget is shown in US dollars; checkout below accepts naira. Choose the naira amount you wish to give." : ""}`}</p><p>Your choice is recorded as a preference. Standard online donations support the foundation’s charitable work and are not restricted to this item. Please contact us before giving if you need a restricted agreement.</p><Link href="/donate#give" className="text-link">Give where needed most instead</Link></div>}
+            <DonationOptions key={selectedItem?.id || "general"} selectedItem={selectedItem ? {id:selectedItem.id,title:selectedItem.title,costNaira:selectedItem.costNaira} : undefined} />
           </Suspense>
         </div>
       </section>
